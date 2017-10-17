@@ -660,17 +660,17 @@ namespace WindowsFormsApplication1.Code
         }
 
 
-        public int GetCashBookBalance()
+        public decimal GetCashBookBalance()
         {
             DataTable dtParties = new DataTable();
-            int balance = 0;
+            decimal balance = 0;
             dad = new SqlDataAdapter("SELECT  TOP 1 Balance FROM CashBook ORDER BY Balance DESC", conn);
 
             conn.Close();
 
             try
             {
-                balance = int.Parse(dtParties.Rows[0]["Balance"].ToString());
+                balance = Decimal.Parse(dtParties.Rows[0]["Balance"].ToString());
 
             }
 
@@ -1181,7 +1181,7 @@ namespace WindowsFormsApplication1.Code
 
 
 
-        public void AddGlTransactions(DateTime date,string Narrative,int AccountId,string TransType, string Reference,int Amount,int Balance)
+        public void AddGlTransactions(DateTime date,string Narrative,int AccountId,string TransType, string Reference,decimal Amount,decimal Balance)
         {
             try
             {

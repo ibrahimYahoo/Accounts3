@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Code;
 
+
 namespace WindowsFormsApplication1.Forms.Cashbook
 
 {
@@ -87,7 +88,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
                     int AccountId = new DAO().GetAccountId(AccountName);
 
-                    int CashBookBalance = new DAO().GetCashBookBalance();
+                    decimal CashBookBalance = new DAO().GetCashBookBalance();
 
                     int.TryParse(cmPartyName.SelectedValue.ToString(), out PId);
 
@@ -101,17 +102,17 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                         //   "Payment for Invoice " + invoiceNo + "-" + AccountName
 
                         dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Income,Balance,InvoiceNo,PId) values (@3,@4,@5,@6,@7,@8,@9,@10,@11)", conn);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 1, "Debit",invoiceNo, int.Parse(txtRecieptAmount.Text), 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", invoiceNo, int.Parse(txtRecieptAmount.Text), 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", invoiceNo, int.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 1, "Debit",invoiceNo, Decimal.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text), 00);
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", RecieptDatePicker.Value);
                         dad.SelectCommand.Parameters.AddWithValue("@4", txtRefNo.Text);
                         dad.SelectCommand.Parameters.AddWithValue("@5", "sales");
                         dad.SelectCommand.Parameters.AddWithValue("@6", txtRecieptNarration.Text);
                         dad.SelectCommand.Parameters.AddWithValue("@7", this.cmRecieptPayment.GetItemText(this.cmRecieptPayment.SelectedItem));
-                        dad.SelectCommand.Parameters.AddWithValue("@8", txtRecieptAmount.Text);
-                        dad.SelectCommand.Parameters.AddWithValue("@9", CashBookBalance + int.Parse(txtRecieptAmount.Text));
+                        dad.SelectCommand.Parameters.AddWithValue("@8", Decimal.Parse(txtRecieptAmount.Text));
+                        dad.SelectCommand.Parameters.AddWithValue("@9", CashBookBalance + Decimal.Parse(txtRecieptAmount.Text));
                         dad.SelectCommand.Parameters.AddWithValue("@10", invoiceNo);
                         dad.SelectCommand.Parameters.AddWithValue("@11", PId);
                     }
@@ -119,20 +120,20 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                     {
 
                         dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Income,Balance,InvoiceNo,ChequeNo,BankCode,PId) values (@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)", conn);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 2, "Debit", invoiceNo, int.Parse(txtRecieptAmount.Text), 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", invoiceNo, int.Parse(txtRecieptAmount.Text), 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", invoiceNo, int.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 2, "Debit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text), 00);
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", RecieptDatePicker.Value);
                         dad.SelectCommand.Parameters.AddWithValue("@4", txtRefNo.Text);
                         dad.SelectCommand.Parameters.AddWithValue("@5", "sales");
                         dad.SelectCommand.Parameters.AddWithValue("@6", txtRecieptNarration.Text);
                         dad.SelectCommand.Parameters.AddWithValue("@7", this.cmRecieptPayment.GetItemText(this.cmRecieptPayment.SelectedItem));
-                        dad.SelectCommand.Parameters.AddWithValue("@8", txtRecieptAmount.Text);
-                        dad.SelectCommand.Parameters.AddWithValue("@9", CashBookBalance + int.Parse(txtRecieptAmount.Text));
+                        dad.SelectCommand.Parameters.AddWithValue("@8", Decimal.Parse(txtRecieptAmount.Text));
+                        dad.SelectCommand.Parameters.AddWithValue("@9", CashBookBalance + Decimal.Parse(txtRecieptAmount.Text));
                         dad.SelectCommand.Parameters.AddWithValue("@10", invoiceNo);
-                        dad.SelectCommand.Parameters.AddWithValue("@11", txtChequeNo.Text);
-                        dad.SelectCommand.Parameters.AddWithValue("@12", txtBankCode.Text);
+                        dad.SelectCommand.Parameters.AddWithValue("@11", Decimal.Parse(txtChequeNo.Text));
+                        dad.SelectCommand.Parameters.AddWithValue("@12", Decimal.Parse(txtBankCode.Text));
                         dad.SelectCommand.Parameters.AddWithValue("@13", PId);
 
                     }
