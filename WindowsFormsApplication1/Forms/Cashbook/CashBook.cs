@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1.Forms
 {
     public partial class CashBook : MetroFramework.Forms.MetroForm
     {
+        SqlDataAdapter dad;
+        SqlConnection conn = DBConn.GetInstance();
         public CashBook()
         {
             InitializeComponent();
@@ -54,6 +56,11 @@ namespace WindowsFormsApplication1.Forms
             gvCashBook.DataSource = new DAO().getCashBookEntries();
             DataGridViewColumn column = gvCashBook.Columns[4];
             column.Width = 250;
+
+            cmPartyName.DataSource = new DAO().GetParties();
+            cmPartyName.DisplayMember = "Name";
+            cmPartyName.ValueMember = "Party-ID";
+            cmPartyName.SelectedIndex = -1;
 
             //  gvCashBookPayments.DataSource = new DAO().getCashBookPayments();
             //try
@@ -107,7 +114,8 @@ namespace WindowsFormsApplication1.Forms
             string InvoiceNo = "";
             string RefNo = "";
             string sql = "";
-            sql = "SELECT Date,InvoiceNo, ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook WHERE date BETWEEN @1 AND @2";
+            string party = "";
+            sql = "SELECT CBId,Date,ReferenceNo,Category,Description,AmountType,Income,Expense,Balance from CashBook WHERE date BETWEEN @1 AND @2";
 
 
             if (txtAmount.Text != "")
@@ -121,6 +129,15 @@ namespace WindowsFormsApplication1.Forms
             {
                 cheque = " AND ChequeNO = " + txtChequeNo.Text;
                 sql += cheque;
+
+            }
+            if (cmPartyName.SelectedIndex > -1)
+            {
+                int PId;
+                int.TryParse(cmPartyName.SelectedValue.ToString(), out PId);
+
+                party = " AND PId = " + PId;
+                sql += party;
 
             }
             if (txtBankCode.Text != "")
@@ -144,8 +161,7 @@ namespace WindowsFormsApplication1.Forms
 
 
 
-            SqlDataAdapter dad;
-            SqlConnection conn = DBConn.GetInstance();
+           
 
             DataTable dtCashBook = new DataTable();
             //string date = DateTime.Today.ToShortDateString();
@@ -209,6 +225,91 @@ namespace WindowsFormsApplication1.Forms
             }
 
 
+        }
+
+        private void metroTextBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroLabel11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvCashBook_SelectionChanged(object sender, EventArgs e)
+        {
+
+            DataGridView cb = (DataGridView)sender;
+            if (!cb.Focused)
+            {
+                return;
+            }
+
+            foreach (DataGridViewRow row in gvCashBook.SelectedRows)
+            {
+                int CBId;
+                int.TryParse(row.Cells[0].Value.ToString(),out CBId);
+                DataTable dtCashBook = new DataTable();
+                //string date = DateTime.Today.ToShortDateString();
+                dad = new SqlDataAdapter("SELECT PId,ChequeNo,BankCode,InvoiceNo from CashBook WHERE CBId = " + CBId, conn);
+                dad.Fill(dtCashBook);
+                conn.Close();
+
+                
+                
+                   
+                  if(dtCashBook.Rows[0][0].ToString() != "") {
+
+                    int PId;
+
+                    int.TryParse(dtCashBook.Rows[0][0].ToString(), out PId);
+
+
+
+                    txtPartyName.Text = new DAO().GetAccountName(PId);
+
+                };
+
+                if (dtCashBook.Rows[0][1].ToString() != "")
+                {
+
+                    txtChequeNODetail.Text = dtCashBook.Rows[0][1].ToString();
+
+                };
+
+                if (dtCashBook.Rows[0][2].ToString() != "")
+                {
+
+                    txtBankCodeDetail.Text = dtCashBook.Rows[0][2].ToString();
+
+                };
+
+                if (dtCashBook.Rows[0][3].ToString() != "")
+                {
+
+                    txtInvoiceNoDetail.Text = dtCashBook.Rows[0][3].ToString();
+
+                };
+
+
+
+
+
+
+
+                //...
+            }
         }
     }
 }

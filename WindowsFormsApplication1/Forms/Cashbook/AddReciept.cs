@@ -194,6 +194,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
 
             ComboBox cb = (ComboBox)sender;
+
             if (!cb.Focused)
             {
                 return;

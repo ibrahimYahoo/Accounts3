@@ -346,7 +346,7 @@ namespace WindowsFormsApplication1.Code
         public DataTable SearchCashbook(DateTime start, DateTime end, int amount,int chequeNo,int BankCode, string InvoiceNo,string RefNo)
         {
             DataTable dtAttend = new DataTable();
-            dad = new SqlDataAdapter("SELECT Date,InvoiceNo, ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook WHERE Date BETWEEN @start AND @end  ", conn);
+            dad = new SqlDataAdapter("SELECT CBId,Date,ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook WHERE Date BETWEEN @start AND @end  ", conn);
            // dad.SelectCommand.Parameters.AddWithValue("@date", date);
             dad.Fill(dtAttend);
 
@@ -499,6 +499,24 @@ namespace WindowsFormsApplication1.Code
             int id = int.Parse(dtparties.Rows[0][0].ToString());
 
             return id;
+
+        }
+
+
+        public string GetAccountName(int PId)
+        {
+            DataTable dtparties = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT PNAME from Party WHERE PId = @PId", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
+
+            dad.Fill(dtparties);
+            conn.Close();
+
+
+            string PName = dtparties.Rows[0][0].ToString();
+
+            return PName;
 
         }
 
@@ -1193,7 +1211,7 @@ namespace WindowsFormsApplication1.Code
             DataTable dt = new DataTable();
             conn = DBConn.GetInstance();
 
-            SqlDataAdapter dad = new SqlDataAdapter("SELECT Date,InvoiceNo, ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook", conn);
+            SqlDataAdapter dad = new SqlDataAdapter("SELECT CBId,Date,InvoiceNo, ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook", conn);
             
 
 
