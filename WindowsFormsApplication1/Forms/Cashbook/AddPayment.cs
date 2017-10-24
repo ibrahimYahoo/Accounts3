@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
         CashBook owner;
 
 
+
         public AddPayment(CashBook frm1)
         {
             owner = frm1;
@@ -28,6 +30,8 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
             
         }
+
+        
 
 
 
@@ -103,9 +107,9 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                     {
 
                         dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Expense,Balance,InvoiceNo,PId) values (@3,@4,@5,@6,@7,@8,@9,@10,@11)", conn);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 1, "Debit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text), 00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text), 00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text), 00);
+                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 1, "Debit", invoiceNo, 0,Decimal.Parse(txtPaymentAmount.Text), 00);
+                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text), 0,00);
+                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", invoiceNo, 0,Decimal.Parse(txtPaymentAmount.Text), 00);
 
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", PaymentsDatePicker.Value);
@@ -121,10 +125,11 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                     else if (cmPaymentMethod.SelectedItem.Equals("Cheque"))
                     {
 
+
                         dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Expense,Balance,InvoiceNo,ChequeNo,BankCode,PId) values (@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)", conn);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 2, "Debit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text), 00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text), 00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text), 00);
+                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 2, "Debit", invoiceNo, 0,Decimal.Parse(txtPaymentAmount.Text), 00);
+                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", invoiceNo, Decimal.Parse(txtPaymentAmount.Text),0, 00);
+                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", invoiceNo, 0,Decimal.Parse(txtPaymentAmount.Text), 00);
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", PaymentsDatePicker.Value);
                         dad.SelectCommand.Parameters.AddWithValue("@4", txtRefNo.Text);
@@ -134,15 +139,15 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                         dad.SelectCommand.Parameters.AddWithValue("@8", Decimal.Parse(txtPaymentAmount.Text));
                         dad.SelectCommand.Parameters.AddWithValue("@9", CashBookBalance - Decimal.Parse(txtPaymentAmount.Text));
                         dad.SelectCommand.Parameters.AddWithValue("@10", invoiceNo);
-                        dad.SelectCommand.Parameters.AddWithValue("@11", Decimal.Parse(txtChequeNo.Text));
-                        dad.SelectCommand.Parameters.AddWithValue("@12", Decimal.Parse(txtBankCode.Text));
+                        dad.SelectCommand.Parameters.AddWithValue("@11", Decimal.Parse(txtChequeNo.Text, CultureInfo.InvariantCulture) );
+                        dad.SelectCommand.Parameters.AddWithValue("@12", Decimal.Parse(txtBankCode.Text, CultureInfo.InvariantCulture));
                         dad.SelectCommand.Parameters.AddWithValue("@13", x);
 
                     }
 
                     dad.Fill(dt);
                     conn.Close();
-                    MessageBox.Show("Payement addded");
+                    MessageBox.Show("Payment addded");
 
                     if (invoiceNo.Equals("")) {
                         
@@ -171,6 +176,8 @@ namespace WindowsFormsApplication1.Forms.Cashbook
             txtChequeNo.Enabled = false;
             txtBankCode.Enabled = false;
 
+            txtChequeNo.Text = "0";
+            txtBankCode.Text = "0";
 
 
 
@@ -246,7 +253,13 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-
+            cmPaymentPartyName.SelectedIndex = -1;
+            txtRefNo.Text = "";
+            txtPaymentAmount.Text = "";
+            txtPaymentsNarration.Text = "";
+            cmPaymentType.SelectedIndex = -1;
+            txtChequeNo.Text = "0";
+            txtBankCode.Text = "0";
         }
 
         private void cmPaymentPartyName_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,8 +310,46 @@ namespace WindowsFormsApplication1.Forms.Cashbook
        
         private void AddPayment_FormClosing(object sender, FormClosingEventArgs e)
         {
-            owner.PerformRefresh();
+            try
+            {
+                owner.PerformRefresh();
 
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+
+        }
+
+        private void txtChequeNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+
+        }
+
+        private void txtBankCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtPaymentAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
 
         }
     }

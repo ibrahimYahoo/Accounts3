@@ -50,6 +50,7 @@
             this.mtNew = new MetroFramework.Controls.MetroTile();
             this.mtCreate = new MetroFramework.Controls.MetroTile();
             this.lblmsg = new MetroFramework.Controls.MetroLabel();
+            this.btnPrintInvoice = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.nmQty)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,9 +128,9 @@
             this.metroLabel2.ForeColor = System.Drawing.Color.White;
             this.metroLabel2.Location = new System.Drawing.Point(163, 67);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(96, 25);
+            this.metroLabel2.Size = new System.Drawing.Size(106, 25);
             this.metroLabel2.TabIndex = 18;
-            this.metroLabel2.Text = "Order No :";
+            this.metroLabel2.Text = "Invoice No :";
             this.metroLabel2.UseCustomBackColor = true;
             this.metroLabel2.UseCustomForeColor = true;
             // 
@@ -200,9 +201,9 @@
             this.metroLabel6.ForeColor = System.Drawing.Color.White;
             this.metroLabel6.Location = new System.Drawing.Point(163, 114);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(109, 25);
+            this.metroLabel6.Size = new System.Drawing.Size(119, 25);
             this.metroLabel6.TabIndex = 31;
-            this.metroLabel6.Text = "Order Date :";
+            this.metroLabel6.Text = "Invoice Date :";
             this.metroLabel6.UseCustomBackColor = true;
             this.metroLabel6.UseCustomForeColor = true;
             // 
@@ -393,12 +394,27 @@
             this.lblmsg.Size = new System.Drawing.Size(0, 0);
             this.lblmsg.TabIndex = 40;
             // 
+            // btnPrintInvoice
+            // 
+            this.btnPrintInvoice.ActiveControl = null;
+            this.btnPrintInvoice.Location = new System.Drawing.Point(530, 328);
+            this.btnPrintInvoice.Name = "btnPrintInvoice";
+            this.btnPrintInvoice.Size = new System.Drawing.Size(75, 60);
+            this.btnPrintInvoice.TabIndex = 41;
+            this.btnPrintInvoice.Text = "Print \r\nInvoice\r\n";
+            this.btnPrintInvoice.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnPrintInvoice.TileImage = global::WindowsFormsApplication1.Properties.Resources.Scan_Stock_64px;
+            this.btnPrintInvoice.UseSelectable = true;
+            this.btnPrintInvoice.Visible = false;
+            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
+            // 
             // AddOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(960, 487);
+            this.Controls.Add(this.btnPrintInvoice);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.lblTotalQty);
             this.Controls.Add(this.metroLabel9);
@@ -423,7 +439,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AddOrder";
-            this.Text = "Add Order";
+            this.Text = "Add Sales";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.AddOrder_Load);
@@ -457,5 +473,6 @@
         private MetroFramework.Controls.MetroLabel lblTotalQty;
         public MetroFramework.Controls.MetroLabel lblTotal;
         private MetroFramework.Controls.MetroLabel lblmsg;
+        private MetroFramework.Controls.MetroTile btnPrintInvoice;
     }
 }

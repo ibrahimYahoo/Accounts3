@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Code;
+using WindowsFormsApplication1.Forms.Setttings;
 
 namespace WindowsFormsApplication1.Forms
 {
@@ -39,8 +40,19 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTile4_Click(object sender, EventArgs e)
         {
-            this.Close();
-            
+            this.Hide();
+            Main OBJ = new Main();
+            OBJ.Show();
+            OBJ.WindowState = FormWindowState.Maximized;
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AccountChart obj = new AccountChart();
+            obj.Show();
+            obj.WindowState = FormWindowState.Maximized;
+
         }
     }
 }

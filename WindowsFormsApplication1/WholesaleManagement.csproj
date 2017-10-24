@@ -71,6 +71,8 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -87,6 +89,7 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -99,15 +102,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\BufferedPainter.cs" />
     <Compile Include="Code\DAO.cs" />
     <Compile Include="Code\DBConn.cs" />
+    <Compile Include="Code\GroupedComboBox.cs" />
+    <Compile Include="Code\Interop.cs" />
     <Compile Include="Code\PasswordDAL.cs" />
-    <Compile Include="CrystalReportDemo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportDemo.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Dataseets\ordere.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,6 +195,18 @@
     <Compile Include="Forms\Cashbook\CashBook.Designer.cs">
       <DependentUpon>CashBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Cashbook\RecieptPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cashbook\RecieptPrint.Designer.cs">
+      <DependentUpon>RecieptPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cashbook\RecieptPrintWithoutInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cashbook\RecieptPrintWithoutInvoice.Designer.cs">
+      <DependentUpon>RecieptPrintWithoutInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Customer\AddCus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,11 +225,17 @@
     <Compile Include="Forms\Customer\frmCustomer.designer.cs">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GeneralLedger.cs">
+    <Compile Include="Forms\GeneralLedgerFol\GeneralLedger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GeneralLedger.Designer.cs">
+    <Compile Include="Forms\GeneralLedgerFol\GeneralLedger.Designer.cs">
       <DependentUpon>GeneralLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralLedgerFol\GlPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralLedgerFol\GlPrint.Designer.cs">
+      <DependentUpon>GlPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Journals\AddJournal.cs">
       <SubType>Form</SubType>
@@ -248,6 +266,12 @@
     </Compile>
     <Compile Include="Forms\Order\frmCart.designer.cs">
       <DependentUpon>frmCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\invoiceprint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\invoiceprint.Designer.cs">
+      <DependentUpon>invoiceprint.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Order\RequestOrderPayment.cs">
       <SubType>Form</SubType>
@@ -290,6 +314,12 @@
     </Compile>
     <Compile Include="Forms\Search\frmSearch.designer.cs">
       <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setttings\AccountChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Setttings\AccountChart.Designer.cs">
+      <DependentUpon>AccountChart.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Setttings\AddParty.cs">
       <SubType>Form</SubType>
@@ -384,8 +414,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>pmsDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="POJO\cashbookPOJO.cs" />
+    <Compile Include="POJO\GLPojo.cs" />
     <Compile Include="POJO\Items.cs" />
     <Compile Include="POJO\Ledger.cs" />
+    <Compile Include="POJO\Order.cs" />
     <Compile Include="POJO\Party.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
@@ -394,6 +427,48 @@
     </Compile>
     <Compile Include="Reports\CheckOutSlip.Designer.cs">
       <DependentUpon>CheckOutSlip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CrystalReportPurInvoice.cs">
+      <DependentUpon>CrystalReportPurInvoice.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\CrystalReportPurReciept.cs">
+      <DependentUpon>CrystalReportPurReciept.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\CrystalReportPurRecieptWithoutInvoiceNo.cs">
+      <DependentUpon>CrystalReportPurRecieptWithoutInvoiceNo.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\CrystalReportGL.cs">
+      <DependentUpon>CrystalReportGL.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\CrystalReportRecieptWithoutInvoiceNo.cs">
+      <DependentUpon>CrystalReportRecieptWithoutInvoiceNo.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\CrystalReportReciept.cs">
+      <DependentUpon>CrystalReportReciept.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\CrystalReportInvoice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\frmsuppay.cs">
       <SubType>Form</SubType>
@@ -407,10 +482,6 @@
     <Compile Include="Reports\rpt.Designer.cs">
       <DependentUpon>rpt.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CrystalReportDemo.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReportDemo.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Accounts\AddAttendance.resx">
       <DependentUpon>AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
@@ -444,8 +515,11 @@
     <EmbeddedResource Include="Forms\Cashbook\AddReciept.resx">
       <DependentUpon>AddReciept.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Cashbook\CashBook.resx">
-      <DependentUpon>CashBook.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Cashbook\RecieptPrint.resx">
+      <DependentUpon>RecieptPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cashbook\RecieptPrintWithoutInvoice.resx">
+      <DependentUpon>RecieptPrintWithoutInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\AddCus.resx">
       <DependentUpon>AddCus.cs</DependentUpon>
@@ -456,8 +530,11 @@
     <EmbeddedResource Include="Forms\Customer\frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GeneralLedger.resx">
+    <EmbeddedResource Include="Forms\GeneralLedgerFol\GeneralLedger.resx">
       <DependentUpon>GeneralLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GeneralLedgerFol\GlPrint.resx">
+      <DependentUpon>GlPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Journals\AddJournal.resx">
       <DependentUpon>AddJournal.cs</DependentUpon>
@@ -473,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\frmCart.resx">
       <DependentUpon>frmCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\invoiceprint.resx">
+      <DependentUpon>invoiceprint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\RequestOrderPayment.resx">
       <DependentUpon>RequestOrderPayment.cs</DependentUpon>
@@ -494,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Search\frmSearch.resx">
       <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setttings\AccountChart.resx">
+      <DependentUpon>AccountChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Setttings\AddParty.resx">
       <DependentUpon>AddParty.cs</DependentUpon>
@@ -548,6 +631,34 @@
     <EmbeddedResource Include="Reports\CheckOutSlip.resx">
       <DependentUpon>CheckOutSlip.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportPurInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportPurInvoice.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportPurReciept.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportPurReciept.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportPurRecieptWithoutInvoiceNo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportPurRecieptWithoutInvoiceNo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportGL.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportGL.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportRecieptWithoutInvoiceNo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportRecieptWithoutInvoiceNo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportReciept.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportReciept.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportInvoice.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmsuppay.resx">
       <DependentUpon>frmsuppay.cs</DependentUpon>
     </EmbeddedResource>
@@ -556,6 +667,7 @@
       <DependentUpon>rpt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptorderrecipet.rdlc" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Dataseets\ordere.xsc">
       <DependentUpon>ordere.xsd</DependentUpon>
     </None>

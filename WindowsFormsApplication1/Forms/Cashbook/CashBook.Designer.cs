@@ -1,4 +1,5 @@
-﻿namespace WindowsFormsApplication1.Forms
+﻿
+namespace WindowsFormsApplication1.Forms
 {
     partial class CashBook
     {

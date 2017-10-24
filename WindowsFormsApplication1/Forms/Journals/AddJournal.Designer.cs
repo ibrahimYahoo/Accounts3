@@ -41,11 +41,11 @@
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.dtDate = new MetroFramework.Controls.MetroDateTime();
-            this.cmDebitAccount = new MetroFramework.Controls.MetroComboBox();
-            this.cmCreditAccount = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.txtJournalId = new MetroFramework.Controls.MetroTextBox();
             this.lblError = new MetroFramework.Controls.MetroLabel();
+            this.cmDebitAccount = new GroupedComboBox();
+            this.cmCreditAccount = new GroupedComboBox();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -247,26 +247,6 @@
             this.dtDate.Size = new System.Drawing.Size(213, 29);
             this.dtDate.TabIndex = 15;
             // 
-            // cmDebitAccount
-            // 
-            this.cmDebitAccount.FormattingEnabled = true;
-            this.cmDebitAccount.ItemHeight = 23;
-            this.cmDebitAccount.Location = new System.Drawing.Point(181, 117);
-            this.cmDebitAccount.Name = "cmDebitAccount";
-            this.cmDebitAccount.Size = new System.Drawing.Size(382, 29);
-            this.cmDebitAccount.TabIndex = 16;
-            this.cmDebitAccount.UseSelectable = true;
-            // 
-            // cmCreditAccount
-            // 
-            this.cmCreditAccount.FormattingEnabled = true;
-            this.cmCreditAccount.ItemHeight = 23;
-            this.cmCreditAccount.Location = new System.Drawing.Point(181, 171);
-            this.cmCreditAccount.Name = "cmCreditAccount";
-            this.cmCreditAccount.Size = new System.Drawing.Size(382, 29);
-            this.cmCreditAccount.TabIndex = 17;
-            this.cmCreditAccount.UseSelectable = true;
-            // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
@@ -315,16 +295,34 @@
             this.lblError.TabIndex = 20;
             this.lblError.Visible = false;
             // 
+            // cmDebitAccount
+            // 
+            this.cmDebitAccount.DataSource = null;
+            this.cmDebitAccount.FormattingEnabled = true;
+            this.cmDebitAccount.Location = new System.Drawing.Point(181, 120);
+            this.cmDebitAccount.Name = "cmDebitAccount";
+            this.cmDebitAccount.Size = new System.Drawing.Size(382, 21);
+            this.cmDebitAccount.TabIndex = 21;
+            // 
+            // cmCreditAccount
+            // 
+            this.cmCreditAccount.DataSource = null;
+            this.cmCreditAccount.FormattingEnabled = true;
+            this.cmCreditAccount.Location = new System.Drawing.Point(181, 175);
+            this.cmCreditAccount.Name = "cmCreditAccount";
+            this.cmCreditAccount.Size = new System.Drawing.Size(382, 21);
+            this.cmCreditAccount.TabIndex = 22;
+            // 
             // AddJournal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 385);
+            this.Controls.Add(this.cmCreditAccount);
+            this.Controls.Add(this.cmDebitAccount);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.txtJournalId);
             this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.cmCreditAccount);
-            this.Controls.Add(this.cmDebitAccount);
             this.Controls.Add(this.dtDate);
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
@@ -361,10 +359,10 @@
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroDateTime dtDate;
-        private MetroFramework.Controls.MetroComboBox cmDebitAccount;
-        private MetroFramework.Controls.MetroComboBox cmCreditAccount;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroTextBox txtJournalId;
         private MetroFramework.Controls.MetroLabel lblError;
+        private GroupedComboBox cmDebitAccount;
+        private GroupedComboBox cmCreditAccount;
     }
 }

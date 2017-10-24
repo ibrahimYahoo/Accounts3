@@ -52,7 +52,7 @@ namespace WindowsFormsApplication1.Forms
 
         private void CashBook_Load(object sender, EventArgs e)
         {
-            
+
             gvCashBook.DataSource = new DAO().getCashBookEntries();
             DataGridViewColumn column = gvCashBook.Columns[4];
             column.Width = 250;
@@ -87,7 +87,7 @@ namespace WindowsFormsApplication1.Forms
         private void metroButton5_Click(object sender, EventArgs e)
         {
             //gvCashBookPayments.DataSource = new DAO().getCashBookPayments();
-            
+
         }
 
         private void gvCashBookPayments_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -115,7 +115,13 @@ namespace WindowsFormsApplication1.Forms
             string RefNo = "";
             string sql = "";
             string party = "";
-            sql = "SELECT CBId,Date,ReferenceNo,Category,Description,AmountType,Income,Expense,Balance from CashBook WHERE date BETWEEN @1 AND @2";
+           sql = "SELECT CBId,Date,ReferenceNo,Category,Description,AmountType,Income,Expense from CashBook WHERE CAST(date As Date) BETWEEN @1 AND @2";
+
+
+           // sql = "SELECT x.CBId,x.Date,x.ReferenceNo,x.Category,x.Description,x.AmountType,x.Income,x.Expense,SUM(y.bal) netbalance FROM (SELECT *, Income - Expense bal FROM Cashbook ) x JOIN ( SELECT *, Income - Expense bal FROM Cashbook ) y ON y.CBId <= x.CBId  WHERE CAST(x.Date As Date)  BETWEEN @2 AND @3  ";
+
+            //sql = "SELECT x.CBId,x.Date,x.Category,x.Description,x.AmountType,x.Income,x.Expense,SUM(y.bal) Balance FROM (SELECT *, Income - Expense bal FROM CashBook ) x JOIN ( SELECT *, Income - Expense bal FROM CashBook ) y ON y.CBId <= x.CBId WHERE x.date BETWEEN @1 AND @2";
+               // string sqlp2 = " GROUP BY x.CBId,x.Date,x.ReferenceNo,x.Category,x.Description,x.AmountType,x.Income,x.Expense;";
 
 
             if (txtAmount.Text != "")
@@ -160,22 +166,44 @@ namespace WindowsFormsApplication1.Forms
             }
 
 
+          //  string cm = sql + sqlp2;
 
-           
 
             DataTable dtCashBook = new DataTable();
             //string date = DateTime.Today.ToShortDateString();
             dad = new SqlDataAdapter(sql, conn);
-            dad.SelectCommand.Parameters.AddWithValue("@1", dtStartDate.Value);
-            dad.SelectCommand.Parameters.AddWithValue("@2", dtEndDate.Value);
+            dad.SelectCommand.Parameters.AddWithValue("@1", dtStartDate.Value.Date);
+            dad.SelectCommand.Parameters.AddWithValue("@2", dtEndDate.Value.Date);
 
             dad.Fill(dtCashBook);
 
+            dtCashBook.Columns.Add("netBalance", typeof(System.Decimal));
+            int bal = 0;
+            foreach (DataRow row in dtCashBook.Rows)
+            {
+                if (int.Parse(row[6].ToString()) != 0)
+                {
+                    row["netBalance"] = bal + int.Parse(row[6].ToString());
+                    bal += int.Parse(row[6].ToString());
 
-            conn.Close();
+                }
 
-            gvCashBook.DataSource = dtCashBook;
 
+                if (int.Parse(row[7].ToString()) != 0)
+                {
+                    row["netBalance"] = bal - int.Parse(row[7].ToString());
+                    bal -= int.Parse(row[7].ToString());
+
+                }
+
+
+
+
+
+                conn.Close();
+
+                gvCashBook.DataSource = dtCashBook;
+            }
 
 
 
@@ -183,7 +211,7 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTextBox3_Click(object sender, EventArgs e)
         {
-          
+
 
 
 
@@ -259,17 +287,18 @@ namespace WindowsFormsApplication1.Forms
             foreach (DataGridViewRow row in gvCashBook.SelectedRows)
             {
                 int CBId;
-                int.TryParse(row.Cells[0].Value.ToString(),out CBId);
+                int.TryParse(row.Cells[0].Value.ToString(), out CBId);
                 DataTable dtCashBook = new DataTable();
                 //string date = DateTime.Today.ToShortDateString();
                 dad = new SqlDataAdapter("SELECT PId,ChequeNo,BankCode,InvoiceNo from CashBook WHERE CBId = " + CBId, conn);
                 dad.Fill(dtCashBook);
                 conn.Close();
 
-                
-                
-                   
-                  if(dtCashBook.Rows[0][0].ToString() != "") {
+
+
+
+                if (dtCashBook.Rows[0][0].ToString() != "")
+                {
 
                     int PId;
 

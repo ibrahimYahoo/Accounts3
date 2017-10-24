@@ -61,9 +61,9 @@
             // 
             this.metroButton3.Location = new System.Drawing.Point(32, 576);
             this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(75, 46);
+            this.metroButton3.Size = new System.Drawing.Size(90, 46);
             this.metroButton3.TabIndex = 29;
-            this.metroButton3.Text = "New Reciept";
+            this.metroButton3.Text = "New Payment";
             this.metroButton3.UseSelectable = true;
             this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
             // 
@@ -83,7 +83,7 @@
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(80, 46);
             this.metroButton1.TabIndex = 27;
-            this.metroButton1.Text = "Add Reciept";
+            this.metroButton1.Text = "Add Payment";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
@@ -116,6 +116,7 @@
             this.txtPaymentAmount.UseSelectable = true;
             this.txtPaymentAmount.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPaymentAmount.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPaymentAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaymentAmount_KeyPress);
             // 
             // metroLabel6
             // 
@@ -363,6 +364,7 @@
             this.txtBankCode.WaterMark = "Enter Bank Code (optional)";
             this.txtBankCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBankCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtBankCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBankCode_KeyPress);
             // 
             // txtChequeNo
             // 
@@ -395,6 +397,7 @@
             this.txtChequeNo.WaterMark = "Enter Cheque No. (optional)";
             this.txtChequeNo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtChequeNo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtChequeNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChequeNo_KeyPress);
             // 
             // lblCheqeNo
             // 

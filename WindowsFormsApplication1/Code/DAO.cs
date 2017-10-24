@@ -29,6 +29,9 @@ namespace WindowsFormsApplication1.Code
 
             }
         }
+
+       
+
         public string getSellingTotal()
         {
             SqlCommand cmd = new SqlCommand("select SUM(TotalCost) as Total from Orders where ODate like '%" + DateTime.Today.Month + "%' ", conn);
@@ -429,7 +432,7 @@ namespace WindowsFormsApplication1.Code
         {
             DataTable dtparties = new DataTable();
 
-            dad = new SqlDataAdapter("Select JournalId, Date, Description, DebitAccount as Debit, CreditAccount as 'Credit', DebitAmount,CreditAmount from Journal", conn);
+            dad = new SqlDataAdapter("Select JournalId, Date, Description, DebitAccount as Debit, CreditAccount as 'Credit', DebitAmount,CreditAmount from Journal Order by Date", conn);
             dad.Fill(dtparties);
             conn.Close();
             return dtparties;
@@ -490,7 +493,7 @@ namespace WindowsFormsApplication1.Code
         {
             DataTable dtparties = new DataTable();
 
-            dad = new SqlDataAdapter("SELECT AccountId from AccountChart WHERE AccountName = @AccountName", conn);
+            dad = new SqlDataAdapter("SELECT AccountId from AccountChart WHERE AccountName = '" + AccountName + "'"   , conn);
             dad.SelectCommand.Parameters.AddWithValue("@AccountName", AccountName);
 
             dad.Fill(dtparties);
@@ -499,6 +502,62 @@ namespace WindowsFormsApplication1.Code
             int id = int.Parse(dtparties.Rows[0][0].ToString());
 
             return id;
+
+        }
+
+        public string GetAccountDetailType(int  AccountName)
+        {
+            DataTable dtparties = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT DetailType from AccountChart WHERE AccountId = @AccountName", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@AccountName", AccountName);
+
+            dad.Fill(dtparties);
+            conn.Close();
+
+            if (dtparties.Rows[0][0].ToString() !=  null)
+            {
+
+                
+
+                string DetailType = dtparties.Rows[0][0].ToString();
+
+                if(DetailType == "Cash Or Cash Equivalent")
+                {
+                    return DetailType;
+
+
+                }
+                if (DetailType == "Bank")
+                {
+                    return DetailType;
+
+
+                }
+
+                return "";
+            }
+            else
+            {
+                return "";
+            }
+
+        }
+
+
+        public DataTable GetAccountChartEntries()
+        {
+            DataTable dtparties = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT * from AccountChart", conn);
+           // dad.SelectCommand.Parameters.AddWithValue("@AccountName", AccountName);
+
+            dad.Fill(dtparties);
+            conn.Close();
+
+            //int id = int.Parse(dtparties.Rows[0][0].ToString());
+
+            return dtparties;
 
         }
 
@@ -512,9 +571,22 @@ namespace WindowsFormsApplication1.Code
 
             dad.Fill(dtparties);
             conn.Close();
+            string PName = "";
+            try
+            {
+                 PName = dtparties.Rows[0][0].ToString();
 
 
-            string PName = dtparties.Rows[0][0].ToString();
+            }
+
+            catch (Exception ex)
+            {
+            }
+
+
+
+
+
 
             return PName;
 
@@ -531,6 +603,16 @@ namespace WindowsFormsApplication1.Code
 
         }
 
+        public DataTable GetfullAccountNames()
+        {
+            DataTable dtparties = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT AccountId,AccountName,AccountType from AccountChart", conn);
+            dad.Fill(dtparties);
+            conn.Close();
+            return dtparties;
+
+        }
 
 
 
@@ -626,10 +708,10 @@ namespace WindowsFormsApplication1.Code
             return dtParties;
 
         }
-        public int GetPartyBalance(int PId)
+        public decimal GetPartyBalance(int PId)
         {
             DataTable dtParties = new DataTable();
-            int balance=0;
+            decimal balance=0;
             dad = new SqlDataAdapter("Select PBalance from [Party] where PId = @PId", conn);
             dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
             dad.Fill(dtParties);
@@ -638,7 +720,7 @@ namespace WindowsFormsApplication1.Code
 
             try
             {
-                balance = int.Parse(dtParties.Rows[0]["PBalance"].ToString());
+                balance = Decimal.Parse(dtParties.Rows[0]["PBalance"].ToString());
 
             }
 
@@ -664,7 +746,8 @@ namespace WindowsFormsApplication1.Code
         {
             DataTable dtParties = new DataTable();
             decimal balance = 0;
-            dad = new SqlDataAdapter("SELECT  TOP 1 Balance FROM CashBook ORDER BY Balance DESC", conn);
+            dad = new SqlDataAdapter("SELECT  TOP 1 Balance FROM CashBook ORDER BY CBId DESC", conn);
+            dad.Fill(dtParties);
 
             conn.Close();
 
@@ -732,6 +815,90 @@ namespace WindowsFormsApplication1.Code
             return dtCustomers;
         }
 
+        public DataTable getInvoiceReportData(string OrderId)
+        {
+            DataTable dtCustomers = new DataTable();
+            dad = new SqlDataAdapter("select P.PName as 'CustomerName',o.OrderId, o.ODate as 'Date',i.IName as 'Item-Name',P.PId,o.Qty as Quantity,o.Cost as Cost,o.TotalCost as TotalCost,o.AmountPaid from Orders o,Party P,Items i where o.PId = P.PId and o.IId = i.IId AND o.OrderId = @OrderId ORDER by ODate desc;", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@OrderId", OrderId);
+
+            dad.Fill(dtCustomers);
+            conn.Close();
+            return dtCustomers;
+        }
+
+        public DataTable getRecieptReportData(int  CBId)
+        {
+            DataTable dtCustomers = new DataTable();
+            dad = new SqlDataAdapter("SELECT P.PName as 'CustomerName',c.CBId, c.Date,P.PId,c.Description,c.AmountType,c.Income,c.ReferenceNo FROM CashBook c,Party P WHERE c.PId = P.PId AND c.CBID = @CBId;", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@CBId", CBId);
+
+            dad.Fill(dtCustomers);
+            conn.Close();
+            return dtCustomers;
+        }
+
+        public DataTable getGlReportData(int GLTransId, DateTime startDate, DateTime endDate)
+        {
+            DataTable dtCustomers = new DataTable();
+            dad = new SqlDataAdapter("SELECT x.GLTransId,x.Date,x.Narrative,x.TransType,x.Reference,x.Debit,x.Credit,SUM(y.bal) Balance FROM (SELECT *, Debit - Credit bal FROM GlTransactions ) x JOIN ( SELECT *, Debit - Credit bal FROM Gltransactions ) y ON y.GLTransId <= x.GLTransId where x.AccountId = @1 AND y.AccountId = @1 AND x.Date BETWEEN @2 AND @3  GROUP BY x.GLTransId,x.Date,x.Narrative,x.transType,x.Debit,x.Reference,x.Credit;", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@1", GLTransId);
+            dad.SelectCommand.Parameters.AddWithValue("@2", startDate);
+            dad.SelectCommand.Parameters.AddWithValue("@3", endDate);
+            dad.Fill(dtCustomers);
+
+            DataRow secondRow = dtCustomers.NewRow();
+
+            secondRow["Narrative"] = "Balance b/d";
+
+            secondRow["Date"] = DateTime.Parse(dtCustomers.Rows[0][1].ToString());
+
+
+            secondRow["GLTransId"] = 000;
+
+            secondRow["TransType"] = "";
+
+            secondRow["Reference"] = "";
+
+            secondRow["Debit"] = 000;
+
+            secondRow["Credit"] = 000;
+
+
+
+            if (int.Parse(dtCustomers.Rows[0][5].ToString()) == 0)
+            {
+                secondRow["Balance"] = int.Parse(dtCustomers.Rows[0][7].ToString()) - int.Parse(dtCustomers.Rows[0][6].ToString());
+
+            }
+            else
+            {
+                secondRow["Balance"] = int.Parse(dtCustomers.Rows[0][7].ToString()) - int.Parse(dtCustomers.Rows[0][5].ToString());
+
+            }
+
+            //dtAccountTransactions.Rows.Add(newRow);
+
+
+            dtCustomers.Rows.InsertAt(secondRow, 0);
+
+            conn.Close();
+            return dtCustomers;
+        }
+
+
+
+        public DataTable getGlReportDatafrAccName(int GLTransId, DateTime startDate, DateTime endDate)
+        {
+            DataTable dtCustomers = new DataTable();
+            dad = new SqlDataAdapter("SELECT AccountName FROM AccountChart where AccountId = @1;", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@1", GLTransId);
+            //dad.SelectCommand.Parameters.AddWithValue("@2", startDate);
+            //dad.SelectCommand.Parameters.AddWithValue("@3", endDate);
+            dad.Fill(dtCustomers);
+            conn.Close();
+            return dtCustomers;
+        }
+
         public DataTable GetCustomersBalance(string name, string from, string to)
         {
             DataTable dtCustomers = new DataTable();
@@ -787,6 +954,10 @@ namespace WindowsFormsApplication1.Code
             int paidamount = int.Parse(cmd.ExecuteScalar().ToString());
             return paidamount;
         }
+
+
+
+      
 
         public int PaidAmount(int cid, string from, string to)
         {
@@ -1022,7 +1193,7 @@ namespace WindowsFormsApplication1.Code
             return total;
         }
 
-        public void RemoveQty(int iqty, int itemid)
+        public void RemoveQty(decimal iqty, int itemid)
         {
             SqlCommand cmd = new SqlCommand("Update Items set IQty = @nqty where IId = @itemid", conn);
             cmd.Parameters.AddWithValue("@nqty", iqty);
@@ -1030,11 +1201,11 @@ namespace WindowsFormsApplication1.Code
             cmd.ExecuteNonQuery();
         }
 
-        public int getQty(int itemid)
+        public decimal getQty(int itemid)
         {
             SqlCommand cmd = new SqlCommand("select IQty from Items where IId = @itemid;", conn);
             cmd.Parameters.AddWithValue("@itemid", itemid);
-            int qty = int.Parse(cmd.ExecuteScalar().ToString());
+            decimal qty = Decimal.Parse(cmd.ExecuteScalar().ToString());
             return qty;
         }
 
@@ -1098,7 +1269,17 @@ namespace WindowsFormsApplication1.Code
         }
 
 
+        public void AddDboAccount(string AccountName,string AccountType, string DetailType)
+        {
+            SqlCommand cmd = new SqlCommand("Insert into AccountChart (AccountName,AccountType,DetailType) values (@AccountName,@AccountType,@DetailType)", conn);
+            cmd.Parameters.AddWithValue("@AccountName", AccountName);
+            cmd.Parameters.AddWithValue("@AccountType", AccountType);
 
+            cmd.Parameters.AddWithValue("@DetailType", DetailType);
+
+
+            cmd.ExecuteNonQuery();
+        }
 
         public void AddPartyGlAccount(string AccountName,string Type)
         {
@@ -1149,6 +1330,35 @@ namespace WindowsFormsApplication1.Code
 
         }
 
+        public int getLastCBId()
+        {
+            DataTable dtOrders = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT  TOP 1 CBId FROM CashBook ORDER BY CBId DESC;", conn);
+            dad.Fill(dtOrders);
+            conn.Close();
+            int purchaseNo = 0;
+
+
+            try
+            {
+                purchaseNo = Convert.ToInt16(dtOrders.Rows[0][0]);
+
+            }
+            catch (Exception ex)
+            {
+                if (purchaseNo.Equals(null))
+                {
+                    return 0;
+                }
+
+            }
+
+
+            return purchaseNo;
+
+        }
+
 
         public int getLastJournalNo()
         {
@@ -1181,18 +1391,19 @@ namespace WindowsFormsApplication1.Code
 
 
 
-        public void AddGlTransactions(DateTime date,string Narrative,int AccountId,string TransType, string Reference,decimal Amount,decimal Balance)
+        public void AddGlTransactions(DateTime date,string Narrative,int AccountId,string TransType, string Reference,decimal Credit,decimal Debit,decimal Balance)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("Insert into GLtransactions (date,Narrative,AccountId,TransType,Reference,Balance,Amount) values (@date,@Narrative,@AccountId,@TransType,@Reference,@Balance,@Amount)", conn);
+                SqlCommand cmd = new SqlCommand("Insert into GLtransactions (date,Narrative,AccountId,TransType,Reference,Balance,Credit,Debit) values (@date,@Narrative,@AccountId,@TransType,@Reference,@Balance,@Credit,@Debit)", conn);
                 cmd.Parameters.AddWithValue("@date", date);
                 cmd.Parameters.AddWithValue("@Narrative", Narrative);
                 cmd.Parameters.AddWithValue("@AccountId", AccountId);
                 cmd.Parameters.AddWithValue("@TransType", TransType);
                 cmd.Parameters.AddWithValue("@Reference", Reference);
                 cmd.Parameters.AddWithValue("@Balance", Balance);
-                cmd.Parameters.AddWithValue("@Amount", Amount);
+                cmd.Parameters.AddWithValue("@Credit", Credit);
+                cmd.Parameters.AddWithValue("@Debit", Debit);
 
 
                 cmd.ExecuteNonQuery();
@@ -1203,15 +1414,38 @@ namespace WindowsFormsApplication1.Code
             }
         }
 
+        public DataTable getCashBookdata()
+        {
+            DataTable dt = new DataTable();
+            conn = DBConn.GetInstance();
 
+            SqlDataAdapter dad = new SqlDataAdapter("SELECT CBId,Date,ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook", conn);
+
+
+
+
+
+            // dt.Rows.Add(0, new string[] {"12/6/17", "yos", "ord2","352"});
+
+            dad.Fill(dt);
+            //DataRow newRow = dt.NewRow();
+            //newRow["Date"] = "12/7/17";
+            //newRow["Narration"] = "Balance b/d";
+            //newRow["Cash"] = 3432;
+
+            //dt.Rows.InsertAt(newRow, 0);
+            conn.Close();
+            return dt;
+        }
 
 
         public DataTable getCashBookEntries()
         {
             DataTable dt = new DataTable();
             conn = DBConn.GetInstance();
+            //SqlDataAdapter dad = new SqlDataAdapter("SELECT x.CBId,x.Date,x.Category,x.Description,x.AmountType,x.Income,x.Expense,SUM(y.bal) Balance FROM (SELECT *, Income - Expense bal FROM CashBook ) x JOIN ( SELECT *, Income - Expense bal FROM CashBook ) y ON y.CBId <= x.CBId GROUP BY x.CBId,x.Date,x.Category,x.Description,x.AmountType,x.Income,x.Expense;", conn);
 
-            SqlDataAdapter dad = new SqlDataAdapter("SELECT CBId,Date,InvoiceNo, ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook", conn);
+            SqlDataAdapter dad = new SqlDataAdapter("SELECT CBId,Date,ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook", conn);
             
 
 
@@ -1426,7 +1660,7 @@ namespace WindowsFormsApplication1.Code
         }
 
 
-        public void checkOrderSatus(string OrderId, int amountPaid, int PId)
+        public void checkOrderSatus(string OrderId, decimal amountPaid, int PId)
         {
 
             DataTable dtCustomers = new DataTable();
@@ -1440,8 +1674,10 @@ namespace WindowsFormsApplication1.Code
 
             if (Convert.ToInt32( dtCustomers.Rows[0][0]) <= amountPaid){
 
-                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'Paid' where PId = @PId AND OrderId = @OrderId", conn);
+                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'Paid', AmountPaid = @amountPaid where PId = @PId AND OrderId = @OrderId", conn);
                 cmd.Parameters.AddWithValue("@PId", PId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountPaid);
+
                 cmd.Parameters.AddWithValue("@OrderId", OrderId);
                 cmd.ExecuteNonQuery();
 
@@ -1461,7 +1697,7 @@ namespace WindowsFormsApplication1.Code
             cmd.ExecuteNonQuery();
         }
 
-        public void UpdatePartyBalance(int pid, int balance)
+        public void UpdatePartyBalance(int pid, decimal balance)
         {
             SqlCommand cmd = new SqlCommand("Update Party set PBalance = @balance  where PId = @pid", conn);
             cmd.Parameters.AddWithValue("@balance", balance);
@@ -1476,7 +1712,7 @@ namespace WindowsFormsApplication1.Code
 
         
 
-        public void UpdateOwnerBalance(int pid, int balance)
+        public void UpdateOwnerBalance(int pid, decimal balance)
         {
             SqlCommand cmd = new SqlCommand("Update Party set PBalance = @balance where PId = @pid", conn);
             cmd.Parameters.AddWithValue("@balance", balance);

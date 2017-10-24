@@ -87,9 +87,9 @@
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.Location = new System.Drawing.Point(9, 140);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(74, 19);
             this.metroLabel4.TabIndex = 3;
-            this.metroLabel4.Text = "Narrations";
+            this.metroLabel4.Text = "Description";
             // 
             // RecieptDatePicker
             // 
@@ -212,9 +212,9 @@
             // metroButton3
             // 
             this.metroButton3.ActiveControl = null;
-            this.metroButton3.Location = new System.Drawing.Point(9, 553);
+            this.metroButton3.Location = new System.Drawing.Point(9, 545);
             this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(109, 46);
+            this.metroButton3.Size = new System.Drawing.Size(109, 54);
             this.metroButton3.TabIndex = 18;
             this.metroButton3.Text = "New Reciept";
             this.metroButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -224,11 +224,11 @@
             // metroButton1
             // 
             this.metroButton1.ActiveControl = null;
-            this.metroButton1.Location = new System.Drawing.Point(144, 553);
+            this.metroButton1.Location = new System.Drawing.Point(144, 545);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(106, 46);
+            this.metroButton1.Size = new System.Drawing.Size(106, 54);
             this.metroButton1.TabIndex = 19;
-            this.metroButton1.Text = "Add Reciept";
+            this.metroButton1.Text = "Save and \r\nPrint Reciept";
             this.metroButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
@@ -236,9 +236,9 @@
             // metroButton2
             // 
             this.metroButton2.ActiveControl = null;
-            this.metroButton2.Location = new System.Drawing.Point(272, 553);
+            this.metroButton2.Location = new System.Drawing.Point(272, 545);
             this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(102, 46);
+            this.metroButton2.Size = new System.Drawing.Size(102, 54);
             this.metroButton2.TabIndex = 20;
             this.metroButton2.Text = "Close";
             this.metroButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

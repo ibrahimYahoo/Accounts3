@@ -51,6 +51,8 @@ namespace WindowsFormsApplication1.Forms
             txtoldpurprice.Text = "0";
         }
 
+
+
         private void btnadditem_Click(object sender, EventArgs e)
         {
 
@@ -74,31 +76,35 @@ namespace WindowsFormsApplication1.Forms
                     dad.SelectCommand.Parameters.AddWithValue("@3", cmbItemname.SelectedValue);
                     dad.SelectCommand.Parameters.AddWithValue("@4", cmbsuppname.SelectedValue);
                     dad.SelectCommand.Parameters.AddWithValue("@5", cmbpaydate.Value);
-                    dad.SelectCommand.Parameters.AddWithValue("@6", TxtitemPrice.Text);
-                    dad.SelectCommand.Parameters.AddWithValue("@7", txtoldpurprice.Text);
+                    dad.SelectCommand.Parameters.AddWithValue("@6", Decimal.Parse(TxtitemPrice.Text));
+                    dad.SelectCommand.Parameters.AddWithValue("@7", Decimal.Parse(txtoldpurprice.Text));
                     dad.SelectCommand.Parameters.AddWithValue("@8", txtItemQuantity.Text);
-                    dad.SelectCommand.Parameters.AddWithValue("@9", txttotal.Text);
+                    dad.SelectCommand.Parameters.AddWithValue("@9", Decimal.Parse(txttotal.Text));
 
                     //int balance = int.Parse(txttotal.Text) - int.Parse(txtAmountPaid.Text);
                     
                     dad.Fill(dt);
                     conn.Close();
 
-                    string AccountName = this.cmbsuppname.GetItemText(this.cmbsuppname.SelectedItem);
+                    DataRowView dv = (DataRowView)cmbsuppname.SelectedItem;
+                    string AccountName = (string)dv.Row["Name"];
+
+
+                    //string AccountName = this.cmbsuppname.GetItemText(this.cmbsuppname.SelectedItem);
 
                     int AccountId = new DAO().GetAccountId(AccountName);
 
 
-                    int RemainingBalance = new DAO().GetPartyBalance(PId);
+                    decimal RemainingBalance = new DAO().GetPartyBalance(PId);
 
-                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, 5, "Debit", PurchaseId, int.Parse(txttotal.Text), 00);
-                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, 8, "Credit", PurchaseId, int.Parse(txttotal.Text), 00);
-                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, AccountId, "Credit", PurchaseId, int.Parse(txttotal.Text), 00);
+                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, 5, "Debit", PurchaseId, 0,Decimal.Parse(txttotal.Text), 00);
+                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, 8, "Credit", PurchaseId, Decimal.Parse(txttotal.Text), 0,00);
+                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, AccountId, "Credit", PurchaseId, Decimal.Parse(txttotal.Text),0, 00);
 
 
                     // new DAO().AddPurchaseTransaction(PId, 0, int.Parse(txtAmountPaid.Text), int.Parse(cmbItemname.SelectedValue.ToString()), int.Parse(txtItemQuantity.Text), "NA", DateTime.Today.Date, 1, RemainingBalance - balance);
                     new DAO().UpdateQtyAdd(int.Parse(cmbItemname.SelectedValue.ToString()), int.Parse(txtItemQuantity.Text));
-                    new DAO().UpdateOwnerBalance(PId, RemainingBalance - int.Parse(txttotal.Text));
+                    new DAO().UpdateOwnerBalance(PId, RemainingBalance - Decimal.Parse(txttotal.Text));
 
 
                     //MessageBox.Show("Purchase Inserted successfully");

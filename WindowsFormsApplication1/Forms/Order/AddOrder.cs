@@ -16,6 +16,9 @@ namespace WindowsFormsApplication1.Forms.Order
 {
     public partial class AddOrder : MetroFramework.Forms.MetroForm
     {
+        public static string OrderId = "";
+         public static int index = 0;
+         public static int amountTrnferRec = 0;
 
         public AddOrder(int orderNo)
         {
@@ -113,21 +116,38 @@ namespace WindowsFormsApplication1.Forms.Order
 
         private void nmQty_ValueChanged(object sender, EventArgs e)
         {
+            
+
             int cost = int.Parse(lblCost.Text);
             int qty = Convert.ToInt16(nmQty.Value);
             lblSubtotal.Text = (cost * qty).ToString();
+
+            
+
         }
 
         private void mtCreate_Click(object sender, EventArgs e)
         {
             try
             {
+                int itemid = int.Parse(cbItems.SelectedValue.ToString());
+
+                if (Convert.ToInt32(nmQty.Value) > Convert.ToInt32(new DAO().getQty(itemid)))
+                {
+                    MessageBox.Show("cannot order item more than available in stock");
+                    return;
+                    
+                }
+
                 
 
                 if (lblCost.Text != "" && dtODate.Text != "" && cbItems.SelectedIndex != -1)
                 {
 
 
+
+                    OrderId = "ORD" + txtOrderNo.Text;
+                    amountTrnferRec = int.Parse(lblSubtotal.Text);
                     DataTable dt = new DataTable();
                     SqlConnection conn = DBConn.GetInstance();
 
@@ -139,19 +159,24 @@ namespace WindowsFormsApplication1.Forms.Order
                     dad.SelectCommand.Parameters.AddWithValue("@PId", cbCustName.SelectedValue);
                     dad.SelectCommand.Parameters.AddWithValue("@itemid", cbItems.SelectedValue);
                     dad.SelectCommand.Parameters.AddWithValue("@qty", nmQty.Value);
-                    dad.SelectCommand.Parameters.AddWithValue("@cost", lblCost.Text);
-                    dad.SelectCommand.Parameters.AddWithValue("@totalcost", lblSubtotal.Text);
+                    dad.SelectCommand.Parameters.AddWithValue("@cost", Decimal.Parse(lblCost.Text));
+                    dad.SelectCommand.Parameters.AddWithValue("@totalcost", Decimal.Parse(lblSubtotal.Text));
                     dad.Fill(dt);
                     conn.Close();
                     lblmsg.Text = "Order Added Successfully!!";
                     int PId = int.Parse(cbCustName.SelectedValue.ToString());
-                    int PartyBalance = new DAO().GetPartyBalance(PId);
+
+                    decimal PartyBalance = new DAO().GetPartyBalance(PId);
 
                     new DAO().UpdatePartyBalance(PId, int.Parse(lblSubtotal.Text) + PartyBalance);
 
                     lblTotal.Text = new DAO().getTotal(int.Parse(txtOrderNo.Text)).ToString();
-                    int itemid = int.Parse(cbItems.SelectedValue.ToString());
-                    int qty = new DAO().getQty(itemid) - Convert.ToInt16( nmQty.Value);
+                    //int itemid = int.Parse(cbItems.SelectedValue.ToString());
+
+                    int quan = Convert.ToInt32(Math.Round(nmQty.Value, 0));
+
+
+                    decimal qty = new DAO().getQty(itemid) -  nmQty.Value;
 
                     new DAO().RemoveQty(qty, itemid);
                     Clear_Limited();
@@ -163,15 +188,24 @@ namespace WindowsFormsApplication1.Forms.Order
 
                     int AccountId = new DAO().GetAccountId(AccountName);
 
-                       new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + itemName + " " + nmQty.Value.ToString() , 7, "Debit", "ORD" + txtOrderNo.Text, int.Parse(lblTotal.Text), 00);
-                       new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + itemName + " " + nmQty.Value.ToString(), 4, "Credit", "ORD" + txtOrderNo.Text, int.Parse(lblTotal.Text), 00);
-                       new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + itemName + " " + nmQty.Value.ToString(), AccountId , "Debit", "ORD" + txtOrderNo.Text, int.Parse(lblTotal.Text), 00);
+                       new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + itemName + " " + quan , 7, "Debit", "ORD" + txtOrderNo.Text,0,Decimal.Parse(lblTotal.Text), 00);
+                       new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + itemName + " " + quan, 4, "Credit", "ORD" + txtOrderNo.Text, Decimal.Parse(lblTotal.Text),0, 00);
+                       new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + itemName + " " + quan, AccountId , "Debit", "ORD" + txtOrderNo.Text, 0,Decimal.Parse(lblTotal.Text), 00);
+
+                     index  =   cbCustName.SelectedIndex;
+
+
+
 
 
                     //btnCheckOut.Show();
 
                     RequestOrderPayment obj = new RequestOrderPayment();
                     obj.Show();
+                    btnPrintInvoice.Visible = true;
+
+
+
 
                 }
                 else
@@ -203,6 +237,7 @@ namespace WindowsFormsApplication1.Forms.Order
             cbItems.SelectedIndex = 0;
             nmQty.Value = 1;
             lblTotal.Text = "0";
+            btnPrintInvoice.Visible = false;
         }
 
 
@@ -326,6 +361,13 @@ namespace WindowsFormsApplication1.Forms.Order
         private void dtODate_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPrintInvoice_Click(object sender, EventArgs e)
+        {
+           
+            invoiceprint obj2 = new invoiceprint();
+            obj2.Show();
         }
 
         //private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
