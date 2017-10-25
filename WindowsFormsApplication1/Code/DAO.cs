@@ -1443,9 +1443,9 @@ namespace WindowsFormsApplication1.Code
         {
             DataTable dt = new DataTable();
             conn = DBConn.GetInstance();
-            //SqlDataAdapter dad = new SqlDataAdapter("SELECT x.CBId,x.Date,x.Category,x.Description,x.AmountType,x.Income,x.Expense,SUM(y.bal) Balance FROM (SELECT *, Income - Expense bal FROM CashBook ) x JOIN ( SELECT *, Income - Expense bal FROM CashBook ) y ON y.CBId <= x.CBId GROUP BY x.CBId,x.Date,x.Category,x.Description,x.AmountType,x.Income,x.Expense;", conn);
+            SqlDataAdapter dad = new SqlDataAdapter("SELECT x.CBId,x.Date,x.Category,x.Description,x.AmountType,x.Income,x.Expense,SUM(y.bal) Balance FROM (SELECT *, Income - Expense bal FROM CashBook ) x JOIN ( SELECT *, Income - Expense bal FROM CashBook ) y ON y.CBId <= x.CBId GROUP BY x.CBId,x.Date,x.Category,x.Description,x.AmountType,x.Income,x.Expense;", conn);
 
-            SqlDataAdapter dad = new SqlDataAdapter("SELECT CBId,Date,ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook", conn);
+            //SqlDataAdapter dad = new SqlDataAdapter("SELECT CBId,Date,ReferenceNo, Category,Description,AmountType,Income,Expense,Balance from CashBook", conn);
             
 
 

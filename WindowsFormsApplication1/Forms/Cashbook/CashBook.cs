@@ -177,13 +177,13 @@ namespace WindowsFormsApplication1.Forms
 
             dad.Fill(dtCashBook);
 
-            dtCashBook.Columns.Add("netBalance", typeof(System.Decimal));
+            dtCashBook.Columns.Add("Balance", typeof(System.Decimal));
             int bal = 0;
             foreach (DataRow row in dtCashBook.Rows)
             {
                 if (int.Parse(row[6].ToString()) != 0)
                 {
-                    row["netBalance"] = bal + int.Parse(row[6].ToString());
+                    row["Balance"] = bal + int.Parse(row[6].ToString());
                     bal += int.Parse(row[6].ToString());
 
                 }
@@ -191,7 +191,7 @@ namespace WindowsFormsApplication1.Forms
 
                 if (int.Parse(row[7].ToString()) != 0)
                 {
-                    row["netBalance"] = bal - int.Parse(row[7].ToString());
+                    row["Balance"] = bal - int.Parse(row[7].ToString());
                     bal -= int.Parse(row[7].ToString());
 
                 }
@@ -308,28 +308,48 @@ namespace WindowsFormsApplication1.Forms
 
                     txtPartyName.Text = new DAO().GetAccountName(PId);
 
-                };
+                }
+                else
+                {
+                    txtPartyName.Text = "";
+                }
 
                 if (dtCashBook.Rows[0][1].ToString() != "")
                 {
 
                     txtChequeNODetail.Text = dtCashBook.Rows[0][1].ToString();
 
-                };
+                }
+                else
+                {
+                    txtChequeNODetail.Text = "";
+                }
+
 
                 if (dtCashBook.Rows[0][2].ToString() != "")
                 {
 
                     txtBankCodeDetail.Text = dtCashBook.Rows[0][2].ToString();
 
-                };
+                }
+                else
+                {
+                    txtBankCodeDetail.Text = "";
+                }
+
 
                 if (dtCashBook.Rows[0][3].ToString() != "")
                 {
 
                     txtInvoiceNoDetail.Text = dtCashBook.Rows[0][3].ToString();
 
-                };
+                }
+                else
+                {
+                    txtInvoiceNoDetail.Text = "";
+                }
+
+
 
 
 

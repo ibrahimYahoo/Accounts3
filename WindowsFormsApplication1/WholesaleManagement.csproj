@@ -428,6 +428,12 @@
     <Compile Include="Reports\CheckOutSlip.Designer.cs">
       <DependentUpon>CheckOutSlip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CrystalReportGL2.cs">
+      <DependentUpon>CrystalReportGL2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\CrystalReportPurInvoice.cs">
       <DependentUpon>CrystalReportPurInvoice.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -630,6 +636,10 @@
     </Compile>
     <EmbeddedResource Include="Reports\CheckOutSlip.resx">
       <DependentUpon>CheckOutSlip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportGL2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportGL2.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CrystalReportPurInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

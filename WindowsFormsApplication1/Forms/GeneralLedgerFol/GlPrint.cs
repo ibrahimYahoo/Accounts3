@@ -78,7 +78,7 @@ namespace WindowsFormsApplication1.Forms.GeneralLedger
 
 
 
-                crystalReportGL1.SetDataSource(lstInvoice);
+                crystalReportGL21.SetDataSource(lstInvoice);
 
 
                 string cusName = row["AccountName"].ToString();
@@ -87,11 +87,11 @@ namespace WindowsFormsApplication1.Forms.GeneralLedger
 
 
 
-                crystalReportGL1.SetParameterValue("CustomerName", cusName);
-                crystalReportGL1.SetParameterValue("AccountNumber", accNo);
-                crystalReportGL1.SetParameterValue("Date", dd);
-                crystalReportGL1.SetParameterValue("StartDate", GeneralLedgerFol.GeneralLedger.strtDate.Date.ToString());
-                crystalReportGL1.SetParameterValue("EndDate", GeneralLedgerFol.GeneralLedger.endDate.Date.ToString());
+                crystalReportGL21.SetParameterValue("CustomerName", cusName);
+                crystalReportGL21.SetParameterValue("AccountNumber", accNo);
+                crystalReportGL21.SetParameterValue("Date", dd);
+                crystalReportGL21.SetParameterValue("StartDate", GeneralLedgerFol.GeneralLedger.strtDate.Date.ToString());
+                crystalReportGL21.SetParameterValue("EndDate", GeneralLedgerFol.GeneralLedger.endDate.Date.ToString());
 
 
 
@@ -100,7 +100,7 @@ namespace WindowsFormsApplication1.Forms.GeneralLedger
             }
 
 
-            crystalReportViewer1.ReportSource = crystalReportGL1;
+            crystalReportViewer1.ReportSource = crystalReportGL21;
 
         }
     }

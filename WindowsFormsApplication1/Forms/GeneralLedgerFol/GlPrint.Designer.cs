@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.crystalReportGL1 = new WindowsFormsApplication1.Reports.CrystalReportGL();
+            this.crystalReportGL21 = new WindowsFormsApplication1.Reports.CrystalReportGL2();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -58,6 +58,6 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private Reports.CrystalReportGL crystalReportGL1;
+        private Reports.CrystalReportGL2 crystalReportGL21;
     }
 }
