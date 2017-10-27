@@ -1780,12 +1780,40 @@ namespace WindowsFormsApplication1.Code
             conn = DBConn.GetInstance();
 
 
-            dad = new SqlDataAdapter("Select *  from [Items] ", conn);
+            dad = new SqlDataAdapter("Select IId,IGarden  from [Items] ", conn);
             dad.Fill(dtProduct);
             conn.Close();
             return dtProduct;
 
         }
+
+        public DataTable GetItemsforOrder(int IId)
+        {
+            DataTable dtProduct = new DataTable();
+            conn = DBConn.GetInstance();
+
+
+            dad = new SqlDataAdapter("Select IGarden,IGrade,IQty,IWtPerBag  from [Items] WHERE IId = @IId ", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@IId", IId);
+            dad.Fill(dtProduct);
+            conn.Close();
+            return dtProduct;
+
+        }
+
+        public DataTable GetBrokers()
+        {
+            DataTable dtProduct = new DataTable();
+            conn = DBConn.GetInstance();
+
+
+            dad = new SqlDataAdapter("Select BId,BrokerName  from Brokers ", conn);
+            dad.Fill(dtProduct);
+            conn.Close();
+            return dtProduct;
+
+        }
+
         public DataTable GetCategory()
         {
             DataTable dtProduct = new DataTable();
@@ -1803,11 +1831,21 @@ namespace WindowsFormsApplication1.Code
         {
             DataTable dtProduct = new DataTable();
             conn = DBConn.GetInstance();
+            int itemid;
 
-
-            dad = new SqlDataAdapter("Select IID  from Items where IName = '" + itemname + "'", conn);
+            dad = new SqlDataAdapter("Select IID  from Items where IGarden = '" + itemname + "'", conn);
             dad.Fill(dtProduct);
-            int itemid = (Convert.ToInt32(dtProduct.Rows[0][0]));
+            try
+            {
+                itemid = (Convert.ToInt32(dtProduct.Rows[0][0]));
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return 0;
+            }
             conn.Close();
             return itemid;
         }
@@ -1866,6 +1904,26 @@ namespace WindowsFormsApplication1.Code
 
             conn.Close();
         }
+
+        public void insertItem(int LotNo, string Grade,string IGarden,int totalBags,int WtPerBag,int IRatePerKg,decimal ITotalCost)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = DBConn.GetInstance();
+
+            SqlDataAdapter dad = new SqlDataAdapter("Insert into Items(LotNo,IGrade,IQty,IGarden,IWtPerBag,IRatePerKg,ITotalCost) values(@LotNo,@Grade,@totalBags,@IGarden,@WtPerBag,@IRatePerKg,@ITotalCost)", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@LotNo", LotNo);
+            dad.SelectCommand.Parameters.AddWithValue("@Grade", Grade);
+            dad.SelectCommand.Parameters.AddWithValue("@IRatePerKg", IRatePerKg);
+            dad.SelectCommand.Parameters.AddWithValue("@IGarden", IGarden);
+            dad.SelectCommand.Parameters.AddWithValue("@totalBags", totalBags);
+            dad.SelectCommand.Parameters.AddWithValue("@WtPerBag", WtPerBag);
+            dad.SelectCommand.Parameters.AddWithValue("@ITotalCost", (IRatePerKg * (WtPerBag * totalBags  )) );
+
+
+            dad.Fill(dt);
+            conn.Close();
+        }
+
 
         public DataTable GetInvestors()
         {
@@ -1979,8 +2037,9 @@ namespace WindowsFormsApplication1.Code
             DataTable dtProduct = new DataTable();
             conn = DBConn.GetInstance();
 
+            //dad = new SqlDataAdapter(" SELECT Purchase.PurId, Purchase.PurDate as 'Purchase Date', Items.IName as 'Item Name',Party.PName as 'Party Name', Purchase.IPrice as 'Selling Price',Purchase.PurPrice as 'Purchase Price', Purchase.ItemQty, Purchase.Total FROM Purchase INNER JOIN Items ON Items.IId = Purchase.IId INNER JOIN Party ON Purchase.PId = Party.PId", conn);
 
-            dad = new SqlDataAdapter(" SELECT Purchase.PurId, Purchase.PurDate as 'Purchase Date', Items.IName as 'Item Name',Party.PName as 'Party Name', Purchase.IPrice as 'Selling Price',Purchase.PurPrice as 'Purchase Price', Purchase.ItemQty, Purchase.Total FROM Purchase INNER JOIN Items ON Items.IId = Purchase.IId INNER JOIN Party ON Purchase.PId = Party.PId", conn);
+            dad = new SqlDataAdapter("SELECT * FROM Purchase", conn);
             dad.Fill(dtProduct);
             conn.Close();
             return dtProduct;

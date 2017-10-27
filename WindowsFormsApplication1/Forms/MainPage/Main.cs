@@ -14,6 +14,7 @@ using WindowsFormsApplication1.Forms;
 using WindowsFormsApplication1.Forms.Accounts;
 using WindowsFormsApplication1.Forms.GeneralLedgerFol;
 using WindowsFormsApplication1.Forms.Order;
+using WindowsFormsApplication1.Forms.Purchase;
 using WindowsFormsApplication1.Forms.Search;
 
 namespace WindowsFormsApplication1
@@ -51,7 +52,7 @@ namespace WindowsFormsApplication1
         {
             this.Hide();
 
-            Purchases ac = new Purchases();
+            Forms.Purchase.Purchases ac = new Purchases();
             ac.Show();
             ac.WindowState = FormWindowState.Maximized;
         }

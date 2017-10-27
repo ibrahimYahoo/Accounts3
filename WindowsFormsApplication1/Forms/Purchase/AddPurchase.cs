@@ -11,11 +11,11 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Code;
 using WindowsFormsApplication1.Forms.Purchase;
 
-namespace WindowsFormsApplication1.Forms
+namespace WindowsFormsApplication1.Forms.Purchase
 {
     public partial class AddPurchase : MetroFramework.Forms.MetroForm
     {
-        Purchases owner;
+       Purchase.Purchases owner;
         public AddPurchase(Purchases frm1)
         {
             owner = frm1;
@@ -38,17 +38,26 @@ namespace WindowsFormsApplication1.Forms
             cmbsuppname.ValueMember = "Party-ID";
             cmbsuppname.SelectedIndex = -1;
 
-            cmbItemname.DataSource = new DAO().GetItems();
-            cmbItemname.DisplayMember = "IName";
-            cmbItemname.ValueMember = "IId";
-            cmbItemname.SelectedIndex = -1;
+            
+            cmGardenName.DataSource = new DAO().GetItems();
+            cmGardenName.DisplayMember = "IGarden";
+            cmGardenName.ValueMember = "IId";
+            cmGardenName.SelectedIndex = -1;
 
-            TxtitemPrice.Text = 0.ToString();
-            txtItemQuantity.Text = 0.ToString();
+            cmBrokerName.DataSource = new DAO().GetBrokers();
+            cmBrokerName.DisplayMember = "BrokerName";
+            cmBrokerName.ValueMember = "BId";
+            cmBrokerName.SelectedIndex = -1;
 
 
+            //TxtitemPrice.Text = 0.ToString();
+            //txtItemQuantity.Text = 0.ToString();
+            txtBrokeryAmount.Text = "0";
+            txtRatePerKg.Text = "0";
+            txtShortage.Text = "0";
+            txtWeightPerBag.Text = "0";
 
-            txtoldpurprice.Text = "0";
+            //txtoldpurprice.Text = "0";
         }
 
 
@@ -58,37 +67,66 @@ namespace WindowsFormsApplication1.Forms
 
             try
             {
-                if (cmbsuppname.SelectedIndex != -1 && cmbItemname.SelectedIndex != -1 && txtItemQuantity.Text != "" && TxtitemPrice.Text != "")
+                if (txtLotNo.Text != "" && cmGardenName.SelectedIndex != -1 && txtGrade.Text != "" && txtTotalBagsQuantity.Text != "" && txtRatePerKg.Text != "0" && txtWeightPerBag.Text != "0")
                 {
 
                     string PurchaseId  = "PUR" + new DAO().getLastPurchaseNo() ;
-                    int PId = int.Parse(cmbsuppname.SelectedValue.ToString());
-                    string purid = new DAO().GetPurchaseId().ToString();
 
-                    string itemName = this.cmbItemname.GetItemText(this.cmbItemname.SelectedItem);
-
-                    DataTable dt = new DataTable();
-                    SqlConnection conn = DBConn.GetInstance();
-                    SqlDataAdapter dad = new SqlDataAdapter("Insert INTO Purchase(PurId,IId,PId,PurDate,IPrice,PurPrice,ItemQty,Total) values (@PurId,@3,@4,@5,@6,@7,@8,@9)", conn);
-
-                    dad.SelectCommand.Parameters.AddWithValue("@PurId", PurchaseId);
-
-                    dad.SelectCommand.Parameters.AddWithValue("@3", cmbItemname.SelectedValue);
-                    dad.SelectCommand.Parameters.AddWithValue("@4", cmbsuppname.SelectedValue);
-                    dad.SelectCommand.Parameters.AddWithValue("@5", cmbpaydate.Value);
-                    dad.SelectCommand.Parameters.AddWithValue("@6", Decimal.Parse(TxtitemPrice.Text));
-                    dad.SelectCommand.Parameters.AddWithValue("@7", Decimal.Parse(txtoldpurprice.Text));
-                    dad.SelectCommand.Parameters.AddWithValue("@8", txtItemQuantity.Text);
-                    dad.SelectCommand.Parameters.AddWithValue("@9", Decimal.Parse(txttotal.Text));
-
-                    //int balance = int.Parse(txttotal.Text) - int.Parse(txtAmountPaid.Text);
-                    
-                    dad.Fill(dt);
-                    conn.Close();
 
                     DataRowView dv = (DataRowView)cmbsuppname.SelectedItem;
                     string AccountName = (string)dv.Row["Name"];
+                    int PId = (int)dv.Row["Party-ID"];
 
+
+                   // int PId = int.Parse(cmbsuppname.SelectedValue.ToString());
+
+                    DataRowView dv2 = (DataRowView)cmGardenName.SelectedItem;                                  
+                    string GardenName = (string)dv2.Row["IGarden"];
+                    int BId = 0;
+                    if (cmBrokerName.SelectedIndex != -1) {
+
+                        DataRowView dv3 = (DataRowView)cmBrokerName.SelectedItem;
+
+                        BId = (int)dv3.Row["BId"];
+
+                    }
+
+
+                    int TotalQuantity = int.Parse(txtTotalBagsQuantity.Text);
+
+                    decimal TotalCost = (int.Parse(txtRatePerKg.Text) * (int.Parse(txtWeightPerBag.Text) * TotalQuantity));
+
+                    new DAO().insertItem(int.Parse(txtLotNo.Text),txtGrade.Text,GardenName,int.Parse(txtTotalBagsQuantity.Text),int.Parse(txtWeightPerBag.Text),int.Parse(txtRatePerKg.Text),TotalCost);
+
+
+                    int IId = new DAO().getItemIdFromName(GardenName);
+
+
+                    DataTable dt = new DataTable();
+                    SqlConnection conn = DBConn.GetInstance();
+                    SqlDataAdapter dad = new SqlDataAdapter("Insert INTO Purchase(PurId,IId,PId,PurDate,IRatePerKg,ItemQty,BrokeryAmount,BId,Bardena,Tulai,Carrage,Total) values (@PurId,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)", conn);
+
+                    dad.SelectCommand.Parameters.AddWithValue("@PurId", PurchaseId);
+
+                    dad.SelectCommand.Parameters.AddWithValue("@3", IId);
+                    dad.SelectCommand.Parameters.AddWithValue("@4", PId);
+                    dad.SelectCommand.Parameters.AddWithValue("@5", cmbpaydate.Value);
+                    dad.SelectCommand.Parameters.AddWithValue("@6", int.Parse(txtRatePerKg.Text));
+                    dad.SelectCommand.Parameters.AddWithValue("@7", TotalQuantity);
+                    dad.SelectCommand.Parameters.AddWithValue("@8", int.Parse(txtBrokeryAmount.Text));
+                    dad.SelectCommand.Parameters.AddWithValue("@9", BId);
+                    dad.SelectCommand.Parameters.AddWithValue("@10", txtBardena.Text);
+                    dad.SelectCommand.Parameters.AddWithValue("@11", txtTulai.Text);
+                    dad.SelectCommand.Parameters.AddWithValue("@12", txtCarrage.Text);
+                    dad.SelectCommand.Parameters.AddWithValue("@13", TotalCost);
+
+
+                    //int balance = int.Parse(txttotal.Text) - int.Parse(txtAmountPaid.Text);
+
+                    dad.Fill(dt);
+                    conn.Close();
+
+                    
 
                     //string AccountName = this.cmbsuppname.GetItemText(this.cmbsuppname.SelectedItem);
 
@@ -97,14 +135,14 @@ namespace WindowsFormsApplication1.Forms
 
                     decimal RemainingBalance = new DAO().GetPartyBalance(PId);
 
-                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, 5, "Debit", PurchaseId, 0,Decimal.Parse(txttotal.Text), 00);
-                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, 8, "Credit", PurchaseId, Decimal.Parse(txttotal.Text), 0,00);
-                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + itemName + " " + txtItemQuantity, AccountId, "Credit", PurchaseId, Decimal.Parse(txttotal.Text),0, 00);
+                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + GardenName + " " + TotalQuantity, 5, "Debit", PurchaseId, 0, TotalCost, 00);
+                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + GardenName + " " + TotalQuantity, 8, "Credit", PurchaseId, TotalCost, 0,00);
+                    new DAO().AddGlTransactions(DateTime.Today.Date, "Purchased " + GardenName + " " + TotalQuantity, AccountId, "Credit", PurchaseId, TotalCost, 0, 00);
 
 
                     // new DAO().AddPurchaseTransaction(PId, 0, int.Parse(txtAmountPaid.Text), int.Parse(cmbItemname.SelectedValue.ToString()), int.Parse(txtItemQuantity.Text), "NA", DateTime.Today.Date, 1, RemainingBalance - balance);
-                    new DAO().UpdateQtyAdd(int.Parse(cmbItemname.SelectedValue.ToString()), int.Parse(txtItemQuantity.Text));
-                    new DAO().UpdateOwnerBalance(PId, RemainingBalance - Decimal.Parse(txttotal.Text));
+                    new DAO().UpdateQtyAdd(IId, TotalQuantity);
+                    new DAO().UpdateOwnerBalance(PId, RemainingBalance - TotalCost);
 
 
                     //MessageBox.Show("Purchase Inserted successfully");
@@ -114,14 +152,14 @@ namespace WindowsFormsApplication1.Forms
                     cmbsuppname.ValueMember = "Party-ID";
                     cmbsuppname.SelectedIndex = -1;
 
-                    cmbItemname.DataSource = new DAO().GetItemsDesc();
-                    cmbItemname.DisplayMember = "Display";
-                    cmbItemname.ValueMember = "IId";
-                    cmbItemname.SelectedIndex = -1;
+                    //cmbItemname.DataSource = new DAO().GetItemsDesc();
+                    //cmbItemname.DisplayMember = "Display";
+                    //cmbItemname.ValueMember = "IId";
+                    //cmbItemname.SelectedIndex = -1;
 
-                    txtoldpurprice.Text = 0.ToString();
-                    txtItemQuantity.Text = 0.ToString();
-                    TxtitemPrice.Text = 0.ToString();
+                    txtLotNo.Text = 0.ToString();
+                    txtTotalBagsQuantity.Text = 0.ToString();
+                    //TxtitemPrice.Text = 0.ToString();
                     //    gvPurchase.DataSource = new DAO().GetPurchases();
                     //    gvPurchase.Show();
                     //   lblqty.Visible = false;
@@ -141,38 +179,38 @@ namespace WindowsFormsApplication1.Forms
             }
         }
 
-        private void txtItemQuantity_Leave(object sender, EventArgs e)
-        {
+        //private void txtItemQuantity_Leave(object sender, EventArgs e)
+        //{
 
-            if (TxtitemPrice.Text == "")
-            {
-                TxtitemPrice.Text = 0.ToString();
-            }
-            try
-            {
+        //    if (TxtitemPrice.Text == "")
+        //    {
+        //        TxtitemPrice.Text = 0.ToString();
+        //    }
+        //    try
+        //    {
 
-                txttotal.Text = (Convert.ToInt32(txtoldpurprice.Text) * Convert.ToInt32(txtItemQuantity.Text)).ToString();
+        //        txttotal.Text = (Convert.ToInt32(txtoldpurprice.Text) * Convert.ToInt32(txtItemQuantity.Text)).ToString();
 
-            }
+        //    }
 
-            catch (Exception)
-            {
-                MessageBox.Show("Please enter values correctly!");
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Please enter values correctly!");
 
-            }
-        }
+        //    }
+        //}
 
     
 
         private void btnclr_Click(object sender, EventArgs e)
         {
-            txtItemQuantity.Text = 0.ToString();
-            TxtitemPrice.Text = 0.ToString();
-            txtoldpurprice.Text = 0.ToString();
-            cmbItemname.Text = " ";
+            txtLotNo.Text = "";
+            txtRatePerKg.Text = "";
+            txtShortage.Text = "";
+            txtTotalBagsQuantity.Text = "";
             cmbpaydate.Text = "";
-            cmbsuppname.Text = "";
-            txttotal.Text = 0.ToString();
+            cmbsuppname.SelectedIndex = -1;
+            cmGardenName.SelectedIndex = -1;
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -182,28 +220,28 @@ namespace WindowsFormsApplication1.Forms
             frm.Show();
         }
 
-        private void cmbItemname_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int x = 0;
-                if (cmbItemname.SelectedIndex != -1)
-                {
-                    bool parseOK = Int32.TryParse(cmbItemname.SelectedValue.ToString(), out x);
-                }
-                if (x != 0)
-                {
-                    DataTable item = new DAO().ShowItemsByID(Convert.ToInt32(cmbItemname.SelectedValue));                  
-                    txtoldpurprice.Text = int.Parse(item.Rows[0][3].ToString()).ToString();
-                    //lblqty.Text = "Quantity left : " + Convert.ToString(item.Rows[0][6]);
-                    //lblqty.Show();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //private void cmbItemname_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        int x = 0;
+        //        if (cmbItemname.SelectedIndex != -1)
+        //        {
+        //            bool parseOK = Int32.TryParse(cmbItemname.SelectedValue.ToString(), out x);
+        //        }
+        //        if (x != 0)
+        //        {
+        //            DataTable item = new DAO().ShowItemsByID(Convert.ToInt32(cmbItemname.SelectedValue));                  
+        //            txtoldpurprice.Text = int.Parse(item.Rows[0][3].ToString()).ToString();
+        //            //lblqty.Text = "Quantity left : " + Convert.ToString(item.Rows[0][6]);
+        //            //lblqty.Show();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         private void cmbsuppname_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -252,29 +290,34 @@ namespace WindowsFormsApplication1.Forms
             }
         }
 
-        private void txtoldpurprice_Leave(object sender, EventArgs e)
-        {
-            if (TxtitemPrice.Text == "")
-            {
-                TxtitemPrice.Text = 0.ToString();
-            }
-            try
-            {
+        //private void txtoldpurprice_Leave(object sender, EventArgs e)
+        //{
+        //    if (TxtitemPrice.Text == "")
+        //    {
+        //        TxtitemPrice.Text = 0.ToString();
+        //    }
+        //    try
+        //    {
 
-                txttotal.Text = (Convert.ToInt32(txtoldpurprice.Text) * Convert.ToInt32(txtItemQuantity.Text)).ToString();
+        //        txttotal.Text = (Convert.ToInt32(txtoldpurprice.Text) * Convert.ToInt32(txtItemQuantity.Text)).ToString();
 
-            }
+        //    }
 
-            catch (Exception)
-            {
-                MessageBox.Show("Please enter values correctly!");
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Please enter values correctly!");
 
-            }
-        }
+        //    }
+        //}
 
         private void AddPurchase_FormClosing(object sender, FormClosingEventArgs e)
         {
             owner.PerformRefresh();
+        }
+
+        private void metroLabel9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

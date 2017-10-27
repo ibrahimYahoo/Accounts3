@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1.Forms
+﻿namespace WindowsFormsApplication1.Forms.Purchase
 {
     partial class Purchases
     {

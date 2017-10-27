@@ -20,45 +20,45 @@ namespace WindowsFormsApplication1.Forms.Order
          public static int index = 0;
          public static int amountTrnferRec = 0;
 
-        public AddOrder(int orderNo)
-        {
-            dtODate.MinDate =  DateTime.Today.Date;
-            InitializeComponent();
-            txtOrderNo.Text = orderNo.ToString();           
-            DataTable dt = new DAO().GetOrderDetails(orderNo);
-            //if (dt.Rows.Count != 0)
-            //{
-            //    btnCheckOut.Show();
-            //}
-            //else
-            //{
-            //    btnCheckOut.Hide();
-            //}
-            try
-            {
-                int cusid = int.Parse(dt.Rows[0][2].ToString());
-                cbCustName.DataSource = new DAO().GetParties(int.Parse(dt.Rows[0][2].ToString()));
-                cbCustName.DisplayMember = "Name";
-                cbCustName.ValueMember = "Party-ID";
-            }
-            catch (Exception)
-            {
-                cbCustName.DataSource = new DAO().GetParties(1);
-                cbCustName.DisplayMember = "Name";
-                cbCustName.ValueMember = "Party-ID";
+        //public AddOrder(int orderNo)
+        //{
+        //    dtODate.MinDate =  DateTime.Today.Date;
+        //    InitializeComponent();
+        //    txtOrderNo.Text = orderNo.ToString();           
+        //    DataTable dt = new DAO().GetOrderDetails(orderNo);
+        //    //if (dt.Rows.Count != 0)
+        //    //{
+        //    //    btnCheckOut.Show();
+        //    //}
+        //    //else
+        //    //{
+        //    //    btnCheckOut.Hide();
+        //    //}
+        //    try
+        //    {
+        //        int cusid = int.Parse(dt.Rows[0][2].ToString());
+        //        cbCustName.DataSource = new DAO().GetParties(int.Parse(dt.Rows[0][2].ToString()));
+        //        cbCustName.DisplayMember = "Name";
+        //        cbCustName.ValueMember = "Party-ID";
+        //    }
+        //    catch (Exception)
+        //    {
+        //        cbCustName.DataSource = new DAO().GetParties(1);
+        //        cbCustName.DisplayMember = "Name";
+        //        cbCustName.ValueMember = "Party-ID";
 
-            }
+        //    }
 
-            lblTotal.Text = new DAO().getTotal(orderNo).ToString();
-            getItems();
-        }
+        //    lblTotal.Text = new DAO().getTotal(orderNo).ToString();
+        //    getItems();
+        //}
         public AddOrder()
         {
             InitializeComponent();
-            getMaxOrderNumber();
-            getCustomers();
-            getItems();
-            dtODate.MinDate = DateTime.Today.Date;
+            //getMaxOrderNumber();
+            //getCustomers();
+            //getItems();
+            //dtODate.MinDate = DateTime.Today.Date;
             //btnCheckOut.Hide();
         }
 
@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1.Forms.Order
             }
             string[] postSource = new DAO().GetItems()
             .AsEnumerable()
-            .Select<System.Data.DataRow, String>(x => x.Field<String>("IName"))
+            .Select<System.Data.DataRow, String>(x => x.Field<String>("IGarden"))
             .ToArray();
             var source = new AutoCompleteStringCollection();
             source.AddRange(postSource);
@@ -368,6 +368,31 @@ namespace WindowsFormsApplication1.Forms.Order
            
             invoiceprint obj2 = new invoiceprint();
             obj2.Show();
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            //new DAO().GetItemsforOrder()
+
+
+        }
+
+        private void cmLotNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+
         }
 
         //private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)

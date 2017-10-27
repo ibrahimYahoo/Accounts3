@@ -88,9 +88,9 @@ namespace WindowsFormsApplication1.Forms.Order
         private void mtBack_Click(object sender, EventArgs e)
         {         
                
-                this.Dispose();
-            AddOrder addorder = new AddOrder(OrderNo);
-            addorder.Show();
+            //    this.Dispose();
+            //AddOrder addorder = new AddOrder(OrderNo);
+            //addorder.Show();
         }
 
         private void frmCart_Load(object sender, EventArgs e)

@@ -9,8 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Code;
+using WindowsFormsApplication1.Forms.Purchase;
 
-namespace WindowsFormsApplication1.Forms
+namespace WindowsFormsApplication1.Forms.Purchase
 {
     public partial class EditPurchase : MetroFramework.Forms.MetroForm
     {
@@ -18,6 +19,8 @@ namespace WindowsFormsApplication1.Forms
         int PID;
         float prevQty;
         decimal prevBalance;
+        private Purchases purchases;
+
         public EditPurchase(int pid,Purchases frm1)
         {
             
@@ -26,6 +29,12 @@ namespace WindowsFormsApplication1.Forms
             FormClosing += new FormClosingEventHandler(EditPurchase_FormClosing);
             InitializeComponent();
         }
+
+        //public EditPurchase(int pid, Purchases purchases)
+        //{
+        //    PID = pid;
+        //    this.purchases = purchases;
+        //}
 
         private void EditPurchase_Load(object sender, EventArgs e)
         {

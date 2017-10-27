@@ -285,11 +285,23 @@
     <Compile Include="Forms\Payments\Payments.designer.cs">
       <DependentUpon>Payments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Purchase\yos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchase\yos.designer.cs">
+      <DependentUpon>yos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Purchase\AddPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Purchase\AddPurchase.designer.cs">
       <DependentUpon>AddPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchase\AddPurchase2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchase\AddPurchase2.Designer.cs">
+      <DependentUpon>AddPurchase2.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Purchase\EditPurchase.cs">
       <SubType>Form</SubType>
@@ -566,8 +578,14 @@
     <EmbeddedResource Include="Forms\Payments\Payments.resx">
       <DependentUpon>Payments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Purchase\yos.resx">
+      <DependentUpon>yos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Purchase\AddPurchase.resx">
       <DependentUpon>AddPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Purchase\AddPurchase2.resx">
+      <DependentUpon>AddPurchase2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Purchase\EditPurchase.resx">
       <DependentUpon>EditPurchase.cs</DependentUpon>

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Code;
 
-namespace WindowsFormsApplication1.Forms
+namespace WindowsFormsApplication1.Forms.Purchase
 {
     public partial class Purchases : MetroFramework.Forms.MetroForm
     {
@@ -89,8 +89,10 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnadditem_Click(object sender, EventArgs e)
         {
-            Forms.AddPurchase ac = new Forms.AddPurchase(this);
-            ac.ShowDialog();
+            Purchase.AddPurchase ac = new Purchase.AddPurchase();
+            ac.Show();
+            ac.WindowState = FormWindowState.Maximized;
+
         }
 
         private void txtItemQuantity_Leave(object sender, EventArgs e)
@@ -106,26 +108,26 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnedit_Click(object sender, EventArgs e)
         {
-            int pid = int.Parse(gvPurchase.CurrentRow.Cells[0].Value.ToString());
-            Forms.EditPurchase ec = new Forms.EditPurchase(pid,this);
+            //int pid = int.Parse(gvPurchase.CurrentRow.Cells[0].Value.ToString());
+            //Forms.Purchase.EditPurchase ec = new EditPurchase(pid,this);
 
 
 
-            ec.cmbItemName.DataSource = new DAO().GetItems();
-            ec.cmbItemName.DisplayMember = "IName";
-            ec.cmbItemName.ValueMember = "IId";
-            ec.cmbItemName.Text = this.gvPurchase.CurrentRow.Cells[3].Value.ToString();
-            ec.TxtitemPrice.Text = this.gvPurchase.CurrentRow.Cells[5].Value.ToString();
-            ec.txtItemQuantity.Text = this.gvPurchase.CurrentRow.Cells[7].Value.ToString();
-            ec.cmbSupplierName.DataSource = new DAO().GetSuppliers();
-            ec.cmbSupplierName.DisplayMember = "SName";
-            ec.cmbSupplierName.ValueMember = "SId";
-            ec.cmbSupplierName.Text = gvPurchase.CurrentRow.Cells[4].Value.ToString();
-            ec.txtpurchaseprice.Text = gvPurchase.CurrentRow.Cells[6].Value.ToString();
-            ec.cmbpaydate.Text = this.gvPurchase.CurrentRow.Cells[1].Value.ToString();
-            ec.txttotal.Text = gvPurchase.CurrentRow.Cells[7].Value.ToString();           
-            // ec. = int.Parse(this.gvPurchase.CurrentRow.Cells[0].Value.ToString());
-            ec.ShowDialog();
+            //ec.cmbItemName.DataSource = new DAO().GetItems();
+            //ec.cmbItemName.DisplayMember = "IName";
+            //ec.cmbItemName.ValueMember = "IId";
+            //ec.cmbItemName.Text = this.gvPurchase.CurrentRow.Cells[3].Value.ToString();
+            //ec.TxtitemPrice.Text = this.gvPurchase.CurrentRow.Cells[5].Value.ToString();
+            //ec.txtItemQuantity.Text = this.gvPurchase.CurrentRow.Cells[7].Value.ToString();
+            //ec.cmbSupplierName.DataSource = new DAO().GetSuppliers();
+            //ec.cmbSupplierName.DisplayMember = "SName";
+            //ec.cmbSupplierName.ValueMember = "SId";
+            //ec.cmbSupplierName.Text = gvPurchase.CurrentRow.Cells[4].Value.ToString();
+            //ec.txtpurchaseprice.Text = gvPurchase.CurrentRow.Cells[6].Value.ToString();
+            //ec.cmbpaydate.Text = this.gvPurchase.CurrentRow.Cells[1].Value.ToString();
+            //ec.txttotal.Text = gvPurchase.CurrentRow.Cells[7].Value.ToString();           
+            //// ec. = int.Parse(this.gvPurchase.CurrentRow.Cells[0].Value.ToString());
+            //ec.ShowDialog();
         }
 
         private void btndelete_Click(object sender, EventArgs e)
