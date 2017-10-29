@@ -19,6 +19,10 @@ namespace WindowsFormsApplication1.Forms.Order
         public static string OrderId = "";
          public static int index = 0;
          public static int amountTrnferRec = 0;
+        int IId = 0;
+        int ItemWtPerBag = 0;
+        int RatePerKg = 0;
+        decimal SellingWt = 0;
 
         //public AddOrder(int orderNo)
         //{
@@ -62,92 +66,92 @@ namespace WindowsFormsApplication1.Forms.Order
             //btnCheckOut.Hide();
         }
 
-        void getItems()
-        {
-            cbItems.DataSource = new DAO().GetItems();
-            cbItems.DisplayMember = "IName";
-            cbItems.ValueMember = "IId";
-            cbItems.SelectedIndex = -1;
-            try
-            {
-                lblCost.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
-                lblSubtotal.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
-                lblTotalQty.Text = new DAO().getQty(int.Parse(cbItems.SelectedValue.ToString())).ToString();
+        //void getItems()
+        //{
+        //    cbItems.DataSource = new DAO().GetItems();
+        //    cbItems.DisplayMember = "IName";
+        //    cbItems.ValueMember = "IId";
+        //    cbItems.SelectedIndex = -1;
+        //    try
+        //    {
+        //        lblCost.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
+        //        lblSubtotal.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
+        //        lblTotalQty.Text = new DAO().getQty(int.Parse(cbItems.SelectedValue.ToString())).ToString();
 
-            }
-            catch (Exception e)
-            {
+        //    }
+        //    catch (Exception e)
+        //    {
 
-            }
-            string[] postSource = new DAO().GetItems()
-            .AsEnumerable()
-            .Select<System.Data.DataRow, String>(x => x.Field<String>("IGarden"))
-            .ToArray();
-            var source = new AutoCompleteStringCollection();
-            source.AddRange(postSource);
-            cbItems.AutoCompleteCustomSource = source;
-            cbItems.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cbItems.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        }
-
-
+        //    }
+        //    string[] postSource = new DAO().GetItems()
+        //    .AsEnumerable()
+        //    .Select<System.Data.DataRow, String>(x => x.Field<String>("IGarden"))
+        //    .ToArray();
+        //    var source = new AutoCompleteStringCollection();
+        //    source.AddRange(postSource);
+        //    cbItems.AutoCompleteCustomSource = source;
+        //    cbItems.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        //    cbItems.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        //}
 
 
-        void getMaxOrderNumber()
-        {
-            int orderno = new DAO().getMaxOrderOderNo() + 1;
-            txtOrderNo.Text = orderno.ToString();
-        }
-        void getCustomers()
-        {
-            cbCustName.DataSource = new DAO().GetParties();
-            cbCustName.DisplayMember = "Name";
-            cbCustName.ValueMember = "Party-ID";
-            string[] postSource = new DAO().GetParties()
-                    .AsEnumerable()
-                    .Select<System.Data.DataRow, String>(x => x.Field<String>("Name"))
-                    .ToArray();
-            var source = new AutoCompleteStringCollection();
-            source.AddRange(postSource);
-            cbCustName.AutoCompleteCustomSource = source;
-            cbCustName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cbCustName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        }
 
-        private void nmQty_ValueChanged(object sender, EventArgs e)
-        {
+
+        //void getMaxOrderNumber()
+        //{
+        //    int orderno = new DAO().getMaxOrderOderNo() + 1;
+        //    txtOrderNo.Text = orderno.ToString();
+        //}
+        //void getCustomers()
+        //{
+        //    cbCustName.DataSource = new DAO().GetParties();
+        //    cbCustName.DisplayMember = "Name";
+        //    cbCustName.ValueMember = "Party-ID";
+        //    string[] postSource = new DAO().GetParties()
+        //            .AsEnumerable()
+        //            .Select<System.Data.DataRow, String>(x => x.Field<String>("Name"))
+        //            .ToArray();
+        //    var source = new AutoCompleteStringCollection();
+        //    source.AddRange(postSource);
+        //    cbCustName.AutoCompleteCustomSource = source;
+        //    cbCustName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        //    cbCustName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        //}
+
+        //private void nmQty_ValueChanged(object sender, EventArgs e)
+        //{
             
 
-            int cost = int.Parse(lblCost.Text);
-            int qty = Convert.ToInt16(nmQty.Value);
-            lblSubtotal.Text = (cost * qty).ToString();
+        //    int cost = int.Parse(lblCost.Text);
+        //    int qty = Convert.ToInt16(nmQty.Value);
+        //    lblSubtotal.Text = (cost * qty).ToString();
 
             
 
-        }
+        //}
 
         private void mtCreate_Click(object sender, EventArgs e)
         {
             try
             {
-                int itemid = int.Parse(cbItems.SelectedValue.ToString());
+                //int itemid = int.Parse(cbItems.SelectedValue.ToString());
 
-                if (Convert.ToInt32(nmQty.Value) > Convert.ToInt32(new DAO().getQty(itemid)))
-                {
-                    MessageBox.Show("cannot order item more than available in stock");
-                    return;
+                //if (Convert.ToInt32(txtSellingQty.Text) > Convert.ToInt32(new DAO().getQty(itemid)))
+                //{
+                //    MessageBox.Show("cannot order item more than available in stock");
+                //    return;
                     
-                }
+                //}
 
                 
 
-                if (lblCost.Text != "" && dtODate.Text != "" && cbItems.SelectedIndex != -1)
+                if (txtSellingWt.Text != "" && dtODate.Text != "" && cmLotNo.SelectedIndex != -1 &&  txtSellingQty.Text  != "" && cbCustName.SelectedIndex != -1  && txtRatePerKg.Text != "")
                 {
 
 
-
-                    OrderId = "ORD" + txtOrderNo.Text;
-                    amountTrnferRec = int.Parse(lblSubtotal.Text);
+                    
+                   
+              //      amountTrnferRec = int.Parse(lblSubtotal.Text);
                     DataTable dt = new DataTable();
                     SqlConnection conn = DBConn.GetInstance();
 
@@ -222,146 +226,159 @@ namespace WindowsFormsApplication1.Forms.Order
 
         private void mtNew_Click(object sender, EventArgs e)
         {
-            Clear_All();
+            //Clear_All();
         }
 
-        void Clear_Limited()
-        {
-            nmQty.Value = 1;
-        }
-        void Clear_All()
-        {
-            int orderno = int.Parse(txtOrderNo.Text);
-            txtOrderNo.Text = (orderno + 1).ToString();
-            cbCustName.SelectedIndex = 0;
-            cbItems.SelectedIndex = 0;
-            nmQty.Value = 1;
-            lblTotal.Text = "0";
-            btnPrintInvoice.Visible = false;
-        }
+        //void Clear_Limited()
+        //{
+        //    nmQty.Value = 1;
+        //}
+        //void Clear_All()
+        //{
+        //    int orderno = int.Parse(txtOrderNo.Text);
+        //    txtOrderNo.Text = (orderno + 1).ToString();
+        //    cbCustName.SelectedIndex = 0;
+        //    cbItems.SelectedIndex = 0;
+        //    nmQty.Value = 1;
+        //    lblTotal.Text = "0";
+        //    btnPrintInvoice.Visible = false;
+        //}
 
 
 
         private void AddOrder_Load(object sender, EventArgs e)
         {
-            dtODate.MinDate = DateTime.Today.Date;
+            cmLotNo.DataSource = new DAO().GetItems();
+            cmLotNo.DisplayMember = "IId";
+            cmLotNo.ValueMember = "IGarden";
+            cmLotNo.SelectedIndex = -1;
+
+            OrderId = "ORD" + new DAO().getLastOrderNo();
+            txtOrderNo.Text = OrderId.ToString();
+            txtOrderNo.Enabled = false;
+          
+
+
+
+
+            //dtODate.MinDate = DateTime.Today.Date;
         }
 
-        private void cbItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                lblCost.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
-                lblSubtotal.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
-                lblTotalQty.Text = new DAO().getQty(int.Parse(cbItems.SelectedValue.ToString())).ToString();
-                if (lblTotalQty.Text.Equals("0"))
-                {
-                    mtCreate.Hide();
-                }
-                else
-                {
-                    mtCreate.Show();
-                }
-                nmQty.Value = 1;
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void mtCart_Click(object sender, EventArgs e)
-        {
-            frmCart frmc = new frmCart(int.Parse(txtOrderNo.Text));
-            frmc.Show();
-            Dispose();
-        }
-
-        private void mtRefresh_Click(object sender, EventArgs e)
-        {
-            lblTotal.Text = new DAO().getTotal(int.Parse(txtOrderNo.Text)).ToString();
-            lblTotalQty.Text = new DAO().getQty(int.Parse(cbItems.SelectedValue.ToString())).ToString();
-        }
-
-        private void mtBack_Click(object sender, EventArgs e)
-        {
-
-            this.Dispose();
-            Main frm = new Main();
-            frm.Show();
-        }
-
-        private void btnCheckOut_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    int PId = int.Parse(cbCustName.SelectedValue.ToString());
-            //    int amount = int.Parse(lblTotal.Text);
-            //    int balance = amount - int.Parse(txtPay.Text);
-
-
-
-            //    int pay = int.Parse(txtPay.Text);
-
-            //    if (pay > amount)
-            //    {
-            //        lblCashBack.ForeColor = Color.Green;
-            //        lblCashBack.Text = "Cash Back: " + (pay - amount).ToString();
-            //        balance = 0;
-            //    }
-
-            //    int RemainingBalance  = new DAO().GetPartyBalance(PId);
-            //    new DAO().AddGlTransactions(DateTime.Today.Date, "Sales", 4, "Dr", "ORD" + txtOrderNo.Text, int.Parse(lblTotal.Text), 00);
-            //    new DAO().AddGlTransactions(DateTime.Today.Date, "Recievables", 6, "Cr", "ORD" + txtOrderNo.Text, int.Parse(lblTotal.Text), 00);
-
-            //    //new DAO().AddOrderTransaction(PId, pay, 0, int.Parse(cbItems.SelectedValue.ToString()), int.Parse(nmQty.Value.ToString()), "NA", DateTime.Today.Date, 0, RemainingBalance + balance);
-            //    new DAO().UpdatePartyBalance(PId, RemainingBalance + balance);
-                
-
-            //    //new DAO().AddCustomerPayment(dtODate.Text, cid, balance, amount);
-            //    lblBalance.ForeColor = Color.Green;
-            //    lblBalance.Text = "Checkout Successfull wtih remaining balance : " + balance;
-            //    txtPay.Text = "";
-            //    btnCheckOut.Hide();
-            //    //CheckOutSlip cs = new CheckOutSlip(int.Parse(txtOrderNo.Text));
-            //    //cs.Show();
-
-            //}
-            //catch (Exception ex)
-            //{
-            //   // MessageBox.Show(ex.Message);
-            //}
-
-        }
-
-        private void txtPay_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //private void txtPay_KeyPress(object sender, KeyPressEventArgs e)
+        //private void cbItems_SelectedIndexChanged(object sender, EventArgs e)
         //{
-        //    if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar) || e.KeyChar == 32)
+        //    try
         //    {
-        //        e.Handled = false;
+        //        lblCost.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
+        //        lblSubtotal.Text = new DAO().getCost(int.Parse(cbItems.SelectedValue.ToString())).ToString();
+        //        lblTotalQty.Text = new DAO().getQty(int.Parse(cbItems.SelectedValue.ToString())).ToString();
+        //        if (lblTotalQty.Text.Equals("0"))
+        //        {
+        //            mtCreate.Hide();
+        //        }
+        //        else
+        //        {
+        //            mtCreate.Show();
+        //        }
+        //        nmQty.Value = 1;
         //    }
-        //    else
+        //    catch (Exception ex)
         //    {
-        //        e.Handled = true;
-        //        System.Media.SystemSounds.Beep.Play();
-        //        lblmsg.Text = "Wrong Input!  Error";
+
         //    }
         //}
 
-        private void txtDiscount_KeyUp(object sender, KeyEventArgs e)
-        {
+        //private void mtCart_Click(object sender, EventArgs e)
+        //{
+        //    frmCart frmc = new frmCart(int.Parse(txtOrderNo.Text));
+        //    frmc.Show();
+        //    Dispose();
+        //}
 
-        }
+        //private void mtRefresh_Click(object sender, EventArgs e)
+        //{
+        //    lblTotal.Text = new DAO().getTotal(int.Parse(txtOrderNo.Text)).ToString();
+        //    lblTotalQty.Text = new DAO().getQty(int.Parse(cbItems.SelectedValue.ToString())).ToString();
+        //}
 
-        private void dtODate_ValueChanged(object sender, EventArgs e)
-        {
+        //private void mtBack_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //    this.Dispose();
+        //    Main frm = new Main();
+        //    frm.Show();
+        //}
+
+        //private void btnCheckOut_Click(object sender, EventArgs e)
+        //{
+        //    //try
+        //    //{
+        //    //    int PId = int.Parse(cbCustName.SelectedValue.ToString());
+        //    //    int amount = int.Parse(lblTotal.Text);
+        //    //    int balance = amount - int.Parse(txtPay.Text);
+
+
+
+        //    //    int pay = int.Parse(txtPay.Text);
+
+        //    //    if (pay > amount)
+        //    //    {
+        //    //        lblCashBack.ForeColor = Color.Green;
+        //    //        lblCashBack.Text = "Cash Back: " + (pay - amount).ToString();
+        //    //        balance = 0;
+        //    //    }
+
+        //    //    int RemainingBalance  = new DAO().GetPartyBalance(PId);
+        //    //    new DAO().AddGlTransactions(DateTime.Today.Date, "Sales", 4, "Dr", "ORD" + txtOrderNo.Text, int.Parse(lblTotal.Text), 00);
+        //    //    new DAO().AddGlTransactions(DateTime.Today.Date, "Recievables", 6, "Cr", "ORD" + txtOrderNo.Text, int.Parse(lblTotal.Text), 00);
+
+        //    //    //new DAO().AddOrderTransaction(PId, pay, 0, int.Parse(cbItems.SelectedValue.ToString()), int.Parse(nmQty.Value.ToString()), "NA", DateTime.Today.Date, 0, RemainingBalance + balance);
+        //    //    new DAO().UpdatePartyBalance(PId, RemainingBalance + balance);
+                
+
+        //    //    //new DAO().AddCustomerPayment(dtODate.Text, cid, balance, amount);
+        //    //    lblBalance.ForeColor = Color.Green;
+        //    //    lblBalance.Text = "Checkout Successfull wtih remaining balance : " + balance;
+        //    //    txtPay.Text = "";
+        //    //    btnCheckOut.Hide();
+        //    //    //CheckOutSlip cs = new CheckOutSlip(int.Parse(txtOrderNo.Text));
+        //    //    //cs.Show();
+
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //   // MessageBox.Show(ex.Message);
+        //    //}
+
+        //}
+
+        //private void txtPay_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        ////private void txtPay_KeyPress(object sender, KeyPressEventArgs e)
+        ////{
+        ////    if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar) || e.KeyChar == 32)
+        ////    {
+        ////        e.Handled = false;
+        ////    }
+        ////    else
+        ////    {
+        ////        e.Handled = true;
+        ////        System.Media.SystemSounds.Beep.Play();
+        ////        lblmsg.Text = "Wrong Input!  Error";
+        ////    }
+        ////}
+
+        //private void txtDiscount_KeyUp(object sender, KeyEventArgs e)
+        //{
+
+        //}
+
+        //private void dtODate_ValueChanged(object sender, EventArgs e)
+        //{
+
+        //}
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
@@ -392,7 +409,84 @@ namespace WindowsFormsApplication1.Forms.Order
         {
 
 
+            DataRowView dv = (DataRowView)cmLotNo.SelectedItem;
+            IId = (int)dv.Row["IId"];
 
+
+            DataTable dt2  = new DAO().GetItemsforOrder(IId);
+
+
+            txtGarden.Text  = dt2.Rows[0]["IGarden"].ToString();
+            txtGrade.Text   = dt2.Rows[0]["IGrade"].ToString();
+            txtQtyLeft.Text = dt2.Rows[0]["IQty"].ToString();
+            txtWtLeft.Text  = dt2.Rows[0]["IWtPerBag"].ToString();
+            ItemWtPerBag  = int.Parse( dt2.Rows[0]["IWtPerBag"].ToString());
+
+            txtQtyLeft.Enabled = false;
+            txtWtLeft.Enabled = false;
+
+
+
+
+        }
+
+        private void txtSellingQty_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSellingQty_Leave(object sender, EventArgs e)
+        {
+
+
+            if (Convert.ToInt32(txtSellingQty.Text) > Convert.ToInt32(new DAO().getQty(IId)))
+            {
+                txtSellingQty.Text = "";
+
+                MessageBox.Show("cannot order item more than available in stock");
+                return;
+
+            }
+            else
+            {
+
+                SellingWt = ItemWtPerBag * int.Parse(txtSellingQty.Text);
+                txtSellingWt.Text = SellingWt.ToString();
+
+            }
+
+
+
+        }
+
+        private void txtShortage_Leave(object sender, EventArgs e)
+        {
+
+            if(Decimal.Parse(txtShortage.Text) >= SellingWt)
+            {
+                txtShortage.Text = "";
+
+                MessageBox.Show("shortage cannot be more than or equal to selling weight");
+
+                return;
+
+
+            }
+            else
+            {
+                txtNetWeight.Text = Convert.ToString(SellingWt - Decimal.Parse(txtShortage.Text));
+                txtNetWeight.Enabled = false;   
+            }
+
+        }
+
+        private void txtRatePerKg_MouseLeave(object sender, EventArgs e)
+        {
+            RatePerKg = int.Parse(txtRatePerKg.Text);
+            if (RatePerKg > 0)
+            {
+                txtTotal.Text = Convert.ToString(RatePerKg * SellingWt); 
+            }
         }
 
         //private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)

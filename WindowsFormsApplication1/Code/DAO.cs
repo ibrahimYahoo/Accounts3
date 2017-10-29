@@ -1330,6 +1330,36 @@ namespace WindowsFormsApplication1.Code
 
         }
 
+
+        public int getLastOrderNo()
+        {
+            DataTable dtOrders = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT  TOP 1 OrderNo FROM Orders ORDER BY OrderNo DESC;", conn);
+            dad.Fill(dtOrders);
+            conn.Close();
+            int purchaseNo = 0;
+
+
+            try
+            {
+                purchaseNo = Convert.ToInt16(dtOrders.Rows[0][0]);
+
+            }
+            catch (Exception ex)
+            {
+                if (purchaseNo.Equals(null))
+                {
+                    return 0;
+                }
+
+            }
+
+
+            return purchaseNo;
+
+        }
+
         public int getLastCBId()
         {
             DataTable dtOrders = new DataTable();
@@ -1786,6 +1816,9 @@ namespace WindowsFormsApplication1.Code
             return dtProduct;
 
         }
+
+
+
 
         public DataTable GetItemsforOrder(int IId)
         {
