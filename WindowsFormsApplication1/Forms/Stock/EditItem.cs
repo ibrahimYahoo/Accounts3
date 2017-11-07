@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1.Forms
     public partial class EditItem : MetroFramework.Forms.MetroForm
     {
 
+        public  int IId = 0;
+
         Stock owner = new Stock();
 
         public EditItem(Stock form)
@@ -45,7 +47,7 @@ namespace WindowsFormsApplication1.Forms
             txtItemName.Text = "";
             TxtitemPrice.Text = "";
             txtItemQuantity.Text = "";
-            cmbcatname.Text = "";
+            //cmbcatname.Text = "";
             txtReOrder.Text = "";
         }
 
@@ -53,18 +55,18 @@ namespace WindowsFormsApplication1.Forms
         {
             try
             {
-                if (txtItemName.Text != "" && TxtitemPrice.Text != "" && txtItemQuantity.Text != "" && txtReOrder.Text != "" && cmbcatname.Text != "")
+                if (txtItemName.Text != "" && TxtitemPrice.Text != "" && txtItemQuantity.Text != "" && txtReOrder.Text != ""  /*cmbcatname.Text != ""*/)
                 {
                     DataTable dt = new DataTable();
                     SqlConnection conn = DBConn.GetInstance();
-                    int a = new DAO().GetCatIdfromDesc(cmbcatname.Text);
-                    SqlDataAdapter dad = new SqlDataAdapter("Update Items SET IName=@1,CatId=@2, IPrice=@3, IQty=@4,IReorder=@5 where IId=@6", conn);
+                   // int a = new DAO().GetCatIdfromDesc(cmbcatname.Text);
+                    SqlDataAdapter dad = new SqlDataAdapter("Update Items SET IGarden=@1,IwtPerBag=@2, IRatePerKg=@3, LotNo=@4,IGrade=@5 where IId=@6", conn);
                     dad.SelectCommand.Parameters.AddWithValue("@1",txtItemName.Text);
-                    dad.SelectCommand.Parameters.AddWithValue("@2", new DAO().GetCatIdfromDesc(cmbcatname.Text));
+                    dad.SelectCommand.Parameters.AddWithValue("@2", txtitemdesc.Text);
                     dad.SelectCommand.Parameters.AddWithValue("@3", TxtitemPrice.Text);
                     dad.SelectCommand.Parameters.AddWithValue("@4", txtItemQuantity.Text);
                     dad.SelectCommand.Parameters.AddWithValue("@5", txtReOrder.Text);
-                    dad.SelectCommand.Parameters.AddWithValue("@6", new DAO().getItemIdFromName(txtItemName.Text));
+                    dad.SelectCommand.Parameters.AddWithValue("@6", IId);
 
                     dad.Fill(dt);
                     conn.Close();
@@ -83,16 +85,17 @@ namespace WindowsFormsApplication1.Forms
 
         private void mtBack_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            Main frm = new Main();
-            frm.Show();
+            this.Close();
+            //this.Dispose();
+            //Stock frm = new Main();
+            //frm.Show();
         }
 
         private void cmbcatname_Click(object sender, EventArgs e)
         {
-            cmbcatname.DataSource = new DAO().ShowCatList1();
-            cmbcatname.DisplayMember = "Display";
-            cmbcatname.ValueMember = "CatId";
+            //cmbcatname.DataSource = new DAO().ShowCatList1();
+            //cmbcatname.DisplayMember = "Display";
+            //cmbcatname.ValueMember = "CatId";
         }
 
         private void txtItemQuantity_KeyPress(object sender, KeyPressEventArgs e)

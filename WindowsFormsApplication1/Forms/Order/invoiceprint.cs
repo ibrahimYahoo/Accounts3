@@ -17,33 +17,68 @@ namespace WindowsFormsApplication1.Forms.Order
         {
 
             List<WindowsFormsApplication1.POJO.Order> lstInvoice = new List<POJO.Order>();
-            DataTable ds = new DAO().getInvoiceReportData(AddOrder.OrderId);
+            DataTable ds;
+            if (AddOrder.OrderId == "")
+            {
+                ds = new DAO().getInvoiceReportData(AllOrders.selectedOrderId);
+
+            }
+            else
+            {
+                ds = new DAO().getInvoiceReportData(AddOrder.OrderId);
+
+            }
 
             foreach (DataRow row in ds.Rows)
             {
 
 
- 
+
 
 
                 lstInvoice.Add(new POJO.Order
 
                 {
 
-                    OrderId = row["OrderId"].ToString(),
+                    //OrderId = row["OrderId"].ToString(),
 
-                    CustomerName = row["CustomerName"].ToString(),
+                    // CustomerName = row["CustomerName"].ToString(),
 
-                    ODate =  DateTime.Parse( row["Date"].ToString()),
+                    //ODate =  DateTime.Parse( row["Date"].ToString()),
 
-                    ItemName = row["Item-Name"].ToString(),
+                    // ItemName = row["Item-Name"].ToString(),
+
+
+                    LotNo = int.Parse(row["LotNo"].ToString()),
+
+                    Grade = row["Grade"].ToString(),
+
+                    Garden = row["Garden"].ToString(),
 
                     Qty = int.Parse(row["Quantity"].ToString()),
 
-                    Cost = int.Parse(row["Cost"].ToString()),
 
 
-                    TotalCost = Convert.ToInt32(row["TotalCost"])
+                    WtperBag = int.Parse(row["IWtPerBag"].ToString()),
+
+
+
+
+                    TotalWeight = int.Parse(row["TotalWeight"].ToString()),
+
+
+                    Shortage = int.Parse(row["Shortage"].ToString()),
+
+                    //  Cost = int.Parse(row["Cost"].ToString()),
+
+
+                    TotalCost = Convert.ToInt32(row["TotalCost"]),
+
+                    NetWeight = int.Parse(row["TotalWeight"].ToString()) - int.Parse(row["Shortage"].ToString()),
+
+                    RatePerKg = int.Parse(row["RatePerKg"].ToString())
+
+
 
                 });
 
@@ -63,15 +98,30 @@ namespace WindowsFormsApplication1.Forms.Order
                 crystalReportInvoice1.SetDataSource(lstInvoice);
 
 
-                string gg = row[0].ToString();
-                string rr = row[1].ToString();
-                DateTime dd = DateTime.Parse(row[2].ToString());
+                string CustomerName = row[0].ToString();
+                string InvoiceNo = row[1].ToString();
+                DateTime Date = DateTime.Parse(row[2].ToString());
+
+                string BrokerAmount = row["BrokeryAmount"].ToString();
+
+                string BrokerName = row["BrokerName"].ToString();
+
+                string Bardena = row["Bardena"].ToString();
+                string Tulai = row["Tulai"].ToString();
+                string Carrage = row["Carrage"].ToString();
+                int Total = Convert.ToInt32(row["TotalCost"]) - Convert.ToInt32(Bardena) - Convert.ToInt32(Tulai) - Convert.ToInt32(Carrage);
 
 
-
-                crystalReportInvoice1.SetParameterValue("CustomerName", gg);
-                crystalReportInvoice1.SetParameterValue("InvoiceNo", rr);
-                crystalReportInvoice1.SetParameterValue("Date", dd);
+                crystalReportInvoice1.SetParameterValue("CustomerName", CustomerName);
+                crystalReportInvoice1.SetParameterValue("InvoiceNo", InvoiceNo);
+                crystalReportInvoice1.SetParameterValue("Date", Date);
+                crystalReportInvoice1.SetParameterValue("BrokerName", BrokerName);
+                crystalReportInvoice1.SetParameterValue("BrokeryAmount", BrokerAmount);
+                crystalReportInvoice1.SetParameterValue("Bardena", Bardena);
+                crystalReportInvoice1.SetParameterValue("Tulai", Tulai);
+                crystalReportInvoice1.SetParameterValue("Carrage", Carrage);
+                crystalReportInvoice1.SetParameterValue("Total", Convert.ToInt32(row["TotalCost"]));
+                crystalReportInvoice1.SetParameterValue("Cost", Total);
 
 
 

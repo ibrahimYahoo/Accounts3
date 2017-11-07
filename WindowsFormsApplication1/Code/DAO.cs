@@ -457,7 +457,7 @@ namespace WindowsFormsApplication1.Code
         {
             DataTable dtparties = new DataTable();
 
-            dad = new SqlDataAdapter("Select PurId from Purchase WHERE PId = @PId", conn);
+            dad = new SqlDataAdapter("Select PurId from Purchase WHERE PId = @PId AND Status != 'Paid'", conn);
             dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
 
             dad.Fill(dtparties);
@@ -698,6 +698,27 @@ namespace WindowsFormsApplication1.Code
 
         }
 
+        public DataTable GetBroker(string PName)
+        {
+            DataTable dtParties = new DataTable();
+
+            dad = new SqlDataAdapter("Select BId  from Brokers where BrokerName = @PName", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@PName", PName);
+            dad.Fill(dtParties);
+            conn.Close();
+            if (dtParties.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return dtParties;
+
+
+            }
+
+        }
+
         public DataTable GetParties(string name)
         {
             DataTable dtParties = new DataTable();
@@ -817,14 +838,84 @@ namespace WindowsFormsApplication1.Code
 
         public DataTable getInvoiceReportData(string OrderId)
         {
-            DataTable dtCustomers = new DataTable();
-            dad = new SqlDataAdapter("select P.PName as 'CustomerName',o.OrderId, o.ODate as 'Date',i.IName as 'Item-Name',P.PId,o.Qty as Quantity,o.Cost as Cost,o.TotalCost as TotalCost,o.AmountPaid from Orders o,Party P,Items i where o.PId = P.PId and o.IId = i.IId AND o.OrderId = @OrderId ORDER by ODate desc;", conn);
-            dad.SelectCommand.Parameters.AddWithValue("@OrderId", OrderId);
+            //DataTable dtCustomers = new DataTable();
 
-            dad.Fill(dtCustomers);
-            conn.Close();
-            return dtCustomers;
+            //dad = new SqlDataAdapter("select P.PName as 'CustomerName',o.OrderId, o.ODate as 'Date',i.IGarden as 'Garden',o.Qty as Quantity,o.Cost as Cost,o.TotalCost as TotalCost,o.AmountPaid from Orders o,Party P,Items i where o.PId = P.PId and o.IId = i.IId AND o.OrderId = @OrderId ORDER by ODate desc;", conn);
+            //dad.SelectCommand.Parameters.AddWithValue("@OrderId", OrderId);
+
+            //dad.Fill(dtCustomers);
+            //conn.Close();
+            //return dtCustomers;
+
+            SqlCommand com = new SqlCommand("Sp_InvoiceReportData", conn);
+
+            com.CommandType = CommandType.StoredProcedure;
+
+            com.Parameters.AddWithValue("@OrderId", OrderId);
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+
+            DataTable ds = new DataTable();
+
+            da.Fill(ds);
+
+            return ds;
         }
+
+        public DataTable getRecieptReportData(string OrderId)
+        {
+            
+            SqlCommand com = new SqlCommand("Sp_RecieptReportData", conn);
+
+            com.CommandType = CommandType.StoredProcedure;
+
+            com.Parameters.AddWithValue("@OrderId", OrderId);
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+
+            DataTable ds = new DataTable();
+
+            da.Fill(ds);
+
+            return ds;
+        }
+
+
+        public DataTable getOrderaData()
+        {
+
+            SqlCommand com = new SqlCommand("GetOrdersDetails", conn);
+
+            com.CommandType = CommandType.StoredProcedure;
+
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+
+            DataTable ds = new DataTable();
+
+            da.Fill(ds);
+
+            return ds;
+        }
+
+        public DataTable getDeliveryOrderData(string OrderId)
+        {
+
+            SqlCommand com = new SqlCommand("Sp_DeliveryOrderData", conn);
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@OrderId", OrderId);
+
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+
+            DataTable ds = new DataTable();
+
+            da.Fill(ds);
+
+            return ds;
+        }
+
 
         public DataTable getRecieptReportData(int  CBId)
         {
@@ -1162,12 +1253,19 @@ namespace WindowsFormsApplication1.Code
 
         public DataTable getItems()
         {
-            DataTable dtItems = new DataTable();
+            SqlCommand com = new SqlCommand("sp_getItems", conn);
 
-            dad = new SqlDataAdapter("Select IId,IName as 'Item Name',CatId as 'Category-ID', IPrice as 'Selling Price',IQty as 'Qty', IReorder as 'Reorder' from Items", conn);
-            dad.Fill(dtItems);
-            conn.Close();
-            return dtItems;
+            com.CommandType = CommandType.StoredProcedure;
+
+           // com.Parameters.AddWithValue("@OrderId", OrderId);
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+
+            DataTable ds = new DataTable();
+
+            da.Fill(ds);
+
+            return ds;
         }
 
         public int getMaxOrderOderNo()
@@ -1200,6 +1298,15 @@ namespace WindowsFormsApplication1.Code
             cmd.Parameters.AddWithValue("@itemid", itemid);
             cmd.ExecuteNonQuery();
         }
+
+        public void RemoveWt(decimal iqty, int itemid)
+        {
+            SqlCommand cmd = new SqlCommand("Update Items set ITotalWeight = @nqty where IId = @itemid", conn);
+            cmd.Parameters.AddWithValue("@nqty", iqty);
+            cmd.Parameters.AddWithValue("@itemid", itemid);
+            cmd.ExecuteNonQuery();
+        }
+
 
         public decimal getQty(int itemid)
         {
@@ -1283,7 +1390,7 @@ namespace WindowsFormsApplication1.Code
 
         public void AddPartyGlAccount(string AccountName,string Type)
         {
-            SqlCommand cmd = new SqlCommand("Insert into AccountChart (AccountName,AccountType,Type) values (@AccountName,'ASSET',@Type)", conn);
+            SqlCommand cmd = new SqlCommand("Insert into AccountChart (AccountName,AccountType,DetailType) values (@AccountName,'ASSET',@Type)", conn);
             cmd.Parameters.AddWithValue("@AccountName", AccountName);
             cmd.Parameters.AddWithValue("@Type", Type);
 
@@ -1701,16 +1808,29 @@ namespace WindowsFormsApplication1.Code
             dad.SelectCommand.Parameters.AddWithValue("@OrderId", OrderId);
             dad.Fill(dtCustomers);
 
+            int totalcost = int.Parse(dtCustomers.Rows[0][0].ToString());
+            decimal amountpaidhis = decimal.Parse(dtCustomers.Rows[0][1].ToString()) + amountPaid;
 
-            if (Convert.ToInt32( dtCustomers.Rows[0][0]) <= amountPaid){
+            if (totalcost <= amountpaidhis)
+            {
 
                 SqlCommand cmd = new SqlCommand("Update Orders set Status = 'Paid', AmountPaid = @amountPaid where PId = @PId AND OrderId = @OrderId", conn);
                 cmd.Parameters.AddWithValue("@PId", PId);
-                cmd.Parameters.AddWithValue("@amountPaid", amountPaid);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
 
                 cmd.Parameters.AddWithValue("@OrderId", OrderId);
                 cmd.ExecuteNonQuery();
 
+
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'PartialPaid', AmountPaid = @amountPaid where PId = @PId AND OrderId = @OrderId", conn);
+                cmd.Parameters.AddWithValue("@PId", PId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
+
+                cmd.Parameters.AddWithValue("@OrderId", OrderId);
+                cmd.ExecuteNonQuery();
 
             }
             conn.Close();
@@ -1718,6 +1838,50 @@ namespace WindowsFormsApplication1.Code
 
 
         }
+
+
+        public void checkPurchaseSatus(string PurId, decimal amountPaid, int PId)
+        {
+
+            DataTable dtCustomers = new DataTable();
+            conn = DBConn.GetInstance();
+
+            dad = new SqlDataAdapter("Select Total,AmountPaid,Status  from Purchase where PId = @PId AND PurId = @PurId ", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
+            dad.SelectCommand.Parameters.AddWithValue("@PurId", PurId);
+            dad.Fill(dtCustomers);
+
+            int totalcost = int.Parse(dtCustomers.Rows[0][0].ToString());
+            decimal amountpaidhis = decimal.Parse(dtCustomers.Rows[0][1].ToString()) + amountPaid;
+
+            if (totalcost <= amountpaidhis)
+            {
+
+                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'Paid', AmountPaid = @amountPaid where PId = @PId AND PurId = @PurId", conn);
+                cmd.Parameters.AddWithValue("@PId", PId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
+
+                cmd.Parameters.AddWithValue("@PurId", PurId);
+                cmd.ExecuteNonQuery();
+
+
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'PartialPaid', AmountPaid = @amountPaid where PId = @PId AND PurId = @PurId", conn);
+                cmd.Parameters.AddWithValue("@PId", PId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
+
+                cmd.Parameters.AddWithValue("@PurId", PurId);
+                cmd.ExecuteNonQuery();
+
+            }
+            conn.Close();
+
+
+
+        }
+
 
         public void UpdateCustomerBalance(int cid, int balance)
         {
@@ -1810,7 +1974,67 @@ namespace WindowsFormsApplication1.Code
             conn = DBConn.GetInstance();
 
 
-            dad = new SqlDataAdapter("Select IId,IGarden  from [Items] ", conn);
+            dad = new SqlDataAdapter("Select IId, IGarden  from [Items] ", conn);
+            dad.Fill(dtProduct);
+            conn.Close();
+            return dtProduct;
+
+        }
+
+        // public DataTable GetGardens()
+        //{
+        //    DataTable dtProduct = new DataTable();
+        //    conn = DBConn.GetInstance();
+
+
+        //    dad = new SqlDataAdapter("Select DISTINCT IGarden  from [Items] ", conn);
+        //    dad.Fill(dtProduct);
+        //    conn.Close();
+        //    return dtProduct;
+
+        //}
+
+
+        public AutoCompleteStringCollection GetGardens()
+        {
+            //DataTable dtparties = new DataTable();
+
+
+            //dad = new SqlDataAdapter("Select  [PName] as Name FROM [Party]", conn);
+
+
+            //dad.Fill(dtparties);
+            //conn.Close();
+            //return dtparties;
+            //conn.Open();
+            AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
+            string querry = @"Select DISTINCT [IGarden]  from [Items] ";
+            SqlCommand cmd = new SqlCommand(querry, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows == true)
+            {
+                while (dr.Read())
+                    namesCollection.Add(dr["IGarden"].ToString());
+
+            }
+
+            dr.Close();
+            conn.Close();
+
+            return namesCollection;
+
+
+
+
+        }
+
+        public DataTable GetLotNoS()
+        {
+            DataTable dtProduct = new DataTable();
+            conn = DBConn.GetInstance();
+
+
+            dad = new SqlDataAdapter("Select IId,LotNo  from [Items] ", conn);
             dad.Fill(dtProduct);
             conn.Close();
             return dtProduct;
@@ -1826,7 +2050,7 @@ namespace WindowsFormsApplication1.Code
             conn = DBConn.GetInstance();
 
 
-            dad = new SqlDataAdapter("Select IGarden,IGrade,IQty,IWtPerBag  from [Items] WHERE IId = @IId ", conn);
+            dad = new SqlDataAdapter("Select IGarden,IGrade,IQty,IWtPerBag,ITotalWeight  from [Items] WHERE IId = @IId ", conn);
             dad.SelectCommand.Parameters.AddWithValue("@IId", IId);
             dad.Fill(dtProduct);
             conn.Close();
@@ -1840,7 +2064,20 @@ namespace WindowsFormsApplication1.Code
             conn = DBConn.GetInstance();
 
 
-            dad = new SqlDataAdapter("Select BId,BrokerName  from Brokers ", conn);
+            dad = new SqlDataAdapter("Select BId,BrokerName  from Brokers WHERE BId != 2 ", conn);
+            dad.Fill(dtProduct);
+            conn.Close();
+            return dtProduct;
+
+        }
+
+        public DataTable GetBrokersfrm()
+        {
+            DataTable dtProduct = new DataTable();
+            conn = DBConn.GetInstance();
+
+
+            dad = new SqlDataAdapter("Select BId,BrokerName,Address,Email,ContactNo  from Brokers ", conn);
             dad.Fill(dtProduct);
             conn.Close();
             return dtProduct;
@@ -1938,19 +2175,20 @@ namespace WindowsFormsApplication1.Code
             conn.Close();
         }
 
-        public void insertItem(int LotNo, string Grade,string IGarden,int totalBags,int WtPerBag,int IRatePerKg,decimal ITotalCost)
+        public void insertItem(int LotNo, string Grade,string IGarden,int totalBags,int WtPerBag,int IRatePerKg,decimal ITotalCost,decimal ITotalWeight)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = DBConn.GetInstance();
 
-            SqlDataAdapter dad = new SqlDataAdapter("Insert into Items(LotNo,IGrade,IQty,IGarden,IWtPerBag,IRatePerKg,ITotalCost) values(@LotNo,@Grade,@totalBags,@IGarden,@WtPerBag,@IRatePerKg,@ITotalCost)", conn);
+            SqlDataAdapter dad = new SqlDataAdapter("Insert into Items(LotNo,IGrade,IQty,IGarden,IWtPerBag,IRatePerKg,ITotalCost,ITotalWeight) values(@LotNo,@Grade,@totalBags,@IGarden,@WtPerBag,@IRatePerKg,@ITotalCost,@ITotalWeight)", conn);
             dad.SelectCommand.Parameters.AddWithValue("@LotNo", LotNo);
             dad.SelectCommand.Parameters.AddWithValue("@Grade", Grade);
             dad.SelectCommand.Parameters.AddWithValue("@IRatePerKg", IRatePerKg);
             dad.SelectCommand.Parameters.AddWithValue("@IGarden", IGarden);
             dad.SelectCommand.Parameters.AddWithValue("@totalBags", totalBags);
             dad.SelectCommand.Parameters.AddWithValue("@WtPerBag", WtPerBag);
-            dad.SelectCommand.Parameters.AddWithValue("@ITotalCost", (IRatePerKg * (WtPerBag * totalBags  )) );
+            dad.SelectCommand.Parameters.AddWithValue("@ITotalCost", ITotalCost);
+            dad.SelectCommand.Parameters.AddWithValue("@ITotalWeight", ITotalWeight);
 
 
             dad.Fill(dt);

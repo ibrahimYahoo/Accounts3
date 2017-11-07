@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
     public partial class AddPurchase : MetroFramework.Forms.MetroForm
     {
        Purchase.Purchases owner;
-        public AddPurchase(Purchases frm1)
+        public AddPurchase(Purchase.Purchases frm1)
         {
             owner = frm1;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddPurchase_FormClosing);
@@ -32,6 +32,9 @@ namespace WindowsFormsApplication1.Forms.Purchase
         private void AddPurchase_Load(object sender, EventArgs e)
         {
 
+            txtGardenName.AutoCompleteMode = AutoCompleteMode.Append;
+            txtGardenName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtGardenName.AutoCompleteCustomSource = new DAO().GetGardens();
 
             cmbsuppname.DataSource = new DAO().GetParties();
             cmbsuppname.DisplayMember = "Name";
@@ -39,10 +42,10 @@ namespace WindowsFormsApplication1.Forms.Purchase
             cmbsuppname.SelectedIndex = -1;
 
             
-            cmGardenName.DataSource = new DAO().GetItems();
-            cmGardenName.DisplayMember = "IGarden";
-            cmGardenName.ValueMember = "IId";
-            cmGardenName.SelectedIndex = -1;
+          //  cmGardenName.DataSource = new DAO().GetGardens();
+          //  cmGardenName.DisplayMember = "IGarden";
+          ////  cmGardenName.ValueMember = "IId";
+          //  cmGardenName.SelectedIndex = -1;
 
             cmBrokerName.DataSource = new DAO().GetBrokers();
             cmBrokerName.DisplayMember = "BrokerName";
@@ -67,7 +70,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
             try
             {
-                if (txtLotNo.Text != "" && cmGardenName.SelectedIndex != -1 && txtGrade.Text != "" && txtTotalBagsQuantity.Text != "" && txtRatePerKg.Text != "0" && txtWeightPerBag.Text != "0")
+                if (txtLotNo.Text != "" && txtGardenName.Text != "" && txtGrade.Text != "" && txtTotalBagsQuantity.Text != "" && txtRatePerKg.Text != "0" && txtWeightPerBag.Text != "0")
                 {
 
                     string PurchaseId  = "PUR" + new DAO().getLastPurchaseNo() ;
@@ -78,11 +81,11 @@ namespace WindowsFormsApplication1.Forms.Purchase
                     int PId = (int)dv.Row["Party-ID"];
 
 
-                   // int PId = int.Parse(cmbsuppname.SelectedValue.ToString());
+                    // int PId = int.Parse(cmbsuppname.SelectedValue.ToString());
 
-                    DataRowView dv2 = (DataRowView)cmGardenName.SelectedItem;                                  
-                    string GardenName = (string)dv2.Row["IGarden"];
-                    int BId = 0;
+                    //DataRowView dv2 = (DataRowView)cmGardenName.SelectedItem;                                  
+                    string GardenName = txtGardenName.Text;
+                    int BId = 2;
                     if (cmBrokerName.SelectedIndex != -1) {
 
                         DataRowView dv3 = (DataRowView)cmBrokerName.SelectedItem;
@@ -95,8 +98,10 @@ namespace WindowsFormsApplication1.Forms.Purchase
                     int TotalQuantity = int.Parse(txtTotalBagsQuantity.Text);
 
                     decimal TotalCost = (int.Parse(txtRatePerKg.Text) * (int.Parse(txtWeightPerBag.Text) * TotalQuantity));
+                    decimal TotalWieght = (int.Parse(txtWeightPerBag.Text) * (int.Parse(txtTotalBagsQuantity.Text)));
 
-                    new DAO().insertItem(int.Parse(txtLotNo.Text),txtGrade.Text,GardenName,int.Parse(txtTotalBagsQuantity.Text),int.Parse(txtWeightPerBag.Text),int.Parse(txtRatePerKg.Text),TotalCost);
+
+                    new DAO().insertItem(int.Parse(txtLotNo.Text),txtGrade.Text,GardenName,int.Parse(txtTotalBagsQuantity.Text),int.Parse(txtWeightPerBag.Text),int.Parse(txtRatePerKg.Text),TotalCost, TotalWieght);
 
 
                     int IId = new DAO().getItemIdFromName(GardenName);
@@ -104,7 +109,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
                     DataTable dt = new DataTable();
                     SqlConnection conn = DBConn.GetInstance();
-                    SqlDataAdapter dad = new SqlDataAdapter("Insert INTO Purchase(PurId,IId,PId,PurDate,IRatePerKg,ItemQty,BrokeryAmount,BId,Bardena,Tulai,Carrage,Total) values (@PurId,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)", conn);
+                    SqlDataAdapter dad = new SqlDataAdapter("Insert INTO Purchase(PurId,IId,PId,PurDate,IRatePerKg,ItemQty,BrokeryAmount,BId,Bardena,Tulai,Carrage,Total,AmountPaid,Status) values (@PurId,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,0,0)", conn);
 
                     dad.SelectCommand.Parameters.AddWithValue("@PurId", PurchaseId);
 
@@ -147,10 +152,10 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
                     //MessageBox.Show("Purchase Inserted successfully");
                     
-                    cmbsuppname.DataSource = new DAO().GetParties();
-                    cmbsuppname.DisplayMember = "Name";
-                    cmbsuppname.ValueMember = "Party-ID";
-                    cmbsuppname.SelectedIndex = -1;
+                    //cmbsuppname.DataSource = new DAO().GetParties();
+                    //cmbsuppname.DisplayMember = "Name";
+                    //cmbsuppname.ValueMember = "Party-ID";
+                    //cmbsuppname.SelectedIndex = -1;
 
                     //cmbItemname.DataSource = new DAO().GetItemsDesc();
                     //cmbItemname.DisplayMember = "Display";
@@ -210,14 +215,15 @@ namespace WindowsFormsApplication1.Forms.Purchase
             txtTotalBagsQuantity.Text = "";
             cmbpaydate.Text = "";
             cmbsuppname.SelectedIndex = -1;
-            cmGardenName.SelectedIndex = -1;
+            //cmGardenName.SelectedIndex = -1;
+            txtGardenName.Text = "";
         }
 
         private void btnback_Click(object sender, EventArgs e)
         {
             this.Close();
-            Main frm = new Main();
-            frm.Show();
+            //Main frm = new Main();
+            //frm.Show();
         }
 
         //private void cmbItemname_SelectedIndexChanged(object sender, EventArgs e)

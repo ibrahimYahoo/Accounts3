@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
         private void RecieptPrint_Load(object sender, EventArgs e)
         {
             List<WindowsFormsApplication1.POJO.Order> lstInvoice = new List<POJO.Order>();
-            DataTable ds = new DAO().getInvoiceReportData(AddReciept.OrderId);
+            DataTable ds = new DAO().getRecieptReportData(AddReciept.OrderId);
 
             foreach (DataRow row in ds.Rows)
             {
@@ -34,20 +34,51 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
                 {
 
-                    OrderId = row["OrderId"].ToString(),
+                    // OrderId = row["OrderId"].ToString(),
 
-                    CustomerName = row["CustomerName"].ToString(),
+                    // CustomerName = row["CustomerName"].ToString(),
 
-                    ODate = DateTime.Parse(row["Date"].ToString()),
+                    // ODate = DateTime.Parse(row["Date"].ToString()),
 
-                    ItemName = row["Item-Name"].ToString(),
+                    //// ItemName = row["Item-Name"].ToString(),
+
+                    // Qty = int.Parse(row["Quantity"].ToString()),
+
+                    // //Cost = int.Parse(row["Cost"].ToString()),
+
+
+                    // TotalCost = Convert.ToInt32(row["TotalCost"])
+
+                    LotNo = int.Parse(row["LotNo"].ToString()),
+
+                    Grade = row["Grade"].ToString(),
+
+                    Garden = row["Garden"].ToString(),
 
                     Qty = int.Parse(row["Quantity"].ToString()),
 
-                    Cost = int.Parse(row["Cost"].ToString()),
 
 
-                    TotalCost = Convert.ToInt32(row["TotalCost"])
+                    WtperBag = int.Parse(row["IWtPerBag"].ToString()),
+
+
+
+
+                    TotalWeight = int.Parse(row["TotalWeight"].ToString()),
+
+
+                    Shortage = int.Parse(row["Shortage"].ToString()),
+
+                    //  Cost = int.Parse(row["Cost"].ToString()),
+
+
+                    TotalCost = Convert.ToInt32(row["TotalCost"]),
+
+                    NetWeight = int.Parse(row["TotalWeight"].ToString()) - int.Parse(row["Shortage"].ToString()),
+
+                    RatePerKg = int.Parse(row["RatePerKg"].ToString())
+
+
 
                 });
 
@@ -60,38 +91,46 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
             foreach (DataRow row in ds.Rows)
             {
+                crystalReportReciepts21.SetDataSource(lstInvoice);
 
 
+                string CustomerName = row[0].ToString();
+                string InvoiceNo = row[1].ToString();
+                DateTime Date = DateTime.Parse(row[2].ToString());
 
+                //string BrokerAmount = row["BrokeryAmount"].ToString();
 
-                crystalReportReciept1.SetDataSource(lstInvoice);
+                //string BrokerName = row["BrokerName"].ToString();
 
+                string Bardena = row["Bardena"].ToString();
+                string Tulai = row["Tulai"].ToString();
+                string Carrage = row["Carrage"].ToString();
+                decimal Total = Convert.ToDecimal(row["TotalCost"]) + Convert.ToInt32(Bardena) + Convert.ToInt32(Tulai) + Convert.ToInt32(Carrage);
 
-                string gg = row[0].ToString();
-                string rr = row[1].ToString();
-                DateTime dd = DateTime.Parse(row[2].ToString());
-                string accountno = row[5].ToString();
-                string amountPaid = row["AmountPaid"].ToString();
+                decimal AmountPaid = decimal.Parse(row["AmountPaid"].ToString());
 
-              int bal =   int.Parse(row["TotalCost"].ToString()) - int.Parse(row["AmountPaid"].ToString());
+                // decimal Balance = Convert.ToDecimal(row["TotalCost"]) + Convert.ToInt32(Bardena) + Convert.ToInt32(Tulai) + Convert.ToInt32(Carrage) - decimal.Parse(row["AmountPaid"].ToString());
 
-                crystalReportReciept1.SetParameterValue("CustomerName", gg);
-                //crystalReportReciept1.SetParameterValue("InvoiceNo", rr);
-                crystalReportReciept1.SetParameterValue("Date", dd);
-                crystalReportReciept1.SetParameterValue("AccountNumber", accountno);
+                decimal Balance = Total - AmountPaid;
 
-                crystalReportReciept1.SetParameterValue("AmountPaid", amountPaid);
-
-                crystalReportReciept1.SetParameterValue("Balance", bal.ToString());
-
-
+                crystalReportReciepts21.SetParameterValue("CustomerName", CustomerName);
+                crystalReportReciepts21.SetParameterValue("InvoiceNo", InvoiceNo);
+                crystalReportReciepts21.SetParameterValue("Date", Date);
+               //  crystalReportReciepts21.SetParameterValue("BrokerName", BrokerName);
+               // crystalReportReciepts21.SetParameterValue("BrokeryAmount", BrokerAmount);
+                crystalReportReciepts21.SetParameterValue("Bardena", Bardena);
+                crystalReportReciepts21.SetParameterValue("Tulai", Tulai);
+                crystalReportReciepts21.SetParameterValue("Carrage", Carrage);
+                crystalReportReciepts21.SetParameterValue("Total", Total);
+                crystalReportReciepts21.SetParameterValue("AmountPaid", AmountPaid);
+                crystalReportReciepts21.SetParameterValue("Balance", Balance);
 
 
 
             }
 
 
-            crystalReportViewer1.ReportSource = crystalReportReciept1;
+            crystalReportViewer1.ReportSource = crystalReportReciepts21;
 
 
         }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.txtitemdesc = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -42,24 +41,8 @@
             this.mtClear = new MetroFramework.Controls.MetroTile();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtReOrder = new MetroFramework.Controls.MetroTextBox();
-            this.cmbcatname = new System.Windows.Forms.ComboBox();
             this.lblmsg = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.ForeColor = System.Drawing.Color.White;
-            this.metroLabel5.Location = new System.Drawing.Point(30, 104);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(150, 25);
-            this.metroLabel5.TabIndex = 48;
-            this.metroLabel5.Text = "Category Name : ";
-            this.metroLabel5.UseCustomBackColor = true;
-            this.metroLabel5.UseCustomForeColor = true;
             // 
             // metroLabel4
             // 
@@ -70,9 +53,9 @@
             this.metroLabel4.ForeColor = System.Drawing.Color.White;
             this.metroLabel4.Location = new System.Drawing.Point(33, 340);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(152, 25);
+            this.metroLabel4.Size = new System.Drawing.Size(134, 25);
             this.metroLabel4.TabIndex = 47;
-            this.metroLabel4.Text = "Item Description: ";
+            this.metroLabel4.Text = "ItemWt.Per Bag";
             this.metroLabel4.UseCustomBackColor = true;
             this.metroLabel4.UseCustomForeColor = true;
             // 
@@ -98,7 +81,7 @@
             this.txtitemdesc.MaxLength = 32767;
             this.txtitemdesc.Name = "txtitemdesc";
             this.txtitemdesc.PasswordChar = '\0';
-            this.txtitemdesc.PromptText = "Enter Description";
+            this.txtitemdesc.PromptText = "Enter item weight per Bag";
             this.txtitemdesc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtitemdesc.SelectedText = "";
             this.txtitemdesc.SelectionLength = 0;
@@ -107,7 +90,7 @@
             this.txtitemdesc.Size = new System.Drawing.Size(232, 30);
             this.txtitemdesc.TabIndex = 46;
             this.txtitemdesc.UseSelectable = true;
-            this.txtitemdesc.WaterMark = "Enter Description";
+            this.txtitemdesc.WaterMark = "Enter item weight per Bag";
             this.txtitemdesc.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtitemdesc.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -120,9 +103,9 @@
             this.metroLabel3.ForeColor = System.Drawing.Color.White;
             this.metroLabel3.Location = new System.Drawing.Point(49, 249);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(99, 25);
+            this.metroLabel3.Size = new System.Drawing.Size(92, 25);
             this.metroLabel3.TabIndex = 45;
-            this.metroLabel3.Text = "Item Price: ";
+            this.metroLabel3.Text = "RatePerKg";
             this.metroLabel3.UseCustomBackColor = true;
             this.metroLabel3.UseCustomForeColor = true;
             // 
@@ -148,7 +131,7 @@
             this.TxtitemPrice.MaxLength = 32767;
             this.TxtitemPrice.Name = "TxtitemPrice";
             this.TxtitemPrice.PasswordChar = '\0';
-            this.TxtitemPrice.PromptText = "Enter Amount";
+            this.TxtitemPrice.PromptText = "Enter Rate Per Kg";
             this.TxtitemPrice.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TxtitemPrice.SelectedText = "";
             this.TxtitemPrice.SelectionLength = 0;
@@ -157,7 +140,7 @@
             this.TxtitemPrice.Size = new System.Drawing.Size(232, 30);
             this.TxtitemPrice.TabIndex = 44;
             this.TxtitemPrice.UseSelectable = true;
-            this.TxtitemPrice.WaterMark = "Enter Amount";
+            this.TxtitemPrice.WaterMark = "Enter Rate Per Kg";
             this.TxtitemPrice.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TxtitemPrice.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.TxtitemPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtitemPrice_KeyPress);
@@ -171,9 +154,9 @@
             this.metroLabel2.ForeColor = System.Drawing.Color.White;
             this.metroLabel2.Location = new System.Drawing.Point(49, 201);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(130, 25);
+            this.metroLabel2.Size = new System.Drawing.Size(70, 25);
             this.metroLabel2.TabIndex = 43;
-            this.metroLabel2.Text = "Item Quantity: ";
+            this.metroLabel2.Text = "Lot No.";
             this.metroLabel2.UseCustomBackColor = true;
             this.metroLabel2.UseCustomForeColor = true;
             // 
@@ -199,7 +182,7 @@
             this.txtItemQuantity.MaxLength = 32767;
             this.txtItemQuantity.Name = "txtItemQuantity";
             this.txtItemQuantity.PasswordChar = '\0';
-            this.txtItemQuantity.PromptText = "Enter Quantity";
+            this.txtItemQuantity.PromptText = "Enter Lot No.";
             this.txtItemQuantity.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtItemQuantity.SelectedText = "";
             this.txtItemQuantity.SelectionLength = 0;
@@ -208,7 +191,7 @@
             this.txtItemQuantity.Size = new System.Drawing.Size(232, 30);
             this.txtItemQuantity.TabIndex = 42;
             this.txtItemQuantity.UseSelectable = true;
-            this.txtItemQuantity.WaterMark = "Enter Quantity";
+            this.txtItemQuantity.WaterMark = "Enter Lot No.";
             this.txtItemQuantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtItemQuantity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtItemQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemQuantity_KeyPress);
@@ -222,9 +205,9 @@
             this.metroLabel1.ForeColor = System.Drawing.Color.White;
             this.metroLabel1.Location = new System.Drawing.Point(49, 154);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(114, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(135, 25);
             this.metroLabel1.TabIndex = 41;
-            this.metroLabel1.Text = "Item Name : ";
+            this.metroLabel1.Text = "Garden Name : ";
             this.metroLabel1.UseCustomBackColor = true;
             this.metroLabel1.UseCustomForeColor = true;
             // 
@@ -250,7 +233,7 @@
             this.txtItemName.MaxLength = 32767;
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.PasswordChar = '\0';
-            this.txtItemName.PromptText = "Enter Description";
+            this.txtItemName.PromptText = "Enter Garden Name";
             this.txtItemName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtItemName.SelectedText = "";
             this.txtItemName.SelectionLength = 0;
@@ -259,7 +242,7 @@
             this.txtItemName.Size = new System.Drawing.Size(232, 30);
             this.txtItemName.TabIndex = 40;
             this.txtItemName.UseSelectable = true;
-            this.txtItemName.WaterMark = "Enter Description";
+            this.txtItemName.WaterMark = "Enter Garden Name";
             this.txtItemName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtItemName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtItemName.Click += new System.EventHandler(this.txtItemName_Click);
@@ -333,9 +316,9 @@
             this.metroLabel8.ForeColor = System.Drawing.Color.White;
             this.metroLabel8.Location = new System.Drawing.Point(49, 294);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(88, 25);
+            this.metroLabel8.Size = new System.Drawing.Size(104, 25);
             this.metroLabel8.TabIndex = 54;
-            this.metroLabel8.Text = "Re-Order:";
+            this.metroLabel8.Text = "Item Grade:";
             this.metroLabel8.UseCustomBackColor = true;
             this.metroLabel8.UseCustomForeColor = true;
             // 
@@ -361,7 +344,7 @@
             this.txtReOrder.MaxLength = 32767;
             this.txtReOrder.Name = "txtReOrder";
             this.txtReOrder.PasswordChar = '\0';
-            this.txtReOrder.PromptText = "Enter Re-Order";
+            this.txtReOrder.PromptText = "Enter Item grade";
             this.txtReOrder.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtReOrder.SelectedText = "";
             this.txtReOrder.SelectionLength = 0;
@@ -370,20 +353,10 @@
             this.txtReOrder.Size = new System.Drawing.Size(232, 30);
             this.txtReOrder.TabIndex = 53;
             this.txtReOrder.UseSelectable = true;
-            this.txtReOrder.WaterMark = "Enter Re-Order";
+            this.txtReOrder.WaterMark = "Enter Item grade";
             this.txtReOrder.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtReOrder.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtReOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReOrder_KeyPress);
-            // 
-            // cmbcatname
-            // 
-            this.cmbcatname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbcatname.FormattingEnabled = true;
-            this.cmbcatname.Location = new System.Drawing.Point(191, 107);
-            this.cmbcatname.Name = "cmbcatname";
-            this.cmbcatname.Size = new System.Drawing.Size(232, 28);
-            this.cmbcatname.TabIndex = 55;
-            this.cmbcatname.Click += new System.EventHandler(this.cmbcatname_Click);
             // 
             // lblmsg
             // 
@@ -405,13 +378,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 532);
             this.Controls.Add(this.lblmsg);
-            this.Controls.Add(this.cmbcatname);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.txtReOrder);
             this.Controls.Add(this.mtBack);
             this.Controls.Add(this.mtClear);
             this.Controls.Add(this.mtCreate);
-            this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.txtitemdesc);
             this.Controls.Add(this.metroLabel3);
@@ -431,7 +402,6 @@
         }
 
         #endregion
-        private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel2;
@@ -445,7 +415,6 @@
         public MetroFramework.Controls.MetroTile mtCreate;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         public MetroFramework.Controls.MetroTextBox txtReOrder;
-        public System.Windows.Forms.ComboBox cmbcatname;
         private MetroFramework.Controls.MetroLabel lblmsg;
     }
 }

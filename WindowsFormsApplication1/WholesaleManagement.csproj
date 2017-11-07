@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\saqibsaleem\Desktop\dummy\</PublishUrl>
+    <PublishUrl>E:\accountSoftware\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -61,11 +62,15 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <ApplicationIcon>Cashbook.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -207,6 +212,12 @@
     <Compile Include="Forms\Cashbook\RecieptPrintWithoutInvoice.Designer.cs">
       <DependentUpon>RecieptPrintWithoutInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Customer\AddBroker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer\AddBroker.designer.cs">
+      <DependentUpon>AddBroker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Customer\AddCus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +229,12 @@
     </Compile>
     <Compile Include="Forms\Customer\EditCus.designer.cs">
       <DependentUpon>EditCus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer\frmBroker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer\frmBroker.designer.cs">
+      <DependentUpon>frmBroker.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer\frmCustomer.cs">
       <SubType>Form</SubType>
@@ -231,10 +248,10 @@
     <Compile Include="Forms\GeneralLedgerFol\GeneralLedger.Designer.cs">
       <DependentUpon>GeneralLedger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GeneralLedgerFol\GlPrint.cs">
+    <Compile Include="Forms\Journals\GlPrint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GeneralLedgerFol\GlPrint.Designer.cs">
+    <Compile Include="Forms\Journals\GlPrint.Designer.cs">
       <DependentUpon>GlPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Journals\AddJournal.cs">
@@ -267,11 +284,23 @@
     <Compile Include="Forms\Order\frmCart.designer.cs">
       <DependentUpon>frmCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Order\DeliveryOrderPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\DeliveryOrderPrint.Designer.cs">
+      <DependentUpon>DeliveryOrderPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Order\invoiceprint.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Order\invoiceprint.Designer.cs">
       <DependentUpon>invoiceprint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\AllOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\AllOrders.designer.cs">
+      <DependentUpon>AllOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Order\RequestOrderPayment.cs">
       <SubType>Form</SubType>
@@ -446,6 +475,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Reports\CrystalReportDeliveryOrder.cs">
+      <DependentUpon>CrystalReportDeliveryOrder.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\CrystalReportReciepts2.cs">
+      <DependentUpon>CrystalReportReciepts2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\CrystalReportPurInvoice.cs">
       <DependentUpon>CrystalReportPurInvoice.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -539,11 +580,17 @@
     <EmbeddedResource Include="Forms\Cashbook\RecieptPrintWithoutInvoice.resx">
       <DependentUpon>RecieptPrintWithoutInvoice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer\AddBroker.resx">
+      <DependentUpon>AddBroker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\AddCus.resx">
       <DependentUpon>AddCus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\EditCus.resx">
       <DependentUpon>EditCus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer\frmBroker.resx">
+      <DependentUpon>frmBroker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
@@ -551,7 +598,7 @@
     <EmbeddedResource Include="Forms\GeneralLedgerFol\GeneralLedger.resx">
       <DependentUpon>GeneralLedger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GeneralLedgerFol\GlPrint.resx">
+    <EmbeddedResource Include="Forms\Journals\GlPrint.resx">
       <DependentUpon>GlPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Journals\AddJournal.resx">
@@ -569,8 +616,14 @@
     <EmbeddedResource Include="Forms\Order\frmCart.resx">
       <DependentUpon>frmCart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\DeliveryOrderPrint.resx">
+      <DependentUpon>DeliveryOrderPrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\invoiceprint.resx">
       <DependentUpon>invoiceprint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\AllOrders.resx">
+      <DependentUpon>AllOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\RequestOrderPayment.resx">
       <DependentUpon>RequestOrderPayment.cs</DependentUpon>
@@ -658,6 +711,14 @@
     <EmbeddedResource Include="Reports\CrystalReportGL2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportGL2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportDeliveryOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportDeliveryOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportReciepts2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportReciepts2.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CrystalReportPurInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -808,6 +869,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.11.1">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2012 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
+      <Visible>False</Visible>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -821,6 +892,7 @@
     <None Include="Resources\Accounting_64px1.png" />
     <None Include="Resources\Accounting_64px2.png" />
     <None Include="Resources\Accounting_64px3.png" />
+    <Content Include="Cashbook.ico" />
     <Content Include="Resources\Add List_32px.png" />
     <Content Include="Resources\Add_32px.png" />
     <None Include="Resources\Add_64px.png" />

@@ -161,7 +161,7 @@
             this.metroTile5.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.metroTile5.Location = new System.Drawing.Point(880, 270);
             this.metroTile5.Name = "metroTile5";
-            this.metroTile5.Size = new System.Drawing.Size(286, 131);
+            this.metroTile5.Size = new System.Drawing.Size(286, 141);
             this.metroTile5.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTile5.TabIndex = 6;
             this.metroTile5.Text = "Accounts";
@@ -306,6 +306,7 @@
             this.Controls.Add(this.metroTile4);
             this.Controls.Add(this.metroTile2);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;

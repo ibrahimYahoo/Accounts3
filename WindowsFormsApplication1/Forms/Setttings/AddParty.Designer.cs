@@ -102,7 +102,7 @@
             // 
             // 
             this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(53, 1);
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(168, 1);
             this.metroTextBox1.CustomButton.Name = "";
             this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -307,6 +307,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Name = "AddParty";
             this.Text = "AddParty";
+            this.Load += new System.EventHandler(this.AddParty_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

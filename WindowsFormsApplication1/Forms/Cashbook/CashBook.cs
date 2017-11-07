@@ -37,9 +37,9 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            this.Close();
             Main mainObj = new Main();
             mainObj.Show();
+            this.Hide();
         }
 
         public void PerformRefresh()

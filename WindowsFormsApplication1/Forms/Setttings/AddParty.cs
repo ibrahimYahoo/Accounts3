@@ -17,5 +17,9 @@ namespace WindowsFormsApplication1.Forms.Setttings
             InitializeComponent();
         }
 
+        private void AddParty_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

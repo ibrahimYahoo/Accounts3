@@ -11,11 +11,21 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Code;
 using MetroFramework;
 using System.IO;
+//using System.Runtime.InteropServices;
 
 namespace WindowsFormsApplication1.Forms
 {
     public partial class Stock : MetroFramework.Forms.MetroForm
     {
+
+        //const int AW_SLIDE = 0X40000;
+        //const int AW_HOR_POSITIVE = 0X1;
+        //const int AW_HOR_NEGATIVE = 0X2;
+        //const int AW_BLEND = 0X80000;
+
+        //[DllImport("user32")]
+        //static extern bool AnimateWindow(IntPtr hwnd, int time, int flags);
+
         public Stock()
         {
             InitializeComponent();
@@ -28,11 +38,14 @@ namespace WindowsFormsApplication1.Forms
 
         private void Stock_Load(object sender, EventArgs e)
         {
+           // AnimateWindow(this.Handle, 0, AW_SLIDE | AW_HOR_POSITIVE);
+
             gvStock.DataSource = new DAO().getItems();
         }
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
+
             Forms.Items ac = new Forms.Items(this);
             ac.Show();
         }
@@ -40,14 +53,17 @@ namespace WindowsFormsApplication1.Forms
         private void metroTile2_Click(object sender, EventArgs e)
         {
             Forms.EditItem ec = new Forms.EditItem(this);
+            ec.IId = int.Parse(this.gvStock.CurrentRow.Cells[0].Value.ToString());
             ec.txtItemName.Text = this.gvStock.CurrentRow.Cells[1].Value.ToString();
-            ec.cmbcatname.DataSource = new DAO().ShowCatList1();
-            ec.cmbcatname.DisplayMember = "Display";
-            ec.cmbcatname.ValueMember = "CatId";
-            ec.cmbcatname.Text = new DAO().GetCatDescfromCatId(int.Parse(gvStock.CurrentRow.Cells[2].Value.ToString()));
-            ec.txtReOrder.Text = gvStock.CurrentRow.Cells[5].Value.ToString();
+            //ec.cmbcatname.DataSource = new DAO().ShowCatList1();
+            //ec.cmbcatname.DisplayMember = "Display";
+            //ec.cmbcatname.ValueMember = "CatId";
+            //ec.cmbcatname.Text = new DAO().GetCatDescfromCatId(int.Parse(gvStock.CurrentRow.Cells[2].Value.ToString()));
+            ec.txtReOrder.Text = gvStock.CurrentRow.Cells[6].Value.ToString();
             ec.TxtitemPrice.Text = this.gvStock.CurrentRow.Cells[3].Value.ToString();
-            ec.txtItemQuantity.Text = this.gvStock.CurrentRow.Cells[4].Value.ToString();
+            ec.txtItemQuantity.Text = this.gvStock.CurrentRow.Cells[2].Value.ToString();
+            ec.txtitemdesc.Text = this.gvStock.CurrentRow.Cells[7].Value.ToString();
+            
             ec.Show();
         }
         void performRefresh()
@@ -105,10 +121,52 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnback_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            Main frm = new Main();
-            frm.Show();
+            //bool IsOpen = false;
+            //FormCollection fc = Application.OpenForms;
+
+            //foreach (Form f in fc)
+            //{
+
+            //    if (f.Name == "Main")
+            //    {
+            //        IsOpen = true;
+            //        f.Focus();
+            //        break;
+            //    }
+            //}
+
+            //if (IsOpen == true)
+            //{
+                
+            //}
+
+            //this.Hide();
+            //Home f1obj = new Home();
+            Main obj = new Main();
+            obj.Show();
+            obj.WindowState = FormWindowState.Maximized;
+            this.Hide();
+
+
+            //this.Dispose();
+            //Main frm = new Main();
+            //frm.Show();
         }
+
+        //protected override void OnLoad(EventArgs e)
+        //{
+        //    //Load the Form At Position of Main Form
+        //    //int WidthOfMain = Application.OpenForms["Main"].Width;
+        //    //int HeightofMain = Application.OpenForms["Main"].Height;
+        //    //int LocationMainX = Application.OpenForms["Main"].Location.X;
+        //    //int locationMainy = Application.OpenForms["Main"].Location.Y;
+
+        //    //Set the Location
+        //   // this.Location = new Point(LocationMainX + WidthOfMain, locationMainy + 10);
+        //    //this.BackgroundImage = Application.OpenForms["Home"].BackgroundImage;
+
+        //    //Animate form
+        //}
 
         private void metroTile5_Click(object sender, EventArgs e)
         {

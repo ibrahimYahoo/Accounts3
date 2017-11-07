@@ -89,9 +89,10 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
         private void btnadditem_Click(object sender, EventArgs e)
         {
-            Purchase.AddPurchase ac = new Purchase.AddPurchase();
-            ac.Show();
+            Purchase.AddPurchase ac = new Purchase.AddPurchase(this);
             ac.WindowState = FormWindowState.Maximized;
+
+            ac.Show();
 
         }
 
@@ -101,9 +102,11 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
         private void btnback_Click(object sender, EventArgs e)
         {
-            this.Dispose();
             Main frm = new Main();
+            frm.WindowState = FormWindowState.Maximized;
             frm.Show();
+            this.Close();
+
         }
 
         private void btnedit_Click(object sender, EventArgs e)

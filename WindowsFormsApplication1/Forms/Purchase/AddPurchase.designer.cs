@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPurchase));
             this.txtCarrage = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.txtTulai = new MetroFramework.Controls.MetroTextBox();
@@ -64,7 +65,7 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.cmbsuppname = new MetroFramework.Controls.MetroComboBox();
             this.cmbpaydate = new MetroFramework.Controls.MetroDateTime();
-            this.cmGardenName = new GroupedComboBox();
+            this.txtGardenName = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -674,22 +675,47 @@
             this.cmbpaydate.Size = new System.Drawing.Size(221, 29);
             this.cmbpaydate.TabIndex = 135;
             // 
-            // cmGardenName
+            // txtGardenName
             // 
-            this.cmGardenName.DataSource = null;
-            this.cmGardenName.FormattingEnabled = true;
-            this.cmGardenName.Location = new System.Drawing.Point(123, 173);
-            this.cmGardenName.Name = "cmGardenName";
-            this.cmGardenName.Size = new System.Drawing.Size(221, 21);
-            this.cmGardenName.TabIndex = 168;
+            // 
+            // 
+            // 
+            this.txtGardenName.CustomButton.Image = null;
+            this.txtGardenName.CustomButton.Location = new System.Drawing.Point(199, 1);
+            this.txtGardenName.CustomButton.Name = "";
+            this.txtGardenName.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtGardenName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtGardenName.CustomButton.TabIndex = 1;
+            this.txtGardenName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtGardenName.CustomButton.UseSelectable = true;
+            this.txtGardenName.CustomButton.Visible = false;
+            this.txtGardenName.Lines = new string[] {
+        " "};
+            this.txtGardenName.Location = new System.Drawing.Point(123, 175);
+            this.txtGardenName.MaxLength = 32767;
+            this.txtGardenName.Name = "txtGardenName";
+            this.txtGardenName.PasswordChar = '\0';
+            this.txtGardenName.PromptText = "Enter Garden Name";
+            this.txtGardenName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtGardenName.SelectedText = "";
+            this.txtGardenName.SelectionLength = 0;
+            this.txtGardenName.SelectionStart = 0;
+            this.txtGardenName.ShortcutsEnabled = true;
+            this.txtGardenName.Size = new System.Drawing.Size(221, 23);
+            this.txtGardenName.TabIndex = 168;
+            this.txtGardenName.Text = " ";
+            this.txtGardenName.UseSelectable = true;
+            this.txtGardenName.WaterMark = "Enter Garden Name";
+            this.txtGardenName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtGardenName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // AddPurchase
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1277, 591);
-            this.Controls.Add(this.cmGardenName);
+            this.ClientSize = new System.Drawing.Size(1286, 591);
+            this.Controls.Add(this.txtGardenName);
             this.Controls.Add(this.txtCarrage);
             this.Controls.Add(this.metroLabel15);
             this.Controls.Add(this.txtTulai);
@@ -723,6 +749,7 @@
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.cmbsuppname);
             this.Controls.Add(this.cmbpaydate);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddPurchase";
             this.Padding = new System.Windows.Forms.Padding(20, 60, 20, 10);
             this.Text = "AddPurchase";
@@ -771,6 +798,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroComboBox cmbsuppname;
         private MetroFramework.Controls.MetroDateTime cmbpaydate;
-        private GroupedComboBox cmGardenName;
+        private MetroFramework.Controls.MetroTextBox txtGardenName;
     }
 }

@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Purchases));
             this.btndelete = new MetroFramework.Controls.MetroTile();
             this.btnedit = new MetroFramework.Controls.MetroTile();
             this.btnadditem = new MetroFramework.Controls.MetroTile();
@@ -47,14 +48,13 @@
             this.btndelete.ActiveControl = null;
             this.btndelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btndelete.BackColor = System.Drawing.Color.Transparent;
-            this.btndelete.Location = new System.Drawing.Point(501, 606);
+            this.btndelete.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btndelete.Location = new System.Drawing.Point(640, 645);
             this.btndelete.Name = "btndelete";
             this.btndelete.Size = new System.Drawing.Size(98, 97);
             this.btndelete.TabIndex = 2;
             this.btndelete.Text = "Delete";
             this.btndelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btndelete.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btndelete.TileImage = global::WindowsFormsApplication1.Properties.Resources.Delete_32px;
             this.btndelete.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btndelete.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -68,14 +68,13 @@
             this.btnedit.ActiveControl = null;
             this.btnedit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnedit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnedit.BackColor = System.Drawing.Color.Transparent;
-            this.btnedit.Location = new System.Drawing.Point(397, 606);
+            this.btnedit.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnedit.Location = new System.Drawing.Point(536, 645);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(98, 97);
             this.btnedit.TabIndex = 1;
             this.btnedit.Text = "Edit";
             this.btnedit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnedit.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btnedit.TileImage = global::WindowsFormsApplication1.Properties.Resources.Edit_File_32px;
             this.btnedit.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnedit.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -88,14 +87,13 @@
             // 
             this.btnadditem.ActiveControl = null;
             this.btnadditem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnadditem.BackColor = System.Drawing.Color.Transparent;
-            this.btnadditem.Location = new System.Drawing.Point(293, 606);
+            this.btnadditem.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnadditem.Location = new System.Drawing.Point(432, 645);
             this.btnadditem.Name = "btnadditem";
             this.btnadditem.Size = new System.Drawing.Size(98, 97);
             this.btnadditem.TabIndex = 0;
             this.btnadditem.Text = "Add Item";
             this.btnadditem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnadditem.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btnadditem.TileImage = global::WindowsFormsApplication1.Properties.Resources.Add_32px;
             this.btnadditem.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnadditem.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -108,14 +106,13 @@
             // 
             this.btnback.ActiveControl = null;
             this.btnback.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnback.BackColor = System.Drawing.Color.Transparent;
-            this.btnback.Location = new System.Drawing.Point(605, 606);
+            this.btnback.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnback.Location = new System.Drawing.Point(744, 645);
             this.btnback.Name = "btnback";
             this.btnback.Size = new System.Drawing.Size(98, 97);
             this.btnback.TabIndex = 3;
             this.btnback.Text = "Back";
             this.btnback.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnback.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btnback.TileImage = global::WindowsFormsApplication1.Properties.Resources.Back_32px;
             this.btnback.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnback.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -147,7 +144,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gvPurchase.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvPurchase.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.gvPurchase.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gvPurchase.BackgroundColor = System.Drawing.Color.White;
             this.gvPurchase.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvPurchase.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.gvPurchase.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -191,7 +188,7 @@
             this.gvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.gvPurchase.RowTemplate.Height = 35;
             this.gvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvPurchase.Size = new System.Drawing.Size(962, 521);
+            this.gvPurchase.Size = new System.Drawing.Size(1240, 521);
             this.gvPurchase.TabIndex = 108;
             this.gvPurchase.UseCustomBackColor = true;
             this.gvPurchase.UseCustomForeColor = true;
@@ -207,7 +204,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(919, 649);
+            this.metroPanel1.Location = new System.Drawing.Point(1197, 688);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(66, 57);
             this.metroPanel1.TabIndex = 109;
@@ -220,7 +217,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1286, 768);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.gvPurchase);
             this.Controls.Add(this.lblmsg);
@@ -228,10 +225,10 @@
             this.Controls.Add(this.btnedit);
             this.Controls.Add(this.btnadditem);
             this.Controls.Add(this.btnback);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Purchases";
-            this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Purchases";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.Load += new System.EventHandler(this.Purchases_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvPurchase)).EndInit();
             this.ResumeLayout(false);

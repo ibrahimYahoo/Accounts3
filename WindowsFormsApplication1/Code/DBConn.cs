@@ -11,7 +11,9 @@ namespace WindowsFormsApplication1.Code
     {
         public static SqlConnection GetInstance()
         {
-            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ibrahim-01\\accounts2.mdf;Integrated Security=True;Connect Timeout=30");
+            string path = System.IO.Path.GetFullPath(Environment.CurrentDirectory);
+            string databaseName = "DbAccounts.mdf";
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;AttachDbFilename=" +path+@"\"+databaseName+";Integrated Security=True;Connect Timeout=30");
             conn.Open();
             return conn;
         }
