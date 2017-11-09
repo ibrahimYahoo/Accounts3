@@ -347,3 +347,5 @@ E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.exe
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.pdb
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\RdlCompile.cache
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\RdlCompile.compiled
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.AsUpdateQty.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.CashBook.resources

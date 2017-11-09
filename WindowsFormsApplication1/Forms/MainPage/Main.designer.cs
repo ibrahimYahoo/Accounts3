@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            this.label1 = new System.Windows.Forms.Label();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.metroTile10 = new MetroFramework.Controls.MetroTile();
+            this.htmlToolTip1 = new MetroFramework.Drawing.Html.HtmlToolTip();
+            this.metroTile11 = new MetroFramework.Controls.MetroTile();
             this.metroTile9 = new MetroFramework.Controls.MetroTile();
             this.metroTile7 = new MetroFramework.Controls.MetroTile();
             this.metroTile8 = new MetroFramework.Controls.MetroTile();
@@ -37,20 +43,89 @@
             this.metroTile5 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.label1 = new System.Windows.Forms.Label();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
-            this.metroTile10 = new MetroFramework.Controls.MetroTile();
-            this.metroTile11 = new MetroFramework.Controls.MetroTile();
-            this.htmlToolTip1 = new MetroFramework.Drawing.Html.HtmlToolTip();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(455, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(533, 31);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "UMBRA STUDIO ACCOUNTING SYSTEM";
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Location = new System.Drawing.Point(10, 644);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(129, 118);
+            this.metroTile1.TabIndex = 15;
+            this.metroTile1.Text = "Transactions";
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.Visible = false;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click_1);
+            // 
+            // metroTile3
+            // 
+            this.metroTile3.ActiveControl = null;
+            this.metroTile3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.metroTile3.Location = new System.Drawing.Point(880, 417);
+            this.metroTile3.Name = "metroTile3";
+            this.metroTile3.Size = new System.Drawing.Size(133, 118);
+            this.metroTile3.TabIndex = 16;
+            this.metroTile3.Text = "Journal \r\nVoucher";
+            this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.metroTile3.UseCustomBackColor = true;
+            this.metroTile3.UseCustomForeColor = true;
+            this.metroTile3.UseSelectable = true;
+            this.metroTile3.UseStyleColors = true;
+            this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click_1);
+            // 
+            // metroTile10
+            // 
+            this.metroTile10.ActiveControl = null;
+            this.metroTile10.Location = new System.Drawing.Point(216, 270);
+            this.metroTile10.Name = "metroTile10";
+            this.metroTile10.Size = new System.Drawing.Size(129, 118);
+            this.metroTile10.TabIndex = 17;
+            this.metroTile10.Text = "General\r\nLedger";
+            this.metroTile10.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile10.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.metroTile10.UseSelectable = true;
+            this.metroTile10.Click += new System.EventHandler(this.metroTile10_Click);
+            // 
+            // htmlToolTip1
+            // 
+            this.htmlToolTip1.OwnerDraw = true;
+            // 
+            // metroTile11
+            // 
+            this.metroTile11.ActiveControl = null;
+            this.metroTile11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile11.Location = new System.Drawing.Point(1042, 417);
+            this.metroTile11.Name = "metroTile11";
+            this.metroTile11.Size = new System.Drawing.Size(135, 118);
+            this.metroTile11.TabIndex = 18;
+            this.metroTile11.Text = "Settings";
+            this.metroTile11.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile11.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.metroTile11.UseSelectable = true;
+            this.metroTile11.UseTileImage = true;
+            this.metroTile11.Click += new System.EventHandler(this.metroTile11_Click);
             // 
             // metroTile9
             // 
             this.metroTile9.ActiveControl = null;
             this.metroTile9.BackColor = System.Drawing.Color.Transparent;
             this.metroTile9.ForeColor = System.Drawing.Color.Red;
-            this.metroTile9.Location = new System.Drawing.Point(1194, 63);
+            this.metroTile9.Location = new System.Drawing.Point(1243, 63);
             this.metroTile9.Name = "metroTile9";
             this.metroTile9.Size = new System.Drawing.Size(82, 120);
             this.metroTile9.TabIndex = 13;
@@ -113,16 +188,17 @@
             // 
             // metroPanel2
             // 
-            this.metroPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroPanel2.AutoSize = true;
-            this.metroPanel2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo;
+            this.metroPanel2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo_small;
             this.metroPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(1259, 692);
+            this.metroPanel2.Location = new System.Drawing.Point(1257, 683);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(66, 57);
+            this.metroPanel2.Size = new System.Drawing.Size(68, 66);
             this.metroPanel2.TabIndex = 10;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -135,9 +211,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroTile6.AutoSize = true;
             this.metroTile6.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.metroTile6.Location = new System.Drawing.Point(686, 417);
+            this.metroTile6.Location = new System.Drawing.Point(704, 417);
             this.metroTile6.Name = "metroTile6";
-            this.metroTile6.Size = new System.Drawing.Size(133, 118);
+            this.metroTile6.Size = new System.Drawing.Size(115, 118);
             this.metroTile6.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTile6.TabIndex = 7;
             this.metroTile6.Text = "Searching";
@@ -210,7 +286,7 @@
             this.metroTile2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroTile2.Location = new System.Drawing.Point(538, 417);
             this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(142, 118);
+            this.metroTile2.Size = new System.Drawing.Size(119, 118);
             this.metroTile2.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTile2.TabIndex = 3;
             this.metroTile2.Text = "Sales Book";
@@ -224,66 +300,6 @@
             this.metroTile2.UseStyleColors = true;
             this.metroTile2.UseTileImage = true;
             this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(455, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(533, 31);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "UMBRA STUDIO ACCOUNTING SYSTEM";
-            // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(10, 644);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(129, 118);
-            this.metroTile1.TabIndex = 15;
-            this.metroTile1.Text = "Transactions";
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.Visible = false;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click_1);
-            // 
-            // metroTile3
-            // 
-            this.metroTile3.ActiveControl = null;
-            this.metroTile3.Location = new System.Drawing.Point(880, 417);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(124, 118);
-            this.metroTile3.TabIndex = 16;
-            this.metroTile3.Text = "Journal Voucher";
-            this.metroTile3.UseSelectable = true;
-            this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click_1);
-            // 
-            // metroTile10
-            // 
-            this.metroTile10.ActiveControl = null;
-            this.metroTile10.Location = new System.Drawing.Point(216, 270);
-            this.metroTile10.Name = "metroTile10";
-            this.metroTile10.Size = new System.Drawing.Size(129, 118);
-            this.metroTile10.TabIndex = 17;
-            this.metroTile10.Text = "General Ledger";
-            this.metroTile10.UseSelectable = true;
-            this.metroTile10.Click += new System.EventHandler(this.metroTile10_Click);
-            // 
-            // metroTile11
-            // 
-            this.metroTile11.ActiveControl = null;
-            this.metroTile11.Location = new System.Drawing.Point(1010, 417);
-            this.metroTile11.Name = "metroTile11";
-            this.metroTile11.Size = new System.Drawing.Size(156, 118);
-            this.metroTile11.TabIndex = 18;
-            this.metroTile11.Text = "Settings";
-            this.metroTile11.UseSelectable = true;
-            this.metroTile11.Click += new System.EventHandler(this.metroTile11_Click);
-            // 
-            // htmlToolTip1
-            // 
-            this.htmlToolTip1.OwnerDraw = true;
             // 
             // Main
             // 

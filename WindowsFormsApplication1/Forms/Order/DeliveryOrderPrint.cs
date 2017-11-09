@@ -29,12 +29,16 @@ namespace WindowsFormsApplication1.Forms.Order
                ds  = new DAO().getDeliveryOrderData(AllOrders.selectedOrderId);
 
             }
-            else
+            else if (AddOrder.OrderId != "")
             {
-                 ds = new DAO().getDeliveryOrderData(AddOrder.OrderId);
+                ds = new DAO().getDeliveryOrderData(AddOrder.OrderId);
 
             }
+            else
+            {
+                ds = new DAO().getDeliveryOrderData(EditOrder.OrderId2);
 
+            }
             foreach (DataRow row in ds.Rows)
             {
 

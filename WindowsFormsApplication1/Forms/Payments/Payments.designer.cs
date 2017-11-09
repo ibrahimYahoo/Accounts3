@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabcontrol = new MetroFramework.Controls.MetroTabControl();
             this.metroTabBalance = new MetroFramework.Controls.MetroTabPage();
             this.gvBalanceSupplier = new MetroFramework.Controls.MetroGrid();
@@ -101,7 +101,7 @@
             this.tabcontrol.Size = new System.Drawing.Size(1246, 680);
             this.tabcontrol.Style = MetroFramework.MetroColorStyle.Teal;
             this.tabcontrol.TabIndex = 0;
-            this.tabcontrol.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.tabcontrol.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tabcontrol.UseSelectable = true;
             this.tabcontrol.TabIndexChanged += new System.EventHandler(this.tabcontrol_TabIndexChanged);
             this.tabcontrol.Click += new System.EventHandler(this.tabcontrol_Click);
@@ -165,23 +165,23 @@
             this.gvBalanceSupplier.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvBalanceSupplier.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.gvBalanceSupplier.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.gvBalanceSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.gvBalanceSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.gvBalanceSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvBalanceSupplier.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvBalanceSupplier.DefaultCellStyle = dataGridViewCellStyle10;
             this.gvBalanceSupplier.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gvBalanceSupplier.EnableHeadersVisualStyles = false;
             this.gvBalanceSupplier.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -191,18 +191,18 @@
             this.gvBalanceSupplier.Name = "gvBalanceSupplier";
             this.gvBalanceSupplier.ReadOnly = true;
             this.gvBalanceSupplier.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvBalanceSupplier.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvBalanceSupplier.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.gvBalanceSupplier.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            this.gvBalanceSupplier.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5);
+            this.gvBalanceSupplier.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.gvBalanceSupplier.RowTemplate.Height = 35;
             this.gvBalanceSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvBalanceSupplier.Size = new System.Drawing.Size(1232, 194);
@@ -225,23 +225,23 @@
             this.gvBalanceCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvBalanceCustomer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.gvBalanceCustomer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.gvBalanceCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            this.gvBalanceCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.gvBalanceCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvBalanceCustomer.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvBalanceCustomer.DefaultCellStyle = dataGridViewCellStyle14;
             this.gvBalanceCustomer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gvBalanceCustomer.EnableHeadersVisualStyles = false;
             this.gvBalanceCustomer.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -251,18 +251,18 @@
             this.gvBalanceCustomer.Name = "gvBalanceCustomer";
             this.gvBalanceCustomer.ReadOnly = true;
             this.gvBalanceCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvBalanceCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvBalanceCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.gvBalanceCustomer.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5);
-            this.gvBalanceCustomer.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(5);
+            this.gvBalanceCustomer.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.gvBalanceCustomer.RowTemplate.Height = 35;
             this.gvBalanceCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvBalanceCustomer.Size = new System.Drawing.Size(1232, 194);
@@ -433,7 +433,7 @@
             this.dtToSupplier.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.dtToSupplier.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtToSupplier.Location = new System.Drawing.Point(564, 332);
-            this.dtToSupplier.MinimumSize = new System.Drawing.Size(0, 25);
+            this.dtToSupplier.MinimumSize = new System.Drawing.Size(4, 25);
             this.dtToSupplier.Name = "dtToSupplier";
             this.dtToSupplier.Size = new System.Drawing.Size(110, 25);
             this.dtToSupplier.Style = MetroFramework.MetroColorStyle.Teal;
@@ -458,7 +458,7 @@
             this.dtFromSupplier.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.dtFromSupplier.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFromSupplier.Location = new System.Drawing.Point(382, 332);
-            this.dtFromSupplier.MinimumSize = new System.Drawing.Size(0, 25);
+            this.dtFromSupplier.MinimumSize = new System.Drawing.Size(4, 25);
             this.dtFromSupplier.Name = "dtFromSupplier";
             this.dtFromSupplier.Size = new System.Drawing.Size(110, 25);
             this.dtFromSupplier.Style = MetroFramework.MetroColorStyle.Teal;
@@ -532,7 +532,7 @@
             this.dtToCustomer.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.dtToCustomer.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtToCustomer.Location = new System.Drawing.Point(564, 25);
-            this.dtToCustomer.MinimumSize = new System.Drawing.Size(0, 25);
+            this.dtToCustomer.MinimumSize = new System.Drawing.Size(4, 25);
             this.dtToCustomer.Name = "dtToCustomer";
             this.dtToCustomer.Size = new System.Drawing.Size(110, 25);
             this.dtToCustomer.Style = MetroFramework.MetroColorStyle.Teal;
@@ -557,7 +557,7 @@
             this.dtFromCustomer.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.dtFromCustomer.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFromCustomer.Location = new System.Drawing.Point(382, 25);
-            this.dtFromCustomer.MinimumSize = new System.Drawing.Size(0, 25);
+            this.dtFromCustomer.MinimumSize = new System.Drawing.Size(4, 25);
             this.dtFromCustomer.Name = "dtFromCustomer";
             this.dtFromCustomer.Size = new System.Drawing.Size(110, 25);
             this.dtFromCustomer.Style = MetroFramework.MetroColorStyle.Teal;
@@ -659,6 +659,7 @@
             // metroTabPage1
             // 
             this.metroTabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroTabPage1.Controls.Add(this.btnBack);
             this.metroTabPage1.Controls.Add(this.lblError);
             this.metroTabPage1.Controls.Add(this.metroPanel1);
             this.metroTabPage1.Controls.Add(this.metroTile1);
@@ -680,7 +681,7 @@
             this.metroTabPage1.Size = new System.Drawing.Size(1238, 632);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Party Payment";
-            this.metroTabPage1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPage1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTabPage1.UseCustomForeColor = true;
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
@@ -723,7 +724,7 @@
             this.metroTile1.BackColor = System.Drawing.Color.Transparent;
             this.metroTile1.Location = new System.Drawing.Point(580, 283);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(98, 92);
+            this.metroTile1.Size = new System.Drawing.Size(141, 92);
             this.metroTile1.TabIndex = 65;
             this.metroTile1.Text = "Pay Slip";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -731,7 +732,7 @@
             this.metroTile1.TileImage = global::WindowsFormsApplication1.Properties.Resources.Report_Card_32px;
             this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
@@ -740,9 +741,9 @@
             // 
             this.mtCreate.ActiveControl = null;
             this.mtCreate.BackColor = System.Drawing.Color.Transparent;
-            this.mtCreate.Location = new System.Drawing.Point(443, 283);
+            this.mtCreate.Location = new System.Drawing.Point(429, 283);
             this.mtCreate.Name = "mtCreate";
-            this.mtCreate.Size = new System.Drawing.Size(131, 92);
+            this.mtCreate.Size = new System.Drawing.Size(138, 92);
             this.mtCreate.TabIndex = 63;
             this.mtCreate.Text = "Add Payment";
             this.mtCreate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -750,7 +751,7 @@
             this.mtCreate.TileImage = global::WindowsFormsApplication1.Properties.Resources.Add_32px;
             this.mtCreate.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.mtCreate.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mtCreate.UseCustomBackColor = true;
+            this.mtCreate.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mtCreate.UseSelectable = true;
             this.mtCreate.UseTileImage = true;
             this.mtCreate.Click += new System.EventHandler(this.mtCreate_Click);
@@ -761,7 +762,7 @@
             this.metroLabel5.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.ForeColor = System.Drawing.Color.White;
+            this.metroLabel5.ForeColor = System.Drawing.Color.Black;
             this.metroLabel5.Location = new System.Drawing.Point(386, 212);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(86, 25);
@@ -776,7 +777,7 @@
             this.metroLabel6.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.ForeColor = System.Drawing.Color.White;
+            this.metroLabel6.ForeColor = System.Drawing.Color.Black;
             this.metroLabel6.Location = new System.Drawing.Point(386, 173);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(80, 25);
@@ -791,7 +792,7 @@
             this.metroLabel7.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel7.ForeColor = System.Drawing.Color.White;
+            this.metroLabel7.ForeColor = System.Drawing.Color.Black;
             this.metroLabel7.Location = new System.Drawing.Point(386, 133);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(117, 25);
@@ -806,7 +807,7 @@
             this.metroLabel8.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel8.ForeColor = System.Drawing.Color.White;
+            this.metroLabel8.ForeColor = System.Drawing.Color.Black;
             this.metroLabel8.Location = new System.Drawing.Point(386, 88);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(131, 25);
@@ -906,15 +907,22 @@
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnBack.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnBack.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnBack.Location = new System.Drawing.Point(1084, 33);
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(740, 283);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(175, 38);
+            this.btnBack.Size = new System.Drawing.Size(116, 92);
             this.btnBack.TabIndex = 2;
-            this.btnBack.Text = "Back to MainMenu";
-            this.btnBack.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseCustomBackColor = true;
+            this.btnBack.UseCustomForeColor = true;
             this.btnBack.UseSelectable = true;
+            this.btnBack.UseStyleColors = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Payments
@@ -922,13 +930,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1292, 780);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.tabcontrol);
             this.Name = "Payments";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Payments";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Payments_Load);
             this.tabcontrol.ResumeLayout(false);

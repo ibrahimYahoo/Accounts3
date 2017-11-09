@@ -266,7 +266,7 @@
             this.mtBack.TileImage = global::WindowsFormsApplication1.Properties.Resources.Back_32px;
             this.mtBack.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.mtBack.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mtBack.UseCustomBackColor = true;
+            this.mtBack.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mtBack.UseSelectable = true;
             this.mtBack.UseTileImage = true;
             this.mtBack.Click += new System.EventHandler(this.mtBack_Click);
@@ -286,7 +286,7 @@
             this.mtClear.TileImage = global::WindowsFormsApplication1.Properties.Resources.Eraser;
             this.mtClear.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.mtClear.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mtClear.UseCustomBackColor = true;
+            this.mtClear.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mtClear.UseSelectable = true;
             this.mtClear.UseTileImage = true;
             this.mtClear.Click += new System.EventHandler(this.mtClear_Click);
@@ -306,7 +306,7 @@
             this.mtCreate.TileImage = global::WindowsFormsApplication1.Properties.Resources.icons8_Add_User_Male_32;
             this.mtCreate.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.mtCreate.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mtCreate.UseCustomBackColor = true;
+            this.mtCreate.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mtCreate.UseSelectable = true;
             this.mtCreate.UseTileImage = true;
             this.mtCreate.Click += new System.EventHandler(this.mtCreate_Click);

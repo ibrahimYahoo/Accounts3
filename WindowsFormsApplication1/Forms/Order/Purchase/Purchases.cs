@@ -170,5 +170,10 @@ namespace WindowsFormsApplication1.Forms.Purchase
             }
 
         }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

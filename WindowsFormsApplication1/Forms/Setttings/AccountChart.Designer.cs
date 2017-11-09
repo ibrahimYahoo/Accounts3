@@ -32,16 +32,17 @@
             this.btnExpense = new MetroFramework.Controls.MetroTile();
             this.btnLiability = new MetroFramework.Controls.MetroTile();
             this.btnAsset = new MetroFramework.Controls.MetroTile();
-            this.metroTile5 = new MetroFramework.Controls.MetroTile();
             this.lblconfirm = new MetroFramework.Controls.MetroLabel();
             this.btnIncome = new MetroFramework.Controls.MetroTile();
             this.gbAddAccount = new System.Windows.Forms.GroupBox();
+            this.lblAccHeader = new MetroFramework.Controls.MetroLabel();
+            this.cmDetailType = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.btnAddAccName = new MetroFramework.Controls.MetroTile();
             this.txtAccounName = new System.Windows.Forms.RichTextBox();
-            this.cmDetailType = new MetroFramework.Controls.MetroComboBox();
-            this.lblAccHeader = new MetroFramework.Controls.MetroLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.metroTile5 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccountChart)).BeginInit();
             this.gbAddAccount.SuspendLayout();
             this.SuspendLayout();
@@ -62,50 +63,47 @@
             // btnExpense
             // 
             this.btnExpense.ActiveControl = null;
-            this.btnExpense.Location = new System.Drawing.Point(982, 355);
+            this.btnExpense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExpense.Location = new System.Drawing.Point(982, 267);
             this.btnExpense.Name = "btnExpense";
-            this.btnExpense.Size = new System.Drawing.Size(180, 51);
+            this.btnExpense.Size = new System.Drawing.Size(258, 46);
             this.btnExpense.TabIndex = 1;
             this.btnExpense.Text = "Add Expense";
             this.btnExpense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnExpense.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnExpense.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnExpense.UseSelectable = true;
             this.btnExpense.Click += new System.EventHandler(this.metroTile3_Click);
             // 
             // btnLiability
             // 
             this.btnLiability.ActiveControl = null;
-            this.btnLiability.Location = new System.Drawing.Point(982, 204);
+            this.btnLiability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLiability.Location = new System.Drawing.Point(982, 116);
             this.btnLiability.Name = "btnLiability";
-            this.btnLiability.Size = new System.Drawing.Size(180, 51);
+            this.btnLiability.Size = new System.Drawing.Size(258, 46);
             this.btnLiability.TabIndex = 3;
             this.btnLiability.Text = "Add Liabiality/ CreditCard";
             this.btnLiability.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnLiability.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnLiability.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnLiability.UseSelectable = true;
             this.btnLiability.Click += new System.EventHandler(this.metroTile3_Click);
             // 
             // btnAsset
             // 
             this.btnAsset.ActiveControl = null;
-            this.btnAsset.Location = new System.Drawing.Point(982, 280);
+            this.btnAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAsset.Location = new System.Drawing.Point(982, 192);
             this.btnAsset.Name = "btnAsset";
-            this.btnAsset.Size = new System.Drawing.Size(180, 51);
+            this.btnAsset.Size = new System.Drawing.Size(258, 46);
             this.btnAsset.TabIndex = 4;
             this.btnAsset.Text = "Add ASSET";
             this.btnAsset.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAsset.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnAsset.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnAsset.UseSelectable = true;
             this.btnAsset.Click += new System.EventHandler(this.metroTile3_Click);
-            // 
-            // metroTile5
-            // 
-            this.metroTile5.ActiveControl = null;
-            this.metroTile5.Location = new System.Drawing.Point(1115, 37);
-            this.metroTile5.Name = "metroTile5";
-            this.metroTile5.Size = new System.Drawing.Size(150, 51);
-            this.metroTile5.TabIndex = 5;
-            this.metroTile5.Text = "BACK";
-            this.metroTile5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile5.UseSelectable = true;
-            this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
             // 
             // lblconfirm
             // 
@@ -118,12 +116,15 @@
             // btnIncome
             // 
             this.btnIncome.ActiveControl = null;
-            this.btnIncome.Location = new System.Drawing.Point(982, 426);
+            this.btnIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIncome.Location = new System.Drawing.Point(982, 338);
             this.btnIncome.Name = "btnIncome";
-            this.btnIncome.Size = new System.Drawing.Size(180, 51);
+            this.btnIncome.Size = new System.Drawing.Size(258, 46);
             this.btnIncome.TabIndex = 2;
             this.btnIncome.Text = "Add Income";
             this.btnIncome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnIncome.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnIncome.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnIncome.UseSelectable = true;
             this.btnIncome.Click += new System.EventHandler(this.metroTile3_Click);
             // 
@@ -135,12 +136,34 @@
             this.gbAddAccount.Controls.Add(this.metroLabel2);
             this.gbAddAccount.Controls.Add(this.btnAddAccName);
             this.gbAddAccount.Controls.Add(this.txtAccounName);
-            this.gbAddAccount.Location = new System.Drawing.Point(513, 243);
+            this.gbAddAccount.Location = new System.Drawing.Point(511, 116);
             this.gbAddAccount.Name = "gbAddAccount";
             this.gbAddAccount.Size = new System.Drawing.Size(422, 272);
             this.gbAddAccount.TabIndex = 13;
             this.gbAddAccount.TabStop = false;
             this.gbAddAccount.Text = "Add Account";
+            // 
+            // lblAccHeader
+            // 
+            this.lblAccHeader.AutoSize = true;
+            this.lblAccHeader.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblAccHeader.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblAccHeader.Location = new System.Drawing.Point(160, 16);
+            this.lblAccHeader.Name = "lblAccHeader";
+            this.lblAccHeader.Size = new System.Drawing.Size(0, 0);
+            this.lblAccHeader.TabIndex = 19;
+            this.lblAccHeader.Visible = false;
+            // 
+            // cmDetailType
+            // 
+            this.cmDetailType.FormattingEnabled = true;
+            this.cmDetailType.ItemHeight = 23;
+            this.cmDetailType.Location = new System.Drawing.Point(160, 74);
+            this.cmDetailType.Name = "cmDetailType";
+            this.cmDetailType.Size = new System.Drawing.Size(227, 29);
+            this.cmDetailType.TabIndex = 18;
+            this.cmDetailType.UseSelectable = true;
+            this.cmDetailType.Visible = false;
             // 
             // metroLabel3
             // 
@@ -184,33 +207,41 @@
             this.txtAccounName.Text = "";
             this.txtAccounName.Visible = false;
             // 
-            // cmDetailType
+            // panel1
             // 
-            this.cmDetailType.FormattingEnabled = true;
-            this.cmDetailType.ItemHeight = 23;
-            this.cmDetailType.Location = new System.Drawing.Point(160, 74);
-            this.cmDetailType.Name = "cmDetailType";
-            this.cmDetailType.Size = new System.Drawing.Size(227, 29);
-            this.cmDetailType.TabIndex = 18;
-            this.cmDetailType.UseSelectable = true;
-            this.cmDetailType.Visible = false;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo_small;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(1174, 508);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(66, 66);
+            this.panel1.TabIndex = 192;
             // 
-            // lblAccHeader
+            // metroTile5
             // 
-            this.lblAccHeader.AutoSize = true;
-            this.lblAccHeader.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblAccHeader.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblAccHeader.Location = new System.Drawing.Point(160, 16);
-            this.lblAccHeader.Name = "lblAccHeader";
-            this.lblAccHeader.Size = new System.Drawing.Size(0, 0);
-            this.lblAccHeader.TabIndex = 19;
-            this.lblAccHeader.Visible = false;
+            this.metroTile5.ActiveControl = null;
+            this.metroTile5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile5.Location = new System.Drawing.Point(782, 482);
+            this.metroTile5.Name = "metroTile5";
+            this.metroTile5.Size = new System.Drawing.Size(116, 92);
+            this.metroTile5.TabIndex = 5;
+            this.metroTile5.Text = "BACK";
+            this.metroTile5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile5.TileImage = global::WindowsFormsApplication1.Properties.Resources.Back_32px;
+            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile5.UseSelectable = true;
+            this.metroTile5.UseTileImage = true;
+            this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
             // 
             // AccountChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 597);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.gbAddAccount);
             this.Controls.Add(this.lblconfirm);
             this.Controls.Add(this.metroTile5);
@@ -236,7 +267,6 @@
         private MetroFramework.Controls.MetroTile btnExpense;
         private MetroFramework.Controls.MetroTile btnLiability;
         private MetroFramework.Controls.MetroTile btnAsset;
-        private MetroFramework.Controls.MetroTile metroTile5;
         private MetroFramework.Controls.MetroLabel lblconfirm;
         private MetroFramework.Controls.MetroTile btnIncome;
         private System.Windows.Forms.GroupBox gbAddAccount;
@@ -246,5 +276,7 @@
         private System.Windows.Forms.RichTextBox txtAccounName;
         private MetroFramework.Controls.MetroComboBox cmDetailType;
         private MetroFramework.Controls.MetroLabel lblAccHeader;
+        private MetroFramework.Controls.MetroTile metroTile5;
+        private System.Windows.Forms.Panel panel1;
     }
 }

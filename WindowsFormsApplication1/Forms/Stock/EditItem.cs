@@ -20,7 +20,6 @@ namespace WindowsFormsApplication1.Forms
         Stock owner = new Stock();
 
         public EditItem(Stock form)
-
         {
             owner = form;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditItem_FormClosing);

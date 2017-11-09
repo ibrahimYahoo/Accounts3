@@ -38,6 +38,7 @@
             this.gvGlTransaction = new System.Windows.Forms.DataGridView();
             this.BtnSearch = new MetroFramework.Controls.MetroTile();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.cmGLAccountName = new GroupedComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvGlTransaction)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +55,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(419, 93);
+            this.metroLabel2.Location = new System.Drawing.Point(937, 194);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(68, 19);
             this.metroLabel2.TabIndex = 2;
@@ -63,7 +64,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(421, 141);
+            this.metroLabel3.Location = new System.Drawing.Point(939, 242);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(49, 19);
             this.metroLabel3.TabIndex = 3;
@@ -72,35 +73,45 @@
             // 
             // datStartDate
             // 
-            this.datStartDate.Location = new System.Drawing.Point(548, 93);
+            this.datStartDate.Location = new System.Drawing.Point(1029, 194);
             this.datStartDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.datStartDate.Name = "datStartDate";
-            this.datStartDate.Size = new System.Drawing.Size(200, 29);
+            this.datStartDate.Size = new System.Drawing.Size(175, 29);
             this.datStartDate.TabIndex = 4;
             // 
             // datEndDate
             // 
-            this.datEndDate.Location = new System.Drawing.Point(548, 140);
+            this.datEndDate.Location = new System.Drawing.Point(1029, 241);
             this.datEndDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.datEndDate.Name = "datEndDate";
-            this.datEndDate.Size = new System.Drawing.Size(200, 29);
+            this.datEndDate.Size = new System.Drawing.Size(175, 29);
             this.datEndDate.TabIndex = 5;
             this.datEndDate.ValueChanged += new System.EventHandler(this.datEndDate_ValueChanged);
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(1088, 33);
+            this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.metroButton1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.metroButton1.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.metroButton1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.metroButton1.Location = new System.Drawing.Point(937, 559);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(101, 50);
+            this.metroButton1.Size = new System.Drawing.Size(116, 92);
             this.metroButton1.TabIndex = 8;
             this.metroButton1.Text = "BACK";
+            this.metroButton1.UseCustomBackColor = true;
+            this.metroButton1.UseCustomForeColor = true;
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseStyleColors = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // gvGlTransaction
             // 
             this.gvGlTransaction.AllowUserToAddRows = false;
             this.gvGlTransaction.AllowUserToDeleteRows = false;
+            this.gvGlTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gvGlTransaction.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -111,38 +122,53 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gvGlTransaction.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvGlTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvGlTransaction.Location = new System.Drawing.Point(39, 194);
+            this.gvGlTransaction.Location = new System.Drawing.Point(39, 141);
             this.gvGlTransaction.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.gvGlTransaction.Name = "gvGlTransaction";
             this.gvGlTransaction.ReadOnly = true;
             this.gvGlTransaction.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvGlTransaction.RowTemplate.Height = 27;
-            this.gvGlTransaction.Size = new System.Drawing.Size(879, 410);
+            this.gvGlTransaction.Size = new System.Drawing.Size(882, 494);
             this.gvGlTransaction.TabIndex = 9;
             // 
             // BtnSearch
             // 
             this.BtnSearch.ActiveControl = null;
-            this.BtnSearch.Location = new System.Drawing.Point(937, 93);
+            this.BtnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnSearch.Location = new System.Drawing.Point(1061, 300);
             this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(114, 58);
+            this.BtnSearch.Size = new System.Drawing.Size(116, 61);
             this.BtnSearch.TabIndex = 10;
-            this.BtnSearch.Text = "SEARCH\r\n And PRINT\r\n";
+            this.BtnSearch.Text = "Search\r\nAnd Print";
             this.BtnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BtnSearch.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.BtnSearch.UseSelectable = true;
             this.BtnSearch.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(803, 93);
+            this.metroTile1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroTile1.Location = new System.Drawing.Point(939, 300);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(115, 58);
+            this.metroTile1.Size = new System.Drawing.Size(116, 61);
             this.metroTile1.TabIndex = 11;
-            this.metroTile1.Text = "SEARCH\r\nONLY";
+            this.metroTile1.Text = "Search\r\nOnly";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.BtnSearch_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo_small;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(1138, 585);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(66, 66);
+            this.panel1.TabIndex = 193;
             // 
             // cmGLAccountName
             // 
@@ -157,7 +183,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 591);
+            this.ClientSize = new System.Drawing.Size(1227, 656);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmGLAccountName);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.BtnSearch);
@@ -190,5 +217,6 @@
         private MetroFramework.Controls.MetroTile BtnSearch;
         private MetroFramework.Controls.MetroTile metroTile1;
         private GroupedComboBox cmGLAccountName;
+        private System.Windows.Forms.Panel panel1;
     }
 }

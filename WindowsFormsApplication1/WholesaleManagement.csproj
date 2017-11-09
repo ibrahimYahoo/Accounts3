@@ -314,40 +314,46 @@
     <Compile Include="Forms\Payments\Payments.designer.cs">
       <DependentUpon>Payments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Purchase\yos.cs">
+    <Compile Include="Forms\Order\Purchase\AsUpdateQty.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Purchase\yos.designer.cs">
+    <Compile Include="Forms\Order\Purchase\AsUpdateQty.Designer.cs">
+      <DependentUpon>AsUpdateQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\Purchase\yos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\Purchase\yos.designer.cs">
       <DependentUpon>yos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Purchase\AddPurchase.cs">
+    <Compile Include="Forms\Order\Purchase\AddPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Purchase\AddPurchase.designer.cs">
+    <Compile Include="Forms\Order\Purchase\AddPurchase.designer.cs">
       <DependentUpon>AddPurchase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Purchase\AddPurchase2.cs">
+    <Compile Include="Forms\Order\Purchase\AddPurchase2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Purchase\AddPurchase2.Designer.cs">
+    <Compile Include="Forms\Order\Purchase\AddPurchase2.Designer.cs">
       <DependentUpon>AddPurchase2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Purchase\EditPurchase.cs">
+    <Compile Include="Forms\Order\Purchase\EditPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Purchase\EditPurchase.designer.cs">
+    <Compile Include="Forms\Order\Purchase\EditPurchase.designer.cs">
       <DependentUpon>EditPurchase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Purchase\Purchases.cs">
+    <Compile Include="Forms\Order\Purchase\Purchases.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Purchase\Purchases.designer.cs">
+    <Compile Include="Forms\Order\Purchase\Purchases.designer.cs">
       <DependentUpon>Purchases.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Purchase\RequestPurPay.cs">
+    <Compile Include="Forms\Order\Purchase\RequestPurPay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Purchase\RequestPurPay.Designer.cs">
+    <Compile Include="Forms\Order\Purchase\RequestPurPay.Designer.cs">
       <DependentUpon>RequestPurPay.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Search\frmSearch.cs">
@@ -574,6 +580,9 @@
     <EmbeddedResource Include="Forms\Cashbook\AddReciept.resx">
       <DependentUpon>AddReciept.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cashbook\CashBook.resx">
+      <DependentUpon>CashBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cashbook\RecieptPrint.resx">
       <DependentUpon>RecieptPrint.cs</DependentUpon>
     </EmbeddedResource>
@@ -631,22 +640,25 @@
     <EmbeddedResource Include="Forms\Payments\Payments.resx">
       <DependentUpon>Payments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Purchase\yos.resx">
+    <EmbeddedResource Include="Forms\Order\Purchase\AsUpdateQty.resx">
+      <DependentUpon>AsUpdateQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\Purchase\yos.resx">
       <DependentUpon>yos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Purchase\AddPurchase.resx">
+    <EmbeddedResource Include="Forms\Order\Purchase\AddPurchase.resx">
       <DependentUpon>AddPurchase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Purchase\AddPurchase2.resx">
+    <EmbeddedResource Include="Forms\Order\Purchase\AddPurchase2.resx">
       <DependentUpon>AddPurchase2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Purchase\EditPurchase.resx">
+    <EmbeddedResource Include="Forms\Order\Purchase\EditPurchase.resx">
       <DependentUpon>EditPurchase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Purchase\Purchases.resx">
+    <EmbeddedResource Include="Forms\Order\Purchase\Purchases.resx">
       <DependentUpon>Purchases.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Purchase\RequestPurPay.resx">
+    <EmbeddedResource Include="Forms\Order\Purchase\RequestPurPay.resx">
       <DependentUpon>RequestPurPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Search\frmSearch.resx">
@@ -921,6 +933,7 @@
     <Content Include="Resources\icons8-customer-642.png" />
     <None Include="Resources\icons8-customer-643.png" />
     <None Include="Resources\icons8-Exit-50.png" />
+    <None Include="Resources\icons8-settings.png" />
     <Content Include="Resources\icons8-Shopping Cart-64.png" />
     <Content Include="Resources\icons8-Shopping Cart-641.png" />
     <Content Include="Resources\icons8-Supplier-48.png" />
@@ -960,6 +973,7 @@
     <Content Include="Resources\umbra logo1.png" />
     <Content Include="Resources\umbra logo2.png" />
     <None Include="Resources\umbra logo3.png" />
+    <None Include="Resources\umbra-logo-small.png" />
     <Content Include="Resources\Untitled.png" />
     <Content Include="Resources\Untitled1.png" />
   </ItemGroup>

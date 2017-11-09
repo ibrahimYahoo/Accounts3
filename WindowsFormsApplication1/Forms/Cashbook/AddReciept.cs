@@ -21,6 +21,8 @@ namespace WindowsFormsApplication1.Forms.Cashbook
         int PId;
         string invoiceNo;
         CashBook owner;
+        string RefNo = "";
+
         public static string OrderId = "";
         //public static int CBIdd = 0;
 
@@ -104,16 +106,17 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
                     //new DAO().UpdatePartyBalance(PId, int.Parse(lblSubtotal.Text) + PartyBalance);
 
-
+                    RefNo = txtRefNo.Text;
                     //string partyName = new DAO().getPartyName()
                     if (cmRecieptPayment.SelectedItem.Equals("Cash"))
                     {
                         //   "Payment for Invoice " + invoiceNo + "-" + AccountName
 
                         dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Income,Balance,InvoiceNo,PId) values (@3,@4,@5,@6,@7,@8,@9,@10,@11)", conn);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 1, "Debit",invoiceNo, 0,Decimal.Parse(txtRecieptAmount.Text), 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text),0, 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text),0, 00);
+
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 1, "Debit", RefNo, 0,Decimal.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", RefNo, Decimal.Parse(txtRecieptAmount.Text),0, 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", RefNo, Decimal.Parse(txtRecieptAmount.Text),0, 00);
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", RecieptDatePicker.Value);
                         dad.SelectCommand.Parameters.AddWithValue("@4", txtRefNo.Text);
@@ -131,9 +134,10 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
 
                         dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Income,Balance,InvoiceNo,ChequeNo,BankCode,PId) values (@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)", conn);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 2, "Debit", invoiceNo, 0,Decimal.Parse(txtRecieptAmount.Text), 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text),0, 00);
-                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", invoiceNo, Decimal.Parse(txtRecieptAmount.Text), 0,00);
+
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 2, "Debit", RefNo, 0,Decimal.Parse(txtRecieptAmount.Text), 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, 7, "Credit", RefNo, Decimal.Parse(txtRecieptAmount.Text),0, 00);
+                        new DAO().AddGlTransactions(RecieptDatePicker.Value, txtRecieptNarration.Text, AccountId, "Credit", RefNo, Decimal.Parse(txtRecieptAmount.Text), 0,00);
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", RecieptDatePicker.Value);
                         dad.SelectCommand.Parameters.AddWithValue("@4", txtRefNo.Text);
@@ -206,6 +210,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
         private void AddReciept_Load(object sender, EventArgs e)
         {
+            txtRefNo.Text = "";
 
             txtChequeNo.Text = "0";
             txtBankCode.Text = "0";

@@ -353,6 +353,16 @@ namespace WindowsFormsApplication1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_settings {
+            get {
+                object obj = ResourceManager.GetObject("icons8-settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Tax {
             get {
                 object obj = ResourceManager.GetObject("icons8-Tax", resourceCulture);
@@ -496,6 +506,16 @@ namespace WindowsFormsApplication1.Properties {
         internal static System.Drawing.Bitmap umbra_logo {
             get {
                 object obj = ResourceManager.GetObject("umbra logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap umbra_logo_small {
+            get {
+                object obj = ResourceManager.GetObject("umbra-logo-small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

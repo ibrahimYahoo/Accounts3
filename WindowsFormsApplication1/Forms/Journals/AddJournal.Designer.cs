@@ -212,6 +212,7 @@
             this.metroTile1.TabIndex = 12;
             this.metroTile1.Text = "ADD";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
@@ -224,6 +225,7 @@
             this.metroTile2.TabIndex = 13;
             this.metroTile2.Text = "NEW ";
             this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile2.UseSelectable = true;
             this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
             // 
@@ -236,6 +238,7 @@
             this.metroTile3.TabIndex = 14;
             this.metroTile3.Text = "CLOSE";
             this.metroTile3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile3.UseSelectable = true;
             this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click);
             // 

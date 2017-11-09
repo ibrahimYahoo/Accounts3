@@ -40,13 +40,13 @@ namespace WindowsFormsApplication1.Forms.Order
             try
             {
 
-                EditOrder ec = new EditOrder(int.Parse(gvCart.CurrentRow.Cells[4].Value.ToString()), decimal.Parse(gvCart.CurrentRow.Cells[6].Value.ToString()), OrderNo,  this);
-                ec.lblItemName.Text = gvCart.CurrentRow.Cells[5].Value.ToString();
-                ec.nmQty.Value = decimal.Parse(gvCart.CurrentRow.Cells[6].Value.ToString());
-                ec.lblTotalQty.Text = new DAO().getQty(int.Parse(gvCart.CurrentRow.Cells[4].Value.ToString())).ToString();
-                ec.lblCost.Text = gvCart.CurrentRow.Cells[7].Value.ToString();
-                ec.lblSubtotal.Text = gvCart.CurrentRow.Cells[8].Value.ToString();
-                ec.ShowDialog();
+                //EditOrder ec = new EditOrder(int.Parse(gvCart.CurrentRow.Cells[4].Value.ToString()), decimal.Parse(gvCart.CurrentRow.Cells[6].Value.ToString()), OrderNo,  this);
+                //ec.lblItemName.Text = gvCart.CurrentRow.Cells[5].Value.ToString();
+                //ec.nmQty.Value = decimal.Parse(gvCart.CurrentRow.Cells[6].Value.ToString());
+                //ec.lblTotalQty.Text = new DAO().getQty(int.Parse(gvCart.CurrentRow.Cells[4].Value.ToString())).ToString();
+                //ec.lblCost.Text = gvCart.CurrentRow.Cells[7].Value.ToString();
+                //ec.lblSubtotal.Text = gvCart.CurrentRow.Cells[8].Value.ToString();
+                //ec.ShowDialog();
             }
             catch (Exception)
             {

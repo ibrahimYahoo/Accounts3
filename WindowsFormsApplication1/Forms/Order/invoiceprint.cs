@@ -23,9 +23,14 @@ namespace WindowsFormsApplication1.Forms.Order
                 ds = new DAO().getInvoiceReportData(AllOrders.selectedOrderId);
 
             }
-            else
+            else if(AddOrder.OrderId != "")
             {
                 ds = new DAO().getInvoiceReportData(AddOrder.OrderId);
+
+            }
+            else
+            {
+                ds = new DAO().getInvoiceReportData(EditOrder.OrderId2);
 
             }
 

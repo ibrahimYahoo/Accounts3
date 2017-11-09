@@ -1527,6 +1527,31 @@ namespace WindowsFormsApplication1.Code
         }
 
 
+        public void UpdateGlTransaction(DateTime date, string Narrative, int AccountId, string TransType, string Reference, decimal Credit, decimal Debit, decimal Balance)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Update GLtransactions SET date=@date, Narrative=@Narrative, AccountId= @AccountId,TransType= @TransType, Reference= @Reference,Balance = @Balance, Credit = @Credit, Debit = @Debit where Reference = @Reference AND AccountId = @AccountId AND date = @date AND TransType= @TransType ", conn);
+
+                //SqlCommand cmd = new SqlCommand("Insert into GLtransactions (date,Narrative,AccountId,TransType,Reference,Balance,Credit,Debit) values (@date,@Narrative,@AccountId,@TransType,@Reference,@Balance,@Credit,@Debit)", conn);
+                cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@Narrative", Narrative);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
+                cmd.Parameters.AddWithValue("@TransType", TransType);
+                cmd.Parameters.AddWithValue("@Reference", Reference);
+                cmd.Parameters.AddWithValue("@Balance", Balance);
+                cmd.Parameters.AddWithValue("@Credit", Credit);
+                cmd.Parameters.AddWithValue("@Debit", Debit);
+
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
 
         public void AddGlTransactions(DateTime date,string Narrative,int AccountId,string TransType, string Reference,decimal Credit,decimal Debit,decimal Balance)
         {
@@ -2041,6 +2066,31 @@ namespace WindowsFormsApplication1.Code
 
         }
 
+        public DataTable SearchLotNo(int LotNo)
+        {
+            DataTable dtProduct = new DataTable();
+            conn = DBConn.GetInstance();
+
+
+            dad = new SqlDataAdapter("Select IId  from Items WHERE lotNo =@LotNo", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@LotNo", LotNo);
+            dad.Fill(dtProduct);
+            conn.Close();
+
+            if (dtProduct != null && dtProduct.Rows.Count > 0)
+            {
+                return dtProduct;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+
+        }
+
 
 
 
@@ -2057,6 +2107,21 @@ namespace WindowsFormsApplication1.Code
             return dtProduct;
 
         }
+
+        public DataTable GetItemsforLotNo(int IId)
+        {
+            DataTable dtProduct = new DataTable();
+            conn = DBConn.GetInstance();
+
+
+            dad = new SqlDataAdapter("Select IGarden,IGrade,IQty,IWtPerBag,ITotalWeight,IId  from [Items] WHERE LotNo = @IId ", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@IId", IId);
+            dad.Fill(dtProduct);
+            conn.Close();
+            return dtProduct;
+
+        }
+
 
         public DataTable GetBrokers()
         {
@@ -2077,7 +2142,7 @@ namespace WindowsFormsApplication1.Code
             conn = DBConn.GetInstance();
 
 
-            dad = new SqlDataAdapter("Select BId,BrokerName,Address,Email,ContactNo  from Brokers ", conn);
+            dad = new SqlDataAdapter("Select BId,BrokerName,Address,Email,ContactNo  from Brokers WHERE BId != 2 ", conn);
             dad.Fill(dtProduct);
             conn.Close();
             return dtProduct;
@@ -2097,13 +2162,15 @@ namespace WindowsFormsApplication1.Code
 
         }
 
-        public int getItemIdFromName(string itemname)
+        public int getItemIdFromName(int LotNo)
         {
             DataTable dtProduct = new DataTable();
             conn = DBConn.GetInstance();
             int itemid;
 
-            dad = new SqlDataAdapter("Select IID  from Items where IGarden = '" + itemname + "'", conn);
+            dad = new SqlDataAdapter("Select IId  from Items where LotNo = @LotNo", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@LotNo", LotNo);
+
             dad.Fill(dtProduct);
             try
             {
@@ -2175,7 +2242,7 @@ namespace WindowsFormsApplication1.Code
             conn.Close();
         }
 
-        public void insertItem(int LotNo, string Grade,string IGarden,int totalBags,int WtPerBag,int IRatePerKg,decimal ITotalCost,decimal ITotalWeight)
+        public void insertItem(int LotNo, string Grade,string IGarden,decimal totalBags,int WtPerBag,int IRatePerKg,decimal ITotalCost,decimal ITotalWeight)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = DBConn.GetInstance();
@@ -2303,17 +2370,34 @@ namespace WindowsFormsApplication1.Code
 
             return CId;
         }
+        //public DataTable GetPurchases()
+        //{
+        //    DataTable dtProduct = new DataTable();
+        //    conn = DBConn.GetInstance();
+
+        //    //dad = new SqlDataAdapter(" SELECT Purchase.PurId, Purchase.PurDate as 'Purchase Date', Items.IName as 'Item Name',Party.PName as 'Party Name', Purchase.IPrice as 'Selling Price',Purchase.PurPrice as 'Purchase Price', Purchase.ItemQty, Purchase.Total FROM Purchase INNER JOIN Items ON Items.IId = Purchase.IId INNER JOIN Party ON Purchase.PId = Party.PId", conn);
+
+        //    dad = new SqlDataAdapter("SELECT * FROM Purchase", conn);
+        //    dad.Fill(dtProduct);
+        //    conn.Close();
+        //    return dtProduct;
+        //}
+
         public DataTable GetPurchases()
         {
-            DataTable dtProduct = new DataTable();
-            conn = DBConn.GetInstance();
 
-            //dad = new SqlDataAdapter(" SELECT Purchase.PurId, Purchase.PurDate as 'Purchase Date', Items.IName as 'Item Name',Party.PName as 'Party Name', Purchase.IPrice as 'Selling Price',Purchase.PurPrice as 'Purchase Price', Purchase.ItemQty, Purchase.Total FROM Purchase INNER JOIN Items ON Items.IId = Purchase.IId INNER JOIN Party ON Purchase.PId = Party.PId", conn);
+            SqlCommand com = new SqlCommand("GetOrdersDetails", conn);
 
-            dad = new SqlDataAdapter("SELECT * FROM Purchase", conn);
-            dad.Fill(dtProduct);
-            conn.Close();
-            return dtProduct;
+            com.CommandType = CommandType.StoredProcedure;
+
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+
+            DataTable ds = new DataTable();
+
+            da.Fill(ds);
+
+            return ds;
         }
 
 

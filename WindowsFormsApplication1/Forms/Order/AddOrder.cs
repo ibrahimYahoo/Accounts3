@@ -684,7 +684,7 @@ namespace WindowsFormsApplication1.Forms.Order
 
             //this.Hide();
             //Home f1obj = new Home();
-            Main obj = new Main();
+            AllOrders obj = new AllOrders();
             obj.WindowState = FormWindowState.Maximized;
 
             obj.Show();
@@ -766,6 +766,134 @@ namespace WindowsFormsApplication1.Forms.Order
             obj3.Show();
 
 
+        }
+
+        private void txtSellingQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSellingWt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtShortage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRatePerKg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBrokeryAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBardena_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTulai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCarrage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                // Allow Digits and BackSpace char
+            }
+            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            {
+                //Allows only one Dot Char
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
         //private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)

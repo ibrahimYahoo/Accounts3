@@ -79,7 +79,7 @@
             this.mtEdit.UseCustomBackColor = true;
             this.mtEdit.UseSelectable = true;
             this.mtEdit.UseTileImage = true;
-            this.mtEdit.Click += new System.EventHandler(this.mtEdit_Click);
+            //this.mtEdit.Click += new System.EventHandler(this.mtEdit_Click);
             // 
             // mtRemove
             // 

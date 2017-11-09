@@ -59,32 +59,47 @@
             // 
             // metroButton3
             // 
+            this.metroButton3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.metroButton3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.metroButton3.Location = new System.Drawing.Point(32, 576);
             this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(90, 46);
+            this.metroButton3.Size = new System.Drawing.Size(102, 46);
             this.metroButton3.TabIndex = 29;
             this.metroButton3.Text = "New Payment";
+            this.metroButton3.UseCustomBackColor = true;
+            this.metroButton3.UseCustomForeColor = true;
             this.metroButton3.UseSelectable = true;
+            this.metroButton3.UseStyleColors = true;
             this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
             // 
             // metroButton2
             // 
+            this.metroButton2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.metroButton2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.metroButton2.Location = new System.Drawing.Point(292, 576);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(75, 46);
             this.metroButton2.TabIndex = 28;
             this.metroButton2.Text = "Close";
+            this.metroButton2.UseCustomBackColor = true;
+            this.metroButton2.UseCustomForeColor = true;
             this.metroButton2.UseSelectable = true;
+            this.metroButton2.UseStyleColors = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // metroButton1
             // 
+            this.metroButton1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.metroButton1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.metroButton1.Location = new System.Drawing.Point(167, 576);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(80, 46);
+            this.metroButton1.Size = new System.Drawing.Size(90, 46);
             this.metroButton1.TabIndex = 27;
             this.metroButton1.Text = "Add Payment";
+            this.metroButton1.UseCustomBackColor = true;
+            this.metroButton1.UseCustomForeColor = true;
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseStyleColors = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // txtPaymentAmount

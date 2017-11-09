@@ -471,14 +471,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Wholesale Management.exe" size="2977280">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Wholesale Management.exe" size="3020800">
       <assemblyIdentity name="Wholesale Management" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>noKQ86qXHzmGZaKRFU1J3DUytzM0W2xCoN2FTR/Z5lw=</dsig:DigestValue>
+        <dsig:DigestValue>86Ccs4Fbwgm/NQfWYsLRm3uSJA07mJvB1RdHIOnntyc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

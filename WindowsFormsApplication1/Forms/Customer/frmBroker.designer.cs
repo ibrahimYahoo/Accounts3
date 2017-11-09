@@ -40,7 +40,7 @@
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.mtBack = new MetroFramework.Controls.MetroTile();
             this.lblmsg = new MetroFramework.Controls.MetroLabel();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCustomer)).BeginInit();
             this.SuspendLayout();
@@ -131,9 +131,9 @@
             this.metroTile5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroTile5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.metroTile5.BackColor = System.Drawing.Color.SkyBlue;
-            this.metroTile5.Location = new System.Drawing.Point(567, 607);
+            this.metroTile5.Location = new System.Drawing.Point(567, 614);
             this.metroTile5.Name = "metroTile5";
-            this.metroTile5.Size = new System.Drawing.Size(122, 99);
+            this.metroTile5.Size = new System.Drawing.Size(116, 92);
             this.metroTile5.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile5.TabIndex = 5;
             this.metroTile5.Text = "Export Data";
@@ -141,7 +141,7 @@
             this.metroTile5.TileImage = global::WindowsFormsApplication1.Properties.Resources.icons8_Fine_Print_32;
             this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile5.UseCustomBackColor = true;
+            this.metroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile5.UseSelectable = true;
             this.metroTile5.UseTileImage = true;
             this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
@@ -153,9 +153,9 @@
             this.metroTile3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroTile3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.metroTile3.BackColor = System.Drawing.Color.SkyBlue;
-            this.metroTile3.Location = new System.Drawing.Point(439, 607);
+            this.metroTile3.Location = new System.Drawing.Point(439, 614);
             this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(122, 99);
+            this.metroTile3.Size = new System.Drawing.Size(116, 92);
             this.metroTile3.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile3.TabIndex = 3;
             this.metroTile3.Text = "Delete";
@@ -163,7 +163,7 @@
             this.metroTile3.TileImage = global::WindowsFormsApplication1.Properties.Resources.Delete_32px;
             this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile3.UseCustomBackColor = true;
+            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile3.UseSelectable = true;
             this.metroTile3.UseTileImage = true;
             this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click);
@@ -175,9 +175,9 @@
             this.metroTile2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroTile2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.metroTile2.BackColor = System.Drawing.Color.SkyBlue;
-            this.metroTile2.Location = new System.Drawing.Point(306, 607);
+            this.metroTile2.Location = new System.Drawing.Point(306, 614);
             this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(122, 99);
+            this.metroTile2.Size = new System.Drawing.Size(116, 92);
             this.metroTile2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile2.TabIndex = 2;
             this.metroTile2.Text = "Edit";
@@ -185,7 +185,7 @@
             this.metroTile2.TileImage = global::WindowsFormsApplication1.Properties.Resources.Edit_File_32px;
             this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile2.UseCustomBackColor = true;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile2.UseSelectable = true;
             this.metroTile2.UseTileImage = true;
             this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
@@ -196,9 +196,9 @@
             this.metroTile1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroTile1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.metroTile1.BackColor = System.Drawing.Color.SkyBlue;
-            this.metroTile1.Location = new System.Drawing.Point(179, 607);
+            this.metroTile1.Location = new System.Drawing.Point(179, 614);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(122, 99);
+            this.metroTile1.Size = new System.Drawing.Size(116, 92);
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile1.TabIndex = 1;
             this.metroTile1.Text = "New";
@@ -206,7 +206,7 @@
             this.metroTile1.TileImage = global::WindowsFormsApplication1.Properties.Resources.File_32px;
             this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
@@ -216,9 +216,9 @@
             this.mtBack.ActiveControl = null;
             this.mtBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.mtBack.BackColor = System.Drawing.Color.SkyBlue;
-            this.mtBack.Location = new System.Drawing.Point(695, 607);
+            this.mtBack.Location = new System.Drawing.Point(695, 614);
             this.mtBack.Name = "mtBack";
-            this.mtBack.Size = new System.Drawing.Size(96, 99);
+            this.mtBack.Size = new System.Drawing.Size(116, 92);
             this.mtBack.Style = MetroFramework.MetroColorStyle.Blue;
             this.mtBack.TabIndex = 26;
             this.mtBack.Text = "Back";
@@ -226,7 +226,7 @@
             this.mtBack.TileImage = global::WindowsFormsApplication1.Properties.Resources.Back_32px;
             this.mtBack.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.mtBack.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mtBack.UseCustomBackColor = true;
+            this.mtBack.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mtBack.UseSelectable = true;
             this.mtBack.UseTileImage = true;
             this.mtBack.Click += new System.EventHandler(this.mtBack_Click);
@@ -245,22 +245,15 @@
             this.lblmsg.UseCustomBackColor = true;
             this.lblmsg.UseCustomForeColor = true;
             // 
-            // metroPanel2
+            // panel1
             // 
-            this.metroPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroPanel2.AutoSize = true;
-            this.metroPanel2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo;
-            this.metroPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(919, 649);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(66, 57);
-            this.metroPanel2.TabIndex = 28;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo_small;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(919, 640);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(66, 66);
+            this.panel1.TabIndex = 193;
             // 
             // frmBroker
             // 
@@ -269,7 +262,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.metroPanel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.mtBack);
             this.Controls.Add(this.metroTile5);
@@ -299,7 +292,7 @@
         private MetroFramework.Controls.MetroTile mtBack;
         private MetroFramework.Controls.MetroLabel lblmsg;
         public MetroFramework.Controls.MetroGrid gvCustomer;
-        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

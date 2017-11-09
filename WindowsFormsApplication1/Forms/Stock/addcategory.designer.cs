@@ -47,6 +47,8 @@
             // gvcategory
             // 
             this.gvcategory.AllowUserToResizeRows = false;
+            this.gvcategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gvcategory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gvcategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvcategory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -84,7 +86,7 @@
             this.gvcategory.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gvcategory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gvcategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvcategory.Size = new System.Drawing.Size(266, 247);
+            this.gvcategory.Size = new System.Drawing.Size(266, 283);
             this.gvcategory.TabIndex = 0;
             this.gvcategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvcategory_CellClick);
             this.gvcategory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvcategory_CellContentClick);
@@ -92,12 +94,12 @@
             // metroTile3
             // 
             this.metroTile3.ActiveControl = null;
-            this.metroTile3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.metroTile3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.metroTile3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.metroTile3.BackColor = System.Drawing.Color.Transparent;
-            this.metroTile3.Location = new System.Drawing.Point(349, 253);
+            this.metroTile3.Location = new System.Drawing.Point(341, 282);
             this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(94, 99);
+            this.metroTile3.Size = new System.Drawing.Size(116, 92);
             this.metroTile3.TabIndex = 36;
             this.metroTile3.Text = "Delete";
             this.metroTile3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -105,7 +107,7 @@
             this.metroTile3.TileImage = global::WindowsFormsApplication1.Properties.Resources.Delete_32px;
             this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile3.UseCustomBackColor = true;
+            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile3.UseSelectable = true;
             this.metroTile3.UseTileImage = true;
             this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click);
@@ -113,12 +115,12 @@
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
-            this.metroTile2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.metroTile2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.metroTile2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.metroTile2.BackColor = System.Drawing.Color.Transparent;
-            this.metroTile2.Location = new System.Drawing.Point(440, 148);
+            this.metroTile2.Location = new System.Drawing.Point(473, 177);
             this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(75, 99);
+            this.metroTile2.Size = new System.Drawing.Size(116, 92);
             this.metroTile2.TabIndex = 35;
             this.metroTile2.Text = "Edit";
             this.metroTile2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -126,7 +128,7 @@
             this.metroTile2.TileImage = global::WindowsFormsApplication1.Properties.Resources.Edit_File_32px;
             this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile2.UseCustomBackColor = true;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile2.UseSelectable = true;
             this.metroTile2.UseTileImage = true;
             this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
@@ -134,11 +136,11 @@
             // mtBack
             // 
             this.mtBack.ActiveControl = null;
-            this.mtBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.mtBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.mtBack.BackColor = System.Drawing.Color.Transparent;
-            this.mtBack.Location = new System.Drawing.Point(449, 253);
+            this.mtBack.Location = new System.Drawing.Point(473, 282);
             this.mtBack.Name = "mtBack";
-            this.mtBack.Size = new System.Drawing.Size(66, 99);
+            this.mtBack.Size = new System.Drawing.Size(116, 92);
             this.mtBack.TabIndex = 33;
             this.mtBack.Text = "Back";
             this.mtBack.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -146,7 +148,7 @@
             this.mtBack.TileImage = global::WindowsFormsApplication1.Properties.Resources.Back_32px;
             this.mtBack.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.mtBack.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mtBack.UseCustomBackColor = true;
+            this.mtBack.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mtBack.UseSelectable = true;
             this.mtBack.UseTileImage = true;
             this.mtBack.Click += new System.EventHandler(this.mtBack_Click);
@@ -154,11 +156,11 @@
             // mtCreate
             // 
             this.mtCreate.ActiveControl = null;
-            this.mtCreate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.mtCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.mtCreate.BackColor = System.Drawing.Color.Transparent;
-            this.mtCreate.Location = new System.Drawing.Point(349, 148);
+            this.mtCreate.Location = new System.Drawing.Point(341, 177);
             this.mtCreate.Name = "mtCreate";
-            this.mtCreate.Size = new System.Drawing.Size(85, 95);
+            this.mtCreate.Size = new System.Drawing.Size(116, 92);
             this.mtCreate.TabIndex = 32;
             this.mtCreate.Text = "Create";
             this.mtCreate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -166,18 +168,19 @@
             this.mtCreate.TileImage = global::WindowsFormsApplication1.Properties.Resources.icons8_Add_User_Male_32;
             this.mtCreate.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.mtCreate.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mtCreate.UseCustomBackColor = true;
+            this.mtCreate.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mtCreate.UseSelectable = true;
             this.mtCreate.UseTileImage = true;
             this.mtCreate.Click += new System.EventHandler(this.mtCreate_Click);
             // 
             // metroLabel1
             // 
+            this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.ForeColor = System.Drawing.Color.White;
+            this.metroLabel1.ForeColor = System.Drawing.Color.Black;
             this.metroLabel1.Location = new System.Drawing.Point(305, 117);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(84, 25);
@@ -188,13 +191,12 @@
             // 
             // txtcatname
             // 
-            this.txtcatname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtcatname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
             this.txtcatname.CustomButton.Image = null;
-            this.txtcatname.CustomButton.Location = new System.Drawing.Point(129, 2);
+            this.txtcatname.CustomButton.Location = new System.Drawing.Point(192, 2);
             this.txtcatname.CustomButton.Name = "";
             this.txtcatname.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.txtcatname.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -214,7 +216,7 @@
             this.txtcatname.SelectionLength = 0;
             this.txtcatname.SelectionStart = 0;
             this.txtcatname.ShortcutsEnabled = true;
-            this.txtcatname.Size = new System.Drawing.Size(157, 30);
+            this.txtcatname.Size = new System.Drawing.Size(220, 30);
             this.txtcatname.TabIndex = 42;
             this.txtcatname.UseSelectable = true;
             this.txtcatname.WaterMark = "Enter Category Name";
@@ -237,13 +239,12 @@
             // 
             // txtcatid
             // 
-            this.txtcatid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtcatid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
             this.txtcatid.CustomButton.Image = null;
-            this.txtcatid.CustomButton.Location = new System.Drawing.Point(129, 2);
+            this.txtcatid.CustomButton.Location = new System.Drawing.Point(192, 2);
             this.txtcatid.CustomButton.Name = "";
             this.txtcatid.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.txtcatid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -263,7 +264,7 @@
             this.txtcatid.SelectionLength = 0;
             this.txtcatid.SelectionStart = 0;
             this.txtcatid.ShortcutsEnabled = true;
-            this.txtcatid.Size = new System.Drawing.Size(157, 30);
+            this.txtcatid.Size = new System.Drawing.Size(220, 30);
             this.txtcatid.TabIndex = 44;
             this.txtcatid.UseSelectable = true;
             this.txtcatid.Visible = false;
@@ -273,11 +274,12 @@
             // 
             // metroLabel2
             // 
+            this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.ForeColor = System.Drawing.Color.White;
+            this.metroLabel2.ForeColor = System.Drawing.Color.Black;
             this.metroLabel2.Location = new System.Drawing.Point(305, 68);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(58, 25);
@@ -292,7 +294,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(575, 375);
+            this.ClientSize = new System.Drawing.Size(638, 404);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.txtcatid);
             this.Controls.Add(this.lblmsg);
@@ -305,7 +307,6 @@
             this.Controls.Add(this.gvcategory);
             this.Name = "addcategory";
             this.Text = "Add Category";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.addcategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvcategory)).EndInit();
             this.ResumeLayout(false);

@@ -41,6 +41,7 @@
             this.gvPurchase = new MetroFramework.Controls.MetroGrid();
             this.btnPrintDeliveryOrder = new MetroFramework.Controls.MetroTile();
             this.btnPrintInvoice = new MetroFramework.Controls.MetroTile();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.gvPurchase)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,16 +51,16 @@
             this.btndelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btndelete.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btndelete.Location = new System.Drawing.Point(640, 645);
+            this.btndelete.Location = new System.Drawing.Point(713, 653);
             this.btndelete.Name = "btndelete";
-            this.btndelete.Size = new System.Drawing.Size(98, 97);
+            this.btndelete.Size = new System.Drawing.Size(116, 92);
             this.btndelete.TabIndex = 2;
             this.btndelete.Text = "Delete";
             this.btndelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btndelete.TileImage = global::WindowsFormsApplication1.Properties.Resources.Delete_32px;
             this.btndelete.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btndelete.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btndelete.UseCustomBackColor = true;
+            this.btndelete.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btndelete.UseSelectable = true;
             this.btndelete.UseTileImage = true;
             this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
@@ -70,16 +71,16 @@
             this.btnedit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnedit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnedit.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnedit.Location = new System.Drawing.Point(536, 645);
+            this.btnedit.Location = new System.Drawing.Point(591, 653);
             this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(98, 97);
+            this.btnedit.Size = new System.Drawing.Size(116, 92);
             this.btnedit.TabIndex = 1;
             this.btnedit.Text = "Edit";
             this.btnedit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnedit.TileImage = global::WindowsFormsApplication1.Properties.Resources.Edit_File_32px;
             this.btnedit.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnedit.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btnedit.UseCustomBackColor = true;
+            this.btnedit.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnedit.UseSelectable = true;
             this.btnedit.UseTileImage = true;
             this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
@@ -89,16 +90,16 @@
             this.btnadditem.ActiveControl = null;
             this.btnadditem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnadditem.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnadditem.Location = new System.Drawing.Point(432, 645);
+            this.btnadditem.Location = new System.Drawing.Point(469, 653);
             this.btnadditem.Name = "btnadditem";
-            this.btnadditem.Size = new System.Drawing.Size(98, 97);
+            this.btnadditem.Size = new System.Drawing.Size(116, 92);
             this.btnadditem.TabIndex = 0;
-            this.btnadditem.Text = "Add Item";
+            this.btnadditem.Text = "Add Order";
             this.btnadditem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnadditem.TileImage = global::WindowsFormsApplication1.Properties.Resources.Add_32px;
             this.btnadditem.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnadditem.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btnadditem.UseCustomBackColor = true;
+            this.btnadditem.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnadditem.UseSelectable = true;
             this.btnadditem.UseTileImage = true;
             this.btnadditem.Click += new System.EventHandler(this.btnadditem_Click);
@@ -108,16 +109,16 @@
             this.btnback.ActiveControl = null;
             this.btnback.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnback.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnback.Location = new System.Drawing.Point(744, 645);
+            this.btnback.Location = new System.Drawing.Point(835, 653);
             this.btnback.Name = "btnback";
-            this.btnback.Size = new System.Drawing.Size(98, 97);
+            this.btnback.Size = new System.Drawing.Size(116, 92);
             this.btnback.TabIndex = 3;
             this.btnback.Text = "Back";
             this.btnback.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnback.TileImage = global::WindowsFormsApplication1.Properties.Resources.Back_32px;
             this.btnback.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnback.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btnback.UseCustomBackColor = true;
+            this.btnback.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnback.UseSelectable = true;
             this.btnback.UseTileImage = true;
             this.btnback.Click += new System.EventHandler(this.btnback_Click);
@@ -200,14 +201,16 @@
             // 
             this.btnPrintDeliveryOrder.ActiveControl = null;
             this.btnPrintDeliveryOrder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPrintDeliveryOrder.Location = new System.Drawing.Point(848, 645);
+            this.btnPrintDeliveryOrder.Location = new System.Drawing.Point(347, 653);
             this.btnPrintDeliveryOrder.Name = "btnPrintDeliveryOrder";
-            this.btnPrintDeliveryOrder.Size = new System.Drawing.Size(105, 97);
+            this.btnPrintDeliveryOrder.Size = new System.Drawing.Size(116, 92);
             this.btnPrintDeliveryOrder.TabIndex = 189;
-            this.btnPrintDeliveryOrder.Text = "DELIVERY\r\nORDER\r\n";
+            this.btnPrintDeliveryOrder.Text = "Delivery\r\nOrder\r\n";
             this.btnPrintDeliveryOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnPrintDeliveryOrder.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.btnPrintDeliveryOrder.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPrintDeliveryOrder.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPrintDeliveryOrder.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnPrintDeliveryOrder.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnPrintDeliveryOrder.UseSelectable = true;
             this.btnPrintDeliveryOrder.Click += new System.EventHandler(this.btnPrintDeliveryOrder_Click);
             // 
@@ -216,23 +219,35 @@
             this.btnPrintInvoice.ActiveControl = null;
             this.btnPrintInvoice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPrintInvoice.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnPrintInvoice.Location = new System.Drawing.Point(959, 645);
+            this.btnPrintInvoice.Location = new System.Drawing.Point(225, 653);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(109, 97);
+            this.btnPrintInvoice.Size = new System.Drawing.Size(116, 92);
             this.btnPrintInvoice.TabIndex = 190;
-            this.btnPrintInvoice.Text = "PRINT\r\nINVOICE\r\n";
+            this.btnPrintInvoice.Text = "Print\r\nInvoice";
             this.btnPrintInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrintInvoice.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.btnPrintInvoice.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPrintInvoice.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.btnPrintInvoice.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPrintInvoice.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnPrintInvoice.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btnPrintInvoice.UseSelectable = true;
-            this.btnPrintInvoice.UseTileImage = true;
             this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo_small;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(1197, 679);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(66, 66);
+            this.panel1.TabIndex = 191;
             // 
             // AllOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 768);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPrintInvoice);
             this.Controls.Add(this.btnPrintDeliveryOrder);
             this.Controls.Add(this.gvPurchase);
@@ -261,5 +276,6 @@
         public MetroFramework.Controls.MetroGrid gvPurchase;
         private MetroFramework.Controls.MetroTile btnPrintDeliveryOrder;
         private MetroFramework.Controls.MetroTile btnPrintInvoice;
+        private System.Windows.Forms.Panel panel1;
     }
 }
