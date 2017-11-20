@@ -17,12 +17,14 @@ namespace WindowsFormsApplication1.Forms.Purchase
     {
         Purchase.Purchases owner;
         public static decimal TotalWeight = 0;
+        public static decimal TotalQuantity = 0;
 
         public static decimal NetWeight = 0;
 
         public static int IId = 0;
         DataTable dt = new DataTable();
 
+        public static int LastPurchaseNo = 0;
 
         public static string GardenName = "";
 
@@ -33,9 +35,9 @@ namespace WindowsFormsApplication1.Forms.Purchase
         public static decimal RatePerKg = 0;
         public static decimal Cost = 0;
         public static decimal TotalCost = 0;
-        public static int bardena = 0;
-        public static int Tulai = 0;
-        public static int Carrage = 0;
+        public static decimal bardena = 0;
+        public static decimal Tulai = 0;
+        public static decimal Carrage = 0;
 
 
         public AddPurchase(Purchase.Purchases frm1)
@@ -54,14 +56,17 @@ namespace WindowsFormsApplication1.Forms.Purchase
         private void AddPurchase_Load(object sender, EventArgs e)
         {
 
-            PurchaseId = "PUR" + new DAO().getLastPurchaseNo();
+            LastPurchaseNo = new DAO().getLastPurchaseNo() + 1;
+
+
+            PurchaseId = "PUR" + LastPurchaseNo;
 
 
             txtGardenName.AutoCompleteMode = AutoCompleteMode.Append;
             txtGardenName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtGardenName.AutoCompleteCustomSource = new DAO().GetGardens();
 
-            cmbsuppname.DataSource = new DAO().GetParties();
+            cmbsuppname.DataSource = new DAO().GetPartiesFrmAccount();
             cmbsuppname.DisplayMember = "Name";
             cmbsuppname.ValueMember = "Party-ID";
             cmbsuppname.SelectedIndex = -1;
@@ -102,13 +107,12 @@ namespace WindowsFormsApplication1.Forms.Purchase
                     int LotNo = int.Parse(txtLotNo.Text);
                     DataRowView dv = (DataRowView)cmbsuppname.SelectedItem;
                     string AccountName = (string)dv.Row["Name"];
-                    int PId = (int)dv.Row["Party-ID"];
+                    int AccountId = (int)dv.Row["Party-ID"];
                     string GardenName = txtGardenName.Text;
                     int BId = 2;
-                    int TotalQuantity = int.Parse(txtTotalBagsQuantity.Text);
+                    //int TotalQuantity = int.Parse(txtTotalBagsQuantity.Text);
                     // decimal TotalCost = Cost + int.Parse(txtBardena.Text) + int.Parse(txtTulai.Text) + int.Parse(txtCarrage.Text);
-                    int IId = new DAO().getItemIdFromName(LotNo);
-                    int AccountId = new DAO().GetAccountId(AccountName);
+                    //int AccountId = new DAO().GetAccountId(AccountName);
 
                     new DAO().insertItem(LotNo, txtGrade.Text, GardenName, decimal.Parse(txtTotalBagsQuantity.Text), int.Parse(txtWeightPerBag.Text), int.Parse(txtRatePerKg.Text), Cost, NetWeight);
 
@@ -125,6 +129,8 @@ namespace WindowsFormsApplication1.Forms.Purchase
                         //new DAO().AddGlTransactions(DateTime.Today.Date, "BrokeryAmount", BroAccountId, "Debit", OrderId, 0, BrokeryAmount, 00);
 
                     }
+                    int IId = new DAO().getItemIdFromName(LotNo);
+
 
 
 
@@ -148,12 +154,13 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
                     DataTable dt = new DataTable();
                     SqlConnection conn = DBConn.GetInstance();
-                    SqlDataAdapter dad = new SqlDataAdapter("Insert INTO Purchase(PurId,IId,PId,PurDate,IRatePerKg,ItemQty,BrokeryAmount,BId,Bardena,Tulai,Carrage,Total,AmountPaid,Status,Cost,Shortage,TotalWeight,NetWeight) values (@PurId,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,0,'Notpaid',@Cost,@Shortage,@TotalWeight,@NetWeight)", conn);
+                    SqlDataAdapter dad = new SqlDataAdapter("Insert INTO Purchase(PurId,PurNo,IId,AccountId,PurDate,IRatePerKg,ItemQty,BrokeryAmount,BId,Bardena,Tulai,Carrage,Total,AmountPaid,Status,Cost,Shortage,TotalWeight,NetWeight) values (@PurId,@PurNo,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,0,'Notpaid',@Cost,@Shortage,@TotalWeight,@NetWeight)", conn);
 
                     dad.SelectCommand.Parameters.AddWithValue("@PurId", PurchaseId);
+                    dad.SelectCommand.Parameters.AddWithValue("@PurNo", LastPurchaseNo);
 
                     dad.SelectCommand.Parameters.AddWithValue("@3", IId);
-                    dad.SelectCommand.Parameters.AddWithValue("@4", PId);
+                    dad.SelectCommand.Parameters.AddWithValue("@4", AccountId);
                     dad.SelectCommand.Parameters.AddWithValue("@5", cmbpaydate.Value);
                     dad.SelectCommand.Parameters.AddWithValue("@6", RatePerKg);
                     dad.SelectCommand.Parameters.AddWithValue("@7", TotalQuantity);
@@ -517,7 +524,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
                 return;
             }
-            bardena = int.Parse(txtBardena.Text);
+            bardena = decimal.Parse(txtBardena.Text);
             TotalCost = Cost + bardena + Tulai + Carrage;
             txtTotalCost.Text = TotalCost.ToString();
         }
@@ -530,7 +537,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
                 txtTotalCost.Text = TotalCost.ToString();
                 return;
             }
-            Tulai = int.Parse(txtTulai.Text);
+            Tulai = decimal.Parse(txtTulai.Text);
             TotalCost = Cost + bardena + Tulai + Carrage;
             txtTotalCost.Text = TotalCost.ToString();
 
@@ -545,7 +552,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
                 return;
             }
-            Carrage = int.Parse(txtCarrage.Text);
+            Carrage = decimal.Parse(txtCarrage.Text);
             TotalCost = Cost + bardena + Tulai + Carrage;
             txtTotalCost.Text = TotalCost.ToString();
 
@@ -616,6 +623,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
         private void txtTotalBagsQuantity_TextChanged(object sender, EventArgs e)
         {
+
             if (txtTotalBagsQuantity.Text == "" || txtTotalBagsQuantity.Text == "0")
             {
                 NetWeight = 0;
@@ -624,10 +632,16 @@ namespace WindowsFormsApplication1.Forms.Purchase
             }
             else
             {
-                if (txtTotalWeight.Text != "" || txtShortage.Text != " " || txtShortage.Text != "0")
+                TotalQuantity = decimal.Parse(txtTotalBagsQuantity.Text);
+
+                if (txtTotalWeight.Text != "" || txtShortage.Text != " " )
                 {
                     if (txtShortage.Text != " " || txtShortage.Text != "")
                     {
+                        TotalWeight = TotalQuantity * decimal.Parse(txtWeightPerBag.Text);
+                        txtTotalWeight.Text = TotalWeight.ToString();
+
+
                         NetWeight = TotalWeight - Shortage;
                         txtNetWeight.Text = NetWeight.ToString();
 
@@ -749,7 +763,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
             {
                 // Allow Digits and BackSpace char
             }
-            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            else if (e.KeyChar == '.' && !txtTulai.Text.Contains('.'))
             {
                 //Allows only one Dot Char
             }
@@ -765,7 +779,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
             {
                 // Allow Digits and BackSpace char
             }
-            else if (e.KeyChar == '.' && !((MetroFramework.Controls.MetroTextBox)sender).Text.Contains('.'))
+            else if (e.KeyChar == '.' && !txtCarrage.Text.Contains('.'))
             {
                 //Allows only one Dot Char
             }

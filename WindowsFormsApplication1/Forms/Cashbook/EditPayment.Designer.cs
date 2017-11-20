@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1.Forms.Cashbook
 {
-    partial class AddPayment
+    partial class EditPayment
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.txtPaymentAmount = new MetroFramework.Controls.MetroTextBox();
@@ -48,30 +47,13 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.lblRefNo = new MetroFramework.Controls.MetroLabel();
             this.txtRefNo = new MetroFramework.Controls.MetroTextBox();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.txtBankCode = new MetroFramework.Controls.MetroTextBox();
             this.txtChequeNo = new MetroFramework.Controls.MetroTextBox();
             this.lblCheqeNo = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
-            this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // metroButton3
-            // 
-            this.metroButton3.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.metroButton3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton3.Location = new System.Drawing.Point(9, 576);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(82, 46);
-            this.metroButton3.TabIndex = 29;
-            this.metroButton3.Text = "New\r\nPayment";
-            this.metroButton3.UseCustomBackColor = true;
-            this.metroButton3.UseCustomForeColor = true;
-            this.metroButton3.UseSelectable = true;
-            this.metroButton3.UseStyleColors = true;
-            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
             // 
             // metroButton2
             // 
@@ -92,11 +74,11 @@
             // 
             this.metroButton1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.metroButton1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton1.Location = new System.Drawing.Point(97, 576);
+            this.metroButton1.Location = new System.Drawing.Point(23, 576);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(90, 46);
             this.metroButton1.TabIndex = 27;
-            this.metroButton1.Text = "Save And\r\nPrint";
+            this.metroButton1.Text = "Edit And\r\nPrint";
             this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseCustomForeColor = true;
             this.metroButton1.UseSelectable = true;
@@ -118,7 +100,7 @@
             this.txtPaymentAmount.CustomButton.UseSelectable = true;
             this.txtPaymentAmount.CustomButton.Visible = false;
             this.txtPaymentAmount.Lines = new string[0];
-            this.txtPaymentAmount.Location = new System.Drawing.Point(171, 533);
+            this.txtPaymentAmount.Location = new System.Drawing.Point(162, 533);
             this.txtPaymentAmount.MaxLength = 32767;
             this.txtPaymentAmount.Name = "txtPaymentAmount";
             this.txtPaymentAmount.PasswordChar = '\0';
@@ -187,7 +169,7 @@
             // lblInvoiceNo
             // 
             this.lblInvoiceNo.AutoSize = true;
-            this.lblInvoiceNo.Location = new System.Drawing.Point(13, 63);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(3, 63);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
             this.lblInvoiceNo.Size = new System.Drawing.Size(74, 19);
             this.lblInvoiceNo.TabIndex = 17;
@@ -253,7 +235,7 @@
             // lblPaymento
             // 
             this.lblPaymento.AutoSize = true;
-            this.lblPaymento.Location = new System.Drawing.Point(11, 28);
+            this.lblPaymento.Location = new System.Drawing.Point(3, 28);
             this.lblPaymento.Name = "lblPaymento";
             this.lblPaymento.Size = new System.Drawing.Size(76, 19);
             this.lblPaymento.TabIndex = 23;
@@ -293,7 +275,7 @@
             // lblRefNo
             // 
             this.lblRefNo.AutoSize = true;
-            this.lblRefNo.Location = new System.Drawing.Point(35, 351);
+            this.lblRefNo.Location = new System.Drawing.Point(35, 350);
             this.lblRefNo.Name = "lblRefNo";
             this.lblRefNo.Size = new System.Drawing.Size(53, 19);
             this.lblRefNo.TabIndex = 31;
@@ -331,24 +313,6 @@
             this.txtRefNo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtRefNo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroPanel2
-            // 
-            this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel2.Controls.Add(this.txtBankCode);
-            this.metroPanel2.Controls.Add(this.txtChequeNo);
-            this.metroPanel2.Controls.Add(this.lblCheqeNo);
-            this.metroPanel2.Controls.Add(this.metroLabel5);
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(39, 425);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(332, 92);
-            this.metroPanel2.TabIndex = 34;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
-            // 
             // txtBankCode
             // 
             // 
@@ -364,7 +328,7 @@
             this.txtBankCode.CustomButton.UseSelectable = true;
             this.txtBankCode.CustomButton.Visible = false;
             this.txtBankCode.Lines = new string[0];
-            this.txtBankCode.Location = new System.Drawing.Point(127, 63);
+            this.txtBankCode.Location = new System.Drawing.Point(163, 492);
             this.txtBankCode.MaxLength = 32767;
             this.txtBankCode.Name = "txtBankCode";
             this.txtBankCode.PasswordChar = '\0';
@@ -397,7 +361,7 @@
             this.txtChequeNo.CustomButton.UseSelectable = true;
             this.txtChequeNo.CustomButton.Visible = false;
             this.txtChequeNo.Lines = new string[0];
-            this.txtChequeNo.Location = new System.Drawing.Point(127, 28);
+            this.txtChequeNo.Location = new System.Drawing.Point(162, 440);
             this.txtChequeNo.MaxLength = 32767;
             this.txtChequeNo.Name = "txtChequeNo";
             this.txtChequeNo.PasswordChar = '\0';
@@ -418,49 +382,53 @@
             // lblCheqeNo
             // 
             this.lblCheqeNo.AutoSize = true;
-            this.lblCheqeNo.Location = new System.Drawing.Point(11, 28);
+            this.lblCheqeNo.Location = new System.Drawing.Point(35, 444);
             this.lblCheqeNo.Name = "lblCheqeNo";
-            this.lblCheqeNo.Size = new System.Drawing.Size(83, 19);
+            this.lblCheqeNo.Size = new System.Drawing.Size(79, 19);
             this.lblCheqeNo.TabIndex = 23;
-            this.lblCheqeNo.Text = " Cheque No.";
+            this.lblCheqeNo.Text = "Cheque No.";
+            this.lblCheqeNo.Click += new System.EventHandler(this.lblCheqeNo_Click);
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(13, 63);
+            this.metroLabel5.Location = new System.Drawing.Point(35, 492);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(73, 19);
             this.metroLabel5.TabIndex = 17;
             this.metroLabel5.Text = "Bank Code";
+            this.metroLabel5.Click += new System.EventHandler(this.metroLabel5_Click);
             // 
             // metroButton4
             // 
             this.metroButton4.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.metroButton4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton4.Location = new System.Drawing.Point(193, 576);
+            this.metroButton4.Location = new System.Drawing.Point(152, 576);
             this.metroButton4.Name = "metroButton4";
             this.metroButton4.Size = new System.Drawing.Size(90, 46);
             this.metroButton4.TabIndex = 35;
-            this.metroButton4.Text = "Save And\r\nClose";
+            this.metroButton4.Text = "Edit And\r\nClose";
             this.metroButton4.UseCustomBackColor = true;
             this.metroButton4.UseCustomForeColor = true;
             this.metroButton4.UseSelectable = true;
             this.metroButton4.UseStyleColors = true;
             this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
             // 
-            // AddPayment
+            // EditPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 645);
             this.Controls.Add(this.metroButton4);
-            this.Controls.Add(this.metroPanel2);
+            this.Controls.Add(this.txtBankCode);
             this.Controls.Add(this.txtRefNo);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.txtChequeNo);
             this.Controls.Add(this.lblRefNo);
+            this.Controls.Add(this.lblCheqeNo);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.cmPaymentType);
             this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.metroButton3);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.txtPaymentAmount);
@@ -471,46 +439,41 @@
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Name = "AddPayment";
-            this.Text = "AddPayment";
+            this.Name = "EditPayment";
+            this.Text = "Edit Payment";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddPayment_FormClosing);
             this.Load += new System.EventHandler(this.AddPayment_Load);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            this.metroPanel2.ResumeLayout(false);
-            this.metroPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroTextBox txtPaymentAmount;
         private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroComboBox cmPaymentMethod;
-        private System.Windows.Forms.RichTextBox txtPaymentsNarration;
-        private MetroFramework.Controls.MetroDateTime PaymentsDatePicker;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel lblInvoiceNo;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroComboBox cmInvoiceNo;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroComboBox cmPaymentType;
-        private MetroFramework.Controls.MetroLabel lblPaymento;
-        private MetroFramework.Controls.MetroComboBox cmPaymentPartyName;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroLabel lblRefNo;
-        private MetroFramework.Controls.MetroTextBox txtRefNo;
-        private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroLabel lblCheqeNo;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroTextBox txtBankCode;
-        private MetroFramework.Controls.MetroTextBox txtChequeNo;
         private MetroFramework.Controls.MetroButton metroButton4;
+        public MetroFramework.Controls.MetroTextBox txtPaymentAmount;
+        public MetroFramework.Controls.MetroComboBox cmPaymentMethod;
+        public System.Windows.Forms.RichTextBox txtPaymentsNarration;
+        public MetroFramework.Controls.MetroDateTime PaymentsDatePicker;
+        public MetroFramework.Controls.MetroComboBox cmInvoiceNo;
+        public MetroFramework.Controls.MetroComboBox cmPaymentType;
+        public MetroFramework.Controls.MetroComboBox cmPaymentPartyName;
+        public MetroFramework.Controls.MetroTextBox txtRefNo;
+        public MetroFramework.Controls.MetroTextBox txtBankCode;
+        public MetroFramework.Controls.MetroTextBox txtChequeNo;
+        public MetroFramework.Controls.MetroLabel lblInvoiceNo;
+        public MetroFramework.Controls.MetroLabel lblPaymento;
     }
 }

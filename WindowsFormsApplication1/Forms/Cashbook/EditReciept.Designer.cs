@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1.Forms.Cashbook
 {
-    partial class AddReciept
+    partial class EditReciept
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,6 @@
             this.txtRecieptAmount = new MetroFramework.Controls.MetroTextBox();
             this.cmInvoiceNo = new MetroFramework.Controls.MetroComboBox();
             this.lblRemInvBal = new MetroFramework.Controls.MetroLabel();
-            this.metroButton3 = new MetroFramework.Controls.MetroTile();
             this.metroButton1 = new MetroFramework.Controls.MetroTile();
             this.metroButton2 = new MetroFramework.Controls.MetroTile();
             this.txtRefNo = new MetroFramework.Controls.MetroTextBox();
@@ -209,26 +208,14 @@
             this.lblRemInvBal.Text = "metroLabel7";
             this.lblRemInvBal.Visible = false;
             // 
-            // metroButton3
-            // 
-            this.metroButton3.ActiveControl = null;
-            this.metroButton3.Location = new System.Drawing.Point(9, 545);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(91, 54);
-            this.metroButton3.TabIndex = 18;
-            this.metroButton3.Text = "New \r\nReciept\r\n";
-            this.metroButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroButton3.UseSelectable = true;
-            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
-            // 
             // metroButton1
             // 
             this.metroButton1.ActiveControl = null;
-            this.metroButton1.Location = new System.Drawing.Point(106, 545);
+            this.metroButton1.Location = new System.Drawing.Point(9, 545);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(106, 54);
             this.metroButton1.TabIndex = 19;
-            this.metroButton1.Text = "Save and \r\nPrint Reciept";
+            this.metroButton1.Text = "Edit and \r\nPrint Reciept";
             this.metroButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
@@ -236,9 +223,9 @@
             // metroButton2
             // 
             this.metroButton2.ActiveControl = null;
-            this.metroButton2.Location = new System.Drawing.Point(324, 545);
+            this.metroButton2.Location = new System.Drawing.Point(270, 545);
             this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(74, 54);
+            this.metroButton2.Size = new System.Drawing.Size(97, 54);
             this.metroButton2.TabIndex = 20;
             this.metroButton2.Text = "Close";
             this.metroButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -402,16 +389,16 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(218, 545);
+            this.metroTile1.Location = new System.Drawing.Point(144, 545);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(100, 54);
             this.metroTile1.TabIndex = 36;
-            this.metroTile1.Text = "Save and \r\nClose";
+            this.metroTile1.Text = "Edit and \r\nClose";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
-            // AddReciept
+            // EditReciept
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -422,7 +409,6 @@
             this.Controls.Add(this.lblRefNo);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.metroButton3);
             this.Controls.Add(this.lblRemInvBal);
             this.Controls.Add(this.lblRemPartyRecBal);
             this.Controls.Add(this.cmInvoiceNo);
@@ -437,8 +423,8 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Name = "AddReciept";
-            this.Text = "AddReciept";
+            this.Name = "EditReciept";
+            this.Text = "Edit Reciept";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddReciept_FormClosing);
             this.Load += new System.EventHandler(this.AddReciept_Load);
             this.metroPanel2.ResumeLayout(false);
@@ -454,26 +440,25 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroDateTime RecieptDatePicker;
-        private System.Windows.Forms.RichTextBox txtRecieptNarration;
-        private MetroFramework.Controls.MetroComboBox cmRecieptPayment;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroComboBox cmPartyName;
         private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroTextBox txtRecieptAmount;
-        private MetroFramework.Controls.MetroComboBox cmInvoiceNo;
         private MetroFramework.Controls.MetroLabel lblRemInvBal;
-        private MetroFramework.Controls.MetroTile metroButton3;
         private MetroFramework.Controls.MetroTile metroButton1;
         private MetroFramework.Controls.MetroTile metroButton2;
-        private MetroFramework.Controls.MetroTextBox txtRefNo;
         private MetroFramework.Controls.MetroLabel lblRefNo;
         private MetroFramework.Controls.MetroPanel metroPanel2;
-        private MetroFramework.Controls.MetroTextBox txtBankCode;
-        private MetroFramework.Controls.MetroTextBox txtChequeNo;
         private MetroFramework.Controls.MetroLabel lblCheqeNo;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel lblRemPartyRecBal;
         private MetroFramework.Controls.MetroTile metroTile1;
+        public MetroFramework.Controls.MetroDateTime RecieptDatePicker;
+        public System.Windows.Forms.RichTextBox txtRecieptNarration;
+        public MetroFramework.Controls.MetroComboBox cmRecieptPayment;
+        public MetroFramework.Controls.MetroComboBox cmPartyName;
+        public MetroFramework.Controls.MetroTextBox txtRecieptAmount;
+        public MetroFramework.Controls.MetroComboBox cmInvoiceNo;
+        public MetroFramework.Controls.MetroTextBox txtRefNo;
+        public MetroFramework.Controls.MetroTextBox txtBankCode;
+        public MetroFramework.Controls.MetroTextBox txtChequeNo;
     }
 }

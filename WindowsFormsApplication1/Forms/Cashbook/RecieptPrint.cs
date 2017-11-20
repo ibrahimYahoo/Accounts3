@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 {
     public partial class RecieptPrint : MetroFramework.Forms.MetroForm
     {
+
         public RecieptPrint()
         {
             InitializeComponent();
@@ -21,7 +22,18 @@ namespace WindowsFormsApplication1.Forms.Cashbook
         private void RecieptPrint_Load(object sender, EventArgs e)
         {
             List<WindowsFormsApplication1.POJO.Order> lstInvoice = new List<POJO.Order>();
-            DataTable ds = new DAO().getRecieptReportData(AddReciept.OrderId);
+            DataTable ds;
+            if (AddReciept.OrderId != "")
+            {
+                ds = new DAO().getRecieptReportData(AddReciept.OrderId);
+
+
+            }
+            else
+            {
+                ds = new DAO().getRecieptReportData(EditReciept.OrderId);
+
+            }
 
             foreach (DataRow row in ds.Rows)
             {

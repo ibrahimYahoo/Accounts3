@@ -428,6 +428,17 @@ namespace WindowsFormsApplication1.Code
 
         }
 
+        public DataTable GetPartiesFrmAccount()
+        {
+            DataTable dtparties = new DataTable();
+
+            dad = new SqlDataAdapter("Select AccountId as 'Party-ID',Accountname as 'Name' from AccountChart WHERE DetailType = 'Party'", conn);
+            dad.Fill(dtparties);
+            conn.Close();
+            return dtparties;
+
+        }
+
         public DataTable GetJournals()
         {
             DataTable dtparties = new DataTable();
@@ -439,12 +450,24 @@ namespace WindowsFormsApplication1.Code
 
         }
 
-        public DataTable GetOrderIds(int PId)
+        public DataTable GetOrderIds(int AccountId)
         {
             DataTable dtparties = new DataTable();
 
-            dad = new SqlDataAdapter("Select OrderId from Orders WHERE PId = @1 AND Status != 'Paid'", conn);
-            dad.SelectCommand.Parameters.AddWithValue("@1", PId);
+            dad = new SqlDataAdapter("Select OrderId from Orders WHERE AccountId = @1 AND Status != 'Paid'", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@1", AccountId);
+
+            dad.Fill(dtparties);
+            conn.Close();
+            return dtparties;
+
+        }
+        public DataTable GetOrderIdsForEdit(int AccountId)
+        {
+            DataTable dtparties = new DataTable();
+
+            dad = new SqlDataAdapter("Select OrderId from Orders WHERE AccountId = @1", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@1", AccountId);
 
             dad.Fill(dtparties);
             conn.Close();
@@ -453,12 +476,12 @@ namespace WindowsFormsApplication1.Code
         }
 
 
-        public DataTable GePurchaseIds( int PId)
+        public DataTable GePurchaseIds( int AccountId)
         {
             DataTable dtparties = new DataTable();
 
-            dad = new SqlDataAdapter("Select PurId from Purchase WHERE PId = @PId AND Status != 'Paid'", conn);
-            dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
+            dad = new SqlDataAdapter("Select PurId from Purchase WHERE AccountId = @AccountId AND Status != 'Paid'", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@AccountId", AccountId);
 
             dad.Fill(dtparties);
             conn.Close();
@@ -562,12 +585,12 @@ namespace WindowsFormsApplication1.Code
         }
 
 
-        public string GetAccountName(int PId)
+        public string GetAccountName(int AccountId)
         {
             DataTable dtparties = new DataTable();
 
-            dad = new SqlDataAdapter("SELECT PNAME from Party WHERE PId = @PId", conn);
-            dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
+            dad = new SqlDataAdapter("SELECT AccountName from AccountChart WHERE AccountId = @AccountId", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@AccountId", AccountId);
 
             dad.Fill(dtparties);
             conn.Close();
@@ -589,6 +612,25 @@ namespace WindowsFormsApplication1.Code
 
 
             return PName;
+
+        }
+
+        public DataTable GetCashBookRefNo(int CBId)
+        {
+            DataTable dtparties = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT ReferenceNo,CBNo,VoucherNo from CashBook WHERE CBId = @CBId", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@CBId", CBId);
+
+            dad.Fill(dtparties);
+            conn.Close();
+            
+
+
+
+
+
+            return dtparties;
 
         }
 
@@ -919,13 +961,20 @@ namespace WindowsFormsApplication1.Code
 
         public DataTable getRecieptReportData(int  CBId)
         {
-            DataTable dtCustomers = new DataTable();
-            dad = new SqlDataAdapter("SELECT P.PName as 'CustomerName',c.CBId, c.Date,P.PId,c.Description,c.AmountType,c.Income,c.ReferenceNo FROM CashBook c,Party P WHERE c.PId = P.PId AND c.CBID = @CBId;", conn);
-            dad.SelectCommand.Parameters.AddWithValue("@CBId", CBId);
+            
+          SqlCommand com = new SqlCommand("Sp_PVdata", conn);
 
-            dad.Fill(dtCustomers);
-            conn.Close();
-            return dtCustomers;
+            com.CommandType = CommandType.StoredProcedure;
+
+            com.Parameters.AddWithValue("@CBId", CBId);
+
+            SqlDataAdapter da = new SqlDataAdapter(com);
+
+            DataTable ds = new DataTable();
+
+            da.Fill(ds);
+
+            return ds;
         }
 
         public DataTable getGlReportData(int GLTransId, DateTime startDate, DateTime endDate)
@@ -1415,7 +1464,7 @@ namespace WindowsFormsApplication1.Code
             dad = new SqlDataAdapter("SELECT  TOP 1 PurNo FROM Purchase ORDER BY PurNo DESC;", conn);
             dad.Fill(dtOrders);
             conn.Close();
-            int purchaseNo = 0;
+            int purchaseNo = 1;
 
 
             try
@@ -1427,7 +1476,7 @@ namespace WindowsFormsApplication1.Code
             {
                 if (purchaseNo.Equals(null))
                 {
-                    return 0;
+                    return 1;
                 }
                 
             }
@@ -1443,6 +1492,36 @@ namespace WindowsFormsApplication1.Code
             DataTable dtOrders = new DataTable();
 
             dad = new SqlDataAdapter("SELECT  TOP 1 OrderNo FROM Orders ORDER BY OrderNo DESC;", conn);
+            dad.Fill(dtOrders);
+            conn.Close();
+            int purchaseNo = 1;
+
+
+            try
+            {
+                purchaseNo = Convert.ToInt16(dtOrders.Rows[0][0]);
+
+            }
+            catch (Exception ex)
+            {
+                if (purchaseNo.Equals(null))
+                {
+                    return 1;
+                }
+
+            }
+
+
+            return purchaseNo;
+
+        }
+
+
+        public int getLastCBNoByCredit()
+        {
+            DataTable dtOrders = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT  TOP 1 CBNo FROM CashBook WHERE TransactionType = 'Credit' ORDER BY CBNo DESC;", conn);
             dad.Fill(dtOrders);
             conn.Close();
             int purchaseNo = 0;
@@ -1466,6 +1545,38 @@ namespace WindowsFormsApplication1.Code
             return purchaseNo;
 
         }
+
+
+        public int getLastCBNoByDebit()
+        {
+            DataTable dtOrders = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT  TOP 1 CBNo FROM CashBook WHERE TransactionType = 'Debit' ORDER BY CBNo DESC;", conn);
+            dad.Fill(dtOrders);
+            conn.Close();
+            int purchaseNo = 0;
+
+
+            try
+            {
+                purchaseNo = Convert.ToInt16(dtOrders.Rows[0][0]);
+
+            }
+            catch (Exception ex)
+            {
+                if (purchaseNo.Equals(null))
+                {
+                    return 0;
+                }
+
+            }
+
+
+            return purchaseNo;
+
+        }
+
+
 
         public int getLastCBId()
         {
@@ -1704,12 +1815,12 @@ namespace WindowsFormsApplication1.Code
             }
         }
 
-        public void AddPurchaseTransaction(int PId, int debit, int credit, int IId, int itemQuantity, string description, DateTime date, int itemBought, int balance)
+        public void AddPurchaseTransaction(int AccountId, int debit, int credit, int IId, int itemQuantity, string description, DateTime date, int itemBought, int balance)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("Insert into Ledger (PId,Debit,Credit,IId,itemQuantity,date,itemBought,Balance) values (@PId,@debit,@credit,@IId,@itemQuantity,@date,@itemBought,@balance)", conn);
-                cmd.Parameters.AddWithValue("@PId", PId);
+                SqlCommand cmd = new SqlCommand("Insert into Ledger (AccountId,Debit,Credit,IId,itemQuantity,date,itemBought,Balance) values (@AccountId,@debit,@credit,@IId,@itemQuantity,@date,@itemBought,@balance)", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
                 cmd.Parameters.AddWithValue("@debit", debit);
                 cmd.Parameters.AddWithValue("@credit", credit);
                 cmd.Parameters.AddWithValue("@IId", IId);
@@ -1822,14 +1933,14 @@ namespace WindowsFormsApplication1.Code
         }
 
 
-        public void checkOrderSatus(string OrderId, decimal amountPaid, int PId)
+        public void checkOrderSatus(string OrderId, decimal amountPaid, int AccountId)
         {
 
             DataTable dtCustomers = new DataTable();
             conn = DBConn.GetInstance();
 
-            dad = new SqlDataAdapter("Select TotalCost,AmountPaid,Status  from Orders where PId = @PId AND OrderId = @OrderId ", conn);
-            dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
+            dad = new SqlDataAdapter("Select TotalCost,AmountPaid,Status  from Orders where AccountId = @AccountId AND OrderId = @OrderId ", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@AccountId", AccountId);
             dad.SelectCommand.Parameters.AddWithValue("@OrderId", OrderId);
             dad.Fill(dtCustomers);
 
@@ -1839,8 +1950,8 @@ namespace WindowsFormsApplication1.Code
             if (totalcost <= amountpaidhis)
             {
 
-                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'Paid', AmountPaid = @amountPaid where PId = @PId AND OrderId = @OrderId", conn);
-                cmd.Parameters.AddWithValue("@PId", PId);
+                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'Paid', AmountPaid = @amountPaid where AccountId = @AccountId AND OrderId = @OrderId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
                 cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
 
                 cmd.Parameters.AddWithValue("@OrderId", OrderId);
@@ -1850,8 +1961,8 @@ namespace WindowsFormsApplication1.Code
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'PartialPaid', AmountPaid = @amountPaid where PId = @PId AND OrderId = @OrderId", conn);
-                cmd.Parameters.AddWithValue("@PId", PId);
+                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'PartialPaid', AmountPaid = @amountPaid where AccountId = @AccountId AND OrderId = @OrderId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
                 cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
 
                 cmd.Parameters.AddWithValue("@OrderId", OrderId);
@@ -1865,25 +1976,71 @@ namespace WindowsFormsApplication1.Code
         }
 
 
-        public void checkPurchaseSatus(string PurId, decimal amountPaid, int PId)
+        public void checkEditOrderSatus(string OrderId, decimal amountPaid, int AccountId,decimal PreviousAmountPaid)
         {
 
             DataTable dtCustomers = new DataTable();
             conn = DBConn.GetInstance();
 
-            dad = new SqlDataAdapter("Select Total,AmountPaid,Status  from Purchase where PId = @PId AND PurId = @PurId ", conn);
-            dad.SelectCommand.Parameters.AddWithValue("@PId", PId);
-            dad.SelectCommand.Parameters.AddWithValue("@PurId", PurId);
+            dad = new SqlDataAdapter("Select TotalCost,AmountPaid,Status  from Orders where AccountId = @AccountId AND OrderId = @OrderId ", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@AccountId", AccountId);
+            dad.SelectCommand.Parameters.AddWithValue("@OrderId", OrderId);
             dad.Fill(dtCustomers);
 
             int totalcost = int.Parse(dtCustomers.Rows[0][0].ToString());
+            decimal amountpaidhis = decimal.Parse(dtCustomers.Rows[0][1].ToString()) - PreviousAmountPaid  + amountPaid;
+
+            if (totalcost <= amountpaidhis)
+            {
+
+                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'Paid', AmountPaid = @amountPaid where AccountId = @AccountId AND OrderId = @OrderId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
+
+                cmd.Parameters.AddWithValue("@OrderId", OrderId);
+                cmd.ExecuteNonQuery();
+
+
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("Update Orders set Status = 'PartialPaid', AmountPaid = @amountPaid where AccountId = @AccountId AND OrderId = @OrderId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
+
+                cmd.Parameters.AddWithValue("@OrderId", OrderId);
+                cmd.ExecuteNonQuery();
+
+            }
+            conn.Close();
+
+
+
+        }
+
+
+
+
+
+        public void checkPurchaseSatus(string PurId, decimal amountPaid, int AccountId)
+        {
+
+            DataTable dtCustomers = new DataTable();
+            conn = DBConn.GetInstance();
+
+            dad = new SqlDataAdapter("Select Total,AmountPaid,Status  from Purchase where AccountId = @AccountId AND PurId = @PurId ", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@AccountId", AccountId);
+            dad.SelectCommand.Parameters.AddWithValue("@PurId", PurId);
+            dad.Fill(dtCustomers);
+
+            decimal totalcost = decimal.Parse(dtCustomers.Rows[0][0].ToString());
             decimal amountpaidhis = decimal.Parse(dtCustomers.Rows[0][1].ToString()) + amountPaid;
 
             if (totalcost <= amountpaidhis)
             {
 
-                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'Paid', AmountPaid = @amountPaid where PId = @PId AND PurId = @PurId", conn);
-                cmd.Parameters.AddWithValue("@PId", PId);
+                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'Paid', AmountPaid = @amountPaid where AccountId = @AccountId AND PurId = @PurId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
                 cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
 
                 cmd.Parameters.AddWithValue("@PurId", PurId);
@@ -1893,8 +2050,8 @@ namespace WindowsFormsApplication1.Code
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'PartialPaid', AmountPaid = @amountPaid where PId = @PId AND PurId = @PurId", conn);
-                cmd.Parameters.AddWithValue("@PId", PId);
+                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'PartialPaid', AmountPaid = @amountPaid where AccountId = @AccountId AND PurId = @PurId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
                 cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
 
                 cmd.Parameters.AddWithValue("@PurId", PurId);
@@ -1906,6 +2063,50 @@ namespace WindowsFormsApplication1.Code
 
 
         }
+
+
+        public void checkEditPurchaseSatus(string PurId, decimal amountPaid, int AccountId,decimal PreviousAmountPaid)
+        {
+
+            DataTable dtCustomers = new DataTable();
+            conn = DBConn.GetInstance();
+
+            dad = new SqlDataAdapter("Select Total,AmountPaid,Status  from Purchase where AccountId = @AccountId AND PurId = @PurId ", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@AccountId", AccountId);
+            dad.SelectCommand.Parameters.AddWithValue("@PurId", PurId);
+            dad.Fill(dtCustomers);
+
+            decimal totalcost = decimal.Parse(dtCustomers.Rows[0][0].ToString());
+            decimal amountpaidhis = decimal.Parse(dtCustomers.Rows[0][1].ToString()) - PreviousAmountPaid    + amountPaid;
+
+            if (totalcost <= amountpaidhis)
+            {
+
+                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'Paid', AmountPaid = @amountPaid where AccountId = @AccountId AND PurId = @PurId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
+
+                cmd.Parameters.AddWithValue("@PurId", PurId);
+                cmd.ExecuteNonQuery();
+
+
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("Update Purchase set Status = 'PartialPaid', AmountPaid = @amountPaid where AccountId = @AccountId AND PurId = @PurId", conn);
+                cmd.Parameters.AddWithValue("@AccountId", AccountId);
+                cmd.Parameters.AddWithValue("@amountPaid", amountpaidhis);
+
+                cmd.Parameters.AddWithValue("@PurId", PurId);
+                cmd.ExecuteNonQuery();
+
+            }
+            conn.Close();
+
+
+
+        }
+
 
 
         public void UpdateCustomerBalance(int cid, int balance)
@@ -2242,7 +2443,7 @@ namespace WindowsFormsApplication1.Code
             conn.Close();
         }
 
-        public void insertItem(int LotNo, string Grade,string IGarden,decimal totalBags,int WtPerBag,int IRatePerKg,decimal ITotalCost,decimal ITotalWeight)
+        public void insertItem(int LotNo, string Grade,string IGarden,decimal totalBags,decimal WtPerBag,decimal IRatePerKg,decimal ITotalCost,decimal ITotalWeight)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = DBConn.GetInstance();
@@ -2261,6 +2462,33 @@ namespace WindowsFormsApplication1.Code
             dad.Fill(dt);
             conn.Close();
         }
+
+        public void EditItem(int LotNo,string Grade, string IGarden, decimal totalBags, decimal WtPerBag, decimal IRatePerKg, decimal ITotalCost, decimal ITotalWeight,int IId)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = DBConn.GetInstance();
+
+
+            //SqlDataAdapter dad = new SqlDataAdapter("Insert into Items(LotNo,IGrade,IQty,IGarden,IWtPerBag,IRatePerKg,ITotalCost,ITotalWeight) values(@LotNo,@Grade,@totalBags,@IGarden,@WtPerBag,@IRatePerKg,@ITotalCost,@ITotalWeight)", conn);
+            SqlDataAdapter dad = new SqlDataAdapter("Update Items Set LotNo=@LotNo,IGrade=@Grade, IQty=@totalBags,IGarden=@IGarden, IWtPerBag=@WtPerBag,IRatePerKg = @IRatePerKg, ITotalCost = @ITotalCost, ITotalWeight = @ITotalWeight where IId = @IId", conn);
+
+            dad.SelectCommand.Parameters.AddWithValue("@LotNo", LotNo);
+
+            dad.SelectCommand.Parameters.AddWithValue("@IId", IId);
+            dad.SelectCommand.Parameters.AddWithValue("@Grade", Grade);
+            dad.SelectCommand.Parameters.AddWithValue("@IRatePerKg", IRatePerKg);
+            dad.SelectCommand.Parameters.AddWithValue("@IGarden", IGarden);
+            dad.SelectCommand.Parameters.AddWithValue("@totalBags", totalBags);
+            dad.SelectCommand.Parameters.AddWithValue("@WtPerBag", WtPerBag);
+            dad.SelectCommand.Parameters.AddWithValue("@ITotalCost", ITotalCost);
+            dad.SelectCommand.Parameters.AddWithValue("@ITotalWeight", ITotalWeight);
+
+
+
+            dad.Fill(dt);
+            conn.Close();
+        }
+
 
 
         public DataTable GetInvestors()
@@ -2386,7 +2614,7 @@ namespace WindowsFormsApplication1.Code
         public DataTable GetPurchases()
         {
 
-            SqlCommand com = new SqlCommand("GetOrdersDetails", conn);
+            SqlCommand com = new SqlCommand("GetPurchaseDetails", conn);
 
             com.CommandType = CommandType.StoredProcedure;
 

@@ -13,23 +13,26 @@ using WindowsFormsApplication1.Code;
 
 namespace WindowsFormsApplication1.Forms.Cashbook
 {
-    public partial class AddPayment : MetroFramework.Forms.MetroForm
+    public partial class EditPayment : MetroFramework.Forms.MetroForm
     {
 
         CashBook owner;
-        string RefNo = "";
-        int CBNo = 0;
-        string VoucherNo  = "";
-        string AccountName = "";
-        int AccountId = 0;
-        bool print = true;
+        public string RefNo = "";
+        public int CBNo = 0;
+        public string VoucherNo  = "";
+        public string AccountName = "";
+        public int AccountId = 0;
+        public int CBId = 0;
+
+        public bool print = true;
+
+        public string invoiceNo;
 
 
 
 
 
-
-        public AddPayment(CashBook frm1)
+        public EditPayment(CashBook frm1)
         {
             owner = frm1;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddPayment_FormClosing);
@@ -44,7 +47,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
 
 
-        public AddPayment()
+        public EditPayment()
         {
             InitializeComponent();
         }
@@ -70,7 +73,6 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
                     SqlConnection conn = DBConn.GetInstance();
                     SqlDataAdapter dad = new SqlDataAdapter("", conn);
-                    string invoiceNo;
 
                     try
                     {
@@ -130,16 +132,17 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                     if (cmPaymentMethod.SelectedItem.Equals("Cash"))
                     {
                         RefNo = txtRefNo.Text;
-                        dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Expense,Balance,InvoiceNo,AccountId,CBNo,VoucherNo,TransactionType) values (@3,@4,@5,@6,@7,@8,@9,@10,@11,@CBNo,@VoucherNo,@TransactionType)", conn);
+                        //dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Expense,Balance,InvoiceNo,AccountId,CBNo,VoucherNo,TransactionType) values (@3,@4,@5,@6,@7,@8,@9,@10,@11,@CBNo,@VoucherNo,@TransactionType)", conn);
+                        dad = new SqlDataAdapter("Update CashBook SET Date=@3, ReferenceNo=@4, Category=@5,Description=@6, AmountType=@7,Expense = @8, Balance = @9, InvoiceNo = @10, AccountId = @11,CBNo = @CBNo, VoucherNo = @VoucherNo, TransactionType = @TransactionType where CBId = @CBId", conn);
 
 
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 1, "Debit", RefNo, 0, PaymentAmount, 00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", RefNo, PaymentAmount, 0,00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", RefNo, 0, PaymentAmount, 00);
+                        new DAO().UpdateGlTransaction(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 1, "Debit", RefNo, 0, PaymentAmount, 00);
+                        new DAO().UpdateGlTransaction(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", RefNo, PaymentAmount, 0,00);
+                        new DAO().UpdateGlTransaction(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", RefNo, 0, PaymentAmount, 00);
 
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", PaymentsDatePicker.Value);
-                        dad.SelectCommand.Parameters.AddWithValue("@4", txtRefNo.Text);
+                        dad.SelectCommand.Parameters.AddWithValue("@4", RefNo);
                         dad.SelectCommand.Parameters.AddWithValue("@5", Category);
                         dad.SelectCommand.Parameters.AddWithValue("@6", txtPaymentsNarration.Text);
                         dad.SelectCommand.Parameters.AddWithValue("@7", this.cmPaymentMethod.GetItemText(this.cmPaymentMethod.SelectedItem));
@@ -150,16 +153,19 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                         dad.SelectCommand.Parameters.AddWithValue("@CBNo", CBNo);
                         dad.SelectCommand.Parameters.AddWithValue("@VoucherNo", VoucherNo);
                         dad.SelectCommand.Parameters.AddWithValue("@TransactionType", "Credit");
+                        dad.SelectCommand.Parameters.AddWithValue("@CBId", CBId);
 
                     }
                     else if (cmPaymentMethod.SelectedItem.Equals("Cheque"))
                     {
 
 
-                        dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Expense,Balance,InvoiceNo,ChequeNo,BankCode,AccountId,CBNo,VoucherNo,TransactionType) values (@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@CBNo,@VoucherNo,@TransactionType)", conn);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 2, "Debit", RefNo, 0, PaymentAmount, 00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", RefNo, PaymentAmount, 0, 00);
-                        new DAO().AddGlTransactions(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", RefNo, 0, PaymentAmount, 00);
+ //dad = new SqlDataAdapter("Insert INTO CashBook(Date,ReferenceNo,Category,Description,AmountType,Expense,Balance,InvoiceNo,ChequeNo,BankCode,AccountId,CBNo,VoucherNo,TransactionType) values (@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@CBNo,@VoucherNo,@TransactionType)", conn);
+ dad = new SqlDataAdapter("Update CashBook SET Date=@3, ReferenceNo=@4, Category=@5,Description=@6, AmountType=@7,Expense = @8, Balance = @9, InvoiceNo = @10,ChequeNo = @11,BankCode = @12, AccountId = @13,CBNo = @CBNo, VoucherNo = @VoucherNo, TransactionType = @TransactionType where CBId = @CBId", conn);
+
+                        new DAO().UpdateGlTransaction(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 2, "Debit", RefNo, 0, PaymentAmount, 00);
+                        new DAO().UpdateGlTransaction(PaymentsDatePicker.Value, txtPaymentsNarration.Text, 8, "Credit", RefNo, PaymentAmount, 0, 00);
+                        new DAO().UpdateGlTransaction(PaymentsDatePicker.Value, txtPaymentsNarration.Text, AccountId, "Debit", RefNo, 0, PaymentAmount, 00);
 
                         dad.SelectCommand.Parameters.AddWithValue("@3", PaymentsDatePicker.Value);
                         dad.SelectCommand.Parameters.AddWithValue("@4", txtRefNo.Text);
@@ -175,12 +181,13 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                         dad.SelectCommand.Parameters.AddWithValue("@CBNo", CBNo);
                         dad.SelectCommand.Parameters.AddWithValue("@VoucherNo", VoucherNo);
                         dad.SelectCommand.Parameters.AddWithValue("@TransactionType", "Credit");
+                        dad.SelectCommand.Parameters.AddWithValue("@CBId", CBId);
 
                     }
 
                     dad.Fill(dt);
                     conn.Close();
-                    MessageBox.Show("Payment addded");
+                    MessageBox.Show("Payment updated");
 
 
                     
@@ -192,7 +199,20 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                     }
                     else
                     {
-                       new DAO().checkPurchaseSatus(invoiceNo, PaymentAmount,AccountId);
+                        if (CashBook.InvoiceNo == invoiceNo)
+                        {
+                            new DAO().checkEditPurchaseSatus(invoiceNo, PaymentAmount, AccountId,CashBook.Amount);
+
+
+                        }
+                        else
+                        {
+                            new DAO().checkPurchaseSatus(invoiceNo, PaymentAmount, AccountId);
+
+                        }
+
+
+
 
                     }
                     if (print == true)
@@ -224,16 +244,16 @@ namespace WindowsFormsApplication1.Forms.Cashbook
             //cmPaymentPartyName.DisplayMember = "Name";
             //cmPaymentPartyName.ValueMember = "Party-ID";
             //cmPaymentPartyName.SelectedIndex = -1;
-            txtChequeNo.Enabled = false;
-            txtBankCode.Enabled = false;
-            txtRefNo.Text = "";
+            //txtChequeNo.Enabled = false;
+            //txtBankCode.Enabled = false;
+            //txtRefNo.Text = "";
 
-            txtChequeNo.Text = "0";
-            txtBankCode.Text = "0";
+            //txtChequeNo.Text = "0";
+            //txtBankCode.Text = "0";
 
 
-            CBNo = new DAO().getLastCBNoByCredit()  + 1;
-            VoucherNo = "PV" + CBNo;
+            //CBNo = new DAO().getLastCBNoByCredit()  + 1;
+            //VoucherNo = "PV" + CBNo;
 
 
 
@@ -257,7 +277,14 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
         private void cmPaymentType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmPaymentType.SelectedIndex == 0)
+
+            ComboBox cb = (ComboBox)sender;
+            if (!cb.Focused)
+            {
+                return;
+            }
+
+            if (cmPaymentType.SelectedIndex == 0)
             {
                 lblPaymento.Visible = true;
                 cmPaymentPartyName.Visible = true;
@@ -265,13 +292,13 @@ namespace WindowsFormsApplication1.Forms.Cashbook
                 cmInvoiceNo.Visible = true;
                 lblPaymento.Text = "Payment to";
 
-
-
-
                 cmPaymentPartyName.DataSource = new DAO().GetPartiesFrmAccount();
                 cmPaymentPartyName.DisplayMember = "Name";
                 cmPaymentPartyName.ValueMember = "Party-ID";
                 cmPaymentPartyName.SelectedIndex = -1;
+
+
+
 
 
 
@@ -414,6 +441,16 @@ namespace WindowsFormsApplication1.Forms.Cashbook
         {
             print = false;
             metroButton1_Click(sender, e);
+
+        }
+
+        private void metroLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCheqeNo_Click(object sender, EventArgs e)
+        {
 
         }
     }

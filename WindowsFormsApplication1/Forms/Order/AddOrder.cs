@@ -194,18 +194,21 @@ namespace WindowsFormsApplication1.Forms.Order
                         new DAO().AddGlTransactions(DateTime.Today.Date, "BrokeryAmount" , BroAccountId, "Debit", OrderId, 0, BrokeryAmount, 00);
 
                     }
+                    DataRowView dv = (DataRowView)cbCustName.SelectedItem;
+                    string AccountName = (string)dv.Row["Name"];
+                    int AccountId = (int)dv.Row["Party-ID"];
 
 
                     //      amountTrnferRec = int.Parse(lblSubtotal.Text);
                     DataTable dt = new DataTable();
                     SqlConnection conn = DBConn.GetInstance();
 
-                    SqlDataAdapter dad = new SqlDataAdapter("Insert into Orders(OrderId,OrderNo,ODate,PId,IId,Qty,RatePerKg,Cost,AmountPaid,Status,BId,BrokeryAmount,Bardena,Tulai,Carrage,Shortage,SellingWeight,DoNo,TotalCost) values(@orderId,@orderno, @orderdate,@PId,@itemid,@qty,@RatePerKg,@Cost,0,'NotPaid',@BId,@BrokeryAmount,@Bardena,@Tulai,@Carage,@Shortage,@SellingWeight,@DeliveryOrderNo,@TotalCost)", conn);
+                    SqlDataAdapter dad = new SqlDataAdapter("Insert into Orders(OrderId,OrderNo,ODate,AccountId,IId,Qty,RatePerKg,Cost,AmountPaid,Status,BId,BrokeryAmount,Bardena,Tulai,Carrage,Shortage,SellingWeight,DoNo,TotalCost) values(@orderId,@orderno, @orderdate,@AccountId,@itemid,@qty,@RatePerKg,@Cost,0,'NotPaid',@BId,@BrokeryAmount,@Bardena,@Tulai,@Carage,@Shortage,@SellingWeight,@DeliveryOrderNo,@TotalCost)", conn);
 
                     dad.SelectCommand.Parameters.AddWithValue("@orderId", OrderId);
-                    dad.SelectCommand.Parameters.AddWithValue("@orderno", LastOrderNo + 1);
+                    dad.SelectCommand.Parameters.AddWithValue("@orderno", LastOrderNo);
                     dad.SelectCommand.Parameters.AddWithValue("@orderdate", dtODate.Text);
-                    dad.SelectCommand.Parameters.AddWithValue("@PId", cbCustName.SelectedValue);
+                    dad.SelectCommand.Parameters.AddWithValue("@AccountId", AccountId);
                     dad.SelectCommand.Parameters.AddWithValue("@itemid", cmLotNo.SelectedValue);
                     dad.SelectCommand.Parameters.AddWithValue("@qty", SellingQty);
                     dad.SelectCommand.Parameters.AddWithValue("@RatePerKg", RatePerKg);
@@ -225,11 +228,11 @@ namespace WindowsFormsApplication1.Forms.Order
                     dad.Fill(dt);
                     conn.Close();
                     lblmsg.Text = "Order Added Successfully!!";
-                    int PId = int.Parse(cbCustName.SelectedValue.ToString());
+                    //int PId = int.Parse(cbCustName.SelectedValue.ToString());
 
-                    decimal PartyBalance = new DAO().GetPartyBalance(PId);
+                    //decimal PartyBalance = new DAO().GetPartyBalance(PId);
 
-                    new DAO().UpdatePartyBalance(PId, TotalCost + PartyBalance);
+                    //new DAO().UpdatePartyBalance(PId, TotalCost + PartyBalance);
 
                     //lblTotal.Text = new DAO().getTotal(int.Parse(txtOrderNo.Text)).ToString();
                     //int itemid = int.Parse(cbItems.SelectedValue.ToString());
@@ -253,10 +256,10 @@ namespace WindowsFormsApplication1.Forms.Order
 
                     // lblTotalQty.Text = new DAO().getQty(itemid).ToString();
 
-                    string AccountName = this.cbCustName.GetItemText(this.cbCustName.SelectedItem);
+                    //string AccountName = this.cbCustName.GetItemText(this.cbCustName.SelectedItem);
                     //string itemName = this.cbItems.GetItemText(this.cbItems.SelectedItem);
 
-                    int AccountId = new DAO().GetAccountId(AccountName);
+                    //int AccountId = new DAO().GetAccountId(AccountName);
 
                        new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + GardenName + " " + TotalQuantity , 7, "Debit", OrderId,0, TotalCost, 00);
                        new DAO().AddGlTransactions(DateTime.Today.Date, "sold " + GardenName + " " + TotalQuantity, 4, "Credit", OrderId, TotalCost, 0, 00);
@@ -293,7 +296,7 @@ namespace WindowsFormsApplication1.Forms.Order
 
         private void mtNew_Click(object sender, EventArgs e)
         {
-            LastOrderNo = new DAO().getLastOrderNo();
+            LastOrderNo = new DAO().getLastOrderNo() + 1;
             OrderId = "Sl" + LastOrderNo;
             DeliveryOrderNo = "DO" + LastOrderNo;
 
@@ -350,7 +353,7 @@ namespace WindowsFormsApplication1.Forms.Order
             cmLotNo.SelectedIndex = -1;
 
 
-            LastOrderNo = new DAO().getLastOrderNo();
+            LastOrderNo = new DAO().getLastOrderNo() + 1;
             OrderId = "Sl" + LastOrderNo;
             DeliveryOrderNo = "DO" + LastOrderNo;
 
@@ -363,7 +366,7 @@ namespace WindowsFormsApplication1.Forms.Order
             cmBrokerName.SelectedIndex = -1;
 
 
-            cbCustName.DataSource = new DAO().GetParties();
+            cbCustName.DataSource = new DAO().GetPartiesFrmAccount();
             cbCustName.DisplayMember = "Name";
             cbCustName.ValueMember = "Party-ID";
             cbCustName.SelectedIndex = -1;

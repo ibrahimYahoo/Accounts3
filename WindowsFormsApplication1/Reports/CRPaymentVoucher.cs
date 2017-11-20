@@ -16,14 +16,14 @@ namespace WindowsFormsApplication1.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReportRecieptWithoutInvoiceNo : ReportClass {
+    public class CRPaymentVoucher : ReportClass {
         
-        public CrystalReportRecieptWithoutInvoiceNo() {
+        public CRPaymentVoucher() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReportRecieptWithoutInvoiceNo.rpt";
+                return "CRPaymentVoucher.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1.Reports {
         
         public override string FullResourceName {
             get {
-                return "WindowsFormsApplication1.Reports.CrystalReportRecieptWithoutInvoiceNo.rpt";
+                return "WindowsFormsApplication1.Reports.CRPaymentVoucher.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace WindowsFormsApplication1.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_CustomerName {
+        public CrystalDecisions.Shared.IParameterField Parameter_PVNo {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Date {
+        public CrystalDecisions.Shared.IParameterField Parameter_Amount {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,7 +106,7 @@ namespace WindowsFormsApplication1.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_AccountNumber {
+        public CrystalDecisions.Shared.IParameterField Parameter_Date {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,7 +114,7 @@ namespace WindowsFormsApplication1.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_AmountPaid {
+        public CrystalDecisions.Shared.IParameterField Parameter_Cash {
             get {
                 return this.DataDefinition.ParameterFields[3];
             }
@@ -122,7 +122,7 @@ namespace WindowsFormsApplication1.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Balance {
+        public CrystalDecisions.Shared.IParameterField Parameter_SumOf {
             get {
                 return this.DataDefinition.ParameterFields[4];
             }
@@ -130,7 +130,7 @@ namespace WindowsFormsApplication1.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Cheque {
+        public CrystalDecisions.Shared.IParameterField Parameter_Narrative {
             get {
                 return this.DataDefinition.ParameterFields[5];
             }
@@ -138,17 +138,57 @@ namespace WindowsFormsApplication1.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_BankCode {
+        public CrystalDecisions.Shared.IParameterField Parameter_Payee {
             get {
                 return this.DataDefinition.ParameterFields[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Cheque {
+            get {
+                return this.DataDefinition.ParameterFields[7];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_To {
+            get {
+                return this.DataDefinition.ParameterFields[8];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_InvoiceNo {
+            get {
+                return this.DataDefinition.ParameterFields[9];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_BankCode {
+            get {
+                return this.DataDefinition.ParameterFields[10];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Expense {
+            get {
+                return this.DataDefinition.ParameterFields[11];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReportRecieptWithoutInvoiceNo : Component, ICachedReport {
+    public class CachedCRPaymentVoucher : Component, ICachedReport {
         
-        public CachedCrystalReportRecieptWithoutInvoiceNo() {
+        public CachedCRPaymentVoucher() {
         }
         
         [Browsable(false)]
@@ -185,7 +225,7 @@ namespace WindowsFormsApplication1.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReportRecieptWithoutInvoiceNo rpt = new CrystalReportRecieptWithoutInvoiceNo();
+            CRPaymentVoucher rpt = new CRPaymentVoucher();
             rpt.Site = this.Site;
             return rpt;
         }

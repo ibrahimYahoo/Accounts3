@@ -243,7 +243,72 @@ E:\office\desktop softwares\Mss complete backup\test\WindowsFormsApplication1\ob
 E:\office\desktop softwares\Mss complete backup\test\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.RequestOrderPayment.resources
 E:\office\desktop softwares\Mss complete backup\test\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.RequestPurPay.resources
 E:\office\desktop softwares\Mss complete backup\test\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Journals.AddJournal.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddAttendance.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddEmployee.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddExpense.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddType.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.Bonus.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.EditAttend.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.EditEmployee.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.EditExpense.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.frmAccounts.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.EditPayment.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.AddPayment.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.AddReciept.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.CashBook.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.EditReciept.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.PaymentVoucher.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.RecieptPrint.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.RecieptPrintWithoutInvoice.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddBroker.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddCus.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.EditCus.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmBroker.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmCustomer.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.GeneralLedgerFol.GeneralLedger.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.GeneralLedger.GlPrint.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Journals.AddJournal.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.JournalVoucher.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.AddOrder.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.EditOrder.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.frmCart.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.DeliveryOrderPrint.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.invoiceprint.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AllOrders.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.RequestOrderPayment.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Payments.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.AsUpdateQty.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddPurchase.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.AddPurchase.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.AddPurchase2.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.EditPurchase.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.Purchases.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.RequestPurPay.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Search.frmSearch.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Setttings.AccountChart.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Setttings.AddParty.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Settings.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.addcategory.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.EditItem.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Items.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.ChangePassword.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Login.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Stock.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddSupp.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.EditSupp.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.frmSuppliers.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.transactions.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Reports.CheckOutSlip.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Reports.frmsuppay.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Reports.rpt.resources
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WholesaleManagement.csproj.GenerateResource.Cache
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.exe.licenses
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\RdlCompile.cache
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\RdlCompile.compiled
 E:\CA Assignment\WindowsFormsApplication1\bin\Debug\Wholesale Management.exe.config
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WholesaleManagement.csprojResolveAssemblyReference.cache
 E:\CA Assignment\WindowsFormsApplication1\bin\Debug\Wholesale Management.exe.manifest
 E:\CA Assignment\WindowsFormsApplication1\bin\Debug\Wholesale Management.application
 E:\CA Assignment\WindowsFormsApplication1\bin\Debug\Wholesale Management.exe
@@ -282,70 +347,9 @@ E:\CA Assignment\WindowsFormsApplication1\bin\Debug\pt\Microsoft.SqlServer.Types
 E:\CA Assignment\WindowsFormsApplication1\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
 E:\CA Assignment\WindowsFormsApplication1\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 E:\CA Assignment\WindowsFormsApplication1\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WholesaleManagement.csprojResolveAssemblyReference.cache
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddAttendance.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddEmployee.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddExpense.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.AddType.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.Bonus.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.EditAttend.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.EditEmployee.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.EditExpense.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Accounts.frmAccounts.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.AddPayment.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.AddReciept.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.RecieptPrint.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Cashbook.RecieptPrintWithoutInvoice.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddBroker.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddCus.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.EditCus.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmBroker.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmCustomer.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.GeneralLedgerFol.GeneralLedger.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.GeneralLedger.GlPrint.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Journals.AddJournal.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.JournalVoucher.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.AddOrder.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.EditOrder.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.frmCart.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.DeliveryOrderPrint.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.invoiceprint.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AllOrders.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Order.RequestOrderPayment.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Payments.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddPurchase.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.AddPurchase.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.AddPurchase2.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.EditPurchase.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.Purchases.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.RequestPurPay.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Search.frmSearch.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Setttings.AccountChart.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Setttings.AddParty.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Settings.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.addcategory.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.EditItem.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Items.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.ChangePassword.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Login.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Stock.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.AddSupp.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.EditSupp.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.frmSuppliers.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.transactions.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Reports.CheckOutSlip.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Reports.frmsuppay.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Reports.rpt.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WholesaleManagement.csproj.GenerateResource.Cache
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.exe.licenses
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.UserManagement.resources
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.TrustInfo.xml
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.exe.manifest
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.application
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.exe
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.pdb
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\RdlCompile.cache
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\RdlCompile.compiled
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.Purchase.AsUpdateQty.resources
-E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.CashBook.resources

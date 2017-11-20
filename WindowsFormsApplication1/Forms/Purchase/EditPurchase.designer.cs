@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1.Forms.Purchase
 {
-    partial class AddPurchase
+    partial class EditPurchase
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPurchase));
             this.txtCarrage = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.txtTulai = new MetroFramework.Controls.MetroTextBox();
@@ -931,7 +930,7 @@
             this.metroLabel19.TabIndex = 193;
             this.metroLabel19.Text = "TotalCost";
             // 
-            // AddPurchase
+            // EditPurchase
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
@@ -980,10 +979,9 @@
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.cmbsuppname);
             this.Controls.Add(this.cmbpaydate);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AddPurchase";
+            this.Name = "EditPurchase";
             this.Padding = new System.Windows.Forms.Padding(20, 60, 20, 10);
-            this.Text = "AddPurchase";
+            this.Text = "Edit Purchase";
             this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.AddPurchase_Activated);
@@ -996,49 +994,48 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroTextBox txtCarrage;
         private MetroFramework.Controls.MetroLabel metroLabel15;
-        private MetroFramework.Controls.MetroTextBox txtTulai;
         private MetroFramework.Controls.MetroLabel metroLabel14;
-        private MetroFramework.Controls.MetroTextBox txtBardena;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroComboBox cmBrokerName;
-        private MetroFramework.Controls.MetroTextBox txtBrokeryAmount;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroTextBox txtRatePerKg;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTextBox txtShortage;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroTextBox txtWeightPerBag;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private MetroFramework.Controls.MetroTextBox txtTotalBagsQuantity;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroGrid metroGrid1;
-        private MetroFramework.Controls.MetroTextBox txtGrade;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel Garden;
-        private MetroFramework.Controls.MetroTextBox txtLotNo;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroTile btnadditem;
         private MetroFramework.Controls.MetroTile btnback;
         private MetroFramework.Controls.MetroTile btnclr;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroComboBox cmbsuppname;
-        private MetroFramework.Controls.MetroDateTime cmbpaydate;
-        private MetroFramework.Controls.MetroTextBox txtGardenName;
-        private MetroFramework.Controls.MetroTextBox txtNetWeight;
         private MetroFramework.Controls.MetroLabel metroLabel18;
-        private MetroFramework.Controls.MetroTextBox txtTotalWeight;
         private MetroFramework.Controls.MetroLabel metroLabel16;
         private System.Windows.Forms.Panel panel1;
-        private MetroFramework.Controls.MetroTextBox txtCost;
         private MetroFramework.Controls.MetroLabel metroLabel17;
-        private MetroFramework.Controls.MetroTextBox txtTotalCost;
         private MetroFramework.Controls.MetroLabel metroLabel19;
+        public MetroFramework.Controls.MetroTextBox txtCarrage;
+        public MetroFramework.Controls.MetroTextBox txtTulai;
+        public MetroFramework.Controls.MetroTextBox txtBardena;
+        public MetroFramework.Controls.MetroComboBox cmBrokerName;
+        public MetroFramework.Controls.MetroTextBox txtBrokeryAmount;
+        public MetroFramework.Controls.MetroTextBox txtRatePerKg;
+        public MetroFramework.Controls.MetroTextBox txtShortage;
+        public MetroFramework.Controls.MetroTextBox txtWeightPerBag;
+        public MetroFramework.Controls.MetroTextBox txtTotalBagsQuantity;
+        public MetroFramework.Controls.MetroTextBox txtGrade;
+        public MetroFramework.Controls.MetroTextBox txtLotNo;
+        public MetroFramework.Controls.MetroComboBox cmbsuppname;
+        public MetroFramework.Controls.MetroDateTime cmbpaydate;
+        public MetroFramework.Controls.MetroTextBox txtGardenName;
+        public MetroFramework.Controls.MetroTextBox txtNetWeight;
+        public MetroFramework.Controls.MetroTextBox txtTotalWeight;
+        public MetroFramework.Controls.MetroTextBox txtCost;
+        public MetroFramework.Controls.MetroTextBox txtTotalCost;
     }
 }

@@ -63,5 +63,13 @@ namespace WindowsFormsApplication1.Forms
             obj.WindowState = FormWindowState.Maximized;
 
         }
+
+        private void metroTile5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserManagement obj = new UserManagement();
+            obj.Show();
+            obj.WindowState = FormWindowState.Maximized;
+        }
     }
 }

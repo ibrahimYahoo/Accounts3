@@ -11,6 +11,7 @@ namespace WindowsFormsApplication1.POJO
 
         public int CashBook_Id { get; set; }
 
+        public string VoucherNo { get; set; }
 
         public DateTime Date { get; set; }
 
@@ -22,9 +23,9 @@ namespace WindowsFormsApplication1.POJO
 
         public decimal Amount { get; set; }
 
-//        public decimal Expense { get; set; }
+        public decimal Expense { get; set; }
 
-     //   public int InvoiceNo { get; set; }
+        public string InvoiceNo { get; set; }
 
         public string customerName { get; set; }
 

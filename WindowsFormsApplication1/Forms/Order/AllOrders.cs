@@ -19,6 +19,8 @@ namespace WindowsFormsApplication1.Forms
         public static decimal sellingQty = 0;
         public static decimal SellingWeight = 0;
         public static int LotNo = 0;
+        public static string Brokername = "";
+        public static decimal BrokeryAmount = 0;
 
         public AllOrders()
         {
@@ -133,17 +135,17 @@ namespace WindowsFormsApplication1.Forms
 
             decimal SellingWeight = decimal.Parse(gvPurchase.CurrentRow.Cells[7].Value.ToString());
             ec.SellingWt = SellingWeight;
-            int Shortage = int.Parse(gvPurchase.CurrentRow.Cells[6].Value.ToString());
+            decimal Shortage = decimal.Parse(gvPurchase.CurrentRow.Cells[6].Value.ToString());
 
 
             string partyname = this.gvPurchase.CurrentRow.Cells[2].Value.ToString();
-            ec.cbCustName.DataSource = new DAO().GetParties();
+            ec.cbCustName.DataSource = new DAO().GetPartiesFrmAccount();
             ec.cbCustName.DisplayMember = "Name";
             ec.cbCustName.ValueMember = "Party-ID";
             int PartyIndex = getIndexParty(ec.cbCustName, partyname);
             ec.cbCustName.SelectedIndex = PartyIndex;
 
-            string Brokername = this.gvPurchase.CurrentRow.Cells[12].Value.ToString();
+            Brokername = this.gvPurchase.CurrentRow.Cells[12].Value.ToString();
             ec.cmBrokerName.DataSource = new DAO().GetBrokers();
             ec.cmBrokerName.DisplayMember = "BrokerName";
             ec.cmBrokerName.ValueMember = "BId";
@@ -196,6 +198,8 @@ namespace WindowsFormsApplication1.Forms
 
             
             ec.cmBrokerName.SelectedText = this.gvPurchase.CurrentRow.Cells[12].Value.ToString();
+
+            BrokeryAmount = decimal.Parse(this.gvPurchase.CurrentRow.Cells[11].Value.ToString());
             ec.txtBrokeryAmount.Text = this.gvPurchase.CurrentRow.Cells[11].Value.ToString();
             ec.txtBardena.Text = this.gvPurchase.CurrentRow.Cells[13].Value.ToString();
             ec.txtTulai.Text = this.gvPurchase.CurrentRow.Cells[15].Value.ToString();

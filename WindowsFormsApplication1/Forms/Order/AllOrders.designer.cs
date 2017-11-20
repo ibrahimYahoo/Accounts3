@@ -51,7 +51,8 @@
             this.btndelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btndelete.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btndelete.Location = new System.Drawing.Point(713, 653);
+            this.btndelete.Enabled = false;
+            this.btndelete.Location = new System.Drawing.Point(835, 653);
             this.btndelete.Name = "btndelete";
             this.btndelete.Size = new System.Drawing.Size(116, 92);
             this.btndelete.TabIndex = 2;
@@ -63,6 +64,7 @@
             this.btndelete.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.btndelete.UseSelectable = true;
             this.btndelete.UseTileImage = true;
+            this.btndelete.Visible = false;
             this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
             // 
             // btnedit
@@ -109,7 +111,7 @@
             this.btnback.ActiveControl = null;
             this.btnback.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnback.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnback.Location = new System.Drawing.Point(835, 653);
+            this.btnback.Location = new System.Drawing.Point(713, 653);
             this.btnback.Name = "btnback";
             this.btnback.Size = new System.Drawing.Size(116, 92);
             this.btnback.TabIndex = 3;

@@ -94,6 +94,7 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
@@ -112,6 +113,7 @@
     <Compile Include="Code\DBConn.cs" />
     <Compile Include="Code\GroupedComboBox.cs" />
     <Compile Include="Code\Interop.cs" />
+    <Compile Include="Code\NumberToWords.cs" />
     <Compile Include="Code\PasswordDAL.cs" />
     <Compile Include="Dataseets\ordere.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -182,6 +184,12 @@
     <Compile Include="Forms\Accounts\frmAccounts.designer.cs">
       <DependentUpon>frmAccounts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Cashbook\EditPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cashbook\EditPayment.Designer.cs">
+      <DependentUpon>EditPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cashbook\AddPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +207,18 @@
     </Compile>
     <Compile Include="Forms\Cashbook\CashBook.Designer.cs">
       <DependentUpon>CashBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cashbook\EditReciept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cashbook\EditReciept.Designer.cs">
+      <DependentUpon>EditReciept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cashbook\PaymentVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cashbook\PaymentVoucher.Designer.cs">
+      <DependentUpon>PaymentVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Cashbook\RecieptPrint.cs">
       <SubType>Form</SubType>
@@ -266,6 +286,12 @@
     <Compile Include="Forms\Journals\JournalVoucher.Designer.cs">
       <DependentUpon>JournalVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Login\UserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login\UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Order\AddOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,46 +340,46 @@
     <Compile Include="Forms\Payments\Payments.designer.cs">
       <DependentUpon>Payments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\AsUpdateQty.cs">
+    <Compile Include="Forms\Purchase\AsUpdateQty.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\AsUpdateQty.Designer.cs">
+    <Compile Include="Forms\Purchase\AsUpdateQty.Designer.cs">
       <DependentUpon>AsUpdateQty.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\yos.cs">
+    <Compile Include="Forms\Purchase\yos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\yos.designer.cs">
+    <Compile Include="Forms\Purchase\yos.designer.cs">
       <DependentUpon>yos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\AddPurchase.cs">
+    <Compile Include="Forms\Purchase\AddPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\AddPurchase.designer.cs">
+    <Compile Include="Forms\Purchase\AddPurchase.designer.cs">
       <DependentUpon>AddPurchase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\AddPurchase2.cs">
+    <Compile Include="Forms\Purchase\AddPurchase2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\AddPurchase2.Designer.cs">
+    <Compile Include="Forms\Purchase\AddPurchase2.Designer.cs">
       <DependentUpon>AddPurchase2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\EditPurchase.cs">
+    <Compile Include="Forms\Purchase\EditPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\EditPurchase.designer.cs">
+    <Compile Include="Forms\Purchase\EditPurchase.designer.cs">
       <DependentUpon>EditPurchase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\Purchases.cs">
+    <Compile Include="Forms\Purchase\Purchases.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\Purchases.designer.cs">
+    <Compile Include="Forms\Purchase\Purchases.designer.cs">
       <DependentUpon>Purchases.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\RequestPurPay.cs">
+    <Compile Include="Forms\Purchase\RequestPurPay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Order\Purchase\RequestPurPay.Designer.cs">
+    <Compile Include="Forms\Purchase\RequestPurPay.Designer.cs">
       <DependentUpon>RequestPurPay.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Search\frmSearch.cs">
@@ -475,6 +501,12 @@
     <Compile Include="Reports\CheckOutSlip.Designer.cs">
       <DependentUpon>CheckOutSlip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CRPaymentVoucher.cs">
+      <DependentUpon>CRPaymentVoucher.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\CrystalReportGL2.cs">
       <DependentUpon>CrystalReportGL2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -574,6 +606,9 @@
     <EmbeddedResource Include="Forms\Accounts\frmAccounts.resx">
       <DependentUpon>frmAccounts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cashbook\EditPayment.resx">
+      <DependentUpon>EditPayment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cashbook\AddPayment.resx">
       <DependentUpon>AddPayment.cs</DependentUpon>
     </EmbeddedResource>
@@ -582,6 +617,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cashbook\CashBook.resx">
       <DependentUpon>CashBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cashbook\EditReciept.resx">
+      <DependentUpon>EditReciept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cashbook\PaymentVoucher.resx">
+      <DependentUpon>PaymentVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cashbook\RecieptPrint.resx">
       <DependentUpon>RecieptPrint.cs</DependentUpon>
@@ -616,6 +657,9 @@
     <EmbeddedResource Include="Forms\Journals\JournalVoucher.resx">
       <DependentUpon>JournalVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login\UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\AddOrder.resx">
       <DependentUpon>AddOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -640,25 +684,25 @@
     <EmbeddedResource Include="Forms\Payments\Payments.resx">
       <DependentUpon>Payments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Order\Purchase\AsUpdateQty.resx">
+    <EmbeddedResource Include="Forms\Purchase\AsUpdateQty.resx">
       <DependentUpon>AsUpdateQty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Order\Purchase\yos.resx">
+    <EmbeddedResource Include="Forms\Purchase\yos.resx">
       <DependentUpon>yos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Order\Purchase\AddPurchase.resx">
+    <EmbeddedResource Include="Forms\Purchase\AddPurchase.resx">
       <DependentUpon>AddPurchase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Order\Purchase\AddPurchase2.resx">
+    <EmbeddedResource Include="Forms\Purchase\AddPurchase2.resx">
       <DependentUpon>AddPurchase2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Order\Purchase\EditPurchase.resx">
+    <EmbeddedResource Include="Forms\Purchase\EditPurchase.resx">
       <DependentUpon>EditPurchase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Order\Purchase\Purchases.resx">
+    <EmbeddedResource Include="Forms\Purchase\Purchases.resx">
       <DependentUpon>Purchases.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Order\Purchase\RequestPurPay.resx">
+    <EmbeddedResource Include="Forms\Purchase\RequestPurPay.resx">
       <DependentUpon>RequestPurPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Search\frmSearch.resx">
@@ -719,6 +763,10 @@
     </Compile>
     <EmbeddedResource Include="Reports\CheckOutSlip.resx">
       <DependentUpon>CheckOutSlip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CRPaymentVoucher.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRPaymentVoucher.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CrystalReportGL2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -33,12 +33,13 @@
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.metroTile5 = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(192, 224);
+            this.metroTile1.Location = new System.Drawing.Point(357, 207);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(272, 139);
             this.metroTile1.TabIndex = 0;
@@ -54,7 +55,7 @@
             // 
             this.metroTile2.ActiveControl = null;
             this.metroTile2.ForeColor = System.Drawing.Color.Coral;
-            this.metroTile2.Location = new System.Drawing.Point(470, 224);
+            this.metroTile2.Location = new System.Drawing.Point(357, 352);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(272, 139);
             this.metroTile2.TabIndex = 1;
@@ -69,7 +70,7 @@
             // metroTile3
             // 
             this.metroTile3.ActiveControl = null;
-            this.metroTile3.Location = new System.Drawing.Point(748, 224);
+            this.metroTile3.Location = new System.Drawing.Point(646, 207);
             this.metroTile3.Name = "metroTile3";
             this.metroTile3.Size = new System.Drawing.Size(272, 139);
             this.metroTile3.TabIndex = 2;
@@ -105,11 +106,27 @@
             this.panel1.Size = new System.Drawing.Size(66, 66);
             this.panel1.TabIndex = 192;
             // 
+            // metroTile5
+            // 
+            this.metroTile5.ActiveControl = null;
+            this.metroTile5.Location = new System.Drawing.Point(646, 352);
+            this.metroTile5.Name = "metroTile5";
+            this.metroTile5.Size = new System.Drawing.Size(272, 139);
+            this.metroTile5.TabIndex = 193;
+            this.metroTile5.Text = "USER MANAGMENT";
+            this.metroTile5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.metroTile5.UseMnemonic = false;
+            this.metroTile5.UseSelectable = true;
+            this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1267, 542);
+            this.Controls.Add(this.metroTile5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroTile4);
             this.Controls.Add(this.metroTile3);
@@ -130,5 +147,6 @@
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTile metroTile4;
         private System.Windows.Forms.Panel panel1;
+        private MetroFramework.Controls.MetroTile metroTile5;
     }
 }

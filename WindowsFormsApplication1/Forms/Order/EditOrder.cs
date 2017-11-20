@@ -181,14 +181,27 @@ namespace WindowsFormsApplication1.Forms.Order
 
                     if (cmBrokerName.SelectedIndex != -1)
                     {
-
                         DataRowView dv3 = (DataRowView)cmBrokerName.SelectedItem;
 
                         BId = (int)dv3.Row["BId"];
                         BrokerName = (string)dv3.Row["BrokerName"];
                         int BroAccountId = new DAO().GetAccountId(BrokerName);
                         BrokeryAmount = int.Parse(txtBrokeryAmount.Text);
-                        new DAO().AddGlTransactions(DateTime.Today.Date, "BrokeryAmount", BroAccountId, "Debit", OrderId, 0, BrokeryAmount, 00);
+                        BrokeryAmount = int.Parse(txtBrokeryAmount.Text);
+
+                        if (AllOrders.Brokername != BrokerName || AllOrders.BrokeryAmount != BrokeryAmount )
+                        {
+                            new DAO().UpdateGlTransaction(DateTime.Today.Date, "BrokeryAmount", BroAccountId, "Debit", OrderId, 0, BrokeryAmount, 00);
+
+
+                        }
+                        else
+                        {
+                            new DAO().AddGlTransactions(DateTime.Today.Date, "BrokeryAmount", BroAccountId, "Debit", OrderId, 0, BrokeryAmount, 00);
+
+                        }
+
+
 
                     }
 
@@ -196,7 +209,7 @@ namespace WindowsFormsApplication1.Forms.Order
                     //      amountTrnferRec = int.Parse(lblSubtotal.Text);
                     DataTable dt = new DataTable();
                     SqlConnection conn = DBConn.GetInstance();
-                    SqlDataAdapter dad = new SqlDataAdapter("Update Orders SET OrderNo=@orderno, ODate=@orderdate, PId=@PId,IId=@itemid, Qty=@qty,RatePerKg = RatePerKg, Cost = @Cost, BId = @BId, BrokeryAmount = @BrokeryAmount,Bardena = @Bardena, Tulai = @Tulai, Carrage = @Carage, Shortage = @Shortage,SellingWeight = @SellingWeight, DoNo = @DeliveryOrderNo, TotalCost = @TotalCost where OrderId = @orderId", conn);
+                    SqlDataAdapter dad = new SqlDataAdapter("Update Orders SET OrderNo=@orderno, ODate=@orderdate, AccountId=@PId,IId=@itemid, Qty=@qty,RatePerKg = @RatePerKg, Cost = @Cost, BId = @BId, BrokeryAmount = @BrokeryAmount,Bardena = @Bardena, Tulai = @Tulai, Carrage = @Carage, Shortage = @Shortage,SellingWeight = @SellingWeight, DoNo = @DeliveryOrderNo, TotalCost = @TotalCost where OrderId = @orderId", conn);
 
                     //  SqlDataAdapter dad = new SqlDataAdapter("Update Orders Set(OrderId,OrderNo,ODate,PId,IId,Qty,RatePerKg,Cost,AmountPaid,Status,BId,BrokeryAmount,Bardena,Tulai,Carrage,Shortage,SellingWeight,DoNo,TotalCost) values(@orderId,@orderno, @orderdate,@PId,@itemid,@qty,@RatePerKg,@Cost,0,'NotPaid',@BId,@BrokeryAmount,@Bardena,@Tulai,@Carage,@Shortage,@SellingWeight,@DeliveryOrderNo,@TotalCost)", conn);
                     string[] stringSeparators = new string[] { "Sl" };
@@ -283,9 +296,9 @@ namespace WindowsFormsApplication1.Forms.Order
 
                     int AccountId = new DAO().GetAccountId(AccountName);
 
-                    new DAO().UpdateGlTransaction(DateTime.Today.Date, "sold " + GardenName + " " + TotalQuantity, 7, "Debit", OrderId, 0, TotalCost, 00);
-                    new DAO().UpdateGlTransaction(DateTime.Today.Date, "sold " + GardenName + " " + TotalQuantity, 4, "Credit", OrderId, TotalCost, 0, 00);
-                    new DAO().UpdateGlTransaction(DateTime.Today.Date, "sold " + GardenName + " " + TotalQuantity, AccountId, "Debit", OrderId, 0, TotalCost, 00);
+                    new DAO().UpdateGlTransaction(dtODate.Value, "sold " + GardenName + " " + TotalQuantity, 7, "Debit", OrderId, 0, TotalCost, 00);
+                    new DAO().UpdateGlTransaction(dtODate.Value, "sold " + GardenName + " " + TotalQuantity, 4, "Credit", OrderId, TotalCost, 0, 00);
+                    new DAO().UpdateGlTransaction(dtODate.Value, "sold " + GardenName + " " + TotalQuantity, AccountId, "Debit", OrderId, 0, TotalCost, 00);
 
                     // index  =   cbCustName.SelectedIndex;
 

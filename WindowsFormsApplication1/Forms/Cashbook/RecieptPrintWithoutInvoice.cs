@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
                     CashBook_Id = int.Parse(row["CBId"].ToString()),
 
-                    customerName = row["CustomerName"].ToString(),
+                   // customerName = row["CustomerName"].ToString(),
 
                     Date = DateTime.Parse(row["Date"].ToString()),
 
@@ -70,16 +70,31 @@ namespace WindowsFormsApplication1.Forms.Cashbook
 
                 crystalReportRecieptWithoutInvoiceNo1.SetDataSource(lstInvoice);
 
+                string ChequeNo = "";
+                string BankCode = "";
 
                 string cusName = row[0].ToString();
-                string accNo = row["PId"].ToString();
+                string accNo = row["AccountId"].ToString();
                 DateTime dd = DateTime.Parse(row["Date"].ToString());
+                string AmountType = row["AmountType"].ToString();
 
+                if (AmountType == "Cash")
+                {
+                    //Cash = "\u221A";
+                }
+                else
+                {
+                    ChequeNo = row[11].ToString();
+                    BankCode = row[12].ToString();
+
+                }
 
 
                 crystalReportRecieptWithoutInvoiceNo1.SetParameterValue("CustomerName", cusName);
                 crystalReportRecieptWithoutInvoiceNo1.SetParameterValue("AccountNumber", accNo);
                 crystalReportRecieptWithoutInvoiceNo1.SetParameterValue("Date", dd);
+                crystalReportRecieptWithoutInvoiceNo1.SetParameterValue("Cheque", ChequeNo);
+                crystalReportRecieptWithoutInvoiceNo1.SetParameterValue("BankCode", BankCode);
 
 
 
