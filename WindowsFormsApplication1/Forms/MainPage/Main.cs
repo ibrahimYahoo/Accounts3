@@ -22,7 +22,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Main : MetroFramework.Forms.MetroForm
     {
-        
+        DataTable dt = new DAO().getRoles(Login.RoleId);
+
 
 
         public Main()
@@ -37,66 +38,43 @@ namespace WindowsFormsApplication1
 
         private void metroTile4_Click(object sender, EventArgs e)
         {
-            //bool IsOpen = false;
-            //FormCollection fc = Application.OpenForms;
+           
+            if(bool.Parse(dt.Rows[0]["ViewStock"].ToString()) == true)
+            {
+                Forms.Stock ac = new Forms.Stock();
+                ac.WindowState = FormWindowState.Maximized;
 
-            //foreach (Form f in fc)
-            //{
+                ac.Show();
+                this.Hide();
 
-            //    if (f.Name == "Stock")
-            //    {
-            //        IsOpen = true;
-            //        f.Focus();
-            //        break;
-            //    }
-            //}
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
 
-            //if (IsOpen == true)
-            //{
-                
-            //}
 
-            //this.Hide();
-            //Home f1obj = new Home();
-            //this.Hide();
-            Forms.Stock ac = new Forms.Stock();
-            ac.WindowState = FormWindowState.Maximized;
-
-            ac.Show();
-            this.Hide();
-
-            
         }
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            //bool IsOpen = false;
-            //FormCollection fc = Application.OpenForms;
+            if (bool.Parse(dt.Rows[0]["ViewOrders"].ToString()) == true)
+            {
+                AllOrders addorder = new AllOrders();
+                addorder.WindowState = FormWindowState.Maximized;
+                addorder.Show();
+                this.Hide();
 
-            //foreach (Form f in fc)
-            //{
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
 
-            //    if (f.Name == "AddOrder")
-            //    {
-            //        IsOpen = true;
-            //        f.Focus();
-            //        break;
-            //    }
-            //}
 
-            //if (IsOpen == true)
-            //{
-            //    AddOrder addorder = new AddOrder();
-            //    addorder.Show();
-            //    addorder.WindowState = FormWindowState.Maximized;
-            //}
 
-            //this.Hide();
-            //Home f1obj = new Home();
-            AllOrders addorder = new AllOrders();
-            addorder.WindowState = FormWindowState.Maximized;
-            addorder.Show();
-            this.Hide();
             //this.Hide();
 
             
@@ -105,12 +83,21 @@ namespace WindowsFormsApplication1
 
         private void metroTile8_Click(object sender, EventArgs e)
         {
+            if (bool.Parse(dt.Rows[0]["ViewPurchases"].ToString()) == true)
+            {
+                Forms.Purchase.Purchases ac = new Purchases();
+                ac.WindowState = FormWindowState.Maximized;
 
-            Forms.Purchase.Purchases ac = new Purchases();
-            ac.WindowState = FormWindowState.Maximized;
+                ac.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
 
-            ac.Show();
-            this.Hide();
+            
 
         }
 
@@ -138,17 +125,26 @@ namespace WindowsFormsApplication1
 
         private void metroTile7_Click(object sender, EventArgs e)
         {
+            if (bool.Parse(dt.Rows[0]["ViewCashBook"].ToString()) == true)
+            {
+                CashBook ac = new CashBook();
+                ac.WindowState = FormWindowState.Maximized;
 
-            CashBook ac = new CashBook();
-            ac.WindowState = FormWindowState.Maximized;
+                ac.Show();
+                this.Hide();
 
-            ac.Show();
-            this.Hide();
-
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+           
         }
 
         private void metroTile5_Click(object sender, EventArgs e)
         {
+
 
             frmAccounts fa = new frmAccounts();
             fa.WindowState = FormWindowState.Maximized;
@@ -185,22 +181,44 @@ namespace WindowsFormsApplication1
 
         private void metroTile3_Click_1(object sender, EventArgs e)
         {
-            JournalVoucher JvObj = new JournalVoucher();
-            JvObj.WindowState = FormWindowState.Maximized;
+            if (bool.Parse(dt.Rows[0]["ViewJournals"].ToString()) == true)
+            {
+                JournalVoucher JvObj = new JournalVoucher();
+                JvObj.WindowState = FormWindowState.Maximized;
 
-            JvObj.Show();
-            this.Hide();
+                JvObj.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+
+            
 
 
         }
 
         private void metroTile10_Click(object sender, EventArgs e)
         {
-            GeneralLedger glObj = new GeneralLedger();
-            glObj.WindowState = FormWindowState.Maximized;
 
-            glObj.Show();
-            this.Hide();
+            if (bool.Parse(dt.Rows[0]["ViewGeneralLedger"].ToString()) == true)
+            {
+                GeneralLedger glObj = new GeneralLedger();
+                glObj.WindowState = FormWindowState.Maximized;
+
+                glObj.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+
+
+            
 
 
 
@@ -208,12 +226,22 @@ namespace WindowsFormsApplication1
 
         private void metroTile11_Click(object sender, EventArgs e)
         {
-            Settings glObj = new Settings();
-            glObj.WindowState = FormWindowState.Maximized;
 
-            glObj.Show();
-            this.Hide();
+            if (bool.Parse(dt.Rows[0]["Settings"].ToString()) == true)
+            {
+                Settings glObj = new Settings();
+                glObj.WindowState = FormWindowState.Maximized;
 
+                glObj.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+            
         }
     }
 }

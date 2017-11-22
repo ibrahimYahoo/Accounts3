@@ -22,6 +22,8 @@ namespace WindowsFormsApplication1.Forms
         public static string Brokername = "";
         public static decimal BrokeryAmount = 0;
 
+        DataTable dt = new DAO().getRoles(Login.RoleId);
+
         public AllOrders()
         {
             InitializeComponent();
@@ -97,11 +99,22 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnadditem_Click(object sender, EventArgs e)
         {
-            Order.AddOrder ac = new Order.AddOrder(this);
-            ac.WindowState = FormWindowState.Maximized;
+            if (bool.Parse(dt.Rows[0]["AddEditOrders"].ToString()) == true)
+            {
+                Order.AddOrder ac = new Order.AddOrder(this);
+                ac.WindowState = FormWindowState.Maximized;
 
-            ac.Show();
+                ac.Show();
 
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+
+
+            
         }
 
         private void txtItemQuantity_Leave(object sender, EventArgs e)
@@ -119,94 +132,103 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnedit_Click(object sender, EventArgs e)
         {
-            Forms.Order.EditOrder ec = new EditOrder(this);
+            if (bool.Parse(dt.Rows[0]["AddEditOrders"].ToString()) == true)
+            {
+                Forms.Order.EditOrder ec = new EditOrder(this);
 
-            LotNo = int.Parse(this.gvPurchase.CurrentRow.Cells[3].Value.ToString());
-            ec.LotNo = LotNo;
-            ec.OrderId = this.gvPurchase.CurrentRow.Cells[0].Value.ToString();
-            ec.DeliveryOrderNo = this.gvPurchase.CurrentRow.Cells[16].Value.ToString();
+                LotNo = int.Parse(this.gvPurchase.CurrentRow.Cells[3].Value.ToString());
+                ec.LotNo = LotNo;
+                ec.OrderId = this.gvPurchase.CurrentRow.Cells[0].Value.ToString();
+                ec.DeliveryOrderNo = this.gvPurchase.CurrentRow.Cells[16].Value.ToString();
 
-            ec.cmLotNo.DataSource = new DAO().GetLotNoS();
-            ec.cmLotNo.DisplayMember = "LotNo";
-            ec.cmLotNo.ValueMember = "IId";
-            int lotNoIndex = getIndexLotNo(ec.cmLotNo, LotNo.ToString());
-            ec.cmLotNo.SelectedIndex = lotNoIndex;
-
-
-            decimal SellingWeight = decimal.Parse(gvPurchase.CurrentRow.Cells[7].Value.ToString());
-            ec.SellingWt = SellingWeight;
-            decimal Shortage = decimal.Parse(gvPurchase.CurrentRow.Cells[6].Value.ToString());
+                ec.cmLotNo.DataSource = new DAO().GetLotNoS();
+                ec.cmLotNo.DisplayMember = "LotNo";
+                ec.cmLotNo.ValueMember = "IId";
+                int lotNoIndex = getIndexLotNo(ec.cmLotNo, LotNo.ToString());
+                ec.cmLotNo.SelectedIndex = lotNoIndex;
 
 
-            string partyname = this.gvPurchase.CurrentRow.Cells[2].Value.ToString();
-            ec.cbCustName.DataSource = new DAO().GetPartiesFrmAccount();
-            ec.cbCustName.DisplayMember = "Name";
-            ec.cbCustName.ValueMember = "Party-ID";
-            int PartyIndex = getIndexParty(ec.cbCustName, partyname);
-            ec.cbCustName.SelectedIndex = PartyIndex;
-
-            Brokername = this.gvPurchase.CurrentRow.Cells[12].Value.ToString();
-            ec.cmBrokerName.DataSource = new DAO().GetBrokers();
-            ec.cmBrokerName.DisplayMember = "BrokerName";
-            ec.cmBrokerName.ValueMember = "BId";
-            int brokerIndex = getIndexbroker(ec.cmBrokerName, Brokername);
-            ec.cmBrokerName.SelectedIndex = brokerIndex;
+                decimal SellingWeight = decimal.Parse(gvPurchase.CurrentRow.Cells[7].Value.ToString());
+                ec.SellingWt = SellingWeight;
+                decimal Shortage = decimal.Parse(gvPurchase.CurrentRow.Cells[6].Value.ToString());
 
 
-            ec.dtODate.MinDate = new DateTime(DateTime.Now.Year, 1, 1);
-            ec.dtODate.MaxDate = DateTime.Now;
-            ec.dtODate.Value = DateTime.Parse(this.gvPurchase.CurrentRow.Cells[1].Value.ToString());
+                string partyname = this.gvPurchase.CurrentRow.Cells[2].Value.ToString();
+                ec.cbCustName.DataSource = new DAO().GetPartiesFrmAccount();
+                ec.cbCustName.DisplayMember = "Name";
+                ec.cbCustName.ValueMember = "Party-ID";
+                int PartyIndex = getIndexParty(ec.cbCustName, partyname);
+                ec.cbCustName.SelectedIndex = PartyIndex;
 
-            DataTable dt2 = new DAO().GetItemsforLotNo(LotNo);
+                Brokername = this.gvPurchase.CurrentRow.Cells[12].Value.ToString();
+                ec.cmBrokerName.DataSource = new DAO().GetBrokers();
+                ec.cmBrokerName.DisplayMember = "BrokerName";
+                ec.cmBrokerName.ValueMember = "BId";
+                int brokerIndex = getIndexbroker(ec.cmBrokerName, Brokername);
+                ec.cmBrokerName.SelectedIndex = brokerIndex;
 
-            ec.IId = int.Parse(dt2.Rows[0]["IId"].ToString());
 
-            ec.txtGarden.Text = dt2.Rows[0]["IGarden"].ToString();
+                ec.dtODate.MinDate = new DateTime(DateTime.Now.Year, 1, 1);
+                ec.dtODate.MaxDate = DateTime.Now;
+                ec.dtODate.Value = DateTime.Parse(this.gvPurchase.CurrentRow.Cells[1].Value.ToString());
+
+                DataTable dt2 = new DAO().GetItemsforLotNo(LotNo);
+
+                ec.IId = int.Parse(dt2.Rows[0]["IId"].ToString());
+
+                ec.txtGarden.Text = dt2.Rows[0]["IGarden"].ToString();
+
+                ec.txtGrade.Text = dt2.Rows[0]["IGrade"].ToString();
+
+                sellingQty = decimal.Parse(gvPurchase.CurrentRow.Cells[5].Value.ToString());
+
+
+                decimal TotalQuantityleft = decimal.Parse(dt2.Rows[0]["IQty"].ToString());
+                ec.txtQtyLeft.Text = TotalQuantityleft.ToString();
+
+                int ItemWtPerBag = int.Parse(dt2.Rows[0]["IWtPerBag"].ToString());
+                ec.txtWtPerBag.Text = ItemWtPerBag.ToString();
+
+                decimal TotalWeightLeft = decimal.Parse(dt2.Rows[0]["ITotalWeight"].ToString());
+                ec.txtWtLeft.Text = TotalWeightLeft.ToString();
+
+                ec.SellingQty = decimal.Parse(gvPurchase.CurrentRow.Cells[5].Value.ToString());
+                ec.txtSellingQty.Text = gvPurchase.CurrentRow.Cells[5].Value.ToString();
+
+                ec.txtSellingWt.Text = SellingWeight.ToString();
+
+                ec.txtShortage.Text = Shortage.ToString();
+
+                ec.NetWeight = SellingWeight - Shortage;
+                ec.txtNetWeight.Text = Convert.ToString(SellingWeight - Shortage);
+
+                ec.txtRatePerKg.Text = gvPurchase.CurrentRow.Cells[4].Value.ToString();
+                ec.RatePerKg = int.Parse(gvPurchase.CurrentRow.Cells[4].Value.ToString());
+                ec.txtTotal.Text = gvPurchase.CurrentRow.Cells[8].Value.ToString();
+                // ec.txtSellingQty.Text = gvPurchase.CurrentRow.Cells[5].Value.ToString();
+
+                ec.txtQtyLeft.Enabled = false;
+                ec.txtWtLeft.Enabled = false;
+                ec.txtWtPerBag.Enabled = false;
+
+
+                ec.cmBrokerName.SelectedText = this.gvPurchase.CurrentRow.Cells[12].Value.ToString();
+
+                BrokeryAmount = decimal.Parse(this.gvPurchase.CurrentRow.Cells[11].Value.ToString());
+                ec.txtBrokeryAmount.Text = this.gvPurchase.CurrentRow.Cells[11].Value.ToString();
+                ec.txtBardena.Text = this.gvPurchase.CurrentRow.Cells[13].Value.ToString();
+                ec.txtTulai.Text = this.gvPurchase.CurrentRow.Cells[15].Value.ToString();
+                ec.txtCarrage.Text = this.gvPurchase.CurrentRow.Cells[14].Value.ToString();
+                ec.WindowState = FormWindowState.Maximized;
+
+                ec.Show();
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
             
-            ec.txtGrade.Text = dt2.Rows[0]["IGrade"].ToString();
-
-            sellingQty = decimal.Parse(gvPurchase.CurrentRow.Cells[5].Value.ToString());
-
-
-            decimal TotalQuantityleft = decimal.Parse(dt2.Rows[0]["IQty"].ToString()) ;
-            ec.txtQtyLeft.Text = TotalQuantityleft.ToString();
-
-            int ItemWtPerBag = int.Parse(dt2.Rows[0]["IWtPerBag"].ToString());
-            ec.txtWtPerBag.Text = ItemWtPerBag.ToString();
-
-            decimal TotalWeightLeft = decimal.Parse(dt2.Rows[0]["ITotalWeight"].ToString()) ;
-            ec.txtWtLeft.Text = TotalWeightLeft.ToString();
-
-            ec.SellingQty = decimal.Parse(gvPurchase.CurrentRow.Cells[5].Value.ToString());
-            ec.txtSellingQty.Text = gvPurchase.CurrentRow.Cells[5].Value.ToString();
-
-            ec.txtSellingWt.Text = SellingWeight.ToString();
-
-            ec.txtShortage.Text = Shortage.ToString();
-
-            ec.NetWeight = SellingWeight - Shortage;
-            ec.txtNetWeight.Text = Convert.ToString(SellingWeight - Shortage);
-
-            ec.txtRatePerKg.Text = gvPurchase.CurrentRow.Cells[4].Value.ToString();
-            ec.RatePerKg = int.Parse(gvPurchase.CurrentRow.Cells[4].Value.ToString());
-            ec.txtTotal.Text = gvPurchase.CurrentRow.Cells[8].Value.ToString();
-           // ec.txtSellingQty.Text = gvPurchase.CurrentRow.Cells[5].Value.ToString();
-
-            ec.txtQtyLeft.Enabled = false;
-            ec.txtWtLeft.Enabled = false;
-            ec.txtWtPerBag.Enabled = false;
-
-            
-            ec.cmBrokerName.SelectedText = this.gvPurchase.CurrentRow.Cells[12].Value.ToString();
-
-            BrokeryAmount = decimal.Parse(this.gvPurchase.CurrentRow.Cells[11].Value.ToString());
-            ec.txtBrokeryAmount.Text = this.gvPurchase.CurrentRow.Cells[11].Value.ToString();
-            ec.txtBardena.Text = this.gvPurchase.CurrentRow.Cells[13].Value.ToString();
-            ec.txtTulai.Text = this.gvPurchase.CurrentRow.Cells[15].Value.ToString();
-            ec.txtCarrage.Text = this.gvPurchase.CurrentRow.Cells[14].Value.ToString();
-            ec.WindowState = FormWindowState.Maximized;
-
-            ec.Show();
         }
 
         public static int getIndexLotNo(ComboBox comboBox, string value)

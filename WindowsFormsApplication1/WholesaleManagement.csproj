@@ -286,6 +286,12 @@
     <Compile Include="Forms\Journals\JournalVoucher.Designer.cs">
       <DependentUpon>JournalVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Login\ReqDelUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login\ReqDelUser.Designer.cs">
+      <DependentUpon>ReqDelUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Login\UserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -656,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Journals\JournalVoucher.resx">
       <DependentUpon>JournalVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login\ReqDelUser.resx">
+      <DependentUpon>ReqDelUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>

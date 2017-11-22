@@ -30,6 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -125,6 +129,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.metroLabel6);
+            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.metroLabel5);
+            this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.metroTile1);
             this.tabPage1.Controls.Add(this.metroLabel2);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -137,6 +145,40 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New User";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel6.Location = new System.Drawing.Point(322, 111);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(152, 25);
+            this.metroLabel6.TabIndex = 23;
+            this.metroLabel6.Text = "Confirm Password:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(480, 111);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(146, 22);
+            this.textBox3.TabIndex = 22;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel5.Location = new System.Drawing.Point(322, 73);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(86, 25);
+            this.metroLabel5.TabIndex = 21;
+            this.metroLabel5.Text = "Password:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(480, 73);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(146, 22);
+            this.textBox2.TabIndex = 20;
             // 
             // metroTile1
             // 
@@ -505,7 +547,7 @@
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(135, 20);
             this.checkBox7.TabIndex = 10;
-            this.checkBox7.Text = "Add / Edit Receipt";
+            this.checkBox7.Text = "Add / Edit Reciept";
             this.checkBox7.UseVisualStyleBackColor = true;
             this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
             // 
@@ -546,7 +588,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(43, 96);
+            this.metroLabel1.Location = new System.Drawing.Point(322, 34);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(101, 25);
             this.metroLabel1.TabIndex = 1;
@@ -554,7 +596,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(151, 99);
+            this.textBox1.Location = new System.Drawing.Point(480, 37);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(146, 22);
             this.textBox1.TabIndex = 0;
@@ -585,6 +627,7 @@
             this.metroTile4.Text = "Delete";
             this.metroTile4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile4.UseSelectable = true;
+            this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
             // 
             // metroTile3
             // 
@@ -596,6 +639,7 @@
             this.metroTile3.Text = "Update";
             this.metroTile3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile3.UseSelectable = true;
+            this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click);
             // 
             // listBox1
             // 
@@ -609,6 +653,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 84);
             this.listBox1.TabIndex = 23;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // metroLabel3
             // 
@@ -665,10 +710,11 @@
             this.checkBox32.AutoSize = true;
             this.checkBox32.Location = new System.Drawing.Point(390, 288);
             this.checkBox32.Name = "checkBox32";
-            this.checkBox32.Size = new System.Drawing.Size(147, 20);
+            this.checkBox32.Size = new System.Drawing.Size(140, 20);
             this.checkBox32.TabIndex = 44;
-            this.checkBox32.Text = "Add Assest Account";
+            this.checkBox32.Text = "Add Asset Account";
             this.checkBox32.UseVisualStyleBackColor = true;
+            this.checkBox32.CheckedChanged += new System.EventHandler(this.checkBox35_CheckedChanged);
             // 
             // checkBox33
             // 
@@ -679,6 +725,7 @@
             this.checkBox33.TabIndex = 43;
             this.checkBox33.Text = "Add Expense Account";
             this.checkBox33.UseVisualStyleBackColor = true;
+            this.checkBox33.CheckedChanged += new System.EventHandler(this.checkBox35_CheckedChanged);
             // 
             // checkBox34
             // 
@@ -689,6 +736,7 @@
             this.checkBox34.TabIndex = 42;
             this.checkBox34.Text = "Add Income Account";
             this.checkBox34.UseVisualStyleBackColor = true;
+            this.checkBox34.CheckedChanged += new System.EventHandler(this.checkBox35_CheckedChanged);
             // 
             // checkBox35
             // 
@@ -699,6 +747,7 @@
             this.checkBox35.TabIndex = 39;
             this.checkBox35.Text = "Account Chart";
             this.checkBox35.UseVisualStyleBackColor = true;
+            this.checkBox35.CheckedChanged += new System.EventHandler(this.checkBox35_CheckedChanged);
             // 
             // checkBox36
             // 
@@ -709,6 +758,7 @@
             this.checkBox36.TabIndex = 41;
             this.checkBox36.Text = "Add Liability Account";
             this.checkBox36.UseVisualStyleBackColor = true;
+            this.checkBox36.CheckedChanged += new System.EventHandler(this.checkBox35_CheckedChanged);
             // 
             // checkBox37
             // 
@@ -719,6 +769,7 @@
             this.checkBox37.TabIndex = 40;
             this.checkBox37.Text = "View Account Chart";
             this.checkBox37.UseVisualStyleBackColor = true;
+            this.checkBox37.CheckedChanged += new System.EventHandler(this.checkBox35_CheckedChanged);
             // 
             // checkBox38
             // 
@@ -729,6 +780,7 @@
             this.checkBox38.TabIndex = 38;
             this.checkBox38.Text = "View Brokers";
             this.checkBox38.UseVisualStyleBackColor = true;
+            this.checkBox38.CheckedChanged += new System.EventHandler(this.checkBox40_CheckedChanged);
             // 
             // checkBox39
             // 
@@ -739,6 +791,7 @@
             this.checkBox39.TabIndex = 37;
             this.checkBox39.Text = "Add / Edit Broker";
             this.checkBox39.UseVisualStyleBackColor = true;
+            this.checkBox39.CheckedChanged += new System.EventHandler(this.checkBox40_CheckedChanged);
             // 
             // checkBox40
             // 
@@ -749,6 +802,7 @@
             this.checkBox40.TabIndex = 34;
             this.checkBox40.Text = "Settings";
             this.checkBox40.UseVisualStyleBackColor = true;
+            this.checkBox40.CheckedChanged += new System.EventHandler(this.checkBox40_CheckedChanged);
             // 
             // checkBox41
             // 
@@ -759,6 +813,7 @@
             this.checkBox41.TabIndex = 35;
             this.checkBox41.Text = "View Parties";
             this.checkBox41.UseVisualStyleBackColor = true;
+            this.checkBox41.CheckedChanged += new System.EventHandler(this.checkBox40_CheckedChanged);
             // 
             // checkBox42
             // 
@@ -769,6 +824,7 @@
             this.checkBox42.TabIndex = 36;
             this.checkBox42.Text = "Add / Edit Party";
             this.checkBox42.UseVisualStyleBackColor = true;
+            this.checkBox42.CheckedChanged += new System.EventHandler(this.checkBox40_CheckedChanged);
             // 
             // checkBox43
             // 
@@ -779,6 +835,7 @@
             this.checkBox43.TabIndex = 30;
             this.checkBox43.Text = "Stock";
             this.checkBox43.UseVisualStyleBackColor = true;
+            this.checkBox43.CheckedChanged += new System.EventHandler(this.checkBox43_CheckedChanged);
             // 
             // checkBox44
             // 
@@ -789,16 +846,18 @@
             this.checkBox44.TabIndex = 31;
             this.checkBox44.Text = "View Stock";
             this.checkBox44.UseVisualStyleBackColor = true;
+            this.checkBox44.CheckedChanged += new System.EventHandler(this.checkBox43_CheckedChanged);
             // 
             // checkBox45
             // 
             this.checkBox45.AutoSize = true;
             this.checkBox45.Location = new System.Drawing.Point(606, 121);
             this.checkBox45.Name = "checkBox45";
-            this.checkBox45.Size = new System.Drawing.Size(115, 20);
+            this.checkBox45.Size = new System.Drawing.Size(87, 20);
             this.checkBox45.TabIndex = 32;
-            this.checkBox45.Text = "Add Edit Stock";
+            this.checkBox45.Text = "Edit Stock";
             this.checkBox45.UseVisualStyleBackColor = true;
+            this.checkBox45.CheckedChanged += new System.EventHandler(this.checkBox43_CheckedChanged);
             // 
             // checkBox46
             // 
@@ -809,6 +868,7 @@
             this.checkBox46.TabIndex = 29;
             this.checkBox46.Text = "Add / Edit Expense";
             this.checkBox46.UseVisualStyleBackColor = true;
+            this.checkBox46.CheckedChanged += new System.EventHandler(this.checkBox56_CheckedChanged);
             // 
             // checkBox47
             // 
@@ -819,6 +879,7 @@
             this.checkBox47.TabIndex = 28;
             this.checkBox47.Text = "Add / Edit Payment";
             this.checkBox47.UseVisualStyleBackColor = true;
+            this.checkBox47.CheckedChanged += new System.EventHandler(this.checkBox56_CheckedChanged);
             // 
             // checkBox48
             // 
@@ -829,16 +890,18 @@
             this.checkBox48.TabIndex = 24;
             this.checkBox48.Text = "Journal Entry";
             this.checkBox48.UseVisualStyleBackColor = true;
+            this.checkBox48.CheckedChanged += new System.EventHandler(this.checkBox48_CheckedChanged);
             // 
             // checkBox49
             // 
             this.checkBox49.AutoSize = true;
             this.checkBox49.Location = new System.Drawing.Point(789, 94);
             this.checkBox49.Name = "checkBox49";
-            this.checkBox49.Size = new System.Drawing.Size(117, 20);
+            this.checkBox49.Size = new System.Drawing.Size(110, 20);
             this.checkBox49.TabIndex = 25;
-            this.checkBox49.Text = "View Jounrnals";
+            this.checkBox49.Text = "View Journals";
             this.checkBox49.UseVisualStyleBackColor = true;
+            this.checkBox49.CheckedChanged += new System.EventHandler(this.checkBox48_CheckedChanged);
             // 
             // checkBox50
             // 
@@ -849,6 +912,7 @@
             this.checkBox50.TabIndex = 26;
             this.checkBox50.Text = "Add Journal Entry";
             this.checkBox50.UseVisualStyleBackColor = true;
+            this.checkBox50.CheckedChanged += new System.EventHandler(this.checkBox48_CheckedChanged);
             // 
             // checkBox51
             // 
@@ -859,6 +923,7 @@
             this.checkBox51.TabIndex = 21;
             this.checkBox51.Text = "General Ledger";
             this.checkBox51.UseVisualStyleBackColor = true;
+            this.checkBox51.CheckedChanged += new System.EventHandler(this.checkBox51_CheckedChanged);
             // 
             // checkBox52
             // 
@@ -869,6 +934,7 @@
             this.checkBox52.TabIndex = 22;
             this.checkBox52.Text = "View General Ledger";
             this.checkBox52.UseVisualStyleBackColor = true;
+            this.checkBox52.CheckedChanged += new System.EventHandler(this.checkBox51_CheckedChanged);
             // 
             // checkBox53
             // 
@@ -879,6 +945,7 @@
             this.checkBox53.TabIndex = 17;
             this.checkBox53.Text = "Select / Desellect All Checkboxes";
             this.checkBox53.UseVisualStyleBackColor = true;
+            this.checkBox53.CheckedChanged += new System.EventHandler(this.checkBox53_CheckedChanged);
             // 
             // checkBox54
             // 
@@ -889,6 +956,7 @@
             this.checkBox54.TabIndex = 14;
             this.checkBox54.Text = "Purchase";
             this.checkBox54.UseVisualStyleBackColor = true;
+            this.checkBox54.CheckedChanged += new System.EventHandler(this.checkBox54_CheckedChanged);
             // 
             // checkBox55
             // 
@@ -899,6 +967,7 @@
             this.checkBox55.TabIndex = 16;
             this.checkBox55.Text = "Add / Edit Purchases";
             this.checkBox55.UseVisualStyleBackColor = true;
+            this.checkBox55.CheckedChanged += new System.EventHandler(this.checkBox54_CheckedChanged);
             // 
             // checkBox56
             // 
@@ -909,6 +978,7 @@
             this.checkBox56.TabIndex = 8;
             this.checkBox56.Text = "CashBook";
             this.checkBox56.UseVisualStyleBackColor = true;
+            this.checkBox56.CheckedChanged += new System.EventHandler(this.checkBox56_CheckedChanged);
             // 
             // checkBox57
             // 
@@ -919,6 +989,7 @@
             this.checkBox57.TabIndex = 15;
             this.checkBox57.Text = "View Purchases";
             this.checkBox57.UseVisualStyleBackColor = true;
+            this.checkBox57.CheckedChanged += new System.EventHandler(this.checkBox54_CheckedChanged);
             // 
             // checkBox58
             // 
@@ -929,6 +1000,7 @@
             this.checkBox58.TabIndex = 9;
             this.checkBox58.Text = "View CashBook";
             this.checkBox58.UseVisualStyleBackColor = true;
+            this.checkBox58.CheckedChanged += new System.EventHandler(this.checkBox56_CheckedChanged);
             // 
             // checkBox59
             // 
@@ -937,8 +1009,9 @@
             this.checkBox59.Name = "checkBox59";
             this.checkBox59.Size = new System.Drawing.Size(135, 20);
             this.checkBox59.TabIndex = 10;
-            this.checkBox59.Text = "Add / Edit Receipt";
+            this.checkBox59.Text = "Add / Edit Reciept";
             this.checkBox59.UseVisualStyleBackColor = true;
+            this.checkBox59.CheckedChanged += new System.EventHandler(this.checkBox56_CheckedChanged);
             // 
             // checkBox60
             // 
@@ -949,6 +1022,7 @@
             this.checkBox60.TabIndex = 13;
             this.checkBox60.Text = "Add / Edit Orders";
             this.checkBox60.UseVisualStyleBackColor = true;
+            this.checkBox60.CheckedChanged += new System.EventHandler(this.checkBox61_CheckedChanged);
             // 
             // checkBox61
             // 
@@ -959,6 +1033,7 @@
             this.checkBox61.TabIndex = 11;
             this.checkBox61.Text = "Orders";
             this.checkBox61.UseVisualStyleBackColor = true;
+            this.checkBox61.CheckedChanged += new System.EventHandler(this.checkBox61_CheckedChanged);
             // 
             // checkBox62
             // 
@@ -969,6 +1044,7 @@
             this.checkBox62.TabIndex = 12;
             this.checkBox62.Text = "View Orders";
             this.checkBox62.UseVisualStyleBackColor = true;
+            this.checkBox62.CheckedChanged += new System.EventHandler(this.checkBox61_CheckedChanged);
             // 
             // metroLabel4
             // 
@@ -1090,9 +1166,13 @@
         private System.Windows.Forms.CheckBox checkBox61;
         private System.Windows.Forms.CheckBox checkBox62;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private System.Windows.Forms.ListBox listBox1;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile4;
         private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private System.Windows.Forms.TextBox textBox3;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.ListBox listBox1;
     }
 }

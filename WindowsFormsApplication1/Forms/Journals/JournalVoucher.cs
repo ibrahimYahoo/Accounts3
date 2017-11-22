@@ -14,6 +14,8 @@ namespace WindowsFormsApplication1.Forms
 {
     public partial class JournalVoucher : MetroFramework.Forms.MetroForm
     {
+        DataTable dt = new DAO().getRoles(Login.RoleId);
+
         public JournalVoucher()
         {
             InitializeComponent();
@@ -28,9 +30,18 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
+            if (bool.Parse(dt.Rows[0]["AddJournalEntry"].ToString()) == true)
+            {
+                AddJournal obj = new AddJournal();
+                obj.Show();
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+
             
-            AddJournal obj = new AddJournal();
-            obj.Show();
         }
 
         private void metroTile2_Click(object sender, EventArgs e)

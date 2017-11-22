@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1.Forms.Setttings
     public partial class AccountChart : MetroFramework.Forms.MetroForm
     {
         string AccountType = "";
+        DataTable dt = new DAO().getRoles(Login.RoleId);
 
         public AccountChart()
         {
@@ -27,12 +28,19 @@ namespace WindowsFormsApplication1.Forms.Setttings
 
         private void AccountChart_Load(object sender, EventArgs e)
         {
-            gvAccountChart.DataSource = new DAO().GetAccountChartEntries();
+            if (bool.Parse(dt.Rows[0]["ViewAccountChart"].ToString()) == true)
+            {
+                gvAccountChart.DataSource = new DAO().GetAccountChartEntries();
+
+            }
+           
 
         }
 
         private void metroTile5_Click(object sender, EventArgs e)
         {
+
+
             this.Hide();
             Settings obj = new Settings();
             obj.Show();
@@ -63,93 +71,143 @@ namespace WindowsFormsApplication1.Forms.Setttings
                 List<string> list = new List<string>();
                 if (clickedButton.Name == "btnAsset")
                 {
-                    txtAccounName.Text = "";
-                    txtAccounName.Visible = true;
-                    btnAddAccName.Visible = true;
-                    cmDetailType.Visible = true;
-                    AccountType = "ASSET";
-                    lblconfirm.Text = "";
 
-                    lblAccHeader.Visible = true;
-                    lblAccHeader.Text = "Add An Asset Account";
+                    if (bool.Parse(dt.Rows[0]["AddAssetAccount"].ToString()) == true)
+                    {
+                        txtAccounName.Text = "";
+                        txtAccounName.Visible = true;
+                        btnAddAccName.Visible = true;
+                        cmDetailType.Visible = true;
+                        AccountType = "ASSET";
+                        lblconfirm.Text = "";
 
-
-
-                    list = new List<string>(new string[] { "Bank","Cash Or Cash Equivalent", "Fixed Asset", "CurrentAsset","Other Asset" });
-
-
-                    cmDetailType.DataSource = list;
-                    cmDetailType.SelectedIndex = -1;
+                        lblAccHeader.Visible = true;
+                        lblAccHeader.Text = "Add An Asset Account";
 
 
 
+                        list = new List<string>(new string[] { "Bank", "Cash Or Cash Equivalent", "Fixed Asset", "CurrentAsset", "Other Asset" });
+
+
+                        cmDetailType.DataSource = list;
+                        cmDetailType.SelectedIndex = -1;
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                        return;
+                    }
+
+                    
 
 
 
                 }
                 else if (clickedButton.Name == "btnIncome")
                 {
-                    txtAccounName.Text = "";
 
-                    txtAccounName.Visible = true;
-                    btnAddAccName.Visible = true;
-                    cmDetailType.Visible = true;
+                    if (bool.Parse(dt.Rows[0]["AddIncomeAccount"].ToString()) == true)
+                    {
+                        txtAccounName.Text = "";
 
-                    AccountType = "INCOME";
-                    lblAccHeader.Visible = true;
-                    lblAccHeader.Text = "Add An Income Account";
+                        txtAccounName.Visible = true;
+                        btnAddAccName.Visible = true;
+                        cmDetailType.Visible = true;
 
-                    lblconfirm.Text = "";
-                    list = new List<string>(new string[] { " Sales  Product/Service", "Investment", "Commission","Other Income" });
+                        AccountType = "INCOME";
+                        lblAccHeader.Visible = true;
+                        lblAccHeader.Text = "Add An Income Account";
+
+                        lblconfirm.Text = "";
+                        list = new List<string>(new string[] { " Sales  Product/Service", "Investment", "Commission", "Other Income" });
 
 
-                    cmDetailType.DataSource = list;
-                    cmDetailType.SelectedIndex = -1;
+                        cmDetailType.DataSource = list;
+                        cmDetailType.SelectedIndex = -1;
 
 
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                        return;
+                    }
+
+                    
 
 
                 }
                 else if (clickedButton.Name == "btnExpense")
                 {
-                    txtAccounName.Text = "";
+                    if (bool.Parse(dt.Rows[0]["AddExpenseAccount"].ToString()) == true)
+                    {
+                        txtAccounName.Text = "";
 
-                    txtAccounName.Visible = true;
-                    btnAddAccName.Visible = true;
-                    cmDetailType.Visible = true;
+                        txtAccounName.Visible = true;
+                        btnAddAccName.Visible = true;
+                        cmDetailType.Visible = true;
 
-                    list = new List<string>(new string[] { " Cost of Goods", "Expense" });
-                    cmDetailType.DataSource = list;
-                    cmDetailType.SelectedIndex = -1;
-                    lblAccHeader.Visible = true;
-                    lblAccHeader.Text = "Add An Expense Account";
-
-
-                    AccountType = "EXPENSE";
-
-                    lblconfirm.Text = "";
+                        list = new List<string>(new string[] { " Cost of Goods", "Expense" });
+                        cmDetailType.DataSource = list;
+                        cmDetailType.SelectedIndex = -1;
+                        lblAccHeader.Visible = true;
+                        lblAccHeader.Text = "Add An Expense Account";
 
 
+                        AccountType = "EXPENSE";
+
+                        lblconfirm.Text = "";
+
+
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                        return;
+                    }
+
+                   
                 }
                 else
                 {
-                    txtAccounName.Text = "";
+                    if (bool.Parse(dt.Rows[0]["AddLiabilityAccount"].ToString()) == true)
+                    {
+                        txtAccounName.Text = "";
 
-                    txtAccounName.Visible = true;
-                    btnAddAccName.Visible = true;
-                    cmDetailType.Visible = true;
+                        txtAccounName.Visible = true;
+                        btnAddAccName.Visible = true;
+                        cmDetailType.Visible = true;
 
-                    lblAccHeader.Visible = true;
-                    lblAccHeader.Text = "Add A Liability Account";
-
-
-                    AccountType = "LIABILITY";
-                    lblconfirm.Text = "";
-                    list = new List<string>(new string[] { " Credit Card", "Loan", "Payroll", "Taxes Payable","Other Liability" });
-                    cmDetailType.DataSource = list;
-                    cmDetailType.SelectedIndex = -1;
+                        lblAccHeader.Visible = true;
+                        lblAccHeader.Text = "Add A Liability Account";
 
 
+                        AccountType = "LIABILITY";
+                        lblconfirm.Text = "";
+                        list = new List<string>(new string[] { " Credit Card", "Loan", "Payroll", "Taxes Payable", "Other Liability" });
+                        cmDetailType.DataSource = list;
+                        cmDetailType.SelectedIndex = -1;
+
+
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                        return;
+                    }
+
+                    
 
                 }
 
@@ -179,7 +237,13 @@ namespace WindowsFormsApplication1.Forms.Setttings
             {
 
                 new DAO().AddDboAccount(txtAccounName.Text, AccountType, cmDetailType.SelectedItem.ToString());
-                gvAccountChart.DataSource = new DAO().GetAccountChartEntries();
+
+                if (bool.Parse(dt.Rows[0]["ViewAccountChart"].ToString()) == true)
+                {
+                    gvAccountChart.DataSource = new DAO().GetAccountChartEntries();
+
+                }
+
                 lblconfirm.Text =  AccountType + "Account Added!!";
 
                 txtAccounName.Text = "";

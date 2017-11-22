@@ -14,6 +14,9 @@ namespace WindowsFormsApplication1.Forms
 {
     public partial class Login : MetroFramework.Forms.MetroForm
     {
+        public static string username = "";
+        public static int RoleId = -1;
+
         public Login()
         {
             InitializeComponent();
@@ -23,7 +26,7 @@ namespace WindowsFormsApplication1.Forms
         {
             cmbLogin.DataSource = new DAO().getusers();
             cmbLogin.DisplayMember = "Username";
-            cmbLogin.ValueMember = "Username";
+            cmbLogin.ValueMember = "RoleId";
         }
 
         private void metroTile1_Click(object sender, EventArgs e)
@@ -31,57 +34,60 @@ namespace WindowsFormsApplication1.Forms
             SqlConnection conn = DBConn.GetInstance();
 
             //SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = '" + cmbLogin.Text + "'and Password ='" + textBox2.Text + "'", conn);
-            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = @UN and Password = @PW", conn);
+            // SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = @UN and Password = @PW", conn);
 
-            sda.SelectCommand.Parameters.AddWithValue("@UN", cmbLogin.Text);
-            sda.SelectCommand.Parameters.AddWithValue("@PW", textBox2.Text);
+            DataRowView drv = (DataRowView)cmbLogin.SelectedItem;
+            username = (string)drv.Row["Username"];
+            RoleId = (int)drv.Row["RoleId"];
+
+            //sda.SelectCommand.Parameters.AddWithValue("@UN", cmbLogin.Text);
+            // sda.SelectCommand.Parameters.AddWithValue("@PW", textBox2.Text);
+
             DataTable dt = new DataTable();
-            sda.Fill(dt);
+            // sda.Fill(dt);
             try
             {
                 if (cmbLogin.Text != "" && textBox2.Text != "")
                 {
-                    if (dt.Rows[0][0].ToString() == "1")
-                    {
                         //SqlDataAdapter sda1 = new SqlDataAdapter("Select Username from Login where username = '" + cmbLogin.Text + "'and Password ='" + textBox2.Text + "'", conn);
-                        SqlDataAdapter sda1 = new SqlDataAdapter("Select Username from Login where Username = @UN and Password = @PW", conn);
+                        SqlDataAdapter sda1 = new SqlDataAdapter("Select Count(*) from Login where Username = @UN and Password = @PW", conn);
 
                         sda1.SelectCommand.Parameters.AddWithValue("@UN", cmbLogin.Text);
                         sda1.SelectCommand.Parameters.AddWithValue("@PW", textBox2.Text);
                         DataTable dt1 = new DataTable();
                         sda1.Fill(dt1);
                         //label4.Text = "Login approved as Admin";
-                        if (dt1.Rows[0][0].ToString() == "Admin")
+                        if (dt1.Rows[0][0].ToString() == "1")
                         {
                             this.Hide();
                             Main FF = new Main();
                             //AdminForm af = new AdminForm();
                             conn.Close();
+
                             FF.Show();
                         }
-                        else if (dt1.Rows[0][0].ToString() == "Worker")
+                        else
                         {
-                            //this.Hide();
+                            lblincorrectpass.Text = "Password is incorrect";
 
-                            //orderworker sf = new orderworker();
-                            //conn.Close();
-                            //sf.Show();
+
                         }
-                    }
-                    else if (dt.Rows[0][0].ToString() != "Admin" || dt.Rows[0][0].ToString() != "Worker")
-                    {
-                        //label5.Show();
-                        lblincorrectpass.Text = "Incorrect Password!";
-                    }
+
+                    
+
                 }
                 else
-                    lblincorrectpass.Text = "Please select Username!";
+                {
+                    lblincorrectpass.Text = "please fill all textboxes!";
+
+                }
             }
             catch (Exception ex)
             {
                 lblmsg.Text = ex.Message;
             }
-        }
+        
+    }
 
         private void mtCreate_Click(object sender, EventArgs e)
         {
@@ -102,51 +108,52 @@ namespace WindowsFormsApplication1.Forms
                 SqlConnection conn = DBConn.GetInstance();
 
                 //SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = '" + cmbLogin.Text + "'and Password ='" + textBox2.Text + "'", conn);
-                SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = @UN and Password = @PW", conn);
+               // SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = @UN and Password = @PW", conn);
+                DataRowView drv = (DataRowView)cmbLogin.SelectedItem;
+                username = (string)drv.Row["Username"];
+                RoleId = (int)drv.Row["RoleId"];
 
-                sda.SelectCommand.Parameters.AddWithValue("@UN", cmbLogin.Text);
-                sda.SelectCommand.Parameters.AddWithValue("@PW", textBox2.Text);
+                //sda.SelectCommand.Parameters.AddWithValue("@UN", cmbLogin.Text);
+               // sda.SelectCommand.Parameters.AddWithValue("@PW", textBox2.Text);
                 DataTable dt = new DataTable();
-                sda.Fill(dt);
+               // sda.Fill(dt);
                 try
                 {
                     if (cmbLogin.Text != "" && textBox2.Text != "")
                     {
-                        if (dt.Rows[0][0].ToString() == "1")
-                        {
                             //SqlDataAdapter sda1 = new SqlDataAdapter("Select Username from Login where username = '" + cmbLogin.Text + "'and Password ='" + textBox2.Text + "'", conn);
-                            SqlDataAdapter sda1 = new SqlDataAdapter("Select Username from Login where Username = @UN and Password = @PW", conn);
+                            SqlDataAdapter sda1 = new SqlDataAdapter("Select Count(*) from Login where Username = @UN and Password = @PW", conn);
 
                             sda1.SelectCommand.Parameters.AddWithValue("@UN", cmbLogin.Text);
                             sda1.SelectCommand.Parameters.AddWithValue("@PW", textBox2.Text);
                             DataTable dt1 = new DataTable();
                             sda1.Fill(dt1);
                             //label4.Text = "Login approved as Admin";
-                            if (dt1.Rows[0][0].ToString() == "Admin")
+                            if (dt1.Rows[0][0].ToString() == "1")
                             {
                                 this.Hide();
                                 Main FF = new Main();
                                 //AdminForm af = new AdminForm();
                                 conn.Close();
+                               
                                 FF.Show();
                             }
-                            else if (dt1.Rows[0][0].ToString() == "Worker")
+                            else
                             {
-                                //this.Hide();
+                                lblincorrectpass.Text = "Password is incorrect";
 
-                                //orderworker sf = new orderworker();
-                                //conn.Close();
-                                //sf.Show();
+
                             }
-                        }
-                        else if (dt.Rows[0][0].ToString() != "Admin" || dt.Rows[0][0].ToString() != "Worker")
-                        {
-                            //label5.Show();
-                            lblincorrectpass.Text = "Incorrect Password!";
-                        }
-                    }
+
+                        
+
+                      }
                     else
-                        lblincorrectpass.Text = "Please select Username!";
+                    {
+                        lblincorrectpass.Text = "please fill all textboxes!";
+
+
+                    }
                 }
                 catch (Exception ex)
                 {

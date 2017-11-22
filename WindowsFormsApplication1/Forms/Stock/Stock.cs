@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1.Forms
 {
     public partial class Stock : MetroFramework.Forms.MetroForm
     {
+        DataTable dt = new DAO().getRoles(Login.RoleId);
+
 
         //const int AW_SLIDE = 0X40000;
         //const int AW_HOR_POSITIVE = 0X1;
@@ -52,20 +54,29 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            Forms.EditItem ec = new Forms.EditItem(this);
-            ec.IId = int.Parse(this.gvStock.CurrentRow.Cells[0].Value.ToString());
-            ec.txtItemName.Text = this.gvStock.CurrentRow.Cells[1].Value.ToString();
-            //ec.cmbcatname.DataSource = new DAO().ShowCatList1();
-            //ec.cmbcatname.DisplayMember = "Display";
-            //ec.cmbcatname.ValueMember = "CatId";
-            //ec.cmbcatname.Text = new DAO().GetCatDescfromCatId(int.Parse(gvStock.CurrentRow.Cells[2].Value.ToString()));
-            ec.txtReOrder.Text = gvStock.CurrentRow.Cells[6].Value.ToString();
-            ec.TxtitemPrice.Text = this.gvStock.CurrentRow.Cells[3].Value.ToString();
-            ec.txtItemQuantity.Text = this.gvStock.CurrentRow.Cells[2].Value.ToString();
-            ec.txtitemdesc.Text = this.gvStock.CurrentRow.Cells[7].Value.ToString();
-            
-            ec.Show();
-        }
+            if (bool.Parse(dt.Rows[0]["ViewStock"].ToString()) == true)
+            {
+                Forms.EditItem ec = new Forms.EditItem(this);
+                ec.IId = int.Parse(this.gvStock.CurrentRow.Cells[0].Value.ToString());
+                ec.txtItemName.Text = this.gvStock.CurrentRow.Cells[1].Value.ToString();
+                //ec.cmbcatname.DataSource = new DAO().ShowCatList1();
+                //ec.cmbcatname.DisplayMember = "Display";
+                //ec.cmbcatname.ValueMember = "CatId";
+                //ec.cmbcatname.Text = new DAO().GetCatDescfromCatId(int.Parse(gvStock.CurrentRow.Cells[2].Value.ToString()));
+                ec.txtReOrder.Text = gvStock.CurrentRow.Cells[6].Value.ToString();
+                ec.TxtitemPrice.Text = this.gvStock.CurrentRow.Cells[3].Value.ToString();
+                ec.txtItemQuantity.Text = this.gvStock.CurrentRow.Cells[2].Value.ToString();
+                ec.txtitemdesc.Text = this.gvStock.CurrentRow.Cells[7].Value.ToString();
+
+                ec.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+                    }
         void performRefresh()
         {
             gvStock.DataSource = new DAO().getItems();

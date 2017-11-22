@@ -740,6 +740,30 @@ namespace WindowsFormsApplication1.Code
 
         }
 
+
+        public DataTable GetUsers(string PName)
+        {
+            DataTable dtParties = new DataTable();
+
+            dad = new SqlDataAdapter("Select Username as 'UserName', RoleId from Login where Username = @PName", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@PName", PName);
+            dad.Fill(dtParties);
+            conn.Close();
+            if (dtParties.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return dtParties;
+
+
+            }
+
+        }
+
+
+
         public DataTable GetBroker(string PName)
         {
             DataTable dtParties = new DataTable();
@@ -1205,6 +1229,21 @@ namespace WindowsFormsApplication1.Code
             return balance;
         }
 
+
+        public DataTable getRoles(int RoleId)
+        {
+            DataTable dtProduct = new DataTable();
+            conn = DBConn.GetInstance();
+
+
+            dad = new SqlDataAdapter("Select *  from UserRoles where RoleId = @RoleId", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@RoleId", RoleId);
+            dad.Fill(dtProduct);
+            //int SId = (Convert.ToInt32(dtProduct.Rows[0][0]));
+            conn.Close();
+            return dtProduct;
+        }
+
         public int getSupplierBalance(int sid)
         {
             SqlCommand cmd = new SqlCommand("Select SBalance from supplier where sid = @sid", conn);
@@ -1424,6 +1463,17 @@ namespace WindowsFormsApplication1.Code
             cmd.ExecuteNonQuery();
         }
 
+        public void RemoveUserAndRoles(int RoleId)
+        {
+            SqlCommand cmd = new SqlCommand("delete from UserRoles where RoleId = @RoleId", conn);
+            cmd.Parameters.AddWithValue("@RoleId", RoleId);
+            cmd.ExecuteNonQuery();
+
+            SqlCommand cmd2 = new SqlCommand("delete from Login where RoleId = @RoleId", conn);
+            cmd2.Parameters.AddWithValue("@RoleId", RoleId);
+            cmd2.ExecuteNonQuery();
+        }
+
 
         public void AddDboAccount(string AccountName,string AccountType, string DetailType)
         {
@@ -1482,6 +1532,36 @@ namespace WindowsFormsApplication1.Code
             }
 
             
+            return purchaseNo;
+
+        }
+
+
+        public int getLastRoleId()
+        {
+            DataTable dtOrders = new DataTable();
+
+            dad = new SqlDataAdapter("SELECT  TOP 1 RoleId FROM UserRoles ORDER BY RoleId DESC;", conn);
+            dad.Fill(dtOrders);
+            conn.Close();
+            int purchaseNo = 1;
+
+
+            try
+            {
+                purchaseNo = Convert.ToInt16(dtOrders.Rows[0][0]);
+
+            }
+            catch (Exception ex)
+            {
+                if (purchaseNo.Equals(null))
+                {
+                    return 1;
+                }
+
+            }
+
+
             return purchaseNo;
 
         }
@@ -2425,6 +2505,9 @@ namespace WindowsFormsApplication1.Code
             return dtProduct;
 
         }
+
+
+
         public void SubSuppBalance(int Sid, int total)
         {
             DataTable dtProduct = new DataTable();
@@ -2462,6 +2545,23 @@ namespace WindowsFormsApplication1.Code
             dad.Fill(dt);
             conn.Close();
         }
+
+        public void AddUser(string Username,string Password,int RoleId)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = DBConn.GetInstance();
+
+            SqlDataAdapter dad = new SqlDataAdapter("Insert into Login(Username,Password,RoleId) values(@Username,@Password,@RoleId)", conn);
+            dad.SelectCommand.Parameters.AddWithValue("@Username", Username);
+            dad.SelectCommand.Parameters.AddWithValue("@Password", Password);
+            dad.SelectCommand.Parameters.AddWithValue("@RoleId", RoleId);
+
+
+            dad.Fill(dt);
+            conn.Close();
+        }
+
+
 
         public void EditItem(int LotNo,string Grade, string IGarden, decimal totalBags, decimal WtPerBag, decimal IRatePerKg, decimal ITotalCost, decimal ITotalWeight,int IId)
         {

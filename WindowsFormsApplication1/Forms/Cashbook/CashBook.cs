@@ -19,7 +19,8 @@ namespace WindowsFormsApplication1.Forms
         SqlConnection conn = DBConn.GetInstance();
         public string PartyName = "";
         public static string InvoiceNo = "";
-       // public static string InvoiceNo2 = "";
+        // public static string InvoiceNo2 = "";
+        DataTable dt = new DAO().getRoles(Login.RoleId);
 
         public string ChequeNo = "";
         public string BankCode = "";
@@ -37,14 +38,34 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            AddReciept addRecObj = new AddReciept(this);
-            addRecObj.Show();
+            if (bool.Parse(dt.Rows[0]["AddEditReciept"].ToString()) == true)
+            {
+                AddReciept addRecObj = new AddReciept(this);
+                addRecObj.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+            
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            AddPayment addPayObj = new AddPayment(this);
-            addPayObj.Show();
+            if (bool.Parse(dt.Rows[0]["AddEditPayment"].ToString()) == true)
+            {
+                AddPayment addPayObj = new AddPayment(this);
+                addPayObj.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+            
 
         }
 
@@ -382,12 +403,34 @@ namespace WindowsFormsApplication1.Forms
             string Category = this.gvCashBook.CurrentRow.Cells[2].Value.ToString();
             if(Category == "sales")
             {
-                EditReciept();
-                return;
+                
+                if (bool.Parse(dt.Rows[0]["AddEditReciept"].ToString()) == true)
+                {
+                    EditReciept();
+                    return;
+
+                }
+                else
+                {
+                    MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                    return;
+                }
+
+               
             }
             else if(Category != "Journal Entry")
             {
-                EditPayment();
+                if (bool.Parse(dt.Rows[0]["AddEditPayment"].ToString()) == true)
+                {
+                    EditPayment();
+
+                }
+                else
+                {
+                    MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                    return;
+                }
+                
             }
 
         }

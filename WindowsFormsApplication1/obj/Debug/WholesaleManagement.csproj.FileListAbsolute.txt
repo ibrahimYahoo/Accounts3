@@ -353,3 +353,4 @@ E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.exe.man
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.application
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.exe
 E:\CA Assignment\WindowsFormsApplication1\obj\Debug\Wholesale Management.pdb
+E:\CA Assignment\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Forms.ReqDelUser.resources

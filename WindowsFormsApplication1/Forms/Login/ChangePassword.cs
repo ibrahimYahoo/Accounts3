@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1.Forms
         {
             cmbLogin.DataSource = new DAO().getusers();
             cmbLogin.DisplayMember = "Username";
-            cmbLogin.ValueMember = "Username";
+            cmbLogin.ValueMember = "Password";
         }
 
         private void mtBack_Click(object sender, EventArgs e)
@@ -36,13 +36,16 @@ namespace WindowsFormsApplication1.Forms
         private void metroTile1_Click_1(object sender, EventArgs e)
         {
 
-            if (cmbLogin.Text == "Admin")
+            if (cmbLogin.SelectedIndex != -1 && textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
             {
-                  if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
+
+                DataRowView dv3 = (DataRowView)cmbLogin.SelectedItem;
+
+                string Password = (string)dv3.Row["Password"];
+
+                if (textBox1.Text.Equals(Password))
                 {
-
                     if (textBox2.Text == textBox3.Text)
-
                     {
                         new PasswordDAL().UpdatePWAdmin(textBox3.Text);
                         lblmsg.Text = "Password changed successfully!";
@@ -53,39 +56,31 @@ namespace WindowsFormsApplication1.Forms
 
                     }
                     else
-                        lblmsg.Text = "Passwords do not match! Error";
-                    //SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = '" + cmbLogin.Text + "'and Password ='" + textBox2.Text + "'", conn);
-
-                   }
-                   else
-                    lblmsg.Text = "Please fill the textboxes! Error";
-
-                }
-                if (cmbLogin.Text == "Worker")
-                {
-                    if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
                     {
-
-                        if (textBox2.Text == textBox3.Text)
-                        {
-
-                            new PasswordDAL().UpdatePWWorker(textBox3.Text);
-                        lblmsg.Text = "Password changed successfully! ";
-                            Login fr = new Login();
-                            this.Hide();
-                            fr.Show();
-
-
-                        }
-                        else
                         lblmsg.Text = "Passwords do not match! Error";
+
 
                     }
-                    else
-                    lblmsg.Text = "Please fill the textboxes! Error";
-
                 }
+                else
+                {
+                    MessageBox.Show("your current password did not match");
+                }
+
+
+                //SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from Login where Username = '" + cmbLogin.Text + "'and Password ='" + textBox2.Text + "'", conn);
+
             }
+            else
+            {
+
+                lblmsg.Text = "Please fill the textboxes! Error";
+            }
+
+         }
+                
+                    
+           
 
         private void metroPanel2_Paint(object sender, PaintEventArgs e)
         {

@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
 {
     public partial class frmCustomer : MetroFramework.Forms.MetroForm
     {
+        DataTable dt = new DAO().getRoles(Login.RoleId);
+
         public frmCustomer()
         {
             InitializeComponent();
@@ -51,20 +53,40 @@ namespace WindowsFormsApplication1
         }
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            Forms.AddCus ac = new Forms.AddCus(this);
-            ac.ShowDialog();
+            if (bool.Parse(dt.Rows[0]["AddEditParty"].ToString()) == true)
+            {
+                Forms.AddCus ac = new Forms.AddCus(this);
+                ac.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+
+            
         }
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            Forms.EditCus ec = new Forms.EditCus(this);
-            ec.txtCName.Text = this.gvCustomer.CurrentRow.Cells[1].Value.ToString();
-            ec.txtCAddress.Text = this.gvCustomer.CurrentRow.Cells[2].Value.ToString();
-            ec.txtCEmail.Text = this.gvCustomer.CurrentRow.Cells[3].Value.ToString();
-            ec.txtCPhone.Text = this.gvCustomer.CurrentRow.Cells[4].Value.ToString();
-            ec.txtCBalance.Text = this.gvCustomer.CurrentRow.Cells[5].Value.ToString();
-            ec.cid = int.Parse(this.gvCustomer.CurrentRow.Cells[0].Value.ToString());
-            ec.ShowDialog();
+            if (bool.Parse(dt.Rows[0]["AddEditParty"].ToString()) == true)
+            {
+                Forms.EditCus ec = new Forms.EditCus(this);
+                ec.txtCName.Text = this.gvCustomer.CurrentRow.Cells[1].Value.ToString();
+                ec.txtCAddress.Text = this.gvCustomer.CurrentRow.Cells[2].Value.ToString();
+                ec.txtCEmail.Text = this.gvCustomer.CurrentRow.Cells[3].Value.ToString();
+                ec.txtCPhone.Text = this.gvCustomer.CurrentRow.Cells[4].Value.ToString();
+                ec.txtCBalance.Text = this.gvCustomer.CurrentRow.Cells[5].Value.ToString();
+                ec.cid = int.Parse(this.gvCustomer.CurrentRow.Cells[0].Value.ToString());
+                ec.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+
+           
         }
 
         private void metroTile3_Click(object sender, EventArgs e)
