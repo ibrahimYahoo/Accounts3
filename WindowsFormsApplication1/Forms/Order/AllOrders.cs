@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1.Forms
         public static string Brokername = "";
         public static decimal BrokeryAmount = 0;
 
-        DataTable dt = new DAO().getRoles(Login.RoleId);
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
 
         public AllOrders()
         {
@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnadditem_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["AddEditOrders"].ToString()) == true)
+            if (userRolesObj.getCheckstate("AddEditOrders") == true)
             {
                 Order.AddOrder ac = new Order.AddOrder(this);
                 ac.WindowState = FormWindowState.Maximized;
@@ -132,7 +132,14 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnedit_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["AddEditOrders"].ToString()) == true)
+            if (gvPurchase.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("please select one row first");
+
+                return;
+            }
+
+            if (userRolesObj.getCheckstate("AddEditOrders") == true)
             {
                 Forms.Order.EditOrder ec = new EditOrder(this);
 
@@ -338,19 +345,37 @@ namespace WindowsFormsApplication1.Forms
 
         private void btnPrintDeliveryOrder_Click(object sender, EventArgs e)
         {
-            DeliveryOrderPrint obj3 = new DeliveryOrderPrint();
-            obj3.WindowState = FormWindowState.Maximized;
 
-            obj3.Show();
+            if (gvPurchase.SelectedRows.Count == 1)
+            {
+                DeliveryOrderPrint obj3 = new DeliveryOrderPrint();
+                obj3.WindowState = FormWindowState.Maximized;
+
+                obj3.Show();
+            }
+            else
+            {
+                MessageBox.Show("please select one row first");
+            }
+            
 
         }
 
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
-            invoiceprint obj2 = new invoiceprint();
-            obj2.WindowState = FormWindowState.Maximized;
+            if(gvPurchase.SelectedRows.Count == 1)
+            {
+                invoiceprint obj2 = new invoiceprint();
+                obj2.WindowState = FormWindowState.Maximized;
 
-            obj2.Show();
+                obj2.Show();
+            }
+            else
+            {
+                MessageBox.Show("please select one row first");
+            }
+
+            
         }
     }
 }

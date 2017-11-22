@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1.Forms
 {
     public partial class Stock : MetroFramework.Forms.MetroForm
     {
-        DataTable dt = new DAO().getRoles(Login.RoleId);
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
 
 
         //const int AW_SLIDE = 0X40000;
@@ -54,7 +54,7 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewStock"].ToString()) == true)
+            if(userRolesObj.getCheckstate("EditStock") == true)
             {
                 Forms.EditItem ec = new Forms.EditItem(this);
                 ec.IId = int.Parse(this.gvStock.CurrentRow.Cells[0].Value.ToString());

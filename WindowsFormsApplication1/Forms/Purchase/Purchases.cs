@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
 {
     public partial class Purchases : MetroFramework.Forms.MetroForm
     {
-        DataTable dt = new DAO().getRoles(Login.RoleId);
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
 
         public static string selectedOrderId = "";
         public static decimal TotalQuantity = 0;
@@ -67,7 +67,7 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
         private void btnadditem_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewStock"].ToString()) == true)
+            if (userRolesObj.getCheckstate("AddEditPurchases") == true)
             {
                 Purchase.AddPurchase ac = new Purchase.AddPurchase(this);
                 ac.WindowState = FormWindowState.Maximized;
@@ -99,7 +99,15 @@ namespace WindowsFormsApplication1.Forms.Purchase
 
         private void btnedit_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewStock"].ToString()) == true)
+            if (gvPurchase.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("please select one row first");
+
+                return;
+            }
+
+
+            if (userRolesObj.getCheckstate("AddEditPurchases") == true)
             {
                 EditPurchase ec = new EditPurchase(this);
 

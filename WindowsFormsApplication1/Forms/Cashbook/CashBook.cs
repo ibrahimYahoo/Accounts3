@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1.Forms
         public string PartyName = "";
         public static string InvoiceNo = "";
         // public static string InvoiceNo2 = "";
-        DataTable dt = new DAO().getRoles(Login.RoleId);
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
 
         public string ChequeNo = "";
         public string BankCode = "";
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["AddEditReciept"].ToString()) == true)
+            if(userRolesObj.getCheckstate("AddEditReciept") == true)
             {
                 AddReciept addRecObj = new AddReciept(this);
                 addRecObj.Show();
@@ -54,7 +54,9 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["AddEditPayment"].ToString()) == true)
+            
+
+            if(userRolesObj.getCheckstate("AddEditPayment") == true)
             {
                 AddPayment addPayObj = new AddPayment(this);
                 addPayObj.Show();
@@ -400,11 +402,18 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTile6_Click(object sender, EventArgs e)
         {
+            if (gvCashBook.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("please select one row first");
+
+                return;
+            }
+
             string Category = this.gvCashBook.CurrentRow.Cells[2].Value.ToString();
             if(Category == "sales")
             {
                 
-                if (bool.Parse(dt.Rows[0]["AddEditReciept"].ToString()) == true)
+                if (userRolesObj.getCheckstate("AddEditReciept") == true)
                 {
                     EditReciept();
                     return;
@@ -420,7 +429,7 @@ namespace WindowsFormsApplication1.Forms
             }
             else if(Category != "Journal Entry")
             {
-                if (bool.Parse(dt.Rows[0]["AddEditPayment"].ToString()) == true)
+                if (userRolesObj.getCheckstate("AddEditPayment") == true)
                 {
                     EditPayment();
 

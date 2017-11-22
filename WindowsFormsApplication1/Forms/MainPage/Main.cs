@@ -22,7 +22,10 @@ namespace WindowsFormsApplication1
 {
     public partial class Main : MetroFramework.Forms.MetroForm
     {
-        DataTable dt = new DAO().getRoles(Login.RoleId);
+
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
+        
+
 
 
 
@@ -39,7 +42,7 @@ namespace WindowsFormsApplication1
         private void metroTile4_Click(object sender, EventArgs e)
         {
            
-            if(bool.Parse(dt.Rows[0]["ViewStock"].ToString()) == true)
+            if(userRolesObj.getCheckstate("ViewStock") == true)
             {
                 Forms.Stock ac = new Forms.Stock();
                 ac.WindowState = FormWindowState.Maximized;
@@ -59,7 +62,8 @@ namespace WindowsFormsApplication1
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewOrders"].ToString()) == true)
+            
+            if (userRolesObj.getCheckstate("ViewOrders") == true)
             {
                 AllOrders addorder = new AllOrders();
                 addorder.WindowState = FormWindowState.Maximized;
@@ -83,8 +87,9 @@ namespace WindowsFormsApplication1
 
         private void metroTile8_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewPurchases"].ToString()) == true)
+            if (userRolesObj.getCheckstate("ViewPurchases") == true)
             {
+                
                 Forms.Purchase.Purchases ac = new Purchases();
                 ac.WindowState = FormWindowState.Maximized;
 
@@ -125,7 +130,7 @@ namespace WindowsFormsApplication1
 
         private void metroTile7_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewCashBook"].ToString()) == true)
+            if(userRolesObj.getCheckstate("ViewCashBook") == true)
             {
                 CashBook ac = new CashBook();
                 ac.WindowState = FormWindowState.Maximized;
@@ -164,6 +169,7 @@ namespace WindowsFormsApplication1
 
         private void metroTile9_Click(object sender, EventArgs e)
         {
+            Login.count++; 
             this.Hide();
             Login frm = new Login();
             frm.Show();
@@ -181,7 +187,8 @@ namespace WindowsFormsApplication1
 
         private void metroTile3_Click_1(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewJournals"].ToString()) == true)
+
+            if(userRolesObj.getCheckstate("ViewJournals") == true)
             {
                 JournalVoucher JvObj = new JournalVoucher();
                 JvObj.WindowState = FormWindowState.Maximized;
@@ -202,8 +209,9 @@ namespace WindowsFormsApplication1
 
         private void metroTile10_Click(object sender, EventArgs e)
         {
+            
 
-            if (bool.Parse(dt.Rows[0]["ViewGeneralLedger"].ToString()) == true)
+            if(userRolesObj.getCheckstate("ViewGeneralLedger") == true)
             {
                 GeneralLedger glObj = new GeneralLedger();
                 glObj.WindowState = FormWindowState.Maximized;
@@ -226,8 +234,7 @@ namespace WindowsFormsApplication1
 
         private void metroTile11_Click(object sender, EventArgs e)
         {
-
-            if (bool.Parse(dt.Rows[0]["Settings"].ToString()) == true)
+            if(userRolesObj.getCheckstate("Settings") == true)
             {
                 Settings glObj = new Settings();
                 glObj.WindowState = FormWindowState.Maximized;

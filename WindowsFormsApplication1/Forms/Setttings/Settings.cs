@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1.Forms
 {
     public partial class Settings : MetroFramework.Forms.MetroForm
     {
-        DataTable dt = new DAO().getRoles(Login.RoleId);
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
 
         public Settings()
         {
@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewParties"].ToString()) == true)
+            if (userRolesObj.getCheckstate("ViewParties") == true)
             {
                 this.Hide();
                 frmCustomer OBJ = new frmCustomer();
@@ -60,7 +60,8 @@ namespace WindowsFormsApplication1.Forms
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["ViewAccountChart"].ToString()) == true)
+
+            if(userRolesObj.getCheckstate("ViewAccountChart") == true)
             {
                 AccountChart obj = new AccountChart();
                 obj.Show();
@@ -81,7 +82,7 @@ namespace WindowsFormsApplication1.Forms
         private void metroTile3_Click(object sender, EventArgs e)
         {
 
-            if (bool.Parse(dt.Rows[0]["ViewBrokers"].ToString()) == true)
+            if(userRolesObj.getCheckstate("ViewBrokers") == true)
             {
                 frmBroker obj = new frmBroker();
                 obj.Show();

@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
 {
     public partial class frmBroker : MetroFramework.Forms.MetroForm
     {
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
+
         public frmBroker()
         {
             InitializeComponent();
@@ -51,8 +53,18 @@ namespace WindowsFormsApplication1
         }
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            AddBroker ac = new Forms.AddBroker();
-            ac.ShowDialog();
+            if (userRolesObj.getCheckstate("AddEditBroker") == true)
+            {
+                AddBroker ac = new Forms.AddBroker();
+                ac.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("you don't have permission to enter here, Contact admin For further Details");
+                return;
+            }
+
         }
 
         private void metroTile2_Click(object sender, EventArgs e)

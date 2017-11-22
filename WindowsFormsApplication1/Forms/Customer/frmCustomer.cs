@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
 {
     public partial class frmCustomer : MetroFramework.Forms.MetroForm
     {
-        DataTable dt = new DAO().getRoles(Login.RoleId);
+        SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
 
         public frmCustomer()
         {
@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
         }
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["AddEditParty"].ToString()) == true)
+            if (userRolesObj.getCheckstate("AddEditParty") == true)
             {
                 Forms.AddCus ac = new Forms.AddCus(this);
                 ac.ShowDialog();
@@ -69,7 +69,7 @@ namespace WindowsFormsApplication1
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            if (bool.Parse(dt.Rows[0]["AddEditParty"].ToString()) == true)
+            if (userRolesObj.getCheckstate("AddEditParty") == true)
             {
                 Forms.EditCus ec = new Forms.EditCus(this);
                 ec.txtCName.Text = this.gvCustomer.CurrentRow.Cells[1].Value.ToString();
@@ -86,6 +86,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            
            
         }
 

@@ -16,6 +16,8 @@ namespace WindowsFormsApplication1.Forms
     {
         public static string username = "";
         public static int RoleId = -1;
+       // public static bool userEnteredTwice = false;
+        public static int count = 1;
 
         public Login()
         {
@@ -24,6 +26,8 @@ namespace WindowsFormsApplication1.Forms
 
         private void Login_Load(object sender, EventArgs e)
         {
+            
+
             cmbLogin.DataSource = new DAO().getusers();
             cmbLogin.DisplayMember = "Username";
             cmbLogin.ValueMember = "RoleId";
@@ -40,6 +44,12 @@ namespace WindowsFormsApplication1.Forms
             username = (string)drv.Row["Username"];
             RoleId = (int)drv.Row["RoleId"];
 
+            if (count > 1)
+            {
+                SingleTonUserRoles userRolesObj = SingleTonUserRoles.GetInstance;
+                userRolesObj.changeUserRoles();
+
+            }
             //sda.SelectCommand.Parameters.AddWithValue("@UN", cmbLogin.Text);
             // sda.SelectCommand.Parameters.AddWithValue("@PW", textBox2.Text);
 

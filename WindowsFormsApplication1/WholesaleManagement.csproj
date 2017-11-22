@@ -115,6 +115,7 @@
     <Compile Include="Code\Interop.cs" />
     <Compile Include="Code\NumberToWords.cs" />
     <Compile Include="Code\PasswordDAL.cs" />
+    <Compile Include="Code\SingleTonUserRoles.cs" />
     <Compile Include="Dataseets\ordere.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
