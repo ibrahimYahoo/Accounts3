@@ -21,6 +21,8 @@ namespace WindowsFormsApplication1
 
         public frmCustomer()
         {
+            this.TopLevel = true;
+
             InitializeComponent();
         }
 

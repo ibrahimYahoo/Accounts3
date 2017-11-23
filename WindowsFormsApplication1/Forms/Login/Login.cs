@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Code;
+using WindowsFormsApplication1.Forms.MainPage;
 
 namespace WindowsFormsApplication1.Forms
 {
@@ -142,9 +143,11 @@ namespace WindowsFormsApplication1.Forms
                             if (dt1.Rows[0][0].ToString() == "1")
                             {
                                 this.Hide();
-                                Main FF = new Main();
-                                //AdminForm af = new AdminForm();
-                                conn.Close();
+                                Main2 FF = new Main2();
+                            FF.WindowState = FormWindowState.Maximized;
+
+                            //AdminForm af = new AdminForm();
+                            conn.Close();
                                
                                 FF.Show();
                             }

@@ -299,6 +299,12 @@
     <Compile Include="Forms\Login\UserManagement.Designer.cs">
       <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainPage\Main2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainPage\Main2.Designer.cs">
+      <DependentUpon>Main2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Order\AddOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +419,12 @@
     <Compile Include="Forms\Setttings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Setttings\settingscs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Setttings\settingscs.Designer.cs">
+      <DependentUpon>settingscs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Stock\addcategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,6 +484,12 @@
     </Compile>
     <Compile Include="Forms\Supplier\Suppliers.designer.cs">
       <DependentUpon>Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\transactions.cs">
       <SubType>Form</SubType>
@@ -670,6 +688,9 @@
     <EmbeddedResource Include="Forms\Login\UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainPage\Main2.resx">
+      <DependentUpon>Main2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\AddOrder.resx">
       <DependentUpon>AddOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -727,6 +748,9 @@
     <EmbeddedResource Include="Forms\Setttings\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setttings\settingscs.resx">
+      <DependentUpon>settingscs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Stock\addcategory.resx">
       <DependentUpon>addcategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -756,6 +780,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Supplier\Suppliers.resx">
       <DependentUpon>Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\test.resx">
+      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\transactions.resx">
       <DependentUpon>transactions.cs</DependentUpon>

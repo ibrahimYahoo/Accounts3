@@ -32,8 +32,10 @@
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.metroTile5 = new MetroFramework.Controls.MetroTile();
+            this.tc = new MetroFramework.Controls.MetroTabControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // metroTile1
@@ -85,7 +87,7 @@
             // metroTile4
             // 
             this.metroTile4.ActiveControl = null;
-            this.metroTile4.Location = new System.Drawing.Point(1083, 45);
+            this.metroTile4.Location = new System.Drawing.Point(1249, 15);
             this.metroTile4.Name = "metroTile4";
             this.metroTile4.Size = new System.Drawing.Size(126, 42);
             this.metroTile4.TabIndex = 3;
@@ -94,17 +96,6 @@
             this.metroTile4.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile4.UseSelectable = true;
             this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo_small;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(1143, 453);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(66, 66);
-            this.panel1.TabIndex = 192;
             // 
             // metroTile5
             // 
@@ -121,22 +112,56 @@
             this.metroTile5.UseSelectable = true;
             this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
             // 
+            // tc
+            // 
+            this.tc.Location = new System.Drawing.Point(-1, 63);
+            this.tc.Name = "tc";
+            this.tc.Size = new System.Drawing.Size(1376, 641);
+            this.tc.TabIndex = 194;
+            this.tc.UseSelectable = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.umbra_logo_small;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(1274, 641);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(66, 66);
+            this.panel1.TabIndex = 192;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(-1, 53);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1376, 13);
+            this.textBox1.TabIndex = 196;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 542);
+            this.ClientSize = new System.Drawing.Size(1378, 710);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tc);
             this.Controls.Add(this.metroTile5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroTile4);
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
+            this.IsMdiContainer = true;
             this.Name = "Settings";
-            this.Text = "Settings";
+            this.Padding = new System.Windows.Forms.Padding(0, 60, 0, 0);
             this.TransparencyKey = System.Drawing.Color.Empty;
             this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -148,5 +173,7 @@
         private MetroFramework.Controls.MetroTile metroTile4;
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroTile metroTile5;
+        private MetroFramework.Controls.MetroTabControl tc;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -31,6 +31,11 @@ namespace WindowsFormsApplication1
 
         public Main()
         {
+     //       this.MdiParent = this;
+            //this.WindowState = FormWindowState.Maximized;
+            //this.BringToFront();
+            //this.Show();
+            this.TopLevel = true;
             InitializeComponent();
         }
 
